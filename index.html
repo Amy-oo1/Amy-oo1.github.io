@@ -201,7 +201,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.6k 词 
+            3.7k 词 
           </div>
         </div>
         
@@ -212,13 +212,19 @@
         
           <div class="truncate-text">
             
-              朴素的算法一个$n$次多项式的点值表达式变换需要的工作就是计算项集：
-\lbrace (x_i,y_i)\lvert 0\le i\le n-1 ,y_i=\sum_{j=0}^{j=n-1}a_jx_i^j \rbrace使用朴素方法需要$\log (n^2)$的时间用矩阵的逆(UL分解)求解逆变换需要$\log (n^3)$时间，即便使用拉格朗日公式也需要$\log (n^2)$的时间，整体上多项式乘法乘法并没有得到改进
-折半原理定义主单位复数根：
-W_n=e^{\frac{2\pi i}{n}} \tag{1}使得
-(W_n^k)^n=1而$W_n^{(k)}$称为n次单位复数根,这一类复数有着特殊的性质:根据公式(1)可得消去原理：
-W_{2n}^{2k}=\left (e\frac{2\pi}{2n} \right) ^{2k}=\left( e\frac{2\pi}{n} \right)^k=W_n^k \tag{2}使用公式(2)对于$n$为偶数的主单位复数根，有折半原理：
-\left( W_n^k \right)^2=\left( W_n^{k+n/2} \rig...
+              朴素的算法
+一个nnn次多项式的点值表达式变换需要的工作就是计算项集：
+{(xi,yi)∣0≤i≤n−1,yi=∑j=0j=n−1ajxij} \lbrace (x_i,y_i)\lvert 0\le i\le n-1 ,y_i=\sum_{j=0}^{j=n-1}a_jx_i^j \rbrace {(xi​,yi​)∣0≤i≤n−1,yi​=j=0∑j=n−1​aj​xij​}
+使用朴素方法需要log⁡(n2)\log (n^2)log(n2)的时间
+用矩阵的逆(UL分解)求解逆变换需要log⁡(n3)\log (n^3)log(n3)时间，即便使用拉格朗日公式也需要log⁡(n2)\log (n^2)log(n2)的时间，
+整体上多项式乘法乘法并没有得到改进
+折半原理
+定义主单位复数根：
+Wn=e2πin(1)W_n=e^{\frac{2\pi i}{n}} \tag{1}Wn​=en2πi​(1)
+使得
+(Wnk)n=1(W_n^k)^n=1(Wnk​)n=1
+而Wn(k)W_n^{(k)}Wn(k)​称为n次单位复数根,这一类复数有着特殊的性质:
+根据公式(1)可得消去原...
             
           </div>
         
