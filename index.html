@@ -143,6 +143,11 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
+                数字信号处理
+                <div class="category-count">1</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
                 算法
                 <div class="category-count">2</div>
@@ -157,7 +162,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li></ul>
     </div>
   </div>
 
@@ -168,6 +173,106 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-DFT-Signal" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/13/DFT-Signal/">DFT与频域转换</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-12T17:22:21.000Z" itemprop="datePublished">2024-10-13</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">数字信号处理</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              信号的表示
+信号离散化
+
+物理上，气压变化引起空气分子振动，产生声波,
+因此用波形图(t-振幅)图储存，这就是音频信号的时域表示
+理论上，图像可以无限分割到足够小，并用坐标表示位置，用颜色模型表示点信息，这就是图像信号的空域表示
+
+然而，计算机只能处理有限的信息，因此需要将信号离散化
+
+采样:选择信号的有限个样点代表信号
+采样频率: 单位时间/空间内的样本数
+
+失真
+使用采用的方法会一定程度影响信号的准确性，如果一个信号偏差过大，就会发生失真
+那奎斯特定理对这一现象给出定量分析:
+
+使用的采样频率至少是被采样信息频率的两倍
+
+时/空域转化为频域
+傅里叶变换可以把时/空域信号转为频域信号，而频域信号的表示对信号的操作空间更大
+傅里叶级数
+通过傅里叶级数，可以将满足狄利克雷条件(连续，单调，有界)的周期函数，
+表示为不同频率的正弦和余弦函数，即
+f(t)=∑−∞+∞[ancos⁡(nwt)+bnsin⁡(nwt)]
+f(t)=\sum_{-\infty}^{+\infty}\left[ a_n\cos(nwt)+bn\sin(nwt)  \right]
+ f(t)=−∞∑+∞​[an...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/13/3MoufqlYLnRhx8w.jpg)" 
+      href="/2024/10/13/DFT-Signal/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -182,7 +287,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/12/FFT-2/">快速傅里叶变换[2]</a>
+        <a class="p-name article-title" href="/2024/10/12/FFT-2/">FFT的数学解释[2]</a>
       </h1>
     
   
@@ -205,7 +310,7 @@
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -270,7 +375,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=...
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/12/FFT_1/">快速傅里叶变换[1]</a>
+        <a class="p-name article-title" href="/2024/10/11/FFT_1/">FFT的数学解释[1]</a>
       </h1>
     
   
@@ -278,7 +383,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=...
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-11T17:22:21.000Z" itemprop="datePublished">2024-10-12</time>
+  <time class="dt-published" datetime="2024-10-10T17:22:21.000Z" itemprop="datePublished">2024-10-11</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -293,7 +398,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=...
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -301,7 +406,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=...
           <div class="truncate-text">
             
               快速傅里叶可以做什么
-快速傅里叶变换（Fast Fourier transform ,FFT）可以用来加算多项式乘法 ，音频信号处理等
+快速傅里叶变换（Fast Fourier transform ,FFT）可以用来加算多项式乘法 ，数字信号处理等
 多项式
 多项式乘法
 次数界为nnn的多项式表示为：
@@ -325,7 +430,7 @@ A(x...
      
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/11/3XanCMPQpFB2bte.jpg)" 
-      href="/2024/10/12/FFT_1/" 
+      href="/2024/10/11/FFT_1/" 
     >
        
       <div class="overlay">
