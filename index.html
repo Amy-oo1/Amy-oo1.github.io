@@ -145,17 +145,17 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 图形学
-                <div class="category-count">1</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
-                算法
                 <div class="category-count">2</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
+                算法
+                <div class="category-count">2</div>
             </a>
         </div>
     </div>
@@ -167,7 +167,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Projection/" rel="tag">Projection</a></li></ul>
     </div>
   </div>
 
@@ -181,7 +181,7 @@
    
 
 
-<article id="post-3D-Space-trans" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-3D_Viewing-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -192,7 +192,98 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/14/3D-Space-trans/">3D模型变换</a>
+        <a class="p-name article-title" href="/2024/10/15/3D_Viewing-2/">3D模型观测[2]</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-15T05:40:57.000Z" itemprop="datePublished">2024-10-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Projection/" rel="tag">Projection</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              投影
+把相机位置固定好后，就需要需要归一化观测模型，把模型投影到2D屏幕上
+在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的3维空间内
+正射投影
+正射投影是一种平行投影，因为它会选择立方体的视域,物理模型只会做线性变换
+所以物理模型中平行的现象，经过正射投影投射到屏幕上后，仍能得到平行的结构
+
+依照定义，只需要对视域数字化输入
+
+相机到近/远裁剪平面的距离n/fn/fn/f
+裁剪平面左下角坐标(L,B)(L,B)(L,B)右上角坐标(R,T)(R,T)(R,T)
+先对裁剪空间平移再放缩可得
+
+O=[2R−L00002T−B00002f−n00001] [100−L+R2010−B+T2001n+f20001]=[2R−L00−L+RR−L02T−B0−B+TT−B002f−nn+ff−n0001]
+O=
+\left[\begin{matrix}
+\frac{2}{R-L} &amp; 0 &amp;0  &amp; 0 \\\\ 0 &amp; \frac{2}{T-B} &amp; 0 &amp; 0 \\\\ 0 &amp; 0 ...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/15/uaLvAfIMwekBXOg.png)" 
+      href="/2024/10/15/3D_Viewing-2/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-3D_Viewing-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/14/3D_Viewing-1/">3D模型观测[1]</a>
       </h1>
     
   
@@ -211,7 +302,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.2k 词 
+            3.7k 词 
           </div>
         </div>
         
@@ -249,7 +340,7 @@ C[i][j]=∑i=oi=m−1∑j=0j=n−1∑k=0k=p−1A[i][k]⋅B[...
      
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/14/1vpim8cQBIhNW93.png)" 
-      href="/2024/10/14/3D-Space-trans/" 
+      href="/2024/10/14/3D_Viewing-1/" 
     >
        
       <div class="overlay">
@@ -459,7 +550,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=...
    
 
 
-<article id="post-FFT_1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-FFT-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -470,7 +561,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=...
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/11/FFT_1/">FFT的数学解释[1]</a>
+        <a class="p-name article-title" href="/2024/10/11/FFT-1/">FFT的数学解释[1]</a>
       </h1>
     
   
@@ -525,7 +616,7 @@ A(x...
      
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/11/3XanCMPQpFB2bte.jpg)" 
-      href="/2024/10/11/FFT_1/" 
+      href="/2024/10/11/FFT-1/" 
     >
        
       <div class="overlay">

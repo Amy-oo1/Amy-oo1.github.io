@@ -23,13 +23,13 @@
   <meta name="description" content="快速傅里叶可以做什么 快速傅里叶变换（Fast Fourier transform ,FFT）可以用来加算多项式乘法 ，数字信号处理等 多项式 多项式乘法 次数界为nnn的多项式表示为： A(x)&#x3D;∑i&#x3D;0i&#x3D;n−1aiXiA(x)&#x3D;\sum_{i&#x3D;0}^{i&#x3D;n-1}a_iX^iA(x)&#x3D;i&#x3D;0∑i&#x3D;n−1​ai​Xi 若 B(x)&#x3D;∑i&#x3D;0i&#x3D;n−1biXi,C(x)&#x3D;∑i&#x3D;0i&#x3D;2n−2ci">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FFT的数学解释[1]">
-<meta property="og:url" content="http://example.com/2024/10/11/FFT_1/index.html">
+<meta property="og:url" content="http://example.com/2024/10/11/FFT-1/index.html">
 <meta property="og:site_name" content="Amy_blog">
 <meta property="og:description" content="快速傅里叶可以做什么 快速傅里叶变换（Fast Fourier transform ,FFT）可以用来加算多项式乘法 ，数字信号处理等 多项式 多项式乘法 次数界为nnn的多项式表示为： A(x)&#x3D;∑i&#x3D;0i&#x3D;n−1aiXiA(x)&#x3D;\sum_{i&#x3D;0}^{i&#x3D;n-1}a_iX^iA(x)&#x3D;i&#x3D;0∑i&#x3D;n−1​ai​Xi 若 B(x)&#x3D;∑i&#x3D;0i&#x3D;n−1biXi,C(x)&#x3D;∑i&#x3D;0i&#x3D;2n−2ci">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2024/10/11/3XanCMPQpFB2bte.jpg">
 <meta property="article:published_time" content="2024-10-10T17:22:21.000Z">
-<meta property="article:modified_time" content="2024-10-13T14:02:07.512Z">
+<meta property="article:modified_time" content="2024-10-15T12:02:21.449Z">
 <meta property="article:author" content="Amy">
 <meta property="article:tag" content="FFT">
 <meta name="twitter:card" content="summary">
@@ -152,17 +152,17 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 图形学
-                <div class="category-count">1</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
-                算法
                 <div class="category-count">2</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
+                算法
+                <div class="category-count">2</div>
             </a>
         </div>
     </div>
@@ -174,7 +174,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Projection/" rel="tag">Projection</a></li></ul>
     </div>
   </div>
 
@@ -187,13 +187,13 @@
        
 
 
-<article id="post-FFT_1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-FFT-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm299ojue00058g6zfg877uad">
+      <a class="article-gallery-img" rel="gallery_cm2aeb8m20006rg6zeh0uht8n">
         <img src="https://s2.loli.net/2024/10/11/3XanCMPQpFB2bte.jpg" itemprop="image">
       </a>
     
