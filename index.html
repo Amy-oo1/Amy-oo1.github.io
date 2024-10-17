@@ -160,7 +160,7 @@
         
             <a class="category-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
                 编译原理
-                <div class="category-count">1</div>
+                <div class="category-count">2</div>
             </a>
         </div>
     </div>
@@ -186,7 +186,7 @@
    
 
 
-<article id="post-Lex-RetoNFA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-NFA-to-DFA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -197,7 +197,113 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/16/Lex-RetoNFA/">词法分析器实现-正则转NFA</a>
+        <a class="p-name article-title" href="/2024/10/17/NFA-to-DFA/">词法分析器实现-NFA转DFA</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-17T03:39:58.000Z" itemprop="datePublished">2024-10-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.6k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              合并NFA
+到目前为止，只讨论了识别一个词语的情况
+如果有多个词语，分别构造NFA识别可以实现
+但是NFA的性质允许简单的合并
+
+新建起点状态s，在所有词语的NFA之间连一条标号为ϵ\epsilonϵ的边
+把所有终点状态附加状态，表明是哪个词语的识别完成
+
+冲突解决
+实际上，词语定义之间存在交集和包含关系，通俗讲:
+
+字符序列SDSDSD是词语S和词语D还是SD的
+一个序列和多个正则表达式匹配
+
+这里处理的方法是:
+
+选择最长的前缀
+给所有的词语定义附上优先级
+
+确定有穷自动机(DFA)
+DFA的定义是相对于NFA的
+
+不允许ϵ\epsilonϵ标记的边
+对于每一个状态s和∑\sum∑中每个的输入符号aaa，有且只有一条标号为aaa的边离开a
+
+
+第二条定义规定了每一个状态有∥∑∥\lVert \sum\lVert∥∑∥条不同的出边，可以通过引入无效状态结果非法路径
+
+引入DFA的可以解决NFA中因为ϵ\epsilonϵ标号导致的高额开销
+子集构造法
+子集构造法可以将NFA转为识别同样语言的DFA
+基本思想是让构造得到的DFA的每个状态对应于NFA的一个状态集合
+先解释几种符号
+...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/17/NM2njtADbGCVSgI.jpg)" 
+      href="/2024/10/17/NFA-to-DFA/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Lex-Re-to-NFA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/16/Lex-Re-to-NFA/">词法分析器实现-正则转NFA</a>
       </h1>
     
   
@@ -216,7 +322,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.1k 词 
+            5.3k 词 
           </div>
         </div>
         
@@ -239,7 +345,7 @@
 
 词法分析器输出
 
-特定词语在文本中的位置信息
+词语的集合
 
 
 通俗讲，词法分析器不过是将熟知的字符串匹配算法抽象化
@@ -255,7 +361,8 @@ L∘M={S∣S=LM}(并)
 L\circ M=\{ S\lvert S=LM\}\tag{并}
 L∘M={S∣S=LM}(并)
 L∗={(L∘L)n∣(L∘L)0=ϵ}(Kleene闭包)
-L^*=\{ (L\circ L)^n \vert (L\circ L)^0=\epsilon \}\tag{Kle...
+L^*=\{ (L\circ L)^n \vert (L\circ L)^0=\epsilon \}\tag{Kleene闭包}
+L...
             
           </div>
         
@@ -267,7 +374,7 @@ L^*=\{ (L\circ L)^n \vert (L\circ L)^0=\epsilon \}\tag{Kle...
      
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/16/G172V9QOcf86uFN.png)" 
-      href="/2024/10/16/Lex-RetoNFA/" 
+      href="/2024/10/16/Lex-Re-to-NFA/" 
     >
        
       <div class="overlay">
