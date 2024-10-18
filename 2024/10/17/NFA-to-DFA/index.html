@@ -20,17 +20,18 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="合并NFA 到目前为止，只讨论了识别一个词语的情况 如果有多个词语，分别构造NFA识别可以实现 但是NFA的性质允许简单的合并  新建起点状态s，在所有词语的NFA之间连一条标号为ϵ\epsilonϵ的边 把所有终点状态附加状态，表明是哪个词语的识别完成  冲突解决 实际上，词语定义之间存在交集和包含关系，通俗讲:  字符序列SDSDSD是词语S和词语D还是SD的 一个序列和多个正则表达式匹配">
+  <meta name="description" content="合并NFA 到目前为止，只讨论了识别一个词语的情况 如果有多个词语，分别构造NFA识别可以实现 但是NFA的性质允许简单的合并  新建起点状态s，在所有词语的NFA之间连一条标号为ϵ\epsilonϵ的边 把所有终点状态附加状态，表明是哪个词语的识别完成  冲突解决 实际上，词语定义之间存在交集和包含关系，通俗讲:  字符序列SDSDSD是词语S和词语D还是单个词语SD 一个序列和多个正则表达式匹">
 <meta property="og:type" content="article">
 <meta property="og:title" content="词法分析器实现-NFA转DFA">
 <meta property="og:url" content="http://example.com/2024/10/17/NFA-to-DFA/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="合并NFA 到目前为止，只讨论了识别一个词语的情况 如果有多个词语，分别构造NFA识别可以实现 但是NFA的性质允许简单的合并  新建起点状态s，在所有词语的NFA之间连一条标号为ϵ\epsilonϵ的边 把所有终点状态附加状态，表明是哪个词语的识别完成  冲突解决 实际上，词语定义之间存在交集和包含关系，通俗讲:  字符序列SDSDSD是词语S和词语D还是SD的 一个序列和多个正则表达式匹配">
+<meta property="og:description" content="合并NFA 到目前为止，只讨论了识别一个词语的情况 如果有多个词语，分别构造NFA识别可以实现 但是NFA的性质允许简单的合并  新建起点状态s，在所有词语的NFA之间连一条标号为ϵ\epsilonϵ的边 把所有终点状态附加状态，表明是哪个词语的识别完成  冲突解决 实际上，词语定义之间存在交集和包含关系，通俗讲:  字符序列SDSDSD是词语S和词语D还是单个词语SD 一个序列和多个正则表达式匹">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2024/10/17/NM2njtADbGCVSgI.jpg">
 <meta property="article:published_time" content="2024-10-17T03:39:58.000Z">
-<meta property="article:modified_time" content="2024-10-17T06:30:11.857Z">
+<meta property="article:modified_time" content="2024-10-17T15:27:15.785Z">
 <meta property="article:author" content="Amy">
+<meta property="article:tag" content="DFA">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/10/17/NM2njtADbGCVSgI.jpg">
   
@@ -156,7 +157,7 @@
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
                 算法
-                <div class="category-count">2</div>
+                <div class="category-count">3</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
@@ -178,7 +179,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Lex/" rel="tag">Lex</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Projection/" rel="tag">Projection</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFA/" rel="tag">DFA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/NFA/" rel="tag">NFA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Projection/" rel="tag">Projection</a></li></ul>
     </div>
   </div>
 
@@ -197,7 +198,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm2cxed7o000g6g6z9dmjb881">
+      <a class="article-gallery-img" rel="gallery_cm2es3pxv000v9g6z1m8geec1">
         <img src="https://s2.loli.net/2024/10/17/NM2njtADbGCVSgI.jpg" itemprop="image">
       </a>
     
@@ -237,6 +238,8 @@
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFA/" rel="tag">DFA</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
@@ -251,7 +254,7 @@
 <h3 id="%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3" tabindex="-1">冲突解决</h3>
 <p>实际上，词语定义之间存在交集和包含关系，通俗讲:</p>
 <ol>
-<li>字符序列<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></eq>是词语S和词语D还是SD的</li>
+<li>字符序列<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></eq>是词语S和词语D还是单个词语SD</li>
 <li>一个序列和多个正则表达式匹配</li>
 </ol>
 <p>这里处理的方法是:</p>
@@ -266,7 +269,7 @@
 <li>对于每一个状态<strong>s</strong>和<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo></mrow><annotation encoding="application/x-tex">\sum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span></span></span></span></eq>中每个的输入符号<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></eq>，<strong>有且只有</strong>一条标号为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></eq>的边离开a</li>
 </ol>
 <blockquote>
-<p>第二条定义规定了每一个状态有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">∥</mo><mo>∑</mo><mo stretchy="false">∥</mo></mrow><annotation encoding="application/x-tex">\lVert \sum\lVert</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">∥</span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">∥</span></span></span></span></eq>条不同的出边，可以通过引入<strong>无效状态</strong>结果非法路径</p>
+<p>第二条定义规定了每一个状态有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">∥</mo><mo>∑</mo><mo stretchy="false">∥</mo></mrow><annotation encoding="application/x-tex">\lVert \sum\lVert</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">∥</span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">∥</span></span></span></span></eq>条不同的出边，可以通过引入<strong>无效状态</strong>定义非法路径</p>
 </blockquote>
 <p>引入DFA的可以解决NFA中因为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span></eq>标号导致的高额开销</p>
 <h3 id="%E5%AD%90%E9%9B%86%E6%9E%84%E9%80%A0%E6%B3%95" tabindex="-1">子集构造法</h3>
@@ -333,10 +336,15 @@
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left  disabled "
+  <a class="article-nav-btn left "
+    
+      href="/2024/10/18/DFA-Minimize/"
+      title="DFA-Minimize"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
+      
+        DFA-Minimize
         
     </p>
   </a>
