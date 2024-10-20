@@ -145,12 +145,12 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
-                <div class="category-count">3</div>
+                <div class="category-count">4</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
                 算法
-                <div class="category-count">3</div>
+                <div class="category-count">4</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
@@ -172,7 +172,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFA/" rel="tag">DFA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/NFA/" rel="tag">NFA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Projection/" rel="tag">Projection</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Z-buffer/" rel="tag">Z-buffer</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" rel="tag">傅里叶分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
     </div>
   </div>
 
@@ -183,6 +183,203 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Judge-Point-in-Polyon" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/20/Judge-Point-in-Polyon/">判断点和平面多边形关系</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-20T01:34:58.000Z" itemprop="datePublished">2024-10-20</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              算法原理
+
+性质:若某个点PPP在平面多边形内(不包括边上)，则它发出的任意射线穿过奇数条边(多边形的)
+
+证明
+tips :不考虑射线恰好落在顶点上的情况
+
+非形式化证明: 多边形是一条线组成封闭图形，每穿线一次,射线端点的状态就改变一次
+
+对于n(n≥3)n(n \ge 3)n(n≥3)边平面多边形
+
+基本情况,n=3,n=3,n=3,射线最多经过一条边
+归纳假设，假设对于n&gt;3n&gt;3n&gt;3的多边形，性质成立
+归纳推理: 对于(n+1，n&gt;3)(n+1，n &gt;3)(n+1，n&gt;3)的多边形，将它切分为nnn变形和一个三角形，注意这里会产生重边(切割线)，但是在大的多边形内部，不记这条重边
+
+若P发出的射线不经过三角形，那它一定只经过nnn边形，根据假设，性质成立
+只经过三角形，根据基本情况,性质成立
+同时经过三角形和nnn边形
+
+若点穿过三角形一条边，经过三角形一条边后，射线前端到多边形外，然后穿偶数条边后穿出nnn边形，相反的顺序依然成立
+若点穿过三角形两条边，射线一定不会从三角形内出发，对穿过nnn边形的奇数条边没有影响
+
+
+
+
+
+实现...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/20/fC7XKpAhWBeNGzO.jpg)" 
+      href="/2024/10/20/Judge-Point-in-Polyon/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Rasterization-draw-Triangle" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/19/Rasterization-draw-Triangle/">光栅化-绘制三角</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-19T15:11:58.000Z" itemprop="datePublished">2024-10-19</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.5k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+光栅化（Rasterization）是计算机图形学中的一个基本过程，它将矢量图形（由数学方程或直线、曲线等几何形状定义的图形）转换为光栅图形（即像素图）
+
+可以看出，光栅化包含了很多操作，这里只讨论绘制三角形， 很多关键步骤和绘制三角形同步进行，而这一过程在屏幕映射后进行
+二维直线绘制
+二维直线方程给出了使用顶点在屏幕上绘制直线的方法
+
+输入 两个在屏幕上的不同点，p1p1p1,p2p2p2
+输出参数方程
+[xtyt]=[x0+t(x1−x0)y0+t(y1−y9)]
+\left[\begin{matrix}
+x_t \\\\ y_t 
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+x_0+t(x_1-x_0) \\\\ y_0+t(y_1-y_9)
+\end{matrix}\right]
+​xt​yt​​​=​x0​+t(x1​−x0​)y0​+t(y1​−y9​)​​
+
+在屏幕上绘制直线
+使用参数方程，可以得到两个顶点围成的线段上的连续点集
+{(xr.yr)∣(xr.yr)∈(xt,yt)}\{(x_r.y_r) \lvert (x_...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/19/YE8LFCRBV37tMjA.png)" 
+      href="/2024/10/19/Rasterization-draw-Triangle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -216,11 +413,11 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.5k 词 
+            2.4k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Z-buffer/" rel="tag">Z-buffer</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -229,22 +426,18 @@
             
               引言
 假设已经完成了场景设置和模型变换，得到的是在(x,y)∈[−1,1]3(x,y)\in [-1,1]^3(x,y)∈[−1,1]3的标准视体
-
-这里不对ZZZ轴坐标做变换，只需要保留偏序关系，因为在转换过程中会丢失精度
-
 现在要做的工作就是将3维空间视体映射到2维屏幕
-屏幕映射
+屏幕投影
 
 只需要屏幕的尺寸,就可以利用平移矩阵和缩放矩阵让视体在不破坏(x,y)(x,y)(x,y)方向上的偏序关系下，完成变换
 
 假设像素成矩阵排列，可以将屏幕抽象成W×HW\times HW×H个像素的平面,每个像素用整数坐标位置索引
 坐标原点(0,0)(0,0)(0,0)在屏幕左下角,最右上角像素坐标为(W−1,H−1)(W-1,H-1)(W−1,H−1)
 
-像素是图像元素
+现在只需要把像素看做显示设备的基本元素
 
-因此，一个像素(x,y)(x,y)(x,y)，显示范围为(x−12,y−12)(x-\frac{1}{}2,y-\frac{1}{2})(x−1​2,y−21​)，整个屏幕的显示范围为
-[−12,−12]→[W−12,H−12]
-[-\frac{1}{2},-\frac{1}{2} ] \to [W-\frac{1}{2},H-...
+因此，一个像素(x,y)(x,y)(x,y)，显示范围为(x−12,y−12)(x-\frac{1}{2},y-\frac{1}{2})(x−21​,y−21​)，整个屏幕的显示范围为
+[−12,−12]→[W−12,H−12][-\frac{1}{2},-\frac{1}{2} ] \to [W-\frac{1}{2},H-\frac{1}{2}][−21​,−21​]→[W−21...
             
           </div>
         
@@ -312,7 +505,7 @@
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFA/" rel="tag">DFA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -343,7 +536,8 @@ DFA的输入符号集为∑\sum∑,希腊字母表示α\alphaα表示特定的�
 用∥∑∥\Vert \sum \lVert∥∑∥个输入符号做同构测试
 对状态集中的所有出边重定向
 
-时间复杂度为Max O(N∗(N2∗∥∑∥)+N∗∥∑∥)=O(N3∗∥∑∥)Max\ O(N*(N^2*\lVert \sum \lVert)+N*\lVert \sum \lVert)=O(N^3*\lVert \sum \lVert)Max O(N∗(N2∗∥∑∥)+N...
+时间复杂度为
+Max O(N∗(N2∗∥∑∥)+N∗∥∑∥)=O(N3∗∥∑∥)Max\ O(N*(N^2*\lVert \sum \lVert)+N*\lVert \sum \lVert)=O(N^3*\lVert \sum \lVert)Max O(N∗(N2∗∥∑∥)+...
             
           </div>
         
@@ -407,11 +601,11 @@ DFA的输入符号集为∑\sum∑,希腊字母表示α\alphaα表示特定的�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.6k 词 
+            4.4k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFA/" rel="tag">DFA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -420,8 +614,8 @@ DFA的输入符号集为∑\sum∑,希腊字母表示α\alphaα表示特定的�
             
               合并NFA
 到目前为止，只讨论了识别一个词语的情况
-如果有多个词语，分别构造NFA识别可以实现
-但是NFA的性质允许简单的合并
+如果有多个词语，分别构造NFA,重复扫描识别可以实现
+有一个NFA实现的办法，NFA的性质允许简单的合并:
 
 新建起点状态s，在所有词语的NFA之间连一条标号为ϵ\epsilonϵ的边
 把所有终点状态附加状态，表明是哪个词语的识别完成
@@ -438,10 +632,10 @@ DFA的输入符号集为∑\sum∑,希腊字母表示α\alphaα表示特定的�
 给所有的词语定义附上优先级
 
 确定有穷自动机(DFA)
-DFA的定义是相对于NFA的
+DFA的定义是相对于NFA的:
 
 不允许ϵ\epsilonϵ标记的边
-对于每一个状态s和∑\sum∑中每个的输入符号aaa，有且只有一条标号为aaa的边离开a
+对于每一个状态a和∑\sum∑中每个的输入符号β\betaβ，有且只有一条标号为β\betaβ的边离开a
 
 
 第二条定义规定了每一个状态有∥∑∥\lVert \sum\lVert∥∑∥条不同的出边，可以通过引入无效状态定义非法路径
@@ -449,8 +643,7 @@ DFA的定义是相对于NFA的
 引入DFA的可以解决NFA中因为ϵ\epsilonϵ标号导致的高额开销
 子集构造法
 子集构造法可以将NFA转为识别同样语言的DFA
-基本思想是让构造得到的DFA的每个状态对应于NFA的一个状态集合
-先解释几种...
+基本思想是让构造得到的DF...
             
           </div>
         
@@ -514,11 +707,11 @@ DFA的定义是相对于NFA的
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.3k 词 
+            5.2k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NFA/" rel="tag">NFA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -532,29 +725,26 @@ DFA的定义是相对于NFA的
 词法分析器可以看做这样一个黑盒
 接收输入
 
-语言组成的文本，定义了可用字符集
+字符组成的文本，定义了可用字符集
 任意个词语定义，即用字符集中字符构造特定词语
 
 词法分析器输出
 
-词语的集合
+解析后的词语串
 
 
 通俗讲，词法分析器不过是将熟知的字符串匹配算法抽象化
-字符串匹配在字符串中找特定字符，词法分析器在一串语言中找特定语言
+字符串匹配在字符串中找特定字符，词法分析器在一串字符中找一类字符(正则定义)
 
 正则语言描述
-词语的字符定义可以简单地用正则表达式表示，即这里处理的词语都在正则语言可表示的内
-定义语言L,R(单个字符也是语言)，则有(优先级逐渐变高)
-L∣M={S∣S=L or S=R}(或)
-L\lvert M=\{ S\lvert S=L \ or \ S=R\} \tag{或}
-L∣M={S∣S=L or S=R}(或)
-L∘M={S∣S=LM}(并)
-L\circ M=\{ S\lvert S=LM\}\tag{并}
-L∘M={S∣S=LM}(并)
-L∗={(L∘L)n∣(L∘L)0=ϵ}(Kleene闭包)
-L^*=\{ (L\circ L)^n \vert (L\circ L)^0=\epsilon \}\tag{Kleene闭包}
-L...
+词语的字符定义可以简单地用正则表达式表示，即这里处理的词语都在正则语言可表示的范围内
+定义字符(串)L,RL,RL,R则有(优先级逐渐变高)
+L∣M={S∣S=L or S=R}(或)L\lvert M=\{ S\lvert S=L \ or \ S=R\} \tag{或}L∣M={S∣S=L or S=R}(或)
+L∘M={S∣S=LM}(并)L\circ M=\{ S\lvert S=LM\}\tag{并}L∘M={S∣S=LM}(并)
+L^*=\{ (L\circ L)^n \vert (L\circ L)^0=\epsilon \}\tag
+
+若一个语言为空,表示为ϵ\epsilonϵ
+空语言存在是有意义的，当一个词...
             
           </div>
         
@@ -618,25 +808,29 @@ L...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.7k 词 
+            2.8k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Projection/" rel="tag">Projection</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
             
-              投影
-把相机位置固定好后，就需要需要归一化观测模型，把模型投影到2D屏幕上
-在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的3维空间内
+              
+tips: 此处nnn和fff都为无向距离,即n=−z近裁剪，f=−z远裁剪n=-z_{近裁剪}，f=-z_{远裁剪}n=−z近裁剪​，f=−z远裁剪​
+
+投影
+把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上
+在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的333维空间内
 正射投影
 正射投影是一种平行投影，因为它会选择立方体的视域,物理模型只会做线性变换
 所以物理模型中平行的现象，经过正射投影投射到屏幕上后，仍能得到平行的结构
 
-依照定义，只需要对视域数字化输入
+正射投影矩阵
+依照定义，只需要对视域数字化输入:
 
 相机到近/远裁剪平面的距离n/fn/fn/f
 裁剪平面左下角坐标(L,B)(L,B)(L,B)右上角坐标(R,T)(R,T)(R,T)
@@ -645,7 +839,7 @@ L...
 O=[2R−L00002T−B00002f−n00001] [100−L+R2010−B+T2001n+f20001]=[2R−L00−L+RR−L02T−B0−B+TT−B002f−nn+ff−n0001]
 O=
 \left[\begin{matrix}
-\frac{2}{R-L} &amp; 0 &amp;0  &amp; 0 \\\\ 0 &amp; \frac{2}{T-B} &amp; 0 &amp; 0 \\\\ 0 &amp; 0 ...
+\frac{2}{R...
             
           </div>
         
@@ -709,33 +903,35 @@ O=
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.7k 词 
+            4.2k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVP/" rel="tag">MVP</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
             
-              向量的运用
+              非齐次坐标
+非齐次坐标表示为(x,y)(x,y)(x,y)或(x,y,z)(x,y,z)(x,y,z)
+对应的标准齐次坐标为(x,y,1)(x,y,1)(x,y,1)或(x,u,z,1)(x,u,z,1)(x,u,z,1)
+
+齐次坐标引入了放缩分量,即最后的非零坐标
+
+齐次坐标(x,y,N)(x,y,N)(x,y,N)或(x,y,z,N)(x,y,z,N)(x,y,z,N)，(N&gt;0)(N &gt;0)(N&gt;0)对应的标准形式为(xN,yN,1)(\frac{x}{N},\frac{y}{N},1)(Nx​,Ny​,1)或(xN,yN,zN,1)(\frac{x}{N},\frac{y}{N},\frac{z}{N},1)(Nx​,Ny​,Nz​,1)
+
+只能用标准化的齐次坐标生成向量
+
+向量的运用
 向量加/减法
 定义向量
 a=(xa,ya,za,0)a=(x_a,y_a,z_a,0)a=(xa​,ya​,za​,0)
 b=(xb,xb,za,0)b=(x_b,x_b,z_a,0)b=(xb​,xb​,za​,0)
 c=a±bc=a\pm bc=a±b
 则有
-c=(xa±xb,ya±yb,za±zb,0)c=(x_a\pm x_b,y_a\pm y_b,z_a\pm z_b,0)c=(xa​±xb​,ya​±yb​,za​±zb​,0)
-点积
-复用上面的定义
-a⋅b=∥a∥∥b∥cos⁡(⟨a,b⟩)a\cdot b=\lVert a\lVert \lVert b\lVert \cos(\langle a,b\rangle)a⋅b=∥a∥∥b∥cos(⟨a,b⟩)
-向量点乘可以计算向量夹角,判断向量之间的位置关系
-模型的变换
-矩阵乘法
-对于矩阵A[m][p]A[m][p]A[m][p]和矩阵矩阵B[p][n]B[p][n]B[p][n]和C=A BC=A\ BC=A B，有
-C[i][j]=∑i=oi=m−1∑j=0j=n−1∑k=0k=p−1A[i][k]⋅B[...
+c=(x...
             
           </div>
         
@@ -799,11 +995,11 @@ C[i][j]=∑i=oi=m−1∑j=0j=n−1∑k=0k=p−1A[i][k]⋅B[...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.3k 词 
+            2.4k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFT/" rel="tag">DFT</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" rel="tag">傅里叶分析</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -813,8 +1009,7 @@ C[i][j]=∑i=oi=m−1∑j=0j=n−1∑k=0k=p−1A[i][k]⋅B[...
               信号的表示
 信号离散化
 
-物理上，气压变化引起空气分子振动，产生声波,
-因此用波形图(t-振幅)图储存，这就是音频信号的时域表示
+物理上，气压变化引起空气分子振动，产生声波, 因此用波形图(t−t-t−振幅)图储存，这就是音频信号的时域表示
 理论上，图像可以无限分割到足够小，并用坐标表示位置，用颜色模型表示点信息，这就是图像信号的空域表示
 
 然而，计算机只能处理有限的信息，因此需要将信号离散化
@@ -828,14 +1023,14 @@ C[i][j]=∑i=oi=m−1∑j=0j=n−1∑k=0k=p−1A[i][k]⋅B[...
 
 使用的采样频率至少是被采样信息频率的两倍
 
-时/空域转化为频域
+频域信号
+
 傅里叶变换可以把时/空域信号转为频域信号，而频域信号的表示对信号的操作空间更大
+
 傅里叶级数
 通过傅里叶级数，可以将满足狄利克雷条件(连续，单调，有界)的周期函数，
 表示为不同频率的正弦和余弦函数，即
-f(t)=∑−∞+∞[ancos⁡(nwt)+bnsin⁡(nwt)]
-f(t)=\sum_{-\infty}^{+\infty}\left[ a_n\cos(nwt)+bn\sin(nwt)  \right]
- f(t)=−∞∑+∞​[an...
+f(t)=∑−∞+∞[ancos⁡(nwt)+bnsin⁡(nwt)]f(t)=\sum_{-\infty}^{+\infty}\left[ a_n\cos(nwt)+bn\sin(nwt)  \right]f(t)=−∞∑+∞​[an​c...
             
           </div>
         
@@ -899,11 +1094,11 @@ f(t)=\sum_{-\infty}^{+\infty}\left[ a_n\cos(nwt)+bn\sin(nwt)  \right]
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.1k 词 
+            4k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -917,7 +1112,7 @@ f(t)=\sum_{-\infty}^{+\infty}\left[ a_n\cos(nwt)+bn\sin(nwt)  \right]
 用矩阵的逆(UL分解)求解逆变换需要O(n3)O(n^3)O(n3)时间，即便使用拉格朗日公式也需要O(n2)O(n^2)O(n2)的时间，
 整体上多项式乘法乘法并没有得到改进
 折半原理
-定义主单位复数根：
+定义主单位复数根:
 Wn=e2πin(1)W_n=e^{\frac{2\pi i}{n}} \tag{1}Wn​=en2πi​(1)
 使得
 (Wnk)n=1(W_n^k)^n=1(Wnk​)n=1
@@ -954,94 +1149,19 @@ W2n2k=(e2π2n)2k=(e2πn)k=...
 
 
 
-   
 
-
-<article id="post-FFT-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/11/FFT-1/">FFT的数学解释[1]</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-10T17:22:21.000Z" itemprop="datePublished">2024-10-11</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFT/" rel="tag">FFT</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              快速傅里叶可以做什么
-快速傅里叶变换（Fast Fourier transform ,FFT）可以用来加算多项式乘法 ，数字信号处理等
-多项式
-多项式乘法
-次数界为nnn的多项式表示为：
-A(x)=∑i=0i=n−1aiXiA(x)=\sum_{i=0}^{i=n-1}a_iX^iA(x)=i=0∑i=n−1​ai​Xi
-若
-B(x)=∑i=0i=n−1biXi,C(x)=∑i=0i=2n−2ciXiB(x)=\sum_{i=0}^{i=n-1}b_iX^i,C(x)=\sum_{i=0}^{i=2n-2}c_iX^iB(x)=i=0∑i=n−1​bi​Xi,C(x)=i=0∑i=2n−2​ci​Xi
-且C(x)C(x)C(x)为多项式A(x)A(x)A(x)和B(x)B(x)B(x)的乘积，则
-ci=∑j=0j=iaibi−jci=\sum_{j=0}^{j=i}a^ib^{i-j}ci=j=0∑j=i​aibi−j
-朴素多项式乘积算法时间复杂度为O(n2)O(n^2)O(n2)
-多项式加法
-使用霍纳规则，累乘xxx项，可以在O(n)O(n)O(n)时间完成多项式加法：
-A(x...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/11/3XanCMPQpFB2bte.jpg)" 
-      href="/2024/10/11/FFT-1/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
+  <nav id="page-nav">
+    <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
+    <a id="prev-btn" class="page-nav-btn disabled" href=" /  ">
+      <i class="fa-solid fa-angle-left"></i>
     </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
+    <div id="num-bar">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a>  
+    </div>
+    <a id="next-btn" class="page-nav-btn " href="/page/2/">
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+  </nav>
 
 
     </div>
