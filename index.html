@@ -145,7 +145,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
-                <div class="category-count">5</div>
+                <div class="category-count">6</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -172,7 +172,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" rel="tag">傅里叶分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Ray-Tracing/" rel="tag">Ray-Tracing</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" rel="tag">傅里叶分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
     </div>
   </div>
 
@@ -183,6 +183,109 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Ray-Tracing-principle" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/21/Ray-Tracing-principle/">基本的光线追踪算法[1]</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-21T12:03:37.000Z" itemprop="datePublished">2024-10-21</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.8k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ray-Tracing/" rel="tag">Ray-Tracing</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              光线追踪的特点
+光线追踪（Ray Tracing）是一种图像渲染技术，它通过模拟光线的传播路径来生成逼真的图像
+
+光线追踪由以下步骤组成
+
+光线发射：从视点发射出无数条光线，穿过虚拟场景。
+光线交点计算：计算这些光线与场景中物体的交点。
+着色计算：在交点处根据物体的材质、光源信息以及周围环境进行着色。
+反射与折射：在交点处可能发生光线反射和折射，这时需要继续追踪反射和折射光线。
+图像合成：将所有光线的着色结果合成，形成最终的图像
+
+光栅化由以下步骤组成光栅化过程可以简洁地概括为以下步骤：
+
+投影变换：将$3D$模型投影到$2D$裁剪空间。
+三角形遍历和绘制：分解三角形并确定覆盖的像素。
+片段处理：对像素进行着色，包括纹理、光照、阴影和颜色混合。
+输出合并：将像素信息写入帧缓冲区，完成图像合成。
+
+这两种渲染方法共同特点
+
+矩阵变换:都需要对模型进行模型变换和视图变换
+图像合成:主要是像素之间的连续
+
+差异
+
+线追踪不需要投影变换，它通过调整光线束结构模拟透视的效果
+光线追踪根据光路上的物体计算颜色强度贡献，光栅化根据深度缓存计算颜色强度贡献
+光照模型的不同:
+光栅化采用局部光照:...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/21/mOlKQoFDueCRBhb.jpg)" 
+      href="/2024/10/21/Ray-Tracing-principle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -1005,7 +1108,7 @@ L^*=\{ (L\circ L)^n \vert (L\circ L)^0=\epsilon \}\tag
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.8k 词 
+            1.8k 词 
           </div>
         </div>
         
@@ -1017,26 +1120,23 @@ L^*=\{ (L\circ L)^n \vert (L\circ L)^0=\epsilon \}\tag
           <div class="truncate-text">
             
               
-tips: 此处nnn和fff都为无向距离,即n=−z近裁剪，f=−z远裁剪n=-z_{近裁剪}，f=-z_{远裁剪}n=−z近裁剪​，f=−z远裁剪​
+tips: 此处$n$和$f$都为无向距离,即$n=-z_{近裁剪}，f=-z_{远裁剪}$
 
-投影
-把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上
-在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的333维空间内
-正射投影
-正射投影是一种平行投影，因为它会选择立方体的视域,物理模型只会做线性变换
-所以物理模型中平行的现象，经过正射投影投射到屏幕上后，仍能得到平行的结构
+投影把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上在图形学中，将要观察的视域通过平移和缩放归一化到$[-1,1]^3$的$3$维空间内
+正射投影正射投影是一种平行投影，因为它会选择立方体的视域,物理模型只会做线性变换所以物理模型中平行的现象，经过正射投影投射到屏幕上后，仍能得到平行的结构
+正射投影矩阵依照定义，只需要对视域数字化输入:
 
-正射投影矩阵
-依照定义，只需要对视域数字化输入:
+相机到近/远裁剪平面的距离$n/f$
+裁剪平面左下角坐标$(L,B)$右上角坐标$(R,T)$先对裁剪空间平移再放缩可得
 
-相机到近/远裁剪平面的距离n/fn/fn/f
-裁剪平面左下角坐标(L,B)(L,B)(L,B)右上角坐标(R,T)(R,T)(R,T)
-先对裁剪空间平移再放缩可得
 
-O=[2R−L00002T−B00002f−n00001] [100−L+R2010−B+T2001n+f20001]=[2R−L00−L+RR−L02T−B0−B+TT−B002f−nn+ff−n0001]
 O=
 \left[\begin{matrix}
-\frac{2}{R...
+\frac{2}{R-L} & 0 &0  & 0 \\\\ 0 & \frac{2}{T-B} & 0 & 0 \\\\ 0 & 0 & \frac{2}{f-n} & 0 \\\\ 0 & 0 & 0 & 1
+\end{matrix}\right]
+\ 
+\left[\begin{matrix}
+1 & 0 & 0 & -\frac{L+R}{2} \\\\ ...
             
           </div>
         
@@ -1049,98 +1149,6 @@ O=
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/15/uaLvAfIMwekBXOg.png)" 
       href="/2024/10/15/3D_Viewing-2/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-3D_Viewing-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/14/3D_Viewing-1/">3D模型观测[1]</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-14T13:09:57.000Z" itemprop="datePublished">2024-10-14</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.2k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              非齐次坐标
-非齐次坐标表示为(x,y)(x,y)(x,y)或(x,y,z)(x,y,z)(x,y,z)
-对应的标准齐次坐标为(x,y,1)(x,y,1)(x,y,1)或(x,u,z,1)(x,u,z,1)(x,u,z,1)
-
-齐次坐标引入了放缩分量,即最后的非零坐标
-
-齐次坐标(x,y,N)(x,y,N)(x,y,N)或(x,y,z,N)(x,y,z,N)(x,y,z,N)，(N&gt;0)(N &gt;0)(N&gt;0)对应的标准形式为(xN,yN,1)(\frac{x}{N},\frac{y}{N},1)(Nx​,Ny​,1)或(xN,yN,zN,1)(\frac{x}{N},\frac{y}{N},\frac{z}{N},1)(Nx​,Ny​,Nz​,1)
-
-只能用标准化的齐次坐标生成向量
-
-向量的运用
-向量加/减法
-定义向量
-a=(xa,ya,za,0)a=(x_a,y_a,z_a,0)a=(xa​,ya​,za​,0)
-b=(xb,xb,za,0)b=(x_b,x_b,z_a,0)b=(xb​,xb​,za​,0)
-c=a±bc=a\pm bc=a±b
-则有
-c=(x...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/14/1vpim8cQBIhNW93.png)" 
-      href="/2024/10/14/3D_Viewing-1/" 
     >
        
       <div class="overlay">
