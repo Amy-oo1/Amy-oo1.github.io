@@ -14,26 +14,26 @@
   
 
   
-  <title>基本的光线追踪算法[1] | Amy_blog</title>
+  <title>Ray-Tracing-principe-2 | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="光线追踪的特点 光线追踪（Ray Tracing）是一种图像渲染技术，它通过模拟光线的传播路径来生成逼真的图像  光线追踪由以下步骤组成  光线发射：从视点发射出无数条光线，穿过虚拟场景。 光线交点计算：计算这些光线与场景中物体的交点。 着色计算：在交点处根据物体的材质、光源信息以及周围环境进行着色。 反射与折射：在交点处可能发生光线反射和折射，这时需要继续追踪反射和折射光线。 图像合成：将所有光">
+  <meta name="description" content="光线追踪的时间复杂度 考虑在大小为(W,H)(W,H)(W,H)的显示设备，采样距离为每个像素，光线追踪树最大深度D前提下运行光线追踪算法 运行在有NNN个表面的场景中，最坏时间复杂度为 max O(WHDlog⁡(D)N) max\ O(WHD\log (D)N) max O(WHDlog(D)N)  tips1tips_1tips1​:光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基本的光线追踪算法[1]">
-<meta property="og:url" content="http://example.com/2024/10/21/Ray-Tracing-principle/index.html">
+<meta property="og:title" content="Ray-Tracing-principe-2">
+<meta property="og:url" content="http://example.com/2024/10/22/Ray-Tracing-principe-2/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="光线追踪的特点 光线追踪（Ray Tracing）是一种图像渲染技术，它通过模拟光线的传播路径来生成逼真的图像  光线追踪由以下步骤组成  光线发射：从视点发射出无数条光线，穿过虚拟场景。 光线交点计算：计算这些光线与场景中物体的交点。 着色计算：在交点处根据物体的材质、光源信息以及周围环境进行着色。 反射与折射：在交点处可能发生光线反射和折射，这时需要继续追踪反射和折射光线。 图像合成：将所有光">
+<meta property="og:description" content="光线追踪的时间复杂度 考虑在大小为(W,H)(W,H)(W,H)的显示设备，采样距离为每个像素，光线追踪树最大深度D前提下运行光线追踪算法 运行在有NNN个表面的场景中，最坏时间复杂度为 max O(WHDlog⁡(D)N) max\ O(WHD\log (D)N) max O(WHDlog(D)N)  tips1tips_1tips1​:光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/10/21/mOlKQoFDueCRBhb.jpg">
-<meta property="article:published_time" content="2024-10-21T12:03:37.000Z">
-<meta property="article:modified_time" content="2024-10-21T16:52:15.837Z">
+<meta property="og:image" content="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg">
+<meta property="article:published_time" content="2024-10-22T04:38:20.000Z">
+<meta property="article:modified_time" content="2024-10-22T05:12:50.203Z">
 <meta property="article:author" content="Amy">
 <meta property="article:tag" content="Ray-Tracing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/10/21/mOlKQoFDueCRBhb.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
   
@@ -152,17 +152,17 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
-                <div class="category-count">6</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
-                算法
-                <div class="category-count">5</div>
+                <div class="category-count">7</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
+                算法
+                <div class="category-count">5</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
@@ -192,14 +192,14 @@
        
 
 
-<article id="post-Ray-Tracing-principle" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Ray-Tracing-principe-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm2j0w1xe0000i86z7nrw9ipv">
-        <img src="https://s2.loli.net/2024/10/21/mOlKQoFDueCRBhb.jpg" itemprop="image">
+      <a class="article-gallery-img" rel="gallery_cm2kc43zo001h0s6z4ljq0sy1">
+        <img src="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg" itemprop="image">
       </a>
     
   </div>
@@ -215,7 +215,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        基本的光线追踪算法[1]
+        Ray-Tracing-principe-2
       </h1>
     
   
@@ -223,7 +223,7 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-21T12:03:37.000Z" itemprop="datePublished">2024-10-21</time>
+  <time class="dt-published" datetime="2024-10-22T04:38:20.000Z" itemprop="datePublished">2024-10-22</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -234,7 +234,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.8k 词 
+            364 词 
           </div>
         </div>
         
@@ -243,160 +243,22 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h4 id="光线追踪的特点"><a href="#光线追踪的特点" class="headerlink" title="光线追踪的特点"></a>光线追踪的特点</h4><blockquote>
-<p>光线追踪（Ray Tracing）是一种图像渲染技术，它通过<strong>模拟光线的传播路径</strong>来生成逼真的图像</p>
-</blockquote>
-<p><strong>光线追踪</strong>由以下步骤组成</p>
-<ol>
-<li><strong>光线发射</strong>：从<strong>视点发射出无数条光线</strong>，穿过虚拟场景。</li>
-<li><strong>光线交点计算</strong>：计算这些光线与场景中物体的<strong>交点</strong>。</li>
-<li><strong>着色计算</strong>：在交点处根据物体的材质、光源信息以及周围环境进行着色。</li>
-<li><strong>反射与折射</strong>：在交点处可能发生光线<strong>反射和折射</strong>，这时需要继续追踪反射和折射光线。</li>
-<li><strong>图像合成</strong>：将所有光线的着色结果<strong>合成</strong>，形成最终的图像</li>
-</ol>
-<p><strong>光栅化</strong>由以下步骤组成<br>光栅化过程可以简洁地概括为以下步骤：</p>
-<ol>
-<li><strong>投影变换</strong>：将$3D$模型投影到$2D$裁剪空间。</li>
-<li><strong>三角形遍历和绘制</strong>：分解三角形并确定覆盖的像素。</li>
-<li><strong>片段处理</strong>：对像素进行着色，包括纹理、光照、阴影和颜色混合。</li>
-<li><strong>输出合并</strong>：将像素信息写入帧缓冲区，完成图像合成。</li>
-</ol>
-<p>这两种<strong>渲染</strong>方法<strong>共同特点</strong></p>
-<ul>
-<li><strong>矩阵变换</strong>:都需要对模型进行<strong>模型变换</strong>和<strong>视图变换</strong></li>
-<li><strong>图像合成</strong>:主要是像素之间的<strong>连续</strong></li>
-</ul>
-<p><strong>差异</strong></p>
-<ul>
-<li>线追踪不需要<strong>投影变换</strong>，它通过调整<strong>光线束结构</strong>模拟透视的效果</li>
-<li>光线追踪根据<strong>光路</strong>上的物体计算<strong>颜色强度贡献</strong>，光栅化根据<strong>深度缓存</strong>计算颜色强度贡献</li>
-<li><strong>光照模型</strong>的不同:<ul>
-<li>光栅化采用<strong>局部光照</strong>:只考虑<strong>从光源直接射向对象</strong>的光和对象的化学性质。使用<strong>经验模型</strong>补偿</li>
-<li>光线追踪在理论上使用<strong>全局光照</strong>:除了光源直接照向对象的光，还考虑因<strong>折射，反射</strong>产生的，<strong>间接从象照向对象的光</strong></li>
-</ul>
-</li>
-<li>光线追踪计算大，效果<strong>逼真</strong></li>
-</ul>
-<h3 id="模拟光线"><a href="#模拟光线" class="headerlink" title="模拟光线"></a>模拟光线</h3><p>光线追踪需要光在对象之间的反射信息，但是有无穷的光线散射，并且绝多数都没有进入人眼<br>因此，从<strong>视点</strong>跟踪光线的反向路径，所以在光线追踪中，光线就是<strong>从视点(E)有向三维直线</strong></p>
+          <h4 id="%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" tabindex="-1">光线追踪的时间复杂度</h4>
+<p>考虑在大小为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>W</mi><mo separator="true">,</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(W,H)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">)</span></span></span></span></eq>的<strong>显示设备</strong>，采样距离为每个<strong>像素</strong>，<strong>光线追踪树最大深度D</strong>前提下运行<strong>光线追踪算法</strong><br>
+运行在有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>个表面的场景中，<strong>最坏</strong>时间复杂度为<br>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mtext> </mtext><mi>O</mi><mo stretchy="false">(</mo><mi>W</mi><mi>H</mi><mi>D</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+max\ O(WHD\log (D)N)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.02778em;">HD</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></span></eqn></section></p>
 <blockquote>
-<p>$tips$:因为光线是在<strong>模型之间</strong>散射,所以使用<strong>世界坐标系</strong></p>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><msub><mi>s</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">tips_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>:<strong>光线追踪树</strong>:每个节点是<strong>光线对象</strong>，子节点是<strong>反射</strong>和<strong>透射</strong>现象产生的光线<br>
+这里考虑最坏的<strong>满二叉树</strong>，即一颗深度为<strong>D</strong>的满二叉树有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D\log (D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></eq>个节点<br>
+分量<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>H</mi><mi>D</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">W H D\log (D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.02778em;">HD</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></eq>是总的光线数量<br>
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><msub><mi>s</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">tips_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>:光线强度损耗到一定程度就可以终止，所有只有处理大量<strong>光滑表面</strong>的场景中有近似复杂度</p>
 </blockquote>
-<p><img src="https://s2.loli.net/2024/10/21/SEYWADe9pzIQgfv.png" alt=""></p>
-<blockquote>
-<p>$tips$:如果采样率不够，还可以在一个<strong>像素点内均匀发出多条光线</strong></p>
-</blockquote>
-<p>所以<strong>光线的隐式三维直线方程为</strong></p>
-<h4 id="计算步骤"><a href="#计算步骤" class="headerlink" title="计算步骤"></a>计算步骤</h4><p>若光线的另一个点为$S$</p>
-<script type="math/tex; mode=display">P(t)=E+(S-E)</script><ol>
-<li>在相<strong>机坐标系</strong>中,将$(W,H)$的屏幕坐标$(P_x,P_y)$映射在$(L,B)\to(R,T)$<strong>近裁剪平面</strong>上<script type="math/tex; mode=display">
-\left[\begin{matrix}
-S_{u} \\\\
-S_{v} \\\\
-1 
-\end{matrix}\right]
-=
-\left[\begin{matrix}
-1 & 0 & L \\\\
-0 & 1 & R \\\\
-0 & 0 & 1 
-\end{matrix}\right]
-\
-\left[\begin{matrix}
-\frac{R-L}{W} & 0 & 0 \\\\
-0 & \frac{T-B}{H} & 0 \\\\
-0 & 0 & 1 
-\end{matrix}\right]
-\
-\left[\begin{matrix}
-1 & 0 & -\frac{1}{2} \\\\
-0 & 1 & -\frac{2}{1} \\\\
-0 & 0 & 1 
-\end{matrix}\right]
-\ 
-\left]\begin{matrix}
-P_u \\\\
-P_v \\\\
-1 
-\end{matrix}\right]</script>且<script type="math/tex">S_{w}=-n</script><br>$tips_1$:$n$为进裁剪平面到相机的<strong>无向</strong>距离<br>$tips_2$:假设像素在整数坐标且覆盖范围$[-2/1,2/1]^2$区域，则屏幕上的点范围:$[-2/1,-2/1] \to[W-2/1,H-2/1]$</li>
-<li><strong>转换为世界坐标系(笛卡尔坐标系)</strong><script type="math/tex; mode=display">S=E+S_{u}\cdot \hat{U}+S_{v}\cdot \hat{V}+S_{w}\cdot \hat{W}</script><script type="math/tex; mode=display">
-\left[\begin{matrix}
-S_x \\\\
-S_y \\\\
-S_z \\\\
-1
-\end{matrix}\right]
-=
-\left[\begin{matrix}
-1 & 0 & 0 & E_x \\\\
-0 & 1 & 0 & E_y \\\\
-0 & 0 & 1 & E_z \\\\
-0 & 0 & 0 & 1 
-\end{matrix}\right]
-\ 
-\left[ \begin{matrix}
-U_x & V_x & W_x & 0 \\\\
-U_y & V_y & W_y  & 0 \\\\
-U_z & V_z & W_z & 0 \\\\
-0 & 0 & 0 & 1
-\end{matrix}\right]
-\
-\left[\begin{matrix}
-S_{u} \\\\
-S_{y} \\\\
-S_{w} \\\\
-1
-\end{matrix}\right]</script>其中向量<script type="math/tex; mode=display">U=\{U_x,U_y,U_z,0\}</script><script type="math/tex; mode=display">V=\{V_x,V_y,V_z,0\}</script><script type="math/tex; mode=display">W=\{W_x,W_y,W_z,0\}</script>是在世界坐标系下得到的<strong>相机坐标系基向量</strong><br>$tips$:整个变换矩阵可以用<strong>视角变换矩阵求逆</strong>获得</li>
-</ol>
-<h3 id="光线与表面求交"><a href="#光线与表面求交" class="headerlink" title="光线与表面求交"></a>光线与表面求交</h3><p><strong>光线求交</strong>的完整描述是:给定一条光线$P(t)=E+tD$和物体表面的隐式表达式$F_n(P)=0$，求出</p>
-<script type="math/tex; mode=display">q=min(\{t\lvert F_i(P(t))=0,t>=0 \})</script><p>但是实际情况会有</p>
-<ul>
-<li>光线不与<strong>场景中</strong>任何平面相交</li>
-<li>光线达到一个不发生反射的<strong>光源</strong></li>
-<li>光线到达表面$F_i(q)$</li>
-</ul>
-<h4 id="光线与球面相交"><a href="#光线与球面相交" class="headerlink" title="光线与球面相交"></a>光线与球面相交</h4><p>圆心为$C(C_x,C_y.C_z)$,半径为$R$球面上一点<script type="math/tex">P(P_x,P_y,P_z)</script>的隐式表达为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-F(P) &= 0 \\\\
-(P_x-C_x)^2+(P_y-C_y)^2+(P_z-P_z)^2-R^2 &= 0 \\\\
-(P-C) \cdot (P-C) &= 0
-\end{align}</script><p>代入光线$P(t)=E+tD$得到</p>
-<script type="math/tex; mode=display">
-\begin{align}
-F(P(t)) &= 0 \\\\
-(E+tD-C) \cdot(E+tD-C) &= 0 \\\\
-(D\cdot D)t^2+2D\cdot (E-C)t+(E-C)\cdot(E-C)-R^2 &=0
-\end{align}</script><p>然后<strong>按照二次方程</strong>处理</p>
-<h4 id="光线与三角形相交"><a href="#光线与三角形相交" class="headerlink" title="光线与三角形相交"></a>光线与三角形相交</h4><p><strong>空间中的三角形</strong>$ABC$中点$P$可以用<strong>重心坐标</strong>表达</p>
-<script type="math/tex; mode=display">P=\alpha A+\beta B +\gamma C</script><script type="math/tex; mode=display">\alpha +\beta +\gamma=1</script><script type="math/tex; mode=display">\alpha,\beta,\gamma \ge 0</script><blockquote>
-<p>$tips$:三角形重心坐标可以参见:<a target="_blank" rel="noopener" href="https://amy-oo1.github.io/2024/10/19/Rasterization-draw-Triangle/">https://amy-oo1.github.io/2024/10/19/Rasterization-draw-Triangle/</a></p>
-</blockquote>
-<p>建立方程</p>
-<script type="math/tex; mode=display">E+tD=\alpha A+\beta B+\gamma C</script><p>展开成多项式方程组</p>
-<script type="math/tex; mode=display">
-\begin{align}
-E_x+tD_x &= A_x+\alpha(B_x-A_x)+\gamma(C_x-A_x) \\\\
-E_x+tD_y &= A_x+\alpha(B_y-A_y)+\gamma(C_y-A_y) \\\\
-E_x+tD_z &= A_x+\alpha(B_z-A_z)+\gamma(C_z-A_z) 
-\end{align}</script><p>最后，转化为矩阵方程并求解即可</p>
-<script type="math/tex; mode=display">
-\left[\begin{matrix}
-B_x-A_x &  C_x-A_x &-D_x \\\\
-B_y-A_y &  C_y-A_y &-D_y \\\\
-B_z-A_z &  C_z-A_z &-D_z 
-\end{matrix}\right]
-\ 
-\left[\begin{matrix}
-\alpha \\\\
-\beta \\\\
-t
-\end{matrix}\right]
-=
-\left[\begin{matrix}
-E_x-A_x \\\\
-E_y-A_y \\\\
-E_z-A_z 
-\end{matrix}\right]</script>
+<p>而整个算法需要在算法的每一帧运行，对于<strong>场景复杂</strong>的渲染</p>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
         
       </div>
 
@@ -417,13 +279,13 @@ E_z-A_z
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/10/20/Shading-model/"
-      title="基本光照模型"
+      href="/2024/10/21/Ray-Tracing-principle-1/"
+      title="基本的光线追踪算法[1]"
      >
 
     <p class="title-text">
       
-        基本光照模型
+        基本的光线追踪算法[1]
         
     </p>
     <i class="fa-solid fa-angle-right"></i>
