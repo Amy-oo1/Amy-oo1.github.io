@@ -148,14 +148,14 @@
                 <div class="category-count">7</div>
             </a>
         
-            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
-                数字信号处理
-                <div class="category-count">1</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
                 算法
                 <div class="category-count">5</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
+                数字信号处理
+                <div class="category-count">1</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
@@ -228,26 +228,27 @@
           <div class="truncate-text">
             
               
-tips: 此处nnn和fff都为无向距离,即n=−z近裁剪，f=−z远裁剪n=-z_{近裁剪}，f=-z_{远裁剪}n=−z近裁剪​，f=−z远裁剪​
+tipstipstips 此处nnn和fff都为无向距离
+
 
 投影
-把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上
-在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的333维空间内
+把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上,在计算在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的333维空间内
+
 正射投影
-正射投影是一种平行投影，因为它会选择立方体的视域,物理模型只会做线性变换
-所以物理模型中平行的现象，经过正射投影投射到屏幕上后，仍能得到平行的结构
+正射投影是一种平行投影，场景模型只会做线性变换，平行的场景经过正射投影后显示后，仍能得保持平行
 
 正射投影矩阵
-依照定义，只需要对视域数字化输入:
+依照定义，只需要对视域数字化输入
 
 相机到近/远裁剪平面的距离n/fn/fn/f
-裁剪平面左下角坐标(L,B)(L,B)(L,B)右上角坐标(R,T)(R,T)(R,T)
-先对裁剪空间平移再放缩可得
+裁剪平面左下角坐标(L , B)(L\ ,\ B)(L , B)和右上角坐标(R , T)(R\ ,\ T)(R , T)
 
-O=[2R−L00002T−B00002f−n00001] [100−L+R2010−B+T2001n+f20001]=[2R−L00−L+RR−L02T−B0−B+TT−B002f−nn+ff−n0001]
+先对裁剪空间平移再放缩得到正射投影矩阵
+O=[2R−L00002T−B00002f−n00001][100−L+R2010−B+T2001n+f20001]=[2R−L00−L+RR−L02T−B0−B+TT−B002f−nn+ff−n0001]
 O=
 \left[\begin{matrix}
-\frac{2}{R...
+\frac{2}{R-L} &amp; 0 &amp; 0 &amp; 0\\\\
+0 &amp; \frac{2}...
             
           </div>
         
@@ -311,7 +312,7 @@ O=
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.2k 词 
+            4.3k 词 
           </div>
         </div>
         
@@ -322,24 +323,15 @@ O=
         
           <div class="truncate-text">
             
-              非齐次坐标
-非齐次坐标表示为(x,y)(x,y)(x,y)或(x,y,z)(x,y,z)(x,y,z)
-对应的标准齐次坐标为(x,y,1)(x,y,1)(x,y,1)或(x,u,z,1)(x,u,z,1)(x,u,z,1)
+              
+非齐次坐标
+非齐次坐标表示为(x , y)(x\ ,\ y)(x , y)或(x , y , z)(x\ ,\ y\ ,\ z)(x , y , z)，对应的标准齐次坐标为(x , y , 1)(x\ ,\ y\ ,\ 1)(x , y , 1)或(x , y , z , 1)(x\ ,\ y\ ,\ z\ ,\ 1)(x , y , z , 1)
 
 齐次坐标引入了放缩分量,即最后的非零坐标
 
-齐次坐标(x,y,N)(x,y,N)(x,y,N)或(x,y,z,N)(x,y,z,N)(x,y,z,N)，(N&gt;0)(N &gt;0)(N&gt;0)对应的标准形式为(xN,yN,1)(\frac{x}{N},\frac{y}{N},1)(Nx​,Ny​,1)或(xN,yN,zN,1)(\frac{x}{N},\frac{y}{N},\frac{z}{N},1)(Nx​,Ny​,Nz​,1)
+齐次坐标(x , y , N)(x\ ,\ y\ ,\ N)(x , y , N)或(x , y , z , N) , N&gt;0(x\ ,\ y\ ,\ z\ ,\ N)\ ,\ N &gt;0(x , y , z , N) , N&gt;0对应的标准形式为(xN , yN , 1)(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ 1)(Nx​ , Ny​ , 1)或(xN , yN , zN , 1)(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ \frac{z}{N}\ ,\ 1)(Nx​ , Ny​ , Nz​ , 1)
 
-只能用标准化的齐次坐标生成向量
-
-向量的运用
-向量加/减法
-定义向量
-a=(xa,ya,za,0)a=(x_a,y_a,z_a,0)a=(xa​,ya​,za​,0)
-b=(xb,xb,za,0)b=(x_b,x_b,z_a,0)b=(xb​,xb​,za​,0)
-c=a±bc=a\pm bc=a±b
-则有
-c=(x...
+tipstipsti...
             
           </div>
         
@@ -403,7 +395,7 @@ c=(x...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.4k 词 
+            2.2k 词 
           </div>
         </div>
         
@@ -414,7 +406,7 @@ c=(x...
         
           <div class="truncate-text">
             
-              信号的表示
+              
 信号离散化
 
 物理上，气压变化引起空气分子振动，产生声波, 因此用波形图(t−t-t−振幅)图储存，这就是音频信号的时域表示
@@ -423,22 +415,21 @@ c=(x...
 然而，计算机只能处理有限的信息，因此需要将信号离散化
 
 采样:选择信号的有限个样点代表信号
+
+
 采样频率: 单位时间/空间内的样本数
 
+
 失真
-使用采用的方法会一定程度影响信号的准确性，如果一个信号偏差过大，就会发生失真
-那奎斯特定理对这一现象给出定量分析:
+使用采用的方法会一定程度影响信号的准确性，如果一个信号偏差过大，就会发生失真，那奎斯特定理对这一现象给出定量分析
 
 使用的采样频率至少是被采样信息频率的两倍
 
-频域信号
-
-傅里叶变换可以把时/空域信号转为频域信号，而频域信号的表示对信号的操作空间更大
 
 傅里叶级数
-通过傅里叶级数，可以将满足狄利克雷条件(连续，单调，有界)的周期函数，
-表示为不同频率的正弦和余弦函数，即
-f(t)=∑−∞+∞[ancos⁡(nwt)+bnsin⁡(nwt)]f(t)=\sum_{-\infty}^{+\infty}\left[ a_n\cos(nwt)+bn\sin(nwt)  \right]f(t)=−∞∑+∞​[an​c...
+通过傅里叶级数，可以将满足狄利克雷条件(连续，单调，有界)的周期函数，表示为不同频率的正弦和余弦函数
+f(t)=∑−∞+∞[ancos⁡(nwt)+bnsin⁡(nwt)]f(t)=\sum_{-\infty}^{+\infty}\left[a_n\cos(nwt)+bn\sin(nwt)\right]f(t)=−∞∑+∞​[an​cos(nwt)+bnsin(nwt)]其中
+w=2πTw=\frac{2\pi}{T}w=T2π​an=1/T...
             
           </div>
         
@@ -516,8 +507,7 @@ f(t)=∑−∞+∞[ancos⁡(nwt)+bnsin⁡(nwt)]f(t)=\sum_{-\infty}^{+\infty}\lef
               
 朴素算法
 一个nnn次多项式的点值表达式变换需要的工作就是计算项集
-{(xi , yi)∣0≤i≤n−1 , yi=∑j=0n−1ajxij}\{(x_i\ ,\ y_i)\lvert 0\le i\le n-1\ ,\ y_i=\sum_{j=0}^{n-1}a_jx_i^j\}{(xi​ , yi​)∣0≤i≤n−1 , yi​=j=0∑n−1​aj​xij​}使用朴素方法需要O(n2)O(n^2)O(n2)的时间
-用矩阵的逆(UL分解)求解逆变换需要O(n3)O(n^3)O(n3)时间，即便使用拉格朗日公式也需要O(n2)O(n^2)O(n2)的时间，整体上多项式乘法乘法并没有得到改进
+{(xi , yi)∣0≤i≤n−1 , yi=∑j=0n−1ajxij}\{(x_i\ ,\ y_i)\vert 0\le i\le n-1\ ,\ y_i=\sum_{j=0}^{n-1}a_jx_i^j\}{(xi​ , yi​)∣0≤i≤n−1 , yi​=j=0∑n−1​aj​xij​}使用朴素方法需要O(n2)O(n^2)O(n2)的时间，用矩阵的逆(UL分解)求解逆变换需要O(n3)O(n^3)O(n3)时间，即便使用拉格朗日公式也需要O(n2)O(n^2)O(n2)的时间，整体上多项式乘法乘法并没有得到改进
 
 折半原理
 定义主单位复数根
@@ -525,7 +515,7 @@ Wn=e2πin(1)W_n=e^{\frac{2\pi i}{n}} \tag{1}Wn​=en2πi​(1)使得
 (Wnk)n=1(W_n^k)^n=1(Wnk​)n=1而Wn(k)W_n^{(k)}Wn(k)​称为n次单位复数根
 
 根据公式(1)(1)(1)可得消去原理
-W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=...
+W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
             
           </div>
         
