@@ -14,22 +14,22 @@
   
 
   
-  <title>Ray-Tracing-principe-2 | Amy_blog</title>
+  <title>基本的光线追踪算法[2] | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="光线追踪的时间复杂度 考虑在大小为(W,H)(W,H)(W,H)的显示设备，采样距离为每个像素，光线追踪树最大深度D前提下运行光线追踪算法 运行在有NNN个表面的场景中，最坏时间复杂度为 max O(WHDlog⁡(D)N) max\ O(WHD\log (D)N) max O(WHDlog(D)N)  tips1tips_1tips1​:光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生">
+  <meta name="description" content="光线追踪的时间复杂度考虑在大小为$(W,H)$的显示设备，采样距离为每个像素，光线追踪树最大深度d前提下运行光线追踪算法，若场景中有$N个表面对象，则最坏时间复杂度为 max\ O(WH(2^d+1)N) $tips_1$ 光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生的光线  这里考虑最坏的满二叉树，即一颗深度为d的满二叉树有$2^d+1$个节点，因此，复杂度中，分量$WHD(2^">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ray-Tracing-principe-2">
+<meta property="og:title" content="基本的光线追踪算法[2]">
 <meta property="og:url" content="http://example.com/2024/10/22/Ray-Tracing-principe-2/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="光线追踪的时间复杂度 考虑在大小为(W,H)(W,H)(W,H)的显示设备，采样距离为每个像素，光线追踪树最大深度D前提下运行光线追踪算法 运行在有NNN个表面的场景中，最坏时间复杂度为 max O(WHDlog⁡(D)N) max\ O(WHD\log (D)N) max O(WHDlog(D)N)  tips1tips_1tips1​:光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生">
+<meta property="og:description" content="光线追踪的时间复杂度考虑在大小为$(W,H)$的显示设备，采样距离为每个像素，光线追踪树最大深度d前提下运行光线追踪算法，若场景中有$N个表面对象，则最坏时间复杂度为 max\ O(WH(2^d+1)N) $tips_1$ 光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生的光线  这里考虑最坏的满二叉树，即一颗深度为d的满二叉树有$2^d+1$个节点，因此，复杂度中，分量$WHD(2^">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg">
 <meta property="article:published_time" content="2024-10-22T04:38:20.000Z">
-<meta property="article:modified_time" content="2024-10-22T05:12:50.203Z">
+<meta property="article:modified_time" content="2024-10-23T08:10:38.704Z">
 <meta property="article:author" content="Amy">
 <meta property="article:tag" content="Ray-Tracing">
 <meta name="twitter:card" content="summary">
@@ -157,7 +157,7 @@
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
                 算法
-                <div class="category-count">5</div>
+                <div class="category-count">6</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
@@ -198,7 +198,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm2kp1a47000x3g6z8qek7nmf">
+      <a class="article-gallery-img" rel="gallery_cm2muq66x0016s46zhjnx9yij">
         <img src="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg" itemprop="image">
       </a>
     
@@ -215,7 +215,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        Ray-Tracing-principe-2
+        基本的光线追踪算法[2]
       </h1>
     
   
@@ -234,7 +234,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            364 词 
+            531 词 
           </div>
         </div>
         
@@ -243,21 +243,25 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h4 id="%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" tabindex="-1">光线追踪的时间复杂度</h4>
-<p>考虑在大小为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>W</mi><mo separator="true">,</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(W,H)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">)</span></span></span></span></eq>的<strong>显示设备</strong>，采样距离为每个<strong>像素</strong>，<strong>光线追踪树最大深度D</strong>前提下运行<strong>光线追踪算法</strong><br>
-运行在有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>个表面的场景中，<strong>最坏</strong>时间复杂度为<br>
-<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mtext> </mtext><mi>O</mi><mo stretchy="false">(</mo><mi>W</mi><mi>H</mi><mi>D</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
-max\ O(WHD\log (D)N)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.02778em;">HD</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></span></eqn></section></p>
-<blockquote>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><msub><mi>s</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">tips_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>:<strong>光线追踪树</strong>:每个节点是<strong>光线对象</strong>，子节点是<strong>反射</strong>和<strong>透射</strong>现象产生的光线<br>
-这里考虑最坏的<strong>满二叉树</strong>，即一颗深度为<strong>D</strong>的满二叉树有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D\log (D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></eq>个节点<br>
-分量<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>H</mi><mi>D</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">W H D\log (D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.02778em;">HD</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></eq>是总的光线数量<br>
-<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><msub><mi>s</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">tips_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>:光线强度损耗到一定程度就可以终止，所有只有处理大量<strong>光滑表面</strong>的场景中有近似复杂度</p>
+          <hr>
+<h4 id="光线追踪的时间复杂度"><a href="#光线追踪的时间复杂度" class="headerlink" title="光线追踪的时间复杂度"></a>光线追踪的时间复杂度</h4><p>考虑在大小为$(W,H)$的<strong>显示设备</strong>，采样距离为每个<strong>像素</strong>，<strong>光线追踪树最大深度d</strong>前提下运行<strong>光线追踪算法</strong>，若<strong>场景</strong>中有$N个<strong>表面对象</strong>，则<strong>最坏</strong>时间复杂度为</p>
+<script type="math/tex; mode=display">max\ O(WH(2^d+1)N)</script><blockquote>
+<p>$tips_1$ <strong>光线追踪树</strong>:每个节点是<strong>光线对象</strong>，子节点是<strong>反射</strong>和<strong>透射</strong>现象产生的光线</p>
 </blockquote>
-<p>而整个算法需要在算法的每一帧运行，对于<strong>场景复杂</strong>的渲染</p>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<p>这里考虑最坏的<strong>满二叉树</strong>，即一颗深度为<strong>d</strong>的满二叉树有$2^d+1$个节点，因此，复杂度中，分量$WHD(2^d+1)$是总的光线数量</p>
+<p>实际情况下，光线强度<strong>损耗</strong>到一定程度就可以终止，所有只有处理大量<strong>光滑表面</strong>的场景中有近似复杂度</p>
+<p>而整个算法需要在算法的每一帧运行，对于<strong>场景复杂</strong>的渲染开销巨大</p>
+<hr>
+<h3 id="次线性相交判定"><a href="#次线性相交判定" class="headerlink" title="次线性相交判定"></a>次线性相交判定</h3><p>这种技术可以<strong>包围盒</strong>减少复杂度中的$N$值，即<strong>光线和场景表面</strong>的判定。该方法的原理是场景表面呈现聚集式分步，可以通过判定整块区域避免不必要的判定。</p>
+<p>主要有以下两种形式</p>
+<ul>
+<li><strong>表面包围盒</strong>：递归地将当前表面用<strong>包围盒</strong>划分，在同一<strong>层次中</strong>，任意表面只属于当前层次的一个包围盒</li>
+<li><strong>空间包围盒</strong>：递归地将当前空间<strong>切割</strong>，同一层次表面可能同时在多个空间中</li>
+</ul>
+<p>让光线和包围盒做相交判定,若相交则判定所以子节点，将这一过程递归至底和<strong>叶节点</strong>内所有表明做相交测试</p>
+<hr>
+<h3 id="其他效果"><a href="#其他效果" class="headerlink" title="其他效果"></a>其他效果</h3><p>相比光栅化，光线追踪能获得更好的模拟<strong>阴影</strong>效果，能够模拟相机的聚焦效果</p>
+<hr>
 
         
       </div>
@@ -270,10 +274,15 @@ max\ O(WHD\log (D)N)
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left  disabled "
+  <a class="article-nav-btn left "
+    
+      href="/2024/10/23/Polyon-Partion/"
+      title="分割多边形"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
+      
+        分割多边形
         
     </p>
   </a>
