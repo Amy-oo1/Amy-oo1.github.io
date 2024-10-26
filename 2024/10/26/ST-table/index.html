@@ -14,26 +14,26 @@
   
 
   
-  <title>隐藏面消除 | Amy_blog</title>
+  <title>ST表 | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="引言假设已经完成了投影变换，得到的是在$(x\ ,\ y)\in[-1,1]^3$的标准视体,现在要做的工作就是将3维空间视体映射到2维显示器  显示投影 只需要显示器（屏幕）的尺寸，就可以利用平移矩阵和缩放矩阵让视体在不破坏$(x\ ,\ y)$方向上的偏序关系下，完成变换    假设像素成矩阵排列，可以将显示器抽象成$W\times H$个像素的面,每个像素用整数坐标位置索引,坐标原点$(0">
+  <meta name="description" content="特性 $tips$ $ST$表是一个离线的算法，他不止能做RMQ问题，比如序列$gcd$  定义运算元素集$(a\ ,\ b\ ,\ c\ ,\ \cdots)$在其上的运算$*$存在以下性质  $(aa)^n\ ,\ n\ge1$，*可重复贡献  $ab&#x3D;ba$，满足交换律    原理定义运算元素序列$nums&#x3D;(a_1\ ,\ a_2\ ,\ \cdots\ ,\ a_{n-1})$和运算符$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="隐藏面消除">
-<meta property="og:url" content="http://example.com/2024/10/19/Z-buffer/index.html">
+<meta property="og:title" content="ST表">
+<meta property="og:url" content="http://example.com/2024/10/26/ST-table/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="引言假设已经完成了投影变换，得到的是在$(x\ ,\ y)\in[-1,1]^3$的标准视体,现在要做的工作就是将3维空间视体映射到2维显示器  显示投影 只需要显示器（屏幕）的尺寸，就可以利用平移矩阵和缩放矩阵让视体在不破坏$(x\ ,\ y)$方向上的偏序关系下，完成变换    假设像素成矩阵排列，可以将显示器抽象成$W\times H$个像素的面,每个像素用整数坐标位置索引,坐标原点$(0">
+<meta property="og:description" content="特性 $tips$ $ST$表是一个离线的算法，他不止能做RMQ问题，比如序列$gcd$  定义运算元素集$(a\ ,\ b\ ,\ c\ ,\ \cdots)$在其上的运算$*$存在以下性质  $(aa)^n\ ,\ n\ge1$，*可重复贡献  $ab&#x3D;ba$，满足交换律    原理定义运算元素序列$nums&#x3D;(a_1\ ,\ a_2\ ,\ \cdots\ ,\ a_{n-1})$和运算符$">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/10/19/u4bhM69qGRx2NYF.jpg">
-<meta property="article:published_time" content="2024-10-19T10:38:16.000Z">
-<meta property="article:modified_time" content="2024-10-22T14:45:11.260Z">
+<meta property="og:image" content="https://s2.loli.net/2024/10/26/8tq6UpmX2VgJEue.jpg">
+<meta property="article:published_time" content="2024-10-26T13:44:03.000Z">
+<meta property="article:modified_time" content="2024-10-26T15:57:10.736Z">
 <meta property="article:author" content="Amy">
-<meta property="article:tag" content="Rasterization">
+<meta property="article:tag" content="RMQ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/10/19/u4bhM69qGRx2NYF.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2024/10/26/8tq6UpmX2VgJEue.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
   
@@ -192,14 +192,14 @@
        
 
 
-<article id="post-Z-buffer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-ST-table" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm2qciimu001a6w6z5cgjc2c0">
-        <img src="https://s2.loli.net/2024/10/19/u4bhM69qGRx2NYF.jpg" itemprop="image">
+      <a class="article-gallery-img" rel="gallery_cm2qciimt00136w6zhcqz7yz1">
+        <img src="https://s2.loli.net/2024/10/26/8tq6UpmX2VgJEue.jpg" itemprop="image">
       </a>
     
   </div>
@@ -215,7 +215,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        隐藏面消除
+        ST表
       </h1>
     
   
@@ -223,7 +223,7 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-19T10:38:16.000Z" itemprop="datePublished">2024-10-19</time>
+  <time class="dt-published" datetime="2024-10-26T13:44:03.000Z" itemprop="datePublished">2024-10-26</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -234,94 +234,56 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.6k 词 
+            1.5k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RMQ/" rel="tag">RMQ</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <hr>
-<h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>假设已经完成了<strong>投影变换</strong>，得到的是在$(x\ ,\ y)\in[-1,1]^3$的<strong>标准视体</strong>,现在要做的工作就是将<strong>3维空间</strong>视体<strong>映射</strong>到<strong>2维显示器</strong></p>
-<hr>
-<h2 id="显示投影"><a href="#显示投影" class="headerlink" title="显示投影"></a>显示投影</h2><blockquote>
-<p>只需要显示器（屏幕）的<strong>尺寸</strong>，就可以利用<strong>平移矩阵</strong>和<strong>缩放矩阵</strong>让视体在不破坏$(x\ ,\ y)$方向上的偏序关系下，完成变换  </p>
+          <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><blockquote>
+<p>$tips$ $ST$表是一个离线的算法，他不止能做RMQ问题，比如序列$gcd$</p>
 </blockquote>
-<p>假设<strong>像素</strong>成矩阵排列，可以将显示器抽象成$W\times H$个<strong>像素</strong>的面,每个像素用<strong>整数坐标</strong>位置索引,坐标原点$(0\ ,\ 0)$在屏幕左下角,最右上角像素坐标为$(W-1\ ,\ H-1)$</p>
-<blockquote>
-<p>现在只需要把像素看做显示设备的基本元素</p>
-</blockquote>
-<p>因此，一个像素$(x \ ,\ y)$，<strong>显示</strong>范围为$(x-\frac{1}{2}\ ,\ y-\frac{1}{2})$，整个屏幕的显示范围为</p>
-<script type="math/tex; mode=display">[-\frac{1}{2}\ ,\ -\frac{1}{2} ]\to [W-\frac{1}{2}\ ,\ H-\frac{1}{2}]</script><p>所以一个<strong>标准视体</strong>内的<strong>顶点</strong>$V$通过变换</p>
-<script type="math/tex; mode=display">
-\left[\begin{matrix}
-P_x\\\\
-P_y\\\\
-1
-\end{matrix}\right]
-\left[\begin{matrix}
-\frac{W}{2} & 0 & \frac{W-1}{2}\\\\
-0 & \frac{H}{2} & \frac{H-1}{2}\\\\
-0 & 0 & 1
-\end{matrix}\right]
-=
-\left[\begin{matrix}
-V_x\\\\
-V_y\\\\
-1
-\end{matrix}\right]</script><p>映射到屏幕像素$P$</p>
-<blockquote>
-<p>$tips_1$ 忽视了$Z$轴</p>
-<p>$tips_2$ 平移矩阵有额外的$-\frac{1}{2}$的偏移</p>
-<p>$tips_3$ 假定了<strong>显示平面</strong>和<strong>近裁剪面平行</strong>，所以可以使用$XY$坐标系变换</p>
-</blockquote>
-<hr>
-<h2 id="Z-buffer"><a href="#Z-buffer" class="headerlink" title="Z-buffer"></a>Z-buffer</h2><blockquote>
-<p>虽然隐藏面消除还有$BSP$等算法，但是存在物体相互遮挡的问题</p>
-</blockquote>
-<p>隐藏面消除的诉求来源于：<strong>场景中相互遮挡的部分会映射到同一块屏幕区域</strong>，后面的物体需要被隐藏，<strong>BSP</strong>等算法对<strong>图元</strong>排序，而Z-buffer对<strong>被映射到同一个像素的点</strong>排序</p>
-<blockquote>
-<p>上面提到了<strong>点</strong>,这里不是指<strong>图元顶点</strong>，而是将图元拆解后的<strong>基本元素</strong></p>
-</blockquote>
-<h3 id="引用-to-绘制图形"><a href="#引用-to-绘制图形" class="headerlink" title="引用$\to$绘制图形"></a>引用$\to$绘制图形</h3><p>经过<strong>屏幕投影</strong>阶段后，图元<strong>顶点</strong>被映射到屏幕上，使用特定<strong>采样算法</strong>将点<strong>集</strong>$\to$图元</p>
-<blockquote>
-<p>$eg$ 三角形：三个顶点$\to$三角形线框$\to$填充的三角形</p>
-<p>$tips_1$ 第二幅图的底应该被填充</p>
-<p>$tips_2$ 不代表具体采样方法</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2024/10/19/AbsJYwqtShkVnUm.png" alt=""></p>
-<blockquote>
-<p>有时<strong>像素</strong>指的是<strong>显示单元</strong>，有时指的是<strong>图元单元</strong>，因为在$Z-buffer$算法中，一个物理像素被多个图元单元映射，在这里对他们进行区分，图元单元用<strong>像素点表示</strong></p>
-</blockquote>
-<hr>
-<h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>Z-buffer算法只需要一个数据结构</p>
+<p>定义运算元素集$(a\ ,\ b\ ,\ c\ ,\ \cdots)$在其上的运算$*$存在以下性质</p>
 <ul>
-<li>$Z-buffer[W\times H]=z_{near}$ 被映射到<strong>物理像素</strong>$(i_w\ ,\ i_h)$的点中，$z$最<strong>大(视体在$-Z$轴)像素点</strong>的$z$坐标</li>
+<li><p>$(a<em>a)^n\ ,\ n\ge1$，<em>*可重复贡献</em></em></p>
+</li>
+<li><p>$a<em>b=b</em>a$，满足<strong>交换律</strong></p>
+</li>
 </ul>
-<blockquote>
-<p>$tips_1$ 这里$z$坐标经过了($z$方向上非线性变化)<strong>透视投影</strong>，$\Delta z$和<strong>模型</strong>数据不同</p>
-<p>$tips_2$ 如果存储使用整数，可能会因为精度丢失造成伪影</p>
-</blockquote>
-<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ol>
-<li>将$Z-buffer$缓冲器内元素初始化为$0$</li>
-<li>遍历视体内所有图案的**像素点，更新$Z-buffer[P_x][P_y]=max\{Z-buffer[P_x][P_y]\ ,\ P_z\}$</li>
-<li>在绘制<strong>图像</strong>时，遍历每个图元的所有<strong>点</strong>$P$，做深度测试$flag=(P_z==Z-buffer[P_x][P_y])$</li>
-</ol>
-<p>如果$flag==true$，就重写对应<strong>物理像素的属性</strong></p>
-<p>实践中不需要<strong>步骤1</strong>，<strong>缓冲帧</strong>可以高效刷新$RGBA$，可以边改写$Z-buffer$，边重写物理像素属性</p>
 <hr>
-<h4 id="写入冲突"><a href="#写入冲突" class="headerlink" title="写入冲突"></a>写入冲突</h4><p>在上面的实现中，步骤1和步骤2中，都没有对<strong>遍历顺序</strong>做特别说明，然而这个属性会对结果会产生影响</p>
-<p>考虑不相同的图元上可能会有相同的点，<strong>先遍历到的点会失去物理像素的占用权</strong>，造成这一现象可能的原因</p>
-<ol>
-<li>模型本身有重叠</li>
-<li>变换过程中Z坐标的舍弃误差</li>
-<li>Z-buffer缓冲器位深度不够，精度缺失</li>
-</ol>
-<blockquote>
-<p>实现一般不对顺序做限制</p>
-</blockquote>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>定义运算元素序列$nums=(a_1\ ,\ a_2\ ,\ \cdots\ ,\ a_{n-1})$和运算符$DP$和$F$（这里使用两种符号是因为接下来要递归分析）</p>
+<p>$DP$作用于区间，表示为$DP[i\ ,\ j]$，代表着对序列$nums$区间$[i\ ,\ i+2^j-1]$内的元素至少做一次运算$DP$后产生的结果</p>
+<p>特别的，当$DP$作用于两个元素时，使用符号$F(a\ ,\ b)$区分</p>
+<p>则有递归式</p>
+<ul>
+<li><p>$DP[i,j]=F(DP[i][j-1]\ ,\ DP[i+2^{j-1}][j-1])$</p>
+</li>
+<li><p>基准情况$F(a\ ,\ a)$视运算规则</p>
+</li>
+</ul>
+<p><em>把上面的区间规则代入就能证明</em></p>
+<h4 id="求值"><a href="#求值" class="headerlink" title="求值"></a>求值</h4><p>因为$i\ ,\ j$都是正整数，储存$DP$后就能快速查找长度为$2^j$的序列$F$运算结果</p>
+<p>想要查询<strong>任意长度</strong>，需要再次利用可重复贡献的规则，若查询的序列区间为$[L\ ,\ R]$，将它表示为两个区间的组合，当然，中间可能会产生重叠</p>
+<ul>
+<li>使用区间长度计算$j$，$R-L+1=2^j\to j=\log_2(R-L+1)$</li>
+</ul>
+<p>这里不能保证$j$为整数（能保证也就没有说明的必要了），使用取整后的结果$j^\prime=\lfloor\log_2(R-L+1)\rfloor$，之后将会证明两个区间不会有间隙</p>
+<ul>
+<li><p>左区间为$L$，那么左区间的运算结果为$DP[L][j^\prime]$，右区间的右端点为$R$，那么右区间的左端点为$R-j^\prime+1$，右区间的运算结果为$DP[R-j^\prime+1][j^\prime]$</p>
+</li>
+<li><p>综上所叙$F(ange_{nums}[L,R])=F(DP[L][j^\prime]\ ,\ DP[R-j^\prime+1][j^\prime])$，其中$j^\prime=\lfloor\log_2(R-L+1)\rfloor$</p>
+</li>
+</ul>
+<p>要证明没有漏元素，只需要证明<strong>左区间的右端点不在右区间左端点的左边</strong></p>
+<p>即</p>
+<script type="math/tex; mode=display">R-j^\prime+1>L+2^{j\prime}-1\to R\ge L</script><hr>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li>实现中，元素为$int$，运算规则为$max$</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ST</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; Log2;</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; DP;</span><br><span class="line">	<span class="built_in">ST</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) :<span class="built_in">n</span>(nums.<span class="built_in">size</span>()), <span class="built_in">Log2</span>(nums.<span class="built_in">size</span>() + <span class="number">1</span>), <span class="built_in">DP</span>(nums.<span class="built_in">size</span>())&#123;</span><br><span class="line">		Log2[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">			Log2[i] = Log2[i &gt;&gt; <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">			DP[i].<span class="built_in">resize</span>(Log2[n - i] + <span class="number">1</span>);</span><br><span class="line">			DP[i][<span class="number">0</span>] = nums[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= Log2[n]; ++j)</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n - <span class="built_in">pow</span>(<span class="number">2</span>, j); ++i)</span><br><span class="line">				DP[i][j] = <span class="built_in">max</span>(DP[i][j - <span class="number">1</span>], DP[i + <span class="built_in">pow</span>(<span class="number">2</span>, j - <span class="number">1</span>)][j - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">Q</span><span class="params">(<span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">		<span class="type">int</span> j = Log2[right - left + <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">max</span>(DP[left][j], DP[right - <span class="built_in">pow</span>(<span class="number">2</span>, j) + <span class="number">1</span>][j]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <hr>
 
         
@@ -335,27 +297,22 @@ V_y\\\\
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left "
-    
-      href="/2024/10/19/Rasterization-draw-Triangle/"
-      title="光栅化-绘制三角"
+  <a class="article-nav-btn left  disabled "
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
-      
-        光栅化-绘制三角
         
     </p>
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/10/18/DFA-Minimize/"
-      title="标准DFA状态数量最小化"
+      href="/2024/10/25/Linear-Interpolation/"
+      title="线性插值"
      >
 
     <p class="title-text">
       
-        标准DFA状态数量最小化
+        线性插值
         
     </p>
     <i class="fa-solid fa-angle-right"></i>

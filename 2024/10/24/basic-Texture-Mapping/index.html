@@ -20,12 +20,12 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="纹理映射的需求 之前用局部光照的经验模型模拟光照效果，因为对光线（全局光照）的计算耗费资源巨大 而绝大部分物体表面的反射率变化快，视觉表现为颜色艳丽丰富，这也是有巨大复杂性的问题，而纹理映射使用纹理图像或函数改变物体的外观  tipstipstips 这里仅考虑使用纹理图像的纹理映射   基本概念   纹理（图像） 通常指二维矩形图像，这里使用分辨率(w,h)(w,h)(w,h)这一属性，即每行">
+  <meta name="description" content="纹理映射的需求之前用局部光照的经验模型模拟光照效果，因为对光线（全局光照）的计算耗费资源巨大 而绝大部分物体表面的反射率变化快，视觉表现为颜色艳丽丰富，这也是有巨大复杂性的问题，而纹理映射使用纹理图像或函数改变物体的外观  $tips$ 这里仅考虑使用纹理图像的纹理映射   基本概念 纹理（图像） 通常指二维矩形图像，这里使用分辨率$(w,h)$这一属性，即每行每列的像素数量  纹理坐标（UV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基本的纹理映射">
 <meta property="og:url" content="http://example.com/2024/10/24/basic-Texture-Mapping/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="纹理映射的需求 之前用局部光照的经验模型模拟光照效果，因为对光线（全局光照）的计算耗费资源巨大 而绝大部分物体表面的反射率变化快，视觉表现为颜色艳丽丰富，这也是有巨大复杂性的问题，而纹理映射使用纹理图像或函数改变物体的外观  tipstipstips 这里仅考虑使用纹理图像的纹理映射   基本概念   纹理（图像） 通常指二维矩形图像，这里使用分辨率(w,h)(w,h)(w,h)这一属性，即每行">
+<meta property="og:description" content="纹理映射的需求之前用局部光照的经验模型模拟光照效果，因为对光线（全局光照）的计算耗费资源巨大 而绝大部分物体表面的反射率变化快，视觉表现为颜色艳丽丰富，这也是有巨大复杂性的问题，而纹理映射使用纹理图像或函数改变物体的外观  $tips$ 这里仅考虑使用纹理图像的纹理映射   基本概念 纹理（图像） 通常指二维矩形图像，这里使用分辨率$(w,h)$这一属性，即每行每列的像素数量  纹理坐标（UV">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2024/10/24/KdCjF6GgHmTxzPl.jpg">
 <meta property="article:published_time" content="2024-10-24T13:40:33.000Z">
@@ -152,7 +152,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
-                <div class="category-count">9</div>
+                <div class="category-count">10</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -179,7 +179,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Ray-Tracing/" rel="tag">Ray-Tracing</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" rel="tag">傅里叶分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/RMQ/" rel="tag">RMQ</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Ray-Tracing/" rel="tag">Ray-Tracing</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" rel="tag">傅里叶分析</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
     </div>
   </div>
 
@@ -198,7 +198,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm2ott02d0019ck6zcw7fge2u">
+      <a class="article-gallery-img" rel="gallery_cm2qciimw001h6w6za45d9aui">
         <img src="https://s2.loli.net/2024/10/24/KdCjF6GgHmTxzPl.jpg" itemprop="image">
       </a>
     
@@ -234,7 +234,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.4k 词 
+            1.3k 词 
           </div>
         </div>
         
@@ -244,26 +244,21 @@
       <div class="e-content article-entry" itemprop="articleBody">
         
           <hr>
-<h3 id="%E7%BA%B9%E7%90%86%E6%98%A0%E5%B0%84%E7%9A%84%E9%9C%80%E6%B1%82" tabindex="-1">纹理映射的需求</h3>
-<p>之前用<strong>局部光照</strong>的经验模型模拟光照效果，因为对光线（全局光照）的计算耗费资源巨大</p>
+<h3 id="纹理映射的需求"><a href="#纹理映射的需求" class="headerlink" title="纹理映射的需求"></a>纹理映射的需求</h3><p>之前用<strong>局部光照</strong>的经验模型模拟光照效果，因为对光线（全局光照）的计算耗费资源巨大</p>
 <p>而绝大部分<strong>物体表面的反射率变化快</strong>，视觉表现为颜色艳丽丰富，这也是有巨大复杂性的问题，而<strong>纹理映射使用纹理图像或函数改变物体的外观</strong></p>
 <blockquote>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">tips</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span></span></span></eq> 这里仅考虑使用纹理图像的纹理映射</p>
+<p>$tips$ 这里仅考虑使用纹理图像的纹理映射</p>
 </blockquote>
 <hr>
-<h3 id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" tabindex="-1">基本概念</h3>
-<ul>
-<li>
-<p><strong>纹理（图像）</strong> 通常指二维矩形图像，这里使用<strong>分辨率</strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>w</mi><mo separator="true">,</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(w,h)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">h</span><span class="mclose">)</span></span></span></span></eq>这一属性，即每行每列的像素数量</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li><p><strong>纹理（图像）</strong> 通常指二维矩形图像，这里使用<strong>分辨率</strong>$(w,h)$这一属性，即每行每列的像素数量</p>
 </li>
-<li>
-<p><strong>纹理坐标（UV Coordinates）</strong> 是在三维模型表面上指定纹理图像如何贴合的坐标系统。U和V通常是介于0和1之间的参数，代表纹理图像的横纵比例位置。</p>
+<li><p><strong>纹理坐标（UV Coordinates）</strong> 是在三维模型表面上指定纹理图像如何贴合的坐标系统。U和V通常是介于0和1之间的参数，代表纹理图像的横纵比例位置。</p>
 </li>
-<li>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">UV</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></eq>坐标系统：</p>
+<li><p>$UV$坐标系统：</p>
 <ul>
-<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span></eq>轴：通常表示纹理图像的水平方向，类似于二维坐标系统中的X轴。</li>
-<li><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></eq>轴：通常表示纹理图像的垂直方向，类似于二维坐标系统中的Y轴。</li>
+<li>$U$轴：通常表示纹理图像的水平方向，类似于二维坐标系统中的X轴。</li>
+<li>$V$轴：通常表示纹理图像的垂直方向，类似于二维坐标系统中的Y轴。</li>
 </ul>
 </li>
 </ul>
@@ -271,19 +266,17 @@
 <ul>
 <li><strong>变形与扭曲</strong>：UV坐标的设置可以影响纹理在模型上的拉伸和扭曲程度。合理的UV布局可以避免不自然的变形，而不恰当的UV布局可能导致纹理看起来很不自然。</li>
 </ul>
-<p>并且，<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">UV</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></eq>坐标系统及其<strong>标准化</strong>的引入，可以方便的<strong>更换纹理图像</strong>，不用更改每一个顶点</p>
+<p>并且，$UV$坐标系统及其<strong>标准化</strong>的引入，可以方便的<strong>更换纹理图像</strong>，不用更改每一个顶点</p>
 <hr>
-<h3 id="%E7%BA%B9%E7%90%86%E5%9D%90%E6%A0%87%E7%9A%84%E4%BD%BF%E7%94%A8" tabindex="-1">纹理坐标的使用</h3>
-<p>简单来讲，每个表面顶点会在模型中绑定一个<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">UV</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></eq>坐标（有可能会大于1，这时可以截断获得一个表面映射多个同一个纹理来铺满表面的效果），这里只考虑<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>&lt;</mo><mn>0</mn><mtext> </mtext><mo separator="true">,</mo><mtext> </mtext><mi>V</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U&lt;0\ ,\ V&lt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mspace"> </span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></eq>，如果不使用插值算法</p>
-<p>则若一个表面被纹理<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>W</mi><mo separator="true">,</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(W,H)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">)</span></span></span></span></eq>映射，表面上一个顶点<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></eq>绑定的纹理坐标为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>u</mi><mtext> </mtext><mo separator="true">,</mo><mtext> </mtext><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(u\ ,\ v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mspace"> </span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span></eq>，则顶点<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></eq>在映射到屏幕上的像素获得的<strong>纹理分量</strong>为</p>
-<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mo stretchy="false">⌊</mo><mi>u</mi><mi>W</mi><mo stretchy="false">⌋</mo><mtext> </mtext><mo separator="true">,</mo><mo stretchy="false">⌊</mo><mi>v</mi><mi>H</mi><mo stretchy="false">⌋</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(\lfloor uW\rfloor \ , \lfloor vH\rfloor)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mopen">(⌊</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mclose">⌋</span><span class="mspace"> </span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">⌊</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">⌋)</span></span></span></span></span></eqn></section><blockquote>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">tips</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span></span></span></eq> 纹理图可能储存的是某个颜色模型值，比如<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>G</mi><mi>B</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">RGBA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">RGB</span><span class="mord mathnormal">A</span></span></span></span></eq></p>
+<h3 id="纹理坐标的使用"><a href="#纹理坐标的使用" class="headerlink" title="纹理坐标的使用"></a>纹理坐标的使用</h3><p>简单来讲，每个表面顶点会在模型中绑定一个$UV$坐标（有可能会大于1，这时可以截断获得一个表面映射多个同一个纹理来铺满表面的效果），这里只考虑$U&lt;0\ ,\ V&lt;0$，如果不使用插值算法</p>
+<p>则若一个表面被纹理$A(W,H)$映射，表面上一个顶点$P$绑定的纹理坐标为$(u\ ,\ v)$，则顶点$P$在映射到屏幕上的像素获得的<strong>纹理分量</strong>为</p>
+<script type="math/tex; mode=display">A(\lfloor uW\rfloor \ , \lfloor vH\rfloor)</script><blockquote>
+<p>$tips$ 纹理图可能储存的是某个颜色模型值，比如$RGBA$</p>
 </blockquote>
 <hr>
-<h3 id="%E6%98%A0%E5%B0%84%E9%97%AE%E9%A2%98" tabindex="-1">映射问题</h3>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>W</mi></mrow><annotation encoding="application/x-tex">uW</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span></eq>和<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">vH</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span></eq>将<strong>显示器像素</strong>绑定到纹理图上一<strong>点</strong>，上面的方法只是使用了<strong>取整偏移到具体图像像素</strong></p>
+<h3 id="映射问题"><a href="#映射问题" class="headerlink" title="映射问题"></a>映射问题</h3><p>$uW$和$vH$将<strong>显示器像素</strong>绑定到纹理图上一<strong>点</strong>，上面的方法只是使用了<strong>取整偏移到具体图像像素</strong></p>
 <blockquote>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">tips</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span></span></span></eq> 一下像素分辨率都是相对于显示器分辨率而言的</p>
+<p>$tips$ 一下像素分辨率都是相对于显示器分辨率而言的</p>
 </blockquote>
 <ul>
 <li>如果<strong>图像分辨率太低</strong>，那么会有<strong>多个显示器像素落在同一个图像像素矩形内</strong>,生成的图像会产生<strong>锯齿</strong></li>
@@ -294,20 +287,13 @@
 </ul>
 <p>这个问题会在<strong>表面距离投影面</strong>很远时发生，这时表面只能用少量的像素点显示</p>
 <hr>
-<h3 id="%E6%98%A0%E5%B0%84%E7%AE%97%E6%B3%95" tabindex="-1">映射算法</h3>
-<p>这里简单介绍一些纹理映射相关的算法：</p>
+<h3 id="映射算法"><a href="#映射算法" class="headerlink" title="映射算法"></a>映射算法</h3><p>这里简单介绍一些纹理映射相关的算法：</p>
 <blockquote>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>i</mi><mi>p</mi><mi>m</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Mipmap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">p</span></span></span></span></eq>（多级渐远纹理）通过<strong>预先存储一系列递减分辨率的纹理图像</strong>,每一级Mipmap都是前一级纹理大小的一半，形成一个纹理图像的层级结</p>
-</blockquote>
-<blockquote>
-<p>各向异性过滤（Anisotropic Filtering）是一种高级的纹理采样技术，用于在三维图形渲染中提高纹理在不同角度和距离下的清晰度</p>
-</blockquote>
-<blockquote>
+<p>$Mipmap$（多级渐远纹理）通过<strong>预先存储一系列递减分辨率的纹理图像</strong>,每一级Mipmap都是前一级纹理大小的一半，形成一个纹理图像的层级结</p>
+<p>各向异性过滤（Anisotropic Filtering）是一种高级的纹理采样技术，用于在三维图形渲染中提高纹理在不同角度和距离下的清晰度  </p>
 <p>在三维空间中，一个纹理映射到三维模型上时，由于视角和观察距离的变化，纹理在屏幕上的投影可能会呈现不同的形状和大小。当纹理不是正对着摄像机时（即斜视角观察），纹理的线性过滤和Mipmap技术可能会产生模糊效果，因为它们假设纹理在所有方向上的分辨率降低是一致的</p>
 </blockquote>
 <hr>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
         
       </div>
