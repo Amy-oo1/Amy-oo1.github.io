@@ -14,7 +14,7 @@
   
 
   
-  <title>标签: 计算几何 | Amy_blog</title>
+  <title>Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -22,7 +22,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Amy_blog">
-<meta property="og:url" content="http://example.com/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/index.html">
+<meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="Amy_blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Amy">
@@ -45,14 +45,14 @@
   
   
     
-<div id="banner" class="">
+<div id="banner" class=" is_home ">
   <img src="https://s2.loli.net/2024/10/10/eAtoNJZinjY19us.jpg" itemprop="image">
   <div id="banner-dim"></div>
 </div>
  
    
   <div id="main-grid" class="  ">
-    <div id="nav" class=""  >
+    <div id="nav" class=" is_home "  >
       <navbar id="navbar">
   <nav id="title-nav">
     <a href="/">
@@ -182,84 +182,107 @@
 </sidebar>
     </div>
     <div id="content-body">
-       
+      
+   
 
-<div class="archive-main-card">
-    <div class="archive-top">
-      <div class="main-title-bar">
-        <div class="main-title-dot"></div>
-        <h1 class="article-title">归档</h1>
-      </div>    
+
+<article id="post-FFT-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/11/FFT-1/">FFT的数学解释[1]</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-10T17:22:21.000Z" itemprop="datePublished">2024-10-11</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+多项式乘法次数界为$n$的多项式表示为
+A(x)=\sum_{i=0}^{n-1}a_iX^i若
+B(x)=\sum_{i=0}^{n-1}b_iX^i\ ,\ C(x)=\sum_{i=0}^{2n-2}c_iX^i且$C(x)$为多项式$A(x)$和$B(x)$的乘积，则
+ci=\sum_{j=0}^{j=i}a^ib^{i-j}朴素多项式乘积算法时间复杂度为$O(n^2)$
+
+多项式加法使用霍纳规则，累乘$x$项，可以在$O(n)$时间完成多项式加法
+A(x)=a_o+x(a_1+x(a_2\cdots+xa_n\cdots))123456auto Horner(int x, vector&lt;int&gt; nums)-&gt;int &#123;//nums正序	auto y = 0;	for (int i = nums.size() - 1; i &gt;= 0; --i)		y = nums[i] + x * y;	return y;&#125;
+
+点值表达式的转换一个多项式依靠各项的系数区分，一个$n$次多项式的系数表达式
+A=(a_0\ ,\ a_1\ ,\...
+            
+          </div>
+        
+      </div>
+
+         
     </div>
     
-    
-      
-      
-        
-        <div class="year-line">
-            <div class="year-num">2024</div>
-            <div class="dot-wrapper">
-                <div class="dot"></div>
-            </div>
-            <div class="article-count">3 篇文章</div>
-        </div>
-      
-      <a class="archive-article-link" href="/2024/10/23/Polyon-Partion/" title="分割多边形">
-        <div class="date">10-23</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    分割多边形
-                
-            </div>
-        </div>
-        <div class="tags">
-            #计算几何
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/10/20/Judge-Segment-Intersect/" title="判断平面上的线段相交">
-        <div class="date">10-20</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    判断平面上的线段相交
-                
-            </div>
-        </div>
-        <div class="tags">
-            #计算几何
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/10/20/Judge-Point-in-Polyon/" title="判断点和平面多边形关系">
-        <div class="date">10-20</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    判断点和平面多边形关系
-                
-            </div>
-        </div>
-        <div class="tags">
-            #计算几何
-        </div>
-      </a>
-    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/11/3XanCMPQpFB2bte.jpg)" 
+      href="/2024/10/11/FFT-1/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
   </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  <nav id="page-nav">
+    <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
+    <a id="prev-btn" class="page-nav-btn " href=" /page/2/  ">
+      <i class="fa-solid fa-angle-left"></i>
+    </a>
+    <div id="num-bar">
+      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>  
+    </div>
+    <a id="next-btn" class="page-nav-btn disabled" href="/">
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+  </nav>
+
+
     </div>
     <div id="footer-wrapper">
       <!--<footer id="footer">
