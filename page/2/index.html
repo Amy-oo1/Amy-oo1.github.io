@@ -145,17 +145,17 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
-                <div class="category-count">14</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
-                数字信号处理
-                <div class="category-count">1</div>
+                <div class="category-count">16</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
                 算法
                 <div class="category-count">6</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
+                数字信号处理
+                <div class="category-count">1</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
@@ -183,6 +183,202 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Ray-Tracing-principe-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/22/Ray-Tracing-principe-2/">基本的光线追踪算法[2]</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-22T04:38:20.000Z" itemprop="datePublished">2024-10-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            600 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ray-Tracing/" rel="tag">Ray-Tracing</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+光线追踪的时间复杂度
+考虑在大小为(W,H)(W,H)(W,H)的显示设备，采样距离为每个像素，光线追踪树最大深度d前提下运行光线追踪算法，若场景中有$N个表面对象，则最坏时间复杂度为
+max O(WH(2d+1)N)max\ O(WH(2^d+1)N)max O(WH(2d+1)N)
+tips1tips_1tips1​ 光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生的光线
+
+这里考虑最坏的满二叉树，即一颗深度为d的满二叉树有2d+12^d+12d+1个节点，因此，复杂度中，分量WHD(2d+1)WHD(2^d+1)WHD(2d+1)是总的光线数量
+实际情况下，光线强度损耗到一定程度就可以终止，所有只有处理大量光滑表面的场景中有近似复杂度
+而整个算法需要在算法的每一帧运行，对于场景复杂的渲染开销巨大
+
+次线性相交判定
+这种技术可以包围盒减少复杂度中的NNN值，即光线和场景表面的判定。该方法的原理是场景表面呈现聚集式分步，可以通过判定整块区域避免不必要的判定。
+主要有以下两种形式
+
+表面包围盒：递归地将当前表面用包围盒划分，在同一层次中，任意表面只属于当前层次的一个包...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg)" 
+      href="/2024/10/22/Ray-Tracing-principe-2/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Ray-Tracing-principle-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/21/Ray-Tracing-principle-1/">基本的光线追踪算法[1]</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-21T12:03:37.000Z" itemprop="datePublished">2024-10-21</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.8k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ray-Tracing/" rel="tag">Ray-Tracing</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+光线追踪的特点
+
+光线追踪（Ray Tracing）是一种图像渲染技术，它通过模拟光线的传播路径来生成逼真的图像
+
+光线追踪由以下步骤组成
+
+光线发射：从视点发射出无数条光线，穿过虚拟场景。
+光线交点计算：计算这些光线与场景中物体的交点。
+着色计算：在交点处根据物体的材质、光源信息以及周围环境进行着色。
+反射与折射：在交点处可能发生光线反射和折射，这时需要继续追踪反射和折射光线。
+图像合成：将所有光线的着色结果合成，形成最终的图像
+
+光栅化由以下步骤组成
+
+投影变换：将3D3D3D模型投影到2D2D2D裁剪空间。
+三角形遍历和绘制：分解三角形并确定覆盖的像素。
+片段处理：对像素进行着色，包括纹理、光照、阴影和颜色混合。
+输出合并：将像素信息写入帧缓冲区，完成图像合成。
+
+
+这两种渲染方法共同特点
+
+矩阵变换：都需要对模型进行模型变换和视图变换
+图像合成：主要是像素之间的连续
+
+差异
+
+线追踪不需要投影变换，它通过调整光线束结构模拟透视的效果
+光线追踪根据光路上的物体计算颜色强度贡献，光栅化根据深度缓存计算颜色强度贡献
+光照模型的不同
+
+光栅化采用局部光照：只考虑从光源直接射向对...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/21/mOlKQoFDueCRBhb.jpg)" 
+      href="/2024/10/21/Ray-Tracing-principle-1/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -952,185 +1148,6 @@ tipstipst...
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/16/G172V9QOcf86uFN.png)" 
       href="/2024/10/16/Lex-Re-to-NFA/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-3D_Viewing-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/15/3D_Viewing-2/">3D模型观测[2]</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-15T05:40:57.000Z" itemprop="datePublished">2024-10-15</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.8k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-tipstipstips 此处nnn和fff都为无向距离
-
-
-投影
-把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上,在计算在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的333维空间内
-
-正射投影
-正射投影是一种平行投影，场景模型只会做线性变换，平行的场景经过正射投影后显示后，仍能得保持平行
-
-正射投影矩阵
-依照定义，只需要对视域数字化输入
-
-相机到近/远裁剪平面的距离n/fn/fn/f
-裁剪平面左下角坐标(L , B)(L\ ,\ B)(L , B)和右上角坐标(R , T)(R\ ,\ T)(R , T)
-
-先对裁剪空间平移再放缩得到正射投影矩阵
-O=[2R−L00002T−B00002f−n00001][100−L+R2010−B+T2001n+f20001]=[2R−L00−L+RR−L02T−B0−B+TT−B002f−nn+ff−n0001]
-O=
-\left[\begin{matrix}
-\frac{2}{R-L} &amp; 0 &amp; 0 &amp; 0\\\\
-0 &amp; \frac{2}...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/15/uaLvAfIMwekBXOg.png)" 
-      href="/2024/10/15/3D_Viewing-2/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-3D_Viewing-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/14/3D_Viewing-1/">3D模型观测[1]</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-14T13:09:57.000Z" itemprop="datePublished">2024-10-14</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.3k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-非齐次坐标
-非齐次坐标表示为(x , y)(x\ ,\ y)(x , y)或(x , y , z)(x\ ,\ y\ ,\ z)(x , y , z)，对应的标准齐次坐标为(x , y , 1)(x\ ,\ y\ ,\ 1)(x , y , 1)或(x , y , z , 1)(x\ ,\ y\ ,\ z\ ,\ 1)(x , y , z , 1)
-
-齐次坐标引入了放缩分量,即最后的非零坐标
-
-齐次坐标(x , y , N)(x\ ,\ y\ ,\ N)(x , y , N)或(x , y , z , N) , N&gt;0(x\ ,\ y\ ,\ z\ ,\ N)\ ,\ N &gt;0(x , y , z , N) , N&gt;0对应的标准形式为(xN , yN , 1)(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ 1)(Nx​ , Ny​ , 1)或(xN , yN , zN , 1)(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ \frac{z}{N}\ ,\ 1)(Nx​ , Ny​ , Nz​ , 1)
-
-tipstipsti...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/14/1vpim8cQBIhNW93.png)" 
-      href="/2024/10/14/3D_Viewing-1/" 
     >
        
       <div class="overlay">
