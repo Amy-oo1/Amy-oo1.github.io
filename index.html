@@ -145,7 +145,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
-                <div class="category-count">13</div>
+                <div class="category-count">14</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
@@ -183,6 +183,104 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Surface-Subdivision-Smplication" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/29/Surface-Subdivision-Smplication/">曲面细分和曲面简化</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-29T01:21:43.000Z" itemprop="datePublished">2024-10-29</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.5k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+曲面细分
+曲面细分（Surface Subdivision）通过在网格模型上递归运用细分规则使多边形网格变得更加平滑和精细
+$tips$ 这里隐含地说明了是对采样后的曲面操作，对象是一群顶点，而不是多项式函数
+
+细分规则主要有$Loop$细分，$Catmull-Clark$细分
+因为生成的过程需要对不同类型的曲面顶点操作，所有定义
+
+点规则：原始（递归每一步开始）网格顶$V$的操作
+
+边规则：原始边生成新点$E$的操作
+
+面规则：在网格中多边形面中生成点$F$如何操作
+
+
+
+$tips_1$ 这里不使用顶点，而用点，表述曲线上的采样点，因为退化也是评判曲面细分技术的度量规则
+$tips_2$ 虽然算法是递归进行的，但这里描述的算法不需要隔代递归层数据，用角标$\prime$表示新的网格点
+
+
+$Loop$细分$Loop$细分运用的场景是三角形网格，在边上增加顶点，并且调整原始点位置
+过顶点的重新定位，$Loop$细分能够生成$C^2$连续的曲面
+边规则在每条边上生成新的点
+E=\frac{3}{8}(A+B)+\frac{1}{8}(C+D)在不考虑边界条件的情况下，三角形网格...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/29/QepJnZY2X5fwd3v.jpg)" 
+      href="/2024/10/29/Surface-Subdivision-Smplication/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -1033,104 +1131,6 @@ tips1tips_1tips1​ 光线追踪树:每个节点是光线对象，子节点是�
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/21/mOlKQoFDueCRBhb.jpg)" 
       href="/2024/10/21/Ray-Tracing-principle-1/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Shading-model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/20/Shading-model/">基本光照模型</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-20T14:40:37.000Z" itemprop="datePublished">2024-10-20</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.4k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-光和颜色
-
-光是一种电磁波的形式，它是能量的传播方式。在可见光谱范围内，光波长的不同决定了我们看到的颜色。光可以在真空和透明介质中传播，不需要任何物质存在
-颜色是人的视觉系统对光的一种感知，它是光进入眼睛后，由视网膜上的感光细胞（视锥细胞）解释波长信号的结果
-
-简单来说，光源发出的物体光打到后，在物体的物理属性影响下，发生特定的折射和反射，进入人眼感知颜色信息
-
-tipstipstips 只考虑光的粒子性，引用辐射度量学中的辐射强度(Radiant Intensity)III，即单位立体角内的辐射通量，描述了光源在特定方向上的发光能力，在计算机图形学中使用颜色模型描述颜色
-
-
-光源
-
-任意能发出辐射能量的对象，一个光源可以有多种属性：位置，辐射强度，发射方向
-
-最简单的模型是点光源，种光源模型是对场景中比对象小，距离对象远的合理逼近
-
-在阴影生成中，这种光源模型只能生成硬阴影
-
-
-在图示中，球的正投影是硬阴影，光线无法到达，而附近的一块区域因为和球边缘发生散射，导致亮度偏低，生成软阴影
-
-
-软阴影的形成是因为光线在传播过程中会发生散射，导致阴影边缘不是完全黑暗的，而是有一定的光...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/20/9ILjUcDW3hKnqeo.jpg)" 
-      href="/2024/10/20/Shading-model/" 
     >
        
       <div class="overlay">

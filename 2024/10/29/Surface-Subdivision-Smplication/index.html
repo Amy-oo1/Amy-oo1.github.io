@@ -14,26 +14,26 @@
   
 
   
-  <title>基本的光线追踪算法[2] | Amy_blog</title>
+  <title>曲面细分和曲面简化 | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="光线追踪的时间复杂度 考虑在大小为(W,H)(W,H)(W,H)的显示设备，采样距离为每个像素，光线追踪树最大深度d前提下运行光线追踪算法，若场景中有$N个表面对象，则最坏时间复杂度为 max O(WH(2d+1)N)max\ O(WH(2^d+1)N)max O(WH(2d+1)N) tips1tips_1tips1​ 光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生的光线  这里考">
+  <meta name="description" content="曲面细分 曲面细分（Surface Subdivision）通过在网格模型上递归运用细分规则使多边形网格变得更加平滑和精细 $tips$ 这里隐含地说明了是对采样后的曲面操作，对象是一群顶点，而不是多项式函数  细分规则主要有$Loop$细分，$Catmull-Clark$细分 因为生成的过程需要对不同类型的曲面顶点操作，所有定义  点规则：原始（递归每一步开始）网格顶$V$的操作  边规则：原">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基本的光线追踪算法[2]">
-<meta property="og:url" content="http://example.com/2024/10/22/Ray-Tracing-principe-2/index.html">
+<meta property="og:title" content="曲面细分和曲面简化">
+<meta property="og:url" content="http://example.com/2024/10/29/Surface-Subdivision-Smplication/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="光线追踪的时间复杂度 考虑在大小为(W,H)(W,H)(W,H)的显示设备，采样距离为每个像素，光线追踪树最大深度d前提下运行光线追踪算法，若场景中有$N个表面对象，则最坏时间复杂度为 max O(WH(2d+1)N)max\ O(WH(2^d+1)N)max O(WH(2d+1)N) tips1tips_1tips1​ 光线追踪树:每个节点是光线对象，子节点是反射和透射现象产生的光线  这里考">
+<meta property="og:description" content="曲面细分 曲面细分（Surface Subdivision）通过在网格模型上递归运用细分规则使多边形网格变得更加平滑和精细 $tips$ 这里隐含地说明了是对采样后的曲面操作，对象是一群顶点，而不是多项式函数  细分规则主要有$Loop$细分，$Catmull-Clark$细分 因为生成的过程需要对不同类型的曲面顶点操作，所有定义  点规则：原始（递归每一步开始）网格顶$V$的操作  边规则：原">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg">
-<meta property="article:published_time" content="2024-10-22T04:38:20.000Z">
-<meta property="article:modified_time" content="2024-10-23T08:10:38.704Z">
+<meta property="og:image" content="https://s2.loli.net/2024/10/29/QepJnZY2X5fwd3v.jpg">
+<meta property="article:published_time" content="2024-10-29T01:21:43.000Z">
+<meta property="article:modified_time" content="2024-10-29T08:52:57.620Z">
 <meta property="article:author" content="Amy">
-<meta property="article:tag" content="Ray-Tracing">
+<meta property="article:tag" content="几何">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2024/10/29/QepJnZY2X5fwd3v.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
   
@@ -192,14 +192,14 @@
        
 
 
-<article id="post-Ray-Tracing-principe-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Surface-Subdivision-Smplication" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm2squnqq00114c6z3j944e1k">
-        <img src="https://s2.loli.net/2024/10/22/7QuGIdq1slfSw5i.jpg" itemprop="image">
+      <a class="article-gallery-img" rel="gallery_cm2tsxvx200003o6z0e9c9dro">
+        <img src="https://s2.loli.net/2024/10/29/QepJnZY2X5fwd3v.jpg" itemprop="image">
       </a>
     
   </div>
@@ -215,7 +215,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        基本的光线追踪算法[2]
+        曲面细分和曲面简化
       </h1>
     
   
@@ -223,7 +223,7 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-22T04:38:20.000Z" itemprop="datePublished">2024-10-22</time>
+  <time class="dt-published" datetime="2024-10-29T01:21:43.000Z" itemprop="datePublished">2024-10-29</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -234,39 +234,117 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            600 词 
+            2.5k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ray-Tracing/" rel="tag">Ray-Tracing</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <hr>
-<h4 id="%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" tabindex="-1">光线追踪的时间复杂度</h4>
-<p>考虑在大小为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>W</mi><mo separator="true">,</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(W,H)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">)</span></span></span></span></eq>的<strong>显示设备</strong>，采样距离为每个<strong>像素</strong>，<strong>光线追踪树最大深度d</strong>前提下运行<strong>光线追踪算法</strong>，若<strong>场景</strong>中有$N个<strong>表面对象</strong>，则<strong>最坏</strong>时间复杂度为</p>
-<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mtext> </mtext><mi>O</mi><mo stretchy="false">(</mo><mi>W</mi><mi>H</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>d</mi></msup><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">max\ O(WH(2^d+1)N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1491em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></span></eqn></section><blockquote>
-<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><msub><mi>s</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">tips_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> <strong>光线追踪树</strong>:每个节点是<strong>光线对象</strong>，子节点是<strong>反射</strong>和<strong>透射</strong>现象产生的光线</p>
+<h2 id="曲面细分"><a href="#曲面细分" class="headerlink" title="曲面细分"></a>曲面细分</h2><blockquote>
+<p>曲面细分（Surface Subdivision）通过在<strong>网格模型</strong>上<strong>递归</strong>运用<strong>细分规则使</strong>多边形网格变得更加<strong>平滑和精细</strong></p>
+<p>$tips$ 这里隐含地说明了是对<strong>采样后</strong>的曲面操作，对象是一群顶点，而不是多项式函数</p>
 </blockquote>
-<p>这里考虑最坏的<strong>满二叉树</strong>，即一颗深度为<strong>d</strong>的满二叉树有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>d</mi></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^d+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9324em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></eq>个节点，因此，复杂度中，分量<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>H</mi><mi>D</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>d</mi></msup><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">WHD(2^d+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.02778em;">HD</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></eq>是总的光线数量</p>
-<p>实际情况下，光线强度<strong>损耗</strong>到一定程度就可以终止，所有只有处理大量<strong>光滑表面</strong>的场景中有近似复杂度</p>
-<p>而整个算法需要在算法的每一帧运行，对于<strong>场景复杂</strong>的渲染开销巨大</p>
-<hr>
-<h3 id="%E6%AC%A1%E7%BA%BF%E6%80%A7%E7%9B%B8%E4%BA%A4%E5%88%A4%E5%AE%9A" tabindex="-1">次线性相交判定</h3>
-<p>这种技术可以<strong>包围盒</strong>减少复杂度中的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>值，即<strong>光线和场景表面</strong>的判定。该方法的原理是场景表面呈现聚集式分步，可以通过判定整块区域避免不必要的判定。</p>
-<p>主要有以下两种形式</p>
+<p>细分规则主要有$Loop$细分，$Catmull-Clark$细分</p>
+<p>因为生成的过程需要对不同类型的曲面顶点操作，所有定义</p>
 <ul>
-<li><strong>表面包围盒</strong>：递归地将当前表面用<strong>包围盒</strong>划分，在同一<strong>层次中</strong>，任意表面只属于当前层次的一个包围盒</li>
-<li><strong>空间包围盒</strong>：递归地将当前空间<strong>切割</strong>，同一层次表面可能同时在多个空间中</li>
+<li><p><strong>点规则</strong>：原始（递归每一步开始）网格顶$V$的操作</p>
+</li>
+<li><p><strong>边规则</strong>：原始边生成<strong>新点</strong>$E$的操作</p>
+</li>
+<li><p><strong>面规则</strong>：在网格中多边形面中生成点$F$如何操作</p>
+</li>
 </ul>
-<p>让光线和包围盒做相交判定,若相交则判定所以子节点，将这一过程递归至底和<strong>叶节点</strong>内所有表明做相交测试</p>
+<blockquote>
+<p>$tips_1$ 这里不使用<strong>顶点</strong>，而用<strong>点</strong>，表述曲线上的采样点，因为<strong>退化</strong>也是评判曲面细分技术的度量规则</p>
+<p>$tips_2$ 虽然算法是递归进行的，但这里描述的算法不需要<strong>隔代递归层数据</strong>，用角标$\prime$表示新的网格点</p>
+</blockquote>
 <hr>
-<h3 id="%E5%85%B6%E4%BB%96%E6%95%88%E6%9E%9C" tabindex="-1">其他效果</h3>
-<p>相比光栅化，光线追踪能获得更好的模拟<strong>阴影</strong>效果，能够模拟相机的聚焦效果</p>
+<h3 id="Loop-细分"><a href="#Loop-细分" class="headerlink" title="$Loop$细分"></a>$Loop$细分</h3><p>$Loop$细分运用的场景是<strong>三角形网格</strong>，在边上增加顶点，并且调整原始点位置</p>
+<p>过顶点的重新定位，$Loop$细分能够生成$C^2$连续的曲面</p>
+<h4 id="边规则"><a href="#边规则" class="headerlink" title="边规则"></a>边规则</h4><p>在每条边上生成新的点</p>
+<script type="math/tex; mode=display">E=\frac{3}{8}(A+B)+\frac{1}{8}(C+D)</script><p>在不考虑边界条件的情况下，<strong>三角形网格</strong>中每条边是两个相邻三角形的公共边，$A,B$是边的端点,$C,D$是两个三角形剩下的顶点</p>
+<blockquote>
+<p>$tips$ 可能会有$C,D$是一环<strong>领居节点</strong>的说法，但是并不准确，因为$E$点也有会与$E$点连接，换句话说，是排除了$E$点的一环邻居节点</p>
+</blockquote>
+<h4 id="点规则"><a href="#点规则" class="headerlink" title="点规则"></a>点规则</h4><p>原始网格顶点$V$需要做调整</p>
+<script type="math/tex; mode=display">V\prime=(1-\alpha n)V+\alpha\sum P_1</script><p>其中$P_1$为$V$在新网格中<strong>一环邻居点</strong>，$n$是他们的总数，$\alpha\ often=\frac{3}{16}$为权重</p>
 <hr>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<h3 id="Catmull-Clark-细分"><a href="#Catmull-Clark-细分" class="headerlink" title="$Catmull-Clark$细分"></a>$Catmull-Clark$细分</h3><p>$Catmull-Clark$细分能够处理各种多边形曲面，并且有$C^2$连续性</p>
+<h4 id="面规则"><a href="#面规则" class="headerlink" title="面规则"></a>面规则</h4><script type="math/tex; mode=display">F^\prime=\sum_{i=0}^{n-1}V_i</script><blockquote>
+<p>$tips$ 这里的$n$指的是某个的面顶点数，$V_i$也是在这个面定义的相对顺序</p>
+</blockquote>
+<h4 id="点规则-1"><a href="#点规则-1" class="headerlink" title="点规则"></a>点规则</h4><script type="math/tex; mode=display">V^\prime=\frac{n}{n-2}V+\frac{1}{n^2}\sum_{i=0}^{n-1}E_i+\frac{1}{n^2}F_i^\prime</script><p>虽然这个权重（系数）比较复杂，但是加和保证为$1$，并且经过一次$Catmull-Clark$细分后的网格，保证多边形都为<strong>四边形</strong></p>
+<h4 id="边规则-1"><a href="#边规则-1" class="headerlink" title="边规则"></a>边规则</h4><script type="math/tex; mode=display">E=\frac{V_{left}+V_{right}+F_b+F_t}{4}</script><p>边点是所在边两端点和邻接面点的平均权重组合</p>
+<hr>
+<h2 id="曲面简化"><a href="#曲面简化" class="headerlink" title="曲面简化"></a>曲面简化</h2><blockquote>
+<p>曲面简化在<strong>不显著损害曲面形状特征</strong>和视觉外观的前提下，减少曲面数学描述的复杂性或<strong>数据点的数量</strong></p>
+</blockquote>
+<p>曲面简化不单单是曲面细分的逆过程，它有多种实现途径</p>
+<ul>
+<li><p><strong>网格简化</strong>：<strong>坍缩</strong>（边/面）来<strong>减少点的数量</strong></p>
+</li>
+<li><p><strong>多分辨率建模</strong>：创建一系列细节层次逐步减小的模型</p>
+</li>
+<li><p><strong>近似</strong>：使用<strong>简单曲面模型</strong>（如平面、圆柱面、球面等）来近似原始曲面</p>
+</li>
+<li><p><strong>参数</strong>曲面：减少控制点数目</p>
+</li>
+</ul>
+<p><em>实际过程可能会对网格做曲面细分再细致的坍缩，最小形状失真</em></p>
+<hr>
+<h3 id="QEM-网格简化"><a href="#QEM-网格简化" class="headerlink" title="$QEM$网格简化"></a>$QEM$网格简化</h3><blockquote>
+<p>$tips$ 之后会存在符号复用</p>
+</blockquote>
+<p>$QEM$网格简化是在网格上<strong>坍缩合法边</strong>，它在<strong>全局</strong>边寻找<strong>最优点对</strong>，将其替换为一个点</p>
+<hr>
+<h4 id="误差度量"><a href="#误差度量" class="headerlink" title="误差度量"></a>误差度量</h4><p>在$QEM$网格简化方法中，替换的<strong>点$V$与相应局部原表面的距离的平方</strong>应该最小</p>
+<p>若有边$V_1V_2$，则坍缩后的点$\hat{V}$满足</p>
+<script type="math/tex; mode=display">
+\begin{align}
+def\ T^2_V &= \sum_{F\in F(V_1)\cup F(V_2)}distance(V,F)^2)\\\\
+T_{\hat{V}}^2 &= min(T_V^2)
+\end{align}</script><p>$T_\hat{V}^2$就是边$V_1V_2$的<strong>二次度量误差</strong></p>
+<p>其中$F$是端点$V_1,V_2$所在的所有平面，换句话话说，考察的<strong>局部原表面</strong>过顶点$V_1,V_2$</p>
+<p>定义平面的隐式方程F：$ax+by+cz+d=0(a^2+b^2+c^2=1)$,和点$V$：$(x,y,z,1)$</p>
+<p>转化为矩阵表达：$F^T=[a,b,c,d],V^T=[x,y,z,1]$</p>
+<p>则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+distance(V,F)^2 &= (V^TF)^2=V^TFF^TV\\\\
+\sum_{F\in F(V_1)\cup F(V_2)}distance(V,F)^2 &= V^T(\sum_{F\in F(V_1)\cup F(V_2)}FF^T)V\\\\
+&\approx V^T(\sum_{F\in F(V_1)}FF^T+\sum_{F\in F(F(V_2)}FF^T)V
+\end{align}</script><blockquote>
+<p>$tips$：在最后一步化简中<strong>扩大了考虑面片的范围</strong>，在每次坍缩中，每个点只需要计算一次$\sum FF^T$</p>
+</blockquote>
+<p>对于网格上每一点$V_i$</p>
+<script type="math/tex; mode=display">def\ Q_i=\sum_{F\in F(V_i)}FF^T</script><p>则每条边$V_1V_2$的最优替换后的<strong>二次度量误差</strong>为关于点$V$的二次函数$V^T(Q_1+Q_2)V$取得最小值的<strong>极值</strong>点</p>
+<hr>
+<h4 id="合法点对"><a href="#合法点对" class="headerlink" title="合法点对"></a>合法点对</h4><p>除了原本的<strong>边</strong>坍缩，$QEM$网格简化还考虑距离<strong>很近的点</strong>，让很近的点退化，防止坍缩边时这一类边增长</p>
+<p>也就是说，合法边的集合为</p>
+<ul>
+<li><p>网格原本的边</p>
+</li>
+<li><p>$\lVert V_1V_2\rVert&lt; t,t\ depened\ on EMQ$</p>
+</li>
+</ul>
+<blockquote>
+<p>$tips$ 这两个集合有交集，不过不影响结果</p>
+</blockquote>
+<h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><ol>
+<li>对原始网格所有点计算$Q$</li>
+<li>对合法边计算<strong>二次度量误差</strong>$T_{\hat{V}}^2$，使用<strong>堆储存</strong>结构$(T_\hat{V}^2,(\hat{V},V_1,V_2))$</li>
+<li>用堆堆首的$\hat{V}$替换网格中的$V_1,V_2$，更新网格的边结构，计算$\hat{V}$相关边的二次度量误差并<strong>入堆</strong></li>
+<li>重复过程<strong>3</strong>直至网格点数量达到目标</li>
+</ol>
+<blockquote>
+<p>$tip$ 堆储存的是$(key,val)$,第一个域是<strong>排序规则</strong>的对象，第二个域是相关值，不影响排序</p>
+</blockquote>
+<p>若要在有$N$个点，每个点的平均价（出入度）为$P$(一般为$4\to 6$)的网格中，坍缩掉$M$个点，并且使用<strong>二叉堆</strong>而非斐波那契堆，则时间复杂度为</p>
+<script type="math/tex; mode=display">O(N*P+M*P*\log (N))=O(M*P*\log (N))</script><hr>
 
         
       </div>
@@ -279,27 +357,22 @@
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left "
-    
-      href="/2024/10/23/Polyon-Partion/"
-      title="分割多边形"
+  <a class="article-nav-btn left  disabled "
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
-      
-        分割多边形
         
     </p>
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/10/21/Ray-Tracing-principle-1/"
-      title="基本的光线追踪算法[1]"
+      href="/2024/10/28/B-spline/"
+      title="B样条"
      >
 
     <p class="title-text">
       
-        基本的光线追踪算法[1]
+        B样条
         
     </p>
     <i class="fa-solid fa-angle-right"></i>
