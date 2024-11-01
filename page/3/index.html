@@ -143,14 +143,14 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                数据结构
-                <div class="category-count">2</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
                 <div class="category-count">19</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                数据结构
+                <div class="category-count">3</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -188,6 +188,105 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Judge-Point-in-Polyon" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/20/Judge-Point-in-Polyon/">判断点和平面多边形关系</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-20T01:34:58.000Z" itemprop="datePublished">2024-10-20</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.1k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+算法原理
+
+奇偶规则:若平面内某个点PPP在(无交叉边)多边形内(不包括边上)，则它发出的任意射线穿过奇数条边(多边形的)
+
+
+证明
+
+tipstipstips 不考虑射线恰好落在顶点上的情况
+
+
+非形式化证明: 多边形是一条线组成封闭图形，每穿线一次,射线端点的状态就改变一次
+
+对于n(n≥3)n(n\ge 3)n(n≥3)边平面多边形
+
+基本情况n=3n=3n=3,射线最多经过一条边
+归纳假设，假设对于n&gt;3n&gt;3n&gt;3的多边形，性质成立
+归纳推理：对于(n+1 , n&gt;3)(n+1\ ,\ n&gt;3)(n+1 , n&gt;3)的多边形，将它切分为nnn变形和一个三角形，注意这里会产生重边(切割线)，但是在大的多边形内部，不记这条重边
+
+若P发出的射线不经过三角形，那它一定只经过nnn边形，根据假设，性质成立
+只经过三角形，根据基本情况，性质成立
+同时经过三角形和nnn边形
+
+若点穿过三角形一条边，经过三角形一条边后，射线前端到多边形外，然后穿偶数条边后穿出nnn边形，相反的顺序依然成立
+若点穿过三角形两条边，射线一定不会从三角形内出发，对穿过...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/20/fC7XKpAhWBeNGzO.jpg)" 
+      href="/2024/10/20/Judge-Point-in-Polyon/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -1037,90 +1136,6 @@ W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
 
 
 
-   
-
-
-<article id="post-FFT-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/11/FFT-1/">FFT的数学解释[1]</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-10T17:22:21.000Z" itemprop="datePublished">2024-10-11</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.9k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">多项式与生成函数</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-多项式乘法
-次数界为nnn的多项式表示为
-A(x)=∑i=0n−1aiXiA(x)=\sum_{i=0}^{n-1}a_iX^iA(x)=i=0∑n−1​ai​Xi若
-B(x)=∑i=0n−1biXi , C(x)=∑i=02n−2ciXiB(x)=\sum_{i=0}^{n-1}b_iX^i\ ,\ C(x)=\sum_{i=0}^{2n-2}c_iX^iB(x)=i=0∑n−1​bi​Xi , C(x)=i=0∑2n−2​ci​Xi且C(x)C(x)C(x)为多项式A(x)A(x)A(x)和B(x)B(x)B(x)的乘积，则
-ci=∑j=0j=iaibi−jci=\sum_{j=0}^{j=i}a^ib^{i-j}ci=j=0∑j=i​aibi−j朴素多项式乘积算法时间复杂度为O(n2)O(n^2)O(n2)
-
-多项式加法
-使用霍纳规则，累乘xxx项，可以在O(n)O(n)O(n)时间完成多项式加法
-A(x)=ao+x(a1+x(a2⋯+xan⋯ ))A(x)=a_o+x(a_1+x(a_2\cdots+xa_n\cdots))A(x)=ao​+x(a1​+x(a2​⋯+x...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/11/3XanCMPQpFB2bte.jpg)" 
-      href="/2024/10/11/FFT-1/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -1128,9 +1143,9 @@ A(x)=ao+x(a1+x(a2⋯+xan⋯ ))A(x)=a_o+x(a_1+x(a_2\cdots+xa_n\cdots))A(x)=ao�
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>  
+      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a>  
     </div>
-    <a id="next-btn" class="page-nav-btn disabled" href="/">
+    <a id="next-btn" class="page-nav-btn " href="/page/4/">
       <i class="fa-solid fa-angle-right"></i>
     </a>
   </nav>
