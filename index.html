@@ -301,7 +301,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            0 词 
+            2.7k 词 
           </div>
         </div>
         
@@ -313,8 +313,30 @@
           <div class="truncate-text">
             
               
+引言
+在上半篇中，得出了以下结果：
 
 
+在齐次空间的标准视体下的流水选位置裁剪
+
+
+快速获取顶点关于六个视体表面的相对位置
+
+
+如果简单的把不在视体内的顶点去掉，或者由此引发的，把相关图元去掉，会生成明显的不连续边缘
+这里的统一做法为使用各种插值方法生成边缘顶点
+
+裁剪线段
+线段ABABAB和标准视体的位置关系可以划分为
+
+线段完全在视体内部：端点A,BA,BA,B的都在视体内
+线段完全在实体外部：端点A,BA,BA,B在视体外且区域码相同
+线段部分和视体表面相交
+
+如果线段ABABAB不满足情况1,21,21,2，则只需要端点A,BA,BA,B的特定区域码位不同，就可以断言：线段穿过该区域码对应的视体表面所在的平面
+Cyus−BeckCyus-BeckCyus−Beck裁剪算法
+对端点A(xA,yA,zA,wA)A(x_A,y_A,z_A,w_A)A(xA​,yA​,zA​,wA​)和B(xB,yB,zB,wB)B(x_B,y_B,z_B,w_B)B(xB​,yB​,zB​,wB​)组队的线段ABABAB有参数线段方程
+P(u)=uB+(1−u)A,0≤u≤1P(u)=uB+...
             
           </div>
         
