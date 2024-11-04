@@ -143,14 +143,14 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
+                计算机图形学
+                <div class="category-count">23</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
                 <div class="category-count">4</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
-                计算机图形学
-                <div class="category-count">21</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -250,6 +250,222 @@
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/X7q1CdJnjOuVMak.png)" 
       href="/2025/10/01/Radiosity-modle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-environment-Mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/04/environment-Mapping/">环境贴图</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-04T09:17:55.000Z" itemprop="datePublished">2024-11-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            438 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。
+
+天空盒
+天空盒是实现环境贴图的一种技术，它是
+
+
+在场景中一个立方体对象，每个面内侧都贴有纹理贴图
+
+
+天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远
+
+
+在光栅成像中实现
+实现无限远只需要在可见性判定上处理
+
+保证天空盒对象包围住相机
+禁用深度测试并渲染天空盒
+开启深度测试渲染其他对象
+
+因为深度测试中的初始值为无线深，先渲染的天空盒对于其他物体都是无穷远的
+在光线追踪中实现
+不需要建立对象，使用背景函数，它接受光线的方向向量
+若一个对象从视体边界射出，从背景函数中查找对象的RGBARGBARGBA
+
+光泽效果
+
+
+在光线追踪程序中，增加环境项即可
+
+
+在光栅成像程序中，利用观察方向相对于法线的反射方向去查询环境映射的颜色值，简单来讲，反射光线求交
+
+
+
+穹顶
+相比天空盒，穹顶不会存在边界缝隙，但是可能存在图像扭曲
+
+
+
+
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/04/Is2WtnC1pJ5egxb.png)" 
+      href="/2024/11/04/environment-Mapping/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Shadow-Mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/04/Shadow-Mapping/">阴影贴图</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-04T06:55:03.000Z" itemprop="datePublished">2024-11-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+阴影贴图是一种用于在三维场景中渲染动态阴影的技术。它基于光线的视角来生成深度信息，这些信息随后用于确定场景中的哪些部分处于阴影中。
+
+
+工作原理
+
+阴影贴图技术是基于这样的认知：直接光照不能覆盖到的区域都在阴影中。这个判定只能产生硬阴影
+
+光源空间的转换
+从光源主视角来观察场景。场景中的所有物体都需要根据光源的位置和方向进行转换，以确定它们在光源视角下的位置。
+也就是说，需要光源的视图变换矩阵VLightV_{Light}VLight​，其中观察方向G−EG-EG−E等价于主视角
+深度图的生成
+在光源视角下，渲染器会渲染场景的深度信息， 深度贴图的每个像素代表了从光源到场景中最近表面的距离。
+这个过程和使用相机渲染唯一的不同
+
+
+使用VLightV_{Light}VLight​而非VceramaV_{cerama}Vcerama​
+
+
+只需要完成可见面判定
+
+
+
+tipstipstips 可见面判定和着色通常一起进行，不过从光源处渲染不需要着色
+
+场景的正常渲染
+渲染器从摄像机视角渲染场景，并在渲染每个像素时执行一个额外的步骤：确定这个像素在光源视角下的深度。
+具体的说，如果一...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/04/E3TcZeXmglstRGK.jpg)" 
+      href="/2024/11/04/Shadow-Mapping/" 
     >
        
       <div class="overlay">
@@ -943,204 +1159,6 @@ Lr(wr)=Le(wr)+∫Ω+ρ(wi,wr)Li(wi)(n⋅wi)dwiL_r(w_r)=L_e(w_r)+\int_{\Omega^+}\
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/30/W17RBXslceJuGHq.png)" 
       href="/2024/10/30/Monte-Carlo-path-tracing/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Radiometry" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/30/Radiometry/">辐射度量</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-30T05:01:40.000Z" itemprop="datePublished">2024-10-30</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.8k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-光与颜色
-电磁频谱
-电磁频谱是指电磁辐射按照频率fff或波长TTT的顺序排列所形成的连续范围。它涵盖了从极低频的无线电波到极高频的伽马射线
-
-
-TTT（sss）是电磁波上相继的两个具有相同振幅的点之间的时间，频率f=1Tf=\frac{1}{T}f=T1​（s−1s^{-1}s−1）
-
-
-电磁波在单个周期中传播距离λ=cf\lambda=\frac{c}{f}λ=fc​
-
-
-在真空中，光速c=3×108ms−1c=3\times 10^8ms^{-1}c=3×108ms−1
-
-
-
-tipstipstips 波长的国际单位是nm,1nm=10−9mnm,1nm=10^{-9}mnm,1nm=10−9m
-
-在电磁辐射的波动模型中，光被描述为在空间中横向振荡传播的电场和磁场
-可见光（Visible lightVisible\ lightVisible light）：波长范围大约从750nm750nm750nm到400nm400nm400nm，这是人类眼睛能够感知的电磁辐射范围，每一种波长对应一光谱颜色
-
-颜色心理学特征
-人对光的感知主要由以下因素影响
-
-
-主频率：人眼接收光波的主要可...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/30/xq8at2r5BySkuWl.jpg)" 
-      href="/2024/10/30/Radiometry/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Tangent Space" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/29/Tangent%20Space/">切线空间的运用</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-29T12:50:54.000Z" itemprop="datePublished">2024-10-29</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.4k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-切线空间
-首先定义切线空间的坐标轴
-
-
-切线（TTT）轴：纹理坐标中UUU坐标方向向量
-
-
-副切线（BBB）轴：纹理坐标中VVV方向向量
-
-
-法线（NNN）轴：纹理贴图所映射表面的法线
-
-
-从定义就可以立即得到Tz=Bz=0T_z=B_z=0Tz​=Bz​=0
-设纹理贴图映射的对象表面中能确定一个平面的三点P0,P1,P2P_0,P_1,P_2P0​,P1​,P2​和对应的纹理坐标(u0,v0),(u1,v1),(u2,v2)(u_0,v_0),(u_1,v_1),(u_2,v_2)(u0​,v0​),(u1​,v1​),(u2​,v2​)
-则有
-P1−P0=(u1−u0)T+(v1−v0)BP2−P0=(u2−u0)T+(v2−v0)B
-\begin{align}
-P_1-P_0 &amp;= (u_1-u_0)T+(v_1-v_0)B\\\\
-P_2-P_0 &amp;= (u_2-u_0)T+(v_2-v_0)B
-\end{align}
-P1​−P0​P2​−P0​​=(u1​−u0​)T+(v1​−v0​)B=(u2​−u0​)T+(v2​−v0​)B​​
-展开为矩阵表...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/29/Bqc3KJNhtGYX5fs.png)" 
-      href="/2024/10/29/Tangent%20Space/" 
     >
        
       <div class="overlay">
