@@ -143,14 +143,14 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
-                计算机图形学
-                <div class="category-count">23</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
                 <div class="category-count">4</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
+                计算机图形学
+                <div class="category-count">24</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -191,6 +191,96 @@
    
 
 
+<article id="post-Monte-Carlo-path-tracing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/30/Monte-Carlo-path-tracing/">蒙特卡洛路径追踪</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-30T10:54:59.000Z" itemprop="datePublished">2024-10-30</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.8k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+从BRDFBRDFBRDF到渲染方程
+BRDFBRDFBRDF定义下的反射方程为
+Lr(wr)=∫Ω+ρ(wi,wr)Li(wi)cos⁡θ dwiL_r(w_r)=\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)\cos\theta\ dw_iLr​(wr​)=∫Ω+​ρ(wi​,wr​)Li​(wi​)cosθ dwi​
+
+这个方程是递归定义的，方程式左右两边都有辐射度L(w)L(w)L(w)，可以实现物体间的反射
+
+
+引入物体的自发辐射度Le(w)L_e(w)Le​(w)，属于出射辐射度
+
+
+引入表面法向量，则有cos⁡θ=n⋅w\cos\theta=n\cdot wcosθ=n⋅w
+
+
+得到渲染方程
+Lr(wr)=Le(wr)+∫Ω+ρ(wi,wr)Li(wi)(n⋅wi)dwiL_r(w_r)=L_e(w_r)+\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)(n\cdot w_i)dw_iLr​(wr​)=Le​(wr​)+∫Ω+​ρ(wi​,wr​)Li​(wi​)(n⋅wi​)dwi​表示像素PPP沿wrw_rwr...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/30/W17RBXslceJuGHq.png)" 
+      href="/2024/10/30/Monte-Carlo-path-tracing/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
 <article id="post-Radiometry" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -221,7 +311,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.8k 词 
+            5.6k 词 
           </div>
         </div>
         
@@ -1046,107 +1136,6 @@ P(s)=A+s(B−A)P(s)=A+s(B-A)P(s)=A+s(B−A)其中0≤s≤1 , s=∣P(s)A∣∣A
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/25/Tp1oGbN5uCmviMf.jpg)" 
       href="/2024/10/25/Linear-Interpolation/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-basic-Texture-Mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/24/basic-Texture-Mapping/">基本的纹理映射</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-24T13:40:33.000Z" itemprop="datePublished">2024-10-24</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.4k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-纹理映射的需求
-之前用局部光照的经验模型模拟光照效果，因为对光线（全局光照）的计算耗费资源巨大
-而绝大部分物体表面的反射率变化快，视觉表现为颜色艳丽丰富，这也是有巨大复杂性的问题，而纹理映射使用纹理图像或函数改变物体的外观
-
-tipstipstips 这里仅考虑使用纹理图像的纹理映射
-
-
-基本概念
-
-
-纹理（图像） 通常指二维矩形图像，这里使用分辨率(w,h)(w,h)(w,h)这一属性，即每行每列的像素数量
-
-
-纹理坐标（UV Coordinates） 是在三维模型表面上指定纹理图像如何贴合的坐标系统。U和V通常是介于0和1之间的参数，代表纹理图像的横纵比例位置。
-
-
-UVUVUV坐标系统：
-
-UUU轴：通常表示纹理图像的水平方向，类似于二维坐标系统中的X轴。
-VVV轴：通常表示纹理图像的垂直方向，类似于二维坐标系统中的Y轴。
-
-
-
-有些表面展开不是矩阵，或者不能等比例展开为二维图像，UV坐标系统就是纹理图像和三表面的中介，产生
-
-变形与扭曲：UV坐标的设置可以影响纹理在模型上的拉伸和扭曲程度。合理的UV布局可以避免不自然的变形，而不恰当的UV布局可能导致纹理看起来很不自然。...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/24/KdCjF6GgHmTxzPl.jpg)" 
-      href="/2024/10/24/basic-Texture-Mapping/" 
     >
        
       <div class="overlay">
