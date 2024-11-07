@@ -143,14 +143,14 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
+                计算机图形学
+                <div class="category-count">25</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
                 <div class="category-count">4</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
-                计算机图形学
-                <div class="category-count">24</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -191,6 +191,116 @@
    
 
 
+<article id="post-2d-heap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/30/2d-heap/">二叉堆</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-30T14:59:23.000Z" itemprop="datePublished">2024-10-30</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+性质
+堆是一种树形数据结构，它不按照严格的排序规则维护数据，它只维护规则下的首序元素
+
+
+支持动态增删改节点（元素）
+
+$tips$ 改操作建立在增删操作，只需要堆内指针和外部元素相互存引用
+
+获取首序节点
+
+
+堆操作排序规则$\circ$的限制
+满足传递性：若有$key:A,B,C$且$A\circ B=true,B\circ C=true$，则$A\circ C=true$
+
+排序规则对key没有影响，这个更多是在程序上的限制
+
+
+
+为了便于分析，只考虑二叉堆，实践中可能会使用更多幂次分叉利用缓存
+
+堆的结构
+树节点存储元素：键值对$(key,val)$。所以对元素排序，隐含的意思是在$key$之间使用排序规则
+
+
+$tips$ 在树的语境下使用节点$node$，在排序的语境下使用元素$key$，两者都是键值对
+
+
+子父节点关系：$parent_{key}\circ each\ child_{key}=true$
+
+
+$tips$ 这里的子节点和父节点都是在树中的一级邻居点，简单来讲，不是祖父或者孙子之类的
+
+递归应用这个关系，即可以保证下面的性质
+
+树根即这棵树（堆）包含...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/30/2tylvJ31W6EzFVh.png)" 
+      href="/2024/10/30/2d-heap/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
 <article id="post-Monte-Carlo-path-tracing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -221,7 +331,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.8k 词 
+            2.2k 词 
           </div>
         </div>
         
@@ -233,21 +343,19 @@
           <div class="truncate-text">
             
               
-从BRDFBRDFBRDF到渲染方程
-BRDFBRDFBRDF定义下的反射方程为
-Lr(wr)=∫Ω+ρ(wi,wr)Li(wi)cos⁡θ dwiL_r(w_r)=\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)\cos\theta\ dw_iLr​(wr​)=∫Ω+​ρ(wi​,wr​)Li​(wi​)cosθ dwi​
+从$BRDF$到渲染方程$BRDF$定义下的反射方程为
+L_r(w_r)=\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)\cos\theta\ dw_i
+这个方程是递归定义的，方程式左右两边都有辐射度$L(w)$，可以实现物体间的反射
 
-这个方程是递归定义的，方程式左右两边都有辐射度L(w)L(w)L(w)，可以实现物体间的反射
+引入物体的自发辐射度$L_e(w)$，属于出射辐射度
 
-
-引入物体的自发辐射度Le(w)L_e(w)Le​(w)，属于出射辐射度
-
-
-引入表面法向量，则有cos⁡θ=n⋅w\cos\theta=n\cdot wcosθ=n⋅w
+引入表面法向量，则有$\cos\theta=n\cdot w$
 
 
 得到渲染方程
-Lr(wr)=Le(wr)+∫Ω+ρ(wi,wr)Li(wi)(n⋅wi)dwiL_r(w_r)=L_e(w_r)+\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)(n\cdot w_i)dw_iLr​(wr​)=Le​(wr​)+∫Ω+​ρ(wi​,wr​)Li​(wi​)(n⋅wi​)dwi​表示像素PPP沿wrw_rwr...
+L_r(w_r)=L_e(w_r)+\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)(n\cdot w_i)dw_i表示像素$P$沿$w_r$方向的出射辐射度为：沿$w_r$的自发辐射度，和各个正球面立体角角接收到的衰减后的入射辐射度$\rho(w_i,w_r)\cdot L_i(w_i)$的加和
+渲染方程的解渲染方程中$L_e(w_r),\rho(w_i,w_j)$和表面材质相关，所以他们是已知的，方程的未知项只有$L_i(w_i)$
+def\ K(w_i,w_r)=\rho(w_i,w_r)L_i(w_i)(n\cdot w_i)$n$法向和像素相关，这个...
             
           </div>
         
@@ -311,7 +419,7 @@ Lr(wr)=Le(wr)+∫Ω+ρ(wi,wr)Li(wi)(n⋅wi)dwiL_r(w_r)=L_e(w_r)+\int_{\Omega^+}\
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.6k 词 
+            3.8k 词 
           </div>
         </div>
         
@@ -323,31 +431,32 @@ Lr(wr)=Le(wr)+∫Ω+ρ(wi,wr)Li(wi)(n⋅wi)dwiL_r(w_r)=L_e(w_r)+\int_{\Omega^+}\
           <div class="truncate-text">
             
               
-光与颜色
-电磁频谱
-电磁频谱是指电磁辐射按照频率fff或波长TTT的顺序排列所形成的连续范围。它涵盖了从极低频的无线电波到极高频的伽马射线
+光与颜色电磁频谱电磁频谱是指电磁辐射按照频率$f$或波长$T$的顺序排列所形成的连续范围。它涵盖了从极低频的无线电波到极高频的伽马射线
 
+$T$（$s$）是电磁波上相继的两个具有相同振幅的点之间的时间，频率$f=\frac{1}{T}$（$s^{-1}$）
 
-TTT（sss）是电磁波上相继的两个具有相同振幅的点之间的时间，频率f=1Tf=\frac{1}{T}f=T1​（s−1s^{-1}s−1）
+电磁波在单个周期中传播距离$\lambda=\frac{c}{f}$
 
-
-电磁波在单个周期中传播距离λ=cf\lambda=\frac{c}{f}λ=fc​
-
-
-在真空中，光速c=3×108ms−1c=3\times 10^8ms^{-1}c=3×108ms−1
+在真空中，光速$c=3\times 10^8ms^{-1}$
 
 
 
-tipstipstips 波长的国际单位是nm,1nm=10−9mnm,1nm=10^{-9}mnm,1nm=10−9m
+$tips$ 波长的国际单位是$nm,1nm=10^{-9}m$
 
 在电磁辐射的波动模型中，光被描述为在空间中横向振荡传播的电场和磁场
-可见光（Visible lightVisible\ lightVisible light）：波长范围大约从750nm750nm750nm到400nm400nm400nm，这是人类眼睛能够感知的电磁辐射范围，每一种波长对应一光谱颜色
+可见光（$Visible\ light$）：波长范围大约从$750nm$到$400nm$，这是人类眼睛能够感知的电磁辐射范围，每一种波长对应一光谱颜色
 
-颜色心理学特征
-人对光的感知主要由以下因素影响
+颜色心理学特征人对光的感知主要由以下因素影响
+
+主频率：人眼接收光波的主要可见光频率段
+
+亮度：人眼接收到的光能量，这会在辐射度量中详细介绍
+
+饱和度：色彩理论术语，这里只考虑光中包含的波长范围较窄，实际还有很多影响因素，比如对比度，亮度
 
 
-主频率：人眼接收光波的主要可...
+
+辐射度量光照模型基本的光照模型利用经验来近似光照效果，而...
             
           </div>
         
@@ -411,7 +520,7 @@ tipstipstips 波长的国际单位是nm,1nm=10−9mnm,1nm=10^{-9}mnm,1nm=10−9m
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.4k 词 
+            1.6k 词 
           </div>
         </div>
         
@@ -423,29 +532,36 @@ tipstipstips 波长的国际单位是nm,1nm=10−9mnm,1nm=10^{-9}mnm,1nm=10−9m
           <div class="truncate-text">
             
               
-切线空间
-首先定义切线空间的坐标轴
+切线空间首先定义切线空间的坐标轴
+
+切线（$T$）轴：纹理坐标中$U$坐标方向向量
+
+副切线（$B$）轴：纹理坐标中$V$方向向量
+
+法线（$N$）轴：纹理贴图所映射表面的法线
 
 
-切线（TTT）轴：纹理坐标中UUU坐标方向向量
-
-
-副切线（BBB）轴：纹理坐标中VVV方向向量
-
-
-法线（NNN）轴：纹理贴图所映射表面的法线
-
-
-从定义就可以立即得到Tz=Bz=0T_z=B_z=0Tz​=Bz​=0
-设纹理贴图映射的对象表面中能确定一个平面的三点P0,P1,P2P_0,P_1,P_2P0​,P1​,P2​和对应的纹理坐标(u0,v0),(u1,v1),(u2,v2)(u_0,v_0),(u_1,v_1),(u_2,v_2)(u0​,v0​),(u1​,v1​),(u2​,v2​)
+从定义就可以立即得到$T_z=B_z=0$
+设纹理贴图映射的对象表面中能确定一个平面的三点$P_0,P_1,P_2$和对应的纹理坐标$(u_0,v_0),(u_1,v_1),(u_2,v_2)$
 则有
-P1−P0=(u1−u0)T+(v1−v0)BP2−P0=(u2−u0)T+(v2−v0)B
+
 \begin{align}
-P_1-P_0 &amp;= (u_1-u_0)T+(v_1-v_0)B\\\\
-P_2-P_0 &amp;= (u_2-u_0)T+(v_2-v_0)B
-\end{align}
-P1​−P0​P2​−P0​​=(u1​−u0​)T+(v1​−v0​)B=(u2​−u0​)T+(v2​−v0​)B​​
-展开为矩阵表...
+P_1-P_0 &= (u_1-u_0)T+(v_1-v_0)B\\\\
+P_2-P_0 &= (u_2-u_0)T+(v_2-v_0)B
+\end{align}展开为矩阵表达
+
+\left[\begin{matrix}
+x_1-x_0 & x_2-x_0\\\\
+y_1-y_0 & y_2-y_0
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+T_x & B_x\\\\
+T_y & B_y
+\end{matrix}\right]
+\left[\begin{matrix}
+u_1-u_0 & u_2-v_0\\\\
+u_1-v_0 ...
             
           </div>
         
@@ -509,7 +625,7 @@ P1​−P0​P2​−P0​​=(u1​−u0​)T+(v1​−v0​)B=(u2​−u0​)T
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            575 词 
+            394 词 
           </div>
         </div>
         
@@ -522,28 +638,25 @@ P1​−P0​P2​−P0​​=(u1​−u0​)T+(v1​−v0​)B=(u2​−u0​)T
             
               
 法线变换
-
 在对模型顶点做仿射变换时，对应法线不能做同样的变换
-
-
 以下的分析都是基于线性代数，向量按列排列，仿射变换都是可逆过程
 
-设平面切线向量为RRR，法线向量为NNN，仿射变换矩阵MMM，则有
-RTN=0MR=R′
+设平面切线向量为$R$，法线向量为$N$，仿射变换矩阵$M$，则有
+
 \begin{align}
-R^TN &amp;= 0\tag{I}\\\\
-MR &amp;= R^\prime
-\end{align}
-RTNMR​=0=R′​(I)​若变换后的表面法线为N′N^\primeN′，且假设N′=GNN^\prime=GNN′=GN，则有
-(R′)TN′=0(MR)T(GN)=0RTMTGN=0RT(MTG)N=0
+R^TN &= 0\tag{I}\\\\
+MR &= R^\prime
+\end{align}若变换后的表面法线为$N^\prime$，且假设$N^\prime=GN$，则有
+
 \begin{align}
-(R^{\prime})^TN^\prime &amp;= 0\\\\
-(MR)^T(GN) &amp;= 0\\\\
-R^TM^TGN &amp;= 0\\\\
-R^T(M^TG)N &amp;= 0
-\end{align}
-(R′)TN′(MR)T(GN)RTMTGNRT(MTG)N​=0=0=0=0​​
-若假设成立，则可以有MTG=IM^TG=IMTG=I，此时尾式代入(I)(I...
+(R^{\prime})^TN^\prime &= 0\\\\
+(MR)^T(GN) &= 0\\\\
+R^TM^TGN &= 0\\\\
+R^T(M^TG)N &= 0
+\end{align}若假设成立，则可以有$M^TG=I$，此时尾式代入$(I)$式，使得假设成立，也就是说，可以使用
+G=(M^T)^{-1}=(M^{-1})^T这个式子也解释了法线变换再何时需要和顶点变换区别，即仿射变换包含非均匀缩放时
+
+
             
           </div>
         
@@ -607,7 +720,7 @@ R^T(M^TG)N &amp;= 0
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.7k 词 
+            2.5k 词 
           </div>
         </div>
         
@@ -620,35 +733,28 @@ R^T(M^TG)N &amp;= 0
             
               
 曲面细分
-
 曲面细分（Surface Subdivision）通过在网格模型上递归运用细分规则使多边形网格变得更加平滑和精细
+$tips$ 这里隐含地说明了是对采样后的曲面操作，对象是一群顶点，而不是多项式函数
 
-
-tipstipstips 这里隐含地说明了是对采样后的曲面操作，对象是一群顶点，而不是多项式函数
-
-细分规则主要有LoopLoopLoop细分，Catmull−ClarkCatmull-ClarkCatmull−Clark细分
+细分规则主要有$Loop$细分，$Catmull-Clark$细分
 因为生成的过程需要对不同类型的曲面顶点操作，所有定义
 
+点规则：原始（递归每一步开始）网格顶$V$的操作
 
-点规则：原始（递归每一步开始）网格顶VVV的操作
+边规则：原始边生成新点$E$的操作
 
-
-边规则：原始边生成新点EEE的操作
-
-
-面规则：在网格中多边形面中生成点FFF如何操作
+面规则：在网格中多边形面中生成点$F$如何操作
 
 
 
-tips1tips_1tips1​ 这里不使用顶点，而用点，表述曲线上的采样点，因为退化也是评判曲面细分技术的度量规则
+$tips_1$ 这里不使用顶点，而用点，表述曲线上的采样点，因为退化也是评判曲面细分技术的度量规则
+$tips_2$ 虽然算法是递归进行的，但这里描述的算法不需要隔代递归层数据，用角标$\prime$表示新的网格点
 
 
-tips2tips_2tips2​ 虽然算法是递归进行的，但这里描述的算法不需要隔代递归层数据，用角标′\prime′表示新的网格点
-
-
-LoopLoopLoop细分
-LoopLoopLoop细分运用的场景是三角形网格，在边上增加顶点，并且调整原始点位置
-过顶点的重新定位，LoopLoopLoop细分能...
+$Loop$细分$Loop$细分运用的场景是三角形网格，在边上增加顶点，并且调整原始点位置
+过顶点的重新定位，$Loop$细分能够生成$C^2$连续的曲面
+边规则在每条边上生成新的点
+E=\frac{3}{8}(A+B)+\frac{1}{8}(C+D)在不考虑边界条件的情况下，三角形网格...
             
           </div>
         
@@ -712,7 +818,7 @@ LoopLoopLoop细分运用的场景是三角形网格，在边上增加顶点，�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.4k 词 
+            959 词 
           </div>
         </div>
         
@@ -727,17 +833,18 @@ LoopLoopLoop细分运用的场景是三角形网格，在边上增加顶点，�
 
 诸如贝塞尔曲线等，使用控制点来建立边界条件的样条，当其任意控制点更改，会触发连锁反应，需要重新生成新的曲线才能保持连续性，而B样条允许局部控制曲线/面
 
-BBB样条定义
+$B$样条定义
+基函数$B$样条的基函数是递归得到的，有$n+1$个控制点，$0\le i\le n$的基函数定义为
 
-基函数
-BBB样条的基函数是递归得到的，有n+1n+1n+1个控制点，0≤i≤n0\le i\le n0≤i≤n的基函数定义为
-Bi0(u)=1 ,if ti≤u≤ti+1Bi0(u)=0 , othersBip(u)=u−titi+p−tiBip−1+ti+p+1−uti+p+1−ti+1Bi+1p−1
 \begin{align}
-B_i^0(u) &amp;=1\ ,if\ t_i\le u\le t_{i+1}\\\\
-B_i^0(u) &amp;=0\ ,\ others\\\\
-B_i^p(u) &amp;=\frac{u-t_i}{t_{i+p}-t_i}B_i^{p-1}+\frac{t_{i+p+1}-u}{t_{i+p+1}-t_{i+1}}B_{i+1}^{p-1}
-\end{align}
-Bi0​(u)Bi0​(u)Bip​(u)​=1 ,if ti​≤u≤ti+1​=0 , othe...
+B_i^0(u) &=1\ ,if\ t_i\le u\le t_{i+1}\\\\
+B_i^0(u) &=0\ ,\ others\\\\
+B_i^p(u) &=\frac{u-t_i}{t_{i+p}-t_i}B_i^{p-1}+\frac{t_{i+p+1}-u}{t_{i+p+1}-t_{i+1}}B_{i+1}^{p-1}
+\end{align}其中，节点序列是非降序的实数序列，$t_i$指第$i$个节点
+解释递推关系
+初始化：$0$阶$B$样条基函数$B_i^0$在的变量$u$在节点向量$t_i$和$t_{i=1}$之间为1，其他地方为0
+
+递推步骤：高阶基函数$B_i^p$是低阶基函数$B_i^{p-1}$和$B_{i+1}^{i-1}$的线性组合，正比于$u$与$...
             
           </div>
         
@@ -801,7 +908,7 @@ Bi0​(u)Bi0​(u)Bip​(u)​=1 ,if ti​≤u≤ti+1​=0 , othe...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.5k 词 
+            1.8k 词 
           </div>
         </div>
         
@@ -814,46 +921,38 @@ Bi0​(u)Bi0​(u)Bip​(u)​=1 ,if ti​≤u≤ti+1​=0 , othe...
             
               
 定义
-
-样条（SplineSplineSpline）在数学和图形学中指的是一种通过一系列控制点来生成平滑曲线或曲面的方法
+样条（$Spline$）在数学和图形学中指的是一种通过一系列控制点来生成平滑曲线或曲面的方法
 
 
 特征
-
-
 分段定义：样条曲线通常由多个数学上多项式函数的曲线段组成，每一段曲线在其定义的区间内都是光滑的，且在控制点处与相邻的曲线段相接
 
-
 平滑性：样条曲线在控制点处具有连续的一阶甚至高阶导数，满足特定的连续性条件
-
 
 范围：大多数样条曲线在控制点形成的凸壳内
 
 
 
-连续性
-连续性可以定量分析曲线的平滑程度，简单来说，满足高阶的连续性条件的曲线更加平滑
+连续性连续性可以定量分析曲线的平滑程度，简单来说，满足高阶的连续性条件的曲线更加平滑
 
-tipstipstips：高阶连续性建立在底阶连续性之上，满足高阶连续性的曲线一定也满足低阶连续性
+$tips$：高阶连续性建立在底阶连续性之上，满足高阶连续性的曲线一定也满足低阶连续性
 
 参数连续性
-
-参数连续性条件涉及到曲线或曲面在参数空间中的连续性，通常用CnC^nCn来表示，其中nnn是连续性的阶数
-
+参数连续性条件涉及到曲线或曲面在参数空间中的连续性，通常用$C^n$来表示，其中$n$是连续性的阶数
 
 
-C0C^0C0连续性：相邻分段曲线/面段在它们的公共边界上具有相同的函数值。这个是最基本的，分段连接条件
+$C^0$连续性：相邻分段曲线/面段在它们的公共边界上具有相同的函数值。这个是最基本的，分段连接条件
 
+$C^1$连续性：切向量的连续性，端点处的函数一阶导数值相同
 
-C1C^1C1连续性：切向量的连续性，端点处的函数一阶导数值相同
-
-
-C2C^2C2连续性：曲率的连续性，端点处的的函数二阶导数相同
+$C^2$连续性：曲率的连续性，端点处的的函数二阶导数相同
 
 
 几何连续性
+几何连续性条件涉及到曲线或曲面在欧几里得空间中的连续性,通常用$G^n$来表示
 
-几何连续性条件涉...
+
+$...
             
           </div>
         
@@ -917,7 +1016,7 @@ C2C^2C2连续性：曲率的连续性，端点处的的函数二阶导数相同
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3k 词 
+            2.1k 词 
           </div>
         </div>
         
@@ -929,17 +1028,14 @@ C2C^2C2连续性：曲率的连续性，端点处的的函数二阶导数相同
           <div class="truncate-text">
             
               
-贝塞尔曲线多项式
-n+1n+1n+1个控制点序列(P0 , P1 , ⋯ , Pn)(P_0\ ,\ P_1\ ,\ \cdots\ ,\ P_{n})(P0​ , P1​ , ⋯ , Pn​)定义的nnn次贝塞尔曲线多项式函数
-P(u)=∑i=0nPiBn(i , u)Bn(i , u)=(ni)ui(1−u)n−i
+贝塞尔曲线多项式$n+1$个控制点序列$(P_0\ ,\ P_1\ ,\ \cdots\ ,\ P_{n})$定义的$n$次贝塞尔曲线多项式函数
+
 \begin{align}
-P(u) &amp;= \sum_{i=0}^{n}P_iB_n(i\ ,\ u)\\\\
-B_n(i\ ,\ u) &amp;= \bigl(\begin{smallmatrix}n\\\\ i\end{smallmatrix}\bigr)u^i(1-u)^{n-i}
+P(u) &= \sum_{i=0}^{n}P_iB_n(i\ ,\ u)\\\\
+B_n(i\ ,\ u) &= \bigl(\begin{smallmatrix}n\\\\ i\end{smallmatrix}\bigr)u^i(1-u)^{n-i}
 \end{align}
-P(u)Bn​(i , u)​=i=0∑n​Pi​Bn​(i , u)=(ni​)ui(1−u)n−i​​
-伯恩斯坦多项式
-伯恩斯坦多项式（Bernstein polynomial）就是贝塞尔曲线定义式中的函数
-Bn(i , u)=(ni)ui(1−u)n−iB_n(i\ ,\ u)=\bigl(\begin{smallmatrix}n\\\\...
+伯恩斯坦多项式伯恩斯坦多项式（Bernstein polynomial）就是贝塞尔曲线定义式中的函数
+B_n(i\ ,\ u)=\bigl(\begin{smallmatrix}n\\\\ i\end{smallmatrix}\bigr)u^i(1-u)^{n-i}其中$\bigl(\begin{smallmatrix}n\\\\ i\end{smallmatrix}\bigr)$为组合数$\bigl(\begin{smallmatrix}n\\\\ i\end{smallmatrix}\bigr)=\frac{n!}{i!(n-...
             
           </div>
         
@@ -1003,7 +1099,7 @@ Bn(i , u)=(ni)ui(1−u)n−iB_n(i\ ,\ u)=\bigl(\begin{smallmatrix}n\\\\...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.3k 词 
+            1.7k 词 
           </div>
         </div>
         
@@ -1015,23 +1111,29 @@ Bn(i , u)=(ni)ui(1−u)n−iB_n(i\ ,\ u)=\bigl(\begin{smallmatrix}n\\\\...
           <div class="truncate-text">
             
               特性
+$tips$ $ST$表是一个离线的算法，他不止能做RMQ问题，比如序列$gcd$
 
-tipstipstips STSTST表是一个离线的算法，他不止能做RMQ问题，比如序列gcdgcdgcd
+定义运算元素集$(a\ ,\ b\ ,\ c\ ,\ \cdots)$在其上的运算$*$存在以下性质
 
-定义运算元素集(a , b , c , ⋯ )(a\ ,\ b\ ,\ c\ ,\ \cdots)(a , b , c , ⋯)在其上的运算∗*∗存在以下性质
+$(aa)^n\ ,\ n\ge1$，*可重复贡献
 
-
-(a∗a)n , n≥1(a*a)^n\ ,\ n\ge1(a∗a)n , n≥1，可重复贡献
-
-
-a∗b=b∗aa*b=b*aa∗b=b∗a，满足交换律
+$ab=ba$，满足交换律
 
 
 
-原理
-定义运算元素序列nums=(a1 , a2 , ⋯ , an−1)nums=(a_1\ ,\ a_2\ ,\ \cdots\ ,\ a_{n-1})nums=(a1​ , a2​ , ⋯ , an−1​)和运算符DPDPDP和FFF（这里使用两种符号是因为接下来要递归分析）
-DPDPDP作用于区间，表示为DP[i , j]DP[i\ ,\ j]DP[i , j]，代表着对序列numsnumsnums区间[i , i+2j−1][i\ ,\ i+2^j-1][i , i+2j−1]内的元素至少做一次运算DPDPDP后产生的结果
-特别的，当D...
+原理定义运算元素序列$nums=(a_1\ ,\ a_2\ ,\ \cdots\ ,\ a_{n-1})$和运算符$DP$和$F$（这里使用两种符号是因为接下来要递归分析）
+$DP$作用于区间，表示为$DP[i\ ,\ j]$，代表着对序列$nums$区间$[i\ ,\ i+2^j-1]$内的元素至少做一次运算$DP$后产生的结果
+特别的，当$DP$作用于两个元素时，使用符号$F(a\ ,\ b)$区分
+则有递归式
+
+$DP[i\ ,\ j]=F(DP[i][j-1]\ ,\ DP[i+2^{j-1}][j-1])$
+
+基准情况$F(a\ ,\ a)$视运算规则
+
+
+把上面的区间规则代入就能证明
+求值因为$i\ ,\ j$都是正整数，储存$DP$后就能快速查找长度为$2^j$的序列$F$运算结果
+想要...
             
           </div>
         
@@ -1044,98 +1146,6 @@ DPDPDP作用于区间，表示为DP[i , j]DP[i\ ,\ j]DP[i , j]，代表着�
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/26/8tq6UpmX2VgJEue.jpg)" 
       href="/2024/10/26/ST-table/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Linear-Interpolation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/25/Linear-Interpolation/">线性插值</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-25T04:35:35.000Z" itemprop="datePublished">2024-10-25</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            7.7k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-插值方法
-
-插值方法是一类数学工具，用于估计函数在未知点上的值，基于该函数在已知点上的值。简单来说，插值就是在一系列离散的数据点之间找到一条连续的曲线或函数，使得这条曲线或函数能够尽可能地反映数据的特征
-
-简单来说，插值操作就是利用函数和已知点算出未知点，在计算机图形学中，常常会出现采样数据不够的情况，通过插值预估出样点，达到反走样的效果
-线性插值
-
-线性插值假设在两个已知点之间，变量的变化率是恒定的，因此可以用一条直线来近似这两个点之间的值
-
-在计算机图形学中，有些变化率即使不是恒定的，通常是复杂的，也会在使用线性插值，比如插值法线，颜色值
-多项式（样条）插值主要用来生成曲线
-
-线性插值算法
-使用方向
-定义线段上两个端点A , BA\ ,\ BA , B，线段上点可以表示为
-P(s)=A+s(B−A)P(s)=A+s(B-A)P(s)=A+s(B−A)其中0≤s≤1 , s=∣P(s)A∣∣AB∣0\le s\le 1\ ,\ s=\frac{\vert P(s)A\vert}{\vert AB\vert}0≤s≤1 , s=∣AB∣∣P(s)A∣​
-假设现在要插值点PPP的...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/25/Tp1oGbN5uCmviMf.jpg)" 
-      href="/2024/10/25/Linear-Interpolation/" 
     >
        
       <div class="overlay">

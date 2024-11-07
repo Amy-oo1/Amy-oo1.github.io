@@ -143,14 +143,14 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
+                计算机图形学
+                <div class="category-count">25</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
                 <div class="category-count">4</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
-                计算机图形学
-                <div class="category-count">24</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -191,6 +191,110 @@
    
 
 
+<article id="post-DFA-Minimize" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/18/DFA-Minimize/">标准DFA状态数量最小化</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-18T15:22:18.000Z" itemprop="datePublished">2024-10-18</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.9k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+同构自动机实践表明，用子集构造法生成的DFA可能存在同构，即一个自动机至少存在这样的两个状态
+
+都不是接受状态
+对于任意相同的输入，转移到同一个状态
+
+存在同构的的自动机可以合并这样的节点，减少节点数量
+
+为了定量描述算法，这里给出符号定义
+
+$DFA$的状态数量为$N$
+小写字母$a$表示DFA状态,带角标的小写字母$a_1$表示终结状态
+大写字母$A$表式任意$DFA$状态非空子集组
+$DFA$的输入符号集为$\sum$,希腊字母表示$\alpha$表示特定的转换条件
+若无其他说明，表示不加区分，比如非法转换状态$\epsilon$
+
+
+朴素模拟基于同构的定义，可以
+
+暴力枚举任意两个非终结状态
+用$\Vert\sum\Vert$个输入符号做同构测试
+对状态集中的所有出边重定向
+
+时间复杂度为
+Max\ O(N*(N^2*\Vert\sum\Vert)+N*\Vert\sum\Vert)=O(N^3*\Vert\sum\Vert)实际上系数$N$是消去同构的次数，实践中高度同构的可能性很低
+
+逆向处理
+朴素的处理是证明存在同构，而这里要介绍的是排除不同构
+
+定义$DFA$的...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/17/sOwk3GDF4iZCa9W.jpg)" 
+      href="/2024/10/18/DFA-Minimize/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
 <article id="post-NFA-to-DFA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -221,7 +325,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.9k 词 
+            4.4k 词 
           </div>
         </div>
         
@@ -233,17 +337,15 @@
           <div class="truncate-text">
             
               
-合并NFANFANFA
-到目前为止，只讨论了识别一个词语的情况，如果有多个词语，分别构造NFANFANFA，重复扫描识别可以实现，一趟扫描需要合并
-NFANFANFA的性质允许简单的合并
+合并$NFA$到目前为止，只讨论了识别一个词语的情况，如果有多个词语，分别构造$NFA$，重复扫描识别可以实现，一趟扫描需要合并
+$NFA$的性质允许简单的合并
 
-新建起点状态sss，在所有词语的NFANFANFA之间连一条标号为ϵ\epsilonϵ的边
+新建起点状态$s$，在所有词语的$NFA$之间连一条标号为$\epsilon$的边
 把所有终点状态附加状态，表明是哪个词语的识别完成
 
-冲突解决
-实际上，词语定义之间存在交集和包含关系，通俗讲
+冲突解决实际上，词语定义之间存在交集和包含关系，通俗讲
 
-字符序列SDSDSD是词语S和词语D还是单个词语SD
+字符序列$SD$是词语S和词语D还是单个词语SD
 一个序列和多个正则表达式匹配
 
 这里处理的方法是
@@ -252,16 +354,17 @@ NFANFANFA的性质允许简单的合并
 给所有的词语定义附上优先级
 
 
-确定有穷自动机(DFA)(DFA)(DFA)
-DFADFADFA的定义是相对于NFANFANFA的
+确定有穷自动机$(DFA)$$DFA$的定义是相对于$NFA$的
 
-不允许ϵ\epsilonϵ标记的边
-对于每一个状态a和∑\sum∑中每个的输入符号β\betaβ，有且只有一条标号为β\betaβ的边离开a
+不允许$\epsilon$标记的边
+对于每一个状态a和$\sum$中每个的输入符号$\beta$，有且只有一条标号为$\beta$的边离开a
 
 
-tipstipstips 第二条定义规定了每一个状态有∥∑∥\lVert \sum\lVert∥∑∥条不同的出边，可以通过引入无效状态定义非法路径
+$tips$ 第二条定义规定了每一个状态有$\lVert \sum\lVert$条不同的出边，可以通过引入无效状态定义非法路径
 
-引入DFADFADFA的可以解决NFANFAN...
+引入$DFA$的可以解决$NFA$中因为$\epsilon$标号导致的高额开销
+
+子集构造法子集构造法可以将$NFA$转为识别同样语言的$D...
             
           </div>
         
@@ -325,7 +428,7 @@ tipstipstips 第二条定义规定了每一个状态有∥∑∥\lVert \sum\lVer
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.4k 词 
+            5.1k 词 
           </div>
         </div>
         
@@ -337,8 +440,7 @@ tipstipstips 第二条定义规定了每一个状态有∥∑∥\lVert \sum\lVer
           <div class="truncate-text">
             
               
-词法分析器功能
-词法分析器可以看做这样一个黑盒
+词法分析器功能词法分析器可以看做这样一个黑盒
 接收输入
 
 字符组成的文本，定义了可用字符集
@@ -352,11 +454,19 @@ tipstipstips 第二条定义规定了每一个状态有∥∑∥\lVert \sum\lVer
 通俗讲，词法分析器是字符串匹配算法的推广，字符串匹配在字符串中找特定字符，词法分析器在一串字符中找一类字符(正则定义)
 
 
-正则语言描述
-词语的字符定义可以用正则表达式表示，即这里处理的词语都在正则语言可表示的范围内
-定义字符(串)L,RL,RL,R则有(优先级逐渐变高)
-L∣M={S∣S=L or S=R}(或)L\vert M=\{S\vert S=L\ or\ S=R\}\tag{或}L∣M={S∣S=L or S=R}(或)L∘M={S∣S=LM}(并)L\circ M=\{S\vert S=LM\}\tag{并}L∘M={S∣S=LM}(并)L∗={(L∘L)n∣(L∘L)0=ϵ}(Kleene闭包)L^*=\{(L\circ L)^n\vert(L\circ L)^0=\epsilon\}\tag{Kleene闭包}L∗={(L∘L)n∣(L∘L)0=ϵ}(Kleene闭包)
-tipstipst...
+正则语言描述词语的字符定义可以用正则表达式表示，即这里处理的词语都在正则语言可表示的范围内
+定义字符(串)$L,R$则有(优先级逐渐变高)
+L\vert M=\{S\vert S=L\ or\ S=R\}\tag{或}L\circ M=\{S\vert S=LM\}\tag{并}L^*=\{(L\circ L)^n\vert(L\circ L)^0=\epsilon\}\tag{Kleene闭包}
+$tips$ 若一个语言为空，表示为$\epsilon$，空语言存在是有意义的，当一个词语存在可选部分时，它可以作为占位符
+
+
+解析正则语言现在词语有了明确定义，下一步目标是将他从字符串中识别出来
+有穷自动机
+自动机是一个对信号序列进行判定的数学模型,此处为字符序列
+
+这里我用图描述自动机
+
+...
             
           </div>
         
@@ -420,7 +530,7 @@ tipstipst...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.8k 词 
+            1.8k 词 
           </div>
         </div>
         
@@ -432,27 +542,31 @@ tipstipst...
           <div class="truncate-text">
             
               
-tipstipstips 此处nnn和fff都为无向距离
+$tips$ 此处$n$和$f$都为无向距离
 
 
-投影
-把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上,在计算在图形学中，将要观察的视域通过平移和缩放归一化到[−1,1]3[-1,1]^3[−1,1]3的333维空间内
+投影把相机位置固定好后，需要归一化观测模型，把模型投影到2D屏幕上,在计算在图形学中，将要观察的视域通过平移和缩放归一化到$[-1,1]^3$的$3$维空间内
 
-正射投影
-正射投影是一种平行投影，场景模型只会做线性变换，平行的场景经过正射投影后显示后，仍能得保持平行
+正射投影正射投影是一种平行投影，场景模型只会做线性变换，平行的场景经过正射投影后显示后，仍能得保持平行
 
-正射投影矩阵
-依照定义，只需要对视域数字化输入
+正射投影矩阵依照定义，只需要对视域数字化输入
 
-相机到近/远裁剪平面的距离n/fn/fn/f
-裁剪平面左下角坐标(L , B)(L\ ,\ B)(L , B)和右上角坐标(R , T)(R\ ,\ T)(R , T)
+相机到近/远裁剪平面的距离$n/f$
+裁剪平面左下角坐标$(L\ ,\ B)$和右上角坐标$(R\ ,\ T)$  
 
 先对裁剪空间平移再放缩得到正射投影矩阵
-O=[2R−L00002T−B00002f−n00001][100−L+R2010−B+T2001n+f20001]=[2R−L00−L+RR−L02T−B0−B+TT−B002f−nn+ff−n0001]
+
 O=
 \left[\begin{matrix}
-\frac{2}{R-L} &amp; 0 &amp; 0 &amp; 0\\\\
-0 &amp; \frac{2}...
+\frac{2}{R-L} & 0 & 0 & 0\\\\
+0 & \frac{2}{T-B} & 0 & 0\\\\
+0 & 0 & \frac{2}{f-n} & 0\\\\
+0 & 0 & 0 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+1 & 0 & 0 & -\frac{L+R}{2}\\\\
+0 & 1 & 0 & -\frac{B+T}{2}\\\\
+0...
             
           </div>
         
@@ -516,7 +630,7 @@ O=
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.3k 词 
+            2.7k 词 
           </div>
         </div>
         
@@ -528,14 +642,21 @@ O=
           <div class="truncate-text">
             
               
-非齐次坐标
-非齐次坐标表示为(x , y)(x\ ,\ y)(x , y)或(x , y , z)(x\ ,\ y\ ,\ z)(x , y , z)，对应的标准齐次坐标为(x , y , 1)(x\ ,\ y\ ,\ 1)(x , y , 1)或(x , y , z , 1)(x\ ,\ y\ ,\ z\ ,\ 1)(x , y , z , 1)
+非齐次坐标非齐次坐标表示为$(x\ ,\ y)$或$(x\ ,\ y\ ,\ z)$，对应的标准齐次坐标为$(x\ ,\ y\ ,\ 1)$或$(x\ ,\ y\ ,\ z\ ,\ 1)$
 
 齐次坐标引入了放缩分量,即最后的非零坐标
 
-齐次坐标(x , y , N)(x\ ,\ y\ ,\ N)(x , y , N)或(x , y , z , N) , N&gt;0(x\ ,\ y\ ,\ z\ ,\ N)\ ,\ N &gt;0(x , y , z , N) , N&gt;0对应的标准形式为(xN , yN , 1)(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ 1)(Nx​ , Ny​ , 1)或(xN , yN , zN , 1)(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ \frac{z}{N}\ ,\ 1)(Nx​ , Ny​ , Nz​ , 1)
+齐次坐标$(x\ ,\ y\ ,\ N)$或$(x\ ,\ y\ ,\ z\ ,\ N)\ ,\ N &gt;0$对应的标准形式为$(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ 1)$或$(\frac{x}{N}\ ,\ \frac{y}{N}\ ,\ \frac{z}{N}\ ,\ 1)$
 
-tipstipsti...
+$tips$ 只能用标准化的齐次坐标生成向量
+
+
+向量的运用
+向量加/减法定义向量
+A=(A_x\ ,\ A_y\ ,\ A_z\ ,\ 0)B=(B_x\ ,\ B_y\ ,\ B_z\ ,\ 0)C=A\pm B则有
+C=(A_x\pm B_x\ ,\ A_y\pm B_y\ ,\ A_z\pm B_z\ ,\ 0)
+点积复用上面的定义
+A\cdot B=\Vert A\Vert\Vert B\Vert\cos(\langle A\...
             
           </div>
         
@@ -599,7 +720,7 @@ tipstipsti...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.2k 词 
+            1.5k 词 
           </div>
         </div>
         
@@ -612,28 +733,24 @@ tipstipsti...
             
               
 信号离散化
-
-物理上，气压变化引起空气分子振动，产生声波, 因此用波形图(t−t-t−振幅)图储存，这就是音频信号的时域表示
-理论上，图像可以无限分割到足够小，并用坐标表示位置，用颜色模型表示点信息，这就是图像信号的空域表示
+物理上，气压变化引起空气分子振动，产生声波, 因此用波形图($t-$振幅)图储存，这就是音频信号的时域表示
+理论上，图像可以无限分割到足够小，并用坐标表示位置，用颜色模型表示点信息，这就是图像信号的空域表示  
 
 然而，计算机只能处理有限的信息，因此需要将信号离散化
 
 采样:选择信号的有限个样点代表信号
-
-
 采样频率: 单位时间/空间内的样本数
 
 
-失真
-使用采用的方法会一定程度影响信号的准确性，如果一个信号偏差过大，就会发生失真，那奎斯特定理对这一现象给出定量分析
+失真使用采用的方法会一定程度影响信号的准确性，如果一个信号偏差过大，就会发生失真，那奎斯特定理对这一现象给出定量分析
 
 使用的采样频率至少是被采样信息频率的两倍
 
 
-傅里叶级数
-通过傅里叶级数，可以将满足狄利克雷条件(连续，单调，有界)的周期函数，表示为不同频率的正弦和余弦函数
-f(t)=∑−∞+∞[ancos⁡(nwt)+bnsin⁡(nwt)]f(t)=\sum_{-\infty}^{+\infty}\left[a_n\cos(nwt)+bn\sin(nwt)\right]f(t)=−∞∑+∞​[an​cos(nwt)+bnsin(nwt)]其中
-w=2πTw=\frac{2\pi}{T}w=T2π​an=1/T...
+傅里叶级数通过傅里叶级数，可以将满足狄利克雷条件(连续，单调，有界)的周期函数，表示为不同频率的正弦和余弦函数
+f(t)=\sum_{-\infty}^{+\infty}\left[a_n\cos(nwt)+bn\sin(nwt)\right]其中
+w=\frac{2\pi}{T}a_n=1/T\int_{-2/T}^{2/T}f(t)\cos(nwt)dtb_n=1/T\int_{-2/T}^{2/T}f(t)\sin(nwt)dt
+傅里叶变换$CFT$是傅里...
             
           </div>
         
@@ -697,7 +814,7 @@ w=2πTw=\frac{2\pi}{T}w=T2π​an=1/T...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4k 词 
+            2.7k 词 
           </div>
         </div>
         
@@ -709,17 +826,17 @@ w=2πTw=\frac{2\pi}{T}w=T2π​an=1/T...
           <div class="truncate-text">
             
               
-朴素算法
-一个nnn次多项式的点值表达式变换需要的工作就是计算项集
-{(xi , yi)∣0≤i≤n−1 , yi=∑j=0n−1ajxij}\{(x_i\ ,\ y_i)\vert 0\le i\le n-1\ ,\ y_i=\sum_{j=0}^{n-1}a_jx_i^j\}{(xi​ , yi​)∣0≤i≤n−1 , yi​=j=0∑n−1​aj​xij​}使用朴素方法需要O(n2)O(n^2)O(n2)的时间，用矩阵的逆(UL分解)求解逆变换需要O(n3)O(n^3)O(n3)时间，即便使用拉格朗日公式也需要O(n2)O(n^2)O(n2)的时间，整体上多项式乘法乘法并没有得到改进
+朴素算法一个$n$次多项式的点值表达式变换需要的工作就是计算项集
+\{(x_i\ ,\ y_i)\vert 0\le i\le n-1\ ,\ y_i=\sum_{j=0}^{n-1}a_jx_i^j\}使用朴素方法需要$O(n^2)$的时间，用矩阵的逆(UL分解)求解逆变换需要$O(n^3)$时间，即便使用拉格朗日公式也需要$O(n^2)$的时间，整体上多项式乘法乘法并没有得到改进
 
-折半原理
-定义主单位复数根
-Wn=e2πin(1)W_n=e^{\frac{2\pi i}{n}} \tag{1}Wn​=en2πi​(1)使得
-(Wnk)n=1(W_n^k)^n=1(Wnk​)n=1而Wn(k)W_n^{(k)}Wn(k)​称为n次单位复数根
+折半原理定义主单位复数根
+W_n=e^{\frac{2\pi i}{n}} \tag{1}使得
+(W_n^k)^n=1而$W_n^{(k)}$称为n次单位复数根
 
-根据公式(1)(1)(1)可得消去原理
-W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
+根据公式$(1)$可得消去原理
+W_{2n}^{2k}=\left(e\frac{2\pi}{2n}\right)^{2k}=\left(e\frac{2\pi}{n}\right)^k=W_n^k\tag{2}使用公式$(2)$对于$n$为偶数的主单位复数根，有折半原理
+\left(W_n^k\right)^2=\left(W_n^{k+n/2}\right)^2=W_{n/2}^k\tag{3}
+这表明n次单位复数根的平方集合等价...
             
           </div>
         
@@ -783,7 +900,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.9k 词 
+            1.7k 词 
           </div>
         </div>
         
@@ -795,15 +912,16 @@ W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
           <div class="truncate-text">
             
               
-多项式乘法
-次数界为nnn的多项式表示为
-A(x)=∑i=0n−1aiXiA(x)=\sum_{i=0}^{n-1}a_iX^iA(x)=i=0∑n−1​ai​Xi若
-B(x)=∑i=0n−1biXi , C(x)=∑i=02n−2ciXiB(x)=\sum_{i=0}^{n-1}b_iX^i\ ,\ C(x)=\sum_{i=0}^{2n-2}c_iX^iB(x)=i=0∑n−1​bi​Xi , C(x)=i=0∑2n−2​ci​Xi且C(x)C(x)C(x)为多项式A(x)A(x)A(x)和B(x)B(x)B(x)的乘积，则
-ci=∑j=0j=iaibi−jci=\sum_{j=0}^{j=i}a^ib^{i-j}ci=j=0∑j=i​aibi−j朴素多项式乘积算法时间复杂度为O(n2)O(n^2)O(n2)
+多项式乘法次数界为$n$的多项式表示为
+A(x)=\sum_{i=0}^{n-1}a_iX^i若
+B(x)=\sum_{i=0}^{n-1}b_iX^i\ ,\ C(x)=\sum_{i=0}^{2n-2}c_iX^i且$C(x)$为多项式$A(x)$和$B(x)$的乘积，则
+ci=\sum_{j=0}^{j=i}a^ib^{i-j}朴素多项式乘积算法时间复杂度为$O(n^2)$
 
-多项式加法
-使用霍纳规则，累乘xxx项，可以在O(n)O(n)O(n)时间完成多项式加法
-A(x)=ao+x(a1+x(a2⋯+xan⋯ ))A(x)=a_o+x(a_1+x(a_2\cdots+xa_n\cdots))A(x)=ao​+x(a1​+x(a2​⋯+x...
+多项式加法使用霍纳规则，累乘$x$项，可以在$O(n)$时间完成多项式加法
+A(x)=a_o+x(a_1+x(a_2\cdots+xa_n\cdots))123456auto Horner(int x, vector&lt;int&gt; nums)-&gt;int &#123;//nums正序	auto y = 0;	for (int i = nums.size() - 1; i &gt;= 0; --i)		y = nums[i] + x * y;	return y;&#125;
+
+点值表达式的转换一个多项式依靠各项的系数区分，一个$n$次多项式的系数表达式
+A=(a_0\ ,\ a_1\ ,\...
             
           </div>
         
