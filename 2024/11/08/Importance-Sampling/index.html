@@ -14,26 +14,26 @@
   
 
   
-  <title>法线变换推导 | Amy_blog</title>
+  <title>重要性采样 | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="法线变换 在对模型顶点做仿射变换时，对应法线不能做同样的变换 以下的分析都是基于线性代数，向量按列排列，仿射变换都是可逆过程  设平面切线向量为$R$，法线向量为$N$，仿射变换矩阵$M$，则有  \begin{align} R^TN &amp;&#x3D; 0\tag{I}\\\\ MR &amp;&#x3D; R^\prime \end{align}若变换后的表面法线为$N^\prime$，且假设$N^\prime&#x3D;GN$，则">
+  <meta name="description" content="蒙特卡洛积分设函数$f:S\to R$，随机变量$x\sim p$，根据大数定理$\lim_{N\to\infty}\frac{1}{N}\sum_{i&#x3D;1}^Np(x_i)&#x3D;1$可以估计函数$f(x)$的期望 E[f(x)]&#x3D;\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i&#x3D;1}^Nf(x)令$g&#x3D;fp$，可以得到用求和近似表示$g(x)$的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="法线变换推导">
-<meta property="og:url" content="http://example.com/2024/10/29/normal-transformation/index.html">
+<meta property="og:title" content="重要性采样">
+<meta property="og:url" content="http://example.com/2024/11/08/Importance-Sampling/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="法线变换 在对模型顶点做仿射变换时，对应法线不能做同样的变换 以下的分析都是基于线性代数，向量按列排列，仿射变换都是可逆过程  设平面切线向量为$R$，法线向量为$N$，仿射变换矩阵$M$，则有  \begin{align} R^TN &amp;&#x3D; 0\tag{I}\\\\ MR &amp;&#x3D; R^\prime \end{align}若变换后的表面法线为$N^\prime$，且假设$N^\prime&#x3D;GN$，则">
+<meta property="og:description" content="蒙特卡洛积分设函数$f:S\to R$，随机变量$x\sim p$，根据大数定理$\lim_{N\to\infty}\frac{1}{N}\sum_{i&#x3D;1}^Np(x_i)&#x3D;1$可以估计函数$f(x)$的期望 E[f(x)]&#x3D;\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i&#x3D;1}^Nf(x)令$g&#x3D;fp$，可以得到用求和近似表示$g(x)$的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/10/29/1EHbK7F2uhMx3ti.jpg">
-<meta property="article:published_time" content="2024-10-29T11:56:26.000Z">
-<meta property="article:modified_time" content="2024-10-29T12:26:00.476Z">
+<meta property="og:image" content="https://s2.loli.net/2024/11/08/CNhRLq6ZXAYI3Ug.png">
+<meta property="article:published_time" content="2024-11-07T23:49:23.000Z">
+<meta property="article:modified_time" content="2024-11-08T16:46:35.935Z">
 <meta property="article:author" content="Amy">
-<meta property="article:tag" content="Rasterization">
+<meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/10/29/1EHbK7F2uhMx3ti.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2024/11/08/CNhRLq6ZXAYI3Ug.png">
   
     <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
   
@@ -202,14 +202,14 @@
        
 
 
-<article id="post-normal-transformation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Importance-Sampling" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm38z7f4k003s3s6zesuxgpyp">
-        <img src="https://s2.loli.net/2024/10/29/1EHbK7F2uhMx3ti.jpg" itemprop="image">
+      <a class="article-gallery-img" rel="gallery_cm38z7f3z000u3s6zhbrl05jh">
+        <img src="https://s2.loli.net/2024/11/08/CNhRLq6ZXAYI3Ug.png" itemprop="image">
       </a>
     
   </div>
@@ -225,7 +225,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        法线变换推导
+        重要性采样
       </h1>
     
   
@@ -233,45 +233,125 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-29T11:56:26.000Z" itemprop="datePublished">2024-10-29</time>
+  <time class="dt-published" datetime="2024-11-07T23:49:23.000Z" itemprop="datePublished">2024-11-08</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+  <a class="meta-cate-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            394 词 
+            4.1k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <hr>
-<h3 id="法线变换"><a href="#法线变换" class="headerlink" title="法线变换"></a>法线变换</h3><blockquote>
-<p>在对模型顶点做<strong>仿射变换</strong>时，对应法线不能做同样的变换</p>
-<p>以下的分析都是基于线性代数，向量按列排列，仿射变换都是可逆过程</p>
+<h3 id="蒙特卡洛积分"><a href="#蒙特卡洛积分" class="headerlink" title="蒙特卡洛积分"></a>蒙特卡洛积分</h3><p>设函数$f:S\to R$，随机变量$x\sim p$，根据<strong>大数定理</strong>$\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^Np(x_i)=1$可以估计函数$f(x)$的期望</p>
+<script type="math/tex; mode=display">E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i=1}^Nf(x)</script><p>令$g=fp$，可以得到用求和近似表示$g(x)$的积分</p>
+<script type="math/tex; mode=display">\int_{x\in S}g(x)d\mu\approx\frac{1}{N}\sum_{i=1}^N\frac{g(x)}{p(x)}</script><p>为了得到更好的估计（方差最小）需要$p$和$f$<strong>形状相似</strong></p>
+<h4 id="蒙特卡洛方法的渲染方程"><a href="#蒙特卡洛方法的渲染方程" class="headerlink" title="蒙特卡洛方法的渲染方程"></a>蒙特卡洛方法的渲染方程</h4><p>将蒙特卡洛方法用在渲染方程</p>
+<script type="math/tex; mode=display">L_o(w_r)=\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)\cos\theta_idw_i</script><p>得到带概率密度函数$p(x)$的蒙特卡洛近似：</p>
+<script type="math/tex; mode=display">L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}</script><hr>
+<h3 id="重要性采样"><a href="#重要性采样" class="headerlink" title="重要性采样"></a>重要性采样</h3><blockquote>
+<p>重要性采样（$Importance\ Sampling$）是一种用于估计统计量（如期望值）的蒙特卡洛方法</p>
 </blockquote>
-<p>设平面切线向量为$R$，法线向量为$N$，仿射变换矩阵$M$，则有</p>
+<p>在光线追踪的蒙特卡洛方法中，为了更小的方程，需要$\rho(w,w_r)L_i(w)\cos\theta_i$正比于$p(w)$</p>
+<hr>
+<h3 id="Cosine-weighted-半球采样"><a href="#Cosine-weighted-半球采样" class="headerlink" title="$Cosine-weighted$半球采样"></a>$Cosine-weighted$半球采样</h3><blockquote>
+<p>这种采样技术用于模拟光线从一个表面向半球方向散射的情况，通常用于计算漫反射（diffuse）或高光（specular）光照的贡献。</p>
+</blockquote>
+<p>$Cosine-weighted$半球采样用于蒙特卡洛方法的渲染方程中，假定$p(w)$正比于$\cos\theta$</p>
 <script type="math/tex; mode=display">
 \begin{align}
-R^TN &= 0\tag{I}\\\\
-MR &= R^\prime
-\end{align}</script><p>若变换后的表面法线为$N^\prime$，且假设$N^\prime=GN$，则有</p>
+\int_{\Omega^+}p(w)dw &= \int_{\theta=0}^\frac{\pi}{2}\int_{\phi=0}^{2\pi}c\cos\theta \sin\theta d\theta\phi\\\\
+&= \pi c
+\end{align}</script><p>所以联合概率密度函数$p(w)=\frac{\cos\theta}{\pi},p(\theta,\phi)=\frac{\cos\theta\sin\theta}{\pi}$</p>
+<p>边缘概率密度函数</p>
 <script type="math/tex; mode=display">
 \begin{align}
-(R^{\prime})^TN^\prime &= 0\\\\
-(MR)^T(GN) &= 0\\\\
-R^TM^TGN &= 0\\\\
-R^T(M^TG)N &= 0
-\end{align}</script><p>若假设成立，则<strong>可以有</strong>$M^TG=I$，此时尾式代入$(I)$式，使得假设成立，也就是说，可以使用</p>
-<script type="math/tex; mode=display">G=(M^T)^{-1}=(M^{-1})^T</script><p>这个式子也解释了法线变换再何时需要和顶点变换区别，即<strong>仿射变换包含非均匀缩放</strong>时</p>
+p(\theta) &= \int_0^{2\pi}p(\theta,\phi)d\phi=\sin 2\theta\\\\
+p(\phi\vert\theta) &= \frac{p(\theta,\phi)}{p(\theta)}=\frac{1}{2\pi}
+\end{align}</script><p>边缘累计密度函数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+C_\theta(\theta_0) &= \int_0^{\theta_0}p(\theta)d\theta=\sin^2\theta\\\\
+C_\phi(\phi_0\vert\theta) &= \int_0^{\phi_0}p(\phi\vert\theta)d\theta=\frac{\phi}{2\pi}
+\end{align}</script><p>求反函数得到随机变量$\delta\in [0,1]$的表达式</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\theta=C_\theta^{-1}(\xi_1) &= \sin^{-1}\sqrt{\xi_1}\\
+\phi=C_\phi^{-1}(\xi_2) &= 2\pi\xi_2
+\end{align}</script><p>转化为三维空间上单位半球面坐标</p>
+<script type="math/tex; mode=display">
+\begin{align}
+x &= \sin\theta\cos\phi=\cos(2\pi\xi_2)\sqrt{\xi_1}\\
+y &= \sin\theta\sin\phi=\sin(2\pi\xi_2)\sqrt{\xi_1}\\
+z &= \cos\theta=\sqrt{1-\xi_1}
+\end{align}</script><hr>
+<h3 id="BRDF-重要性采样"><a href="#BRDF-重要性采样" class="headerlink" title="$BRDF$重要性采样"></a>$BRDF$重要性采样</h3><p>对$BRDF$项采样需要特定的模型，这里考虑$Cook-Torrance$微表面模型</p>
+<script type="math/tex; mode=display">\rho(w_i,w_r)=\frac{k_d}{\pi}+\frac{F(w_i,h)G(w_i,w_r,h)D(h)}{4(w_i\cdot n)(w_r\cdot n)}</script><p>其中</p>
+<ul>
+<li><p>$\frac{k_d}{\pi}$是漫反射项，$k_s\in [0,1]$为半球面方向反射系数$HDFR$</p>
+</li>
+<li><p>$h=\frac{w_r-w_i}{\lVert w_r-w_i\rVert}$为单位半程向量</p>
+</li>
+<li><p>$n$为表面法向量</p>
+</li>
+<li><p>$F(w_i,h)$为菲涅尔项，$G(w_i,w_r,h)$为几何遮蔽项，$G(h)$为法线分布函数</p>
+</li>
+</ul>
+<p>几何遮蔽函数$G$只只返回$0,1$表示是否可见，是不连续的，不对它考虑；为了简化计算也忽略菲涅尔项$F$，这里选用$GGX$法线分布函数</p>
+<script type="math/tex; mode=display">D(h)=\frac{\alpha^2}{\pi((n\cdot h)^2(\alpha^2-1)+1)^2}</script><p>其中$\alpha$是表面的不透明度</p>
+<h4 id="D-h-的采样"><a href="#D-h-的采样" class="headerlink" title="$D(h)$的采样"></a>$D(h)$的采样</h4><p>根据$D(h)$的定义式$D(h)=\frac{dA_h}{dAdh}$可得</p>
+<script type="math/tex; mode=display">\int_{\Omega^+}D(h)dAdh(n\cdot h)=dA</script><p>化简可以得方程</p>
+<script type="math/tex; mode=display">\int_{\Omega^+}(n\cdot h)D(h)dh=1</script><p>可以看出，被积函数正好是概率密度函数，这里还需要把积分项$dh$变换为$dw_i$，一入射角方向为$z$轴根据几何关系得</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{dh}{dw_i} &= \frac{\sin\theta_hd\theta_h\ d\phi}{\sin 2\theta_hd2\theta_hd\phi}\\\\
+&= \frac{\sin\theta_hd\theta_h\ d\phi}{4\sin\theta_{w_h}\cos\theta_hd\theta_hd\phi}\\\\
+&= \frac{1}{4\cos\theta_h}\\
+&= \frac{1}{4(w_i\cdot h)}
+\end{align}</script><p><em>不过由于计算的原因，在最后在做这个变换</em></p>
+<p>代入$GGX$法线分布函数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int_{\Omega^+}(n\cdot h)GXX(h)dh &= \int_{\Omega^+}\frac{(n\cdot h)\alpha^2}{\pi((n\cdot h)^2(\alpha^2-1)+1)^2}dh\\\\
+&= \int_{\theta=0}^{\frac{\pi}{2}}\int_{\phi=0}^{2\pi}\frac{\sin\theta\cos\theta\alpha^2}{\pi(\cos^2\theta(\alpha^2-1)+1)^2}d\theta d\phi\\\\
+\end{align}</script><p>所以对$h$采样的概率密度函数为</p>
+<script type="math/tex; mode=display">p_h(\theta,\phi)=\frac{\sin\theta\cos\theta\alpha^2}{\pi(\cos^2\theta(\alpha^2-1)+1)^2}</script><p>边缘概率密度</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p_h(\theta) &= \int_{\phi=0}^{2\pi}p_h(\theta,\phi)=\frac{2\sin\theta\cos\theta\alpha^2}{(\cos^2\theta(\alpha^2-1)+1)^2}\\\\
+p_h(\phi) &=\frac{p_h(\theta,\phi)}{p_h(\theta)}=\frac{1}{2\pi}
+\end{align}</script><p>累积密度函数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+c_h(\theta_0) &= \int_0^{\theta_0}p_h(\theta)d\theta\\\\
+&= \int_0^{\theta_0}\frac{2\sin\theta\cos\theta\alpha^2}{(\cos^2\theta(\alpha^2-1)+1)^2}d\theta\\\\
+&= \alpha^2\int_{\theta_0}^0\frac{d\cos^2\theta}{(\cos^2\theta(\alpha^2-1)+1)^2}\\\\
+&= \frac{\alpha^2}{\alpha^2-1}\int_{\cos^2\theta_0(\alpha^2-1)+1}^{\alpha^2}\frac{dx}{x^2}\\\\
+&= \frac{\alpha^2}{\cos^2\theta_0(\alpha^2-1)^2+(\alpha^2-1)}-\frac{1}{\alpha^2-1}
+\end{align}</script><p>其中，$x=\cos^2\theta(\alpha^2-1)+1$</p>
+<script type="math/tex; mode=display">c_h(\phi_0)=\int_0^{\phi_0}p_h(\phi)d\phi=\frac{\phi_0}{2\pi}</script><p>最后求逆</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\theta &= c_h^{-1}(\xi_1)=\cos^{-1}\sqrt{\frac{1-\xi_1}{1+\xi_1(\alpha^2-1)}}\\\\
+\phi &= c_h^{-1}(\xi_2)=2\pi\xi_2
+\end{align}</script><p>转换为笛卡尔坐标系</p>
+<script type="math/tex; mode=display">
+\begin{align}
+X_h &= \sin\theta\cos\phi=\sqrt{\frac{\xi_1\alpha^2}{1+\xi_1(\alpha^2-1)}}\cos(2\pi\xi_2)\\\\
+y_h &= \sin\theta\sin\phi=\sqrt{\frac{\xi_1\alpha^2}{1+\xi_1(\alpha^2-1)}}\sin(2\pi\xi_2)\\\\
+z_h &= \cos\theta=\sqrt{\frac{1-\xi_1}{1+\xi_1(\alpha^2-1)}}
+\end{align}</script><p>最后，这里只是对法线采样，需要转换到入射光线$w_r-w_i=w_h$</p>
 <hr>
 
         
@@ -287,25 +367,25 @@ R^T(M^TG)N &= 0
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/2024/10/29/Tangent%20Space/"
-      title="切线空间的运用"
+      href="/2025/10/01/Radiosity-modle/"
+      title="辐射度模型"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
       
-        切线空间的运用
+        辐射度模型
         
     </p>
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/10/29/Surface-Subdivision-Smplication/"
-      title="曲面细分和曲面简化"
+      href="/2024/11/07/Sampling/"
+      title="简单采样方法"
      >
 
     <p class="title-text">
       
-        曲面细分和曲面简化
+        简单采样方法
         
     </p>
     <i class="fa-solid fa-angle-right"></i>
