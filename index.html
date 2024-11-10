@@ -143,14 +143,14 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                数据结构
-                <div class="category-count">4</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
                 <div class="category-count">25</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                数据结构
+                <div class="category-count">4</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -172,6 +172,11 @@
                 编译原理
                 <div class="category-count">2</div>
             </a>
+        
+            <a class="category-link" href="/categories/OpenGL/">
+                OpenGL
+                <div class="category-count">1</div>
+            </a>
         </div>
     </div>
   </div>
@@ -182,7 +187,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
     </div>
   </div>
 
@@ -255,6 +260,95 @@
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/X7q1CdJnjOuVMak.png)" 
       href="/2025/10/01/Radiosity-modle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-VAO-State-Machine" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/10/VAO-State-Machine/">自动机上下文与VAO</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-10T15:05:18.000Z" itemprop="datePublished">2024-11-10</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/OpenGL/">OpenGL</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+OpenGLOpenGLOpenGL自身是一个巨大的状态机(State−MachineState-MachineState−Machine)：一系列的变量描述OpenGL此刻应当如何运行。OpenGL的状态通常被称为OpenGL上下文(Context)。我们通常使用如下途径去更改OpenGL状态：设置选项，操作缓冲。最后，我们使用当前OpenGL上下文来渲染。
+
+实践中不需要知道自动机是如何运行的，而编码可能会被某些上下文信息迷惑，尤其是在过程式编程中
+
+bufferbufferbuffer缓冲区
+
+在OpenGLOpenGLOpenGL中，缓冲区（BufferBufferBuffer）是用来存储数据的对象，它们位于显存中，可以存储顶点数据、索引数据、像素数据等
+
+接下来介绍GPUGPUGPU中的bufferbufferbuffer如何与CPUCPUCPU中的CppCppCpp程序交互，OpenGLOpenGLOpenGL使用自动机的上下文减少冗余
+glGenBufferglGenBufferglGenBuffer创建
+
+创建nnn个bufferbufferbuffer对象
+
+...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/10/yiqWExDBRVO5Mvs.jpg)" 
+      href="/2024/11/10/VAO-State-Machine/" 
     >
        
       <div class="overlay">
@@ -1015,127 +1109,6 @@ P(u)=uB+(1−u)A,0≤u≤1P(u)=uB+...
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/04/Ezi49Z8jDYokrIu.jpg)" 
       href="/2024/11/04/Homogeneous-Space-Clipping-%5B2%5D/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Homogeneous-Space-Clipping[1]" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/03/Homogeneous-Space-Clipping%5B1%5D/">齐次空间裁剪[1]</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-03T11:05:31.000Z" itemprop="datePublished">2024-11-03</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-裁剪
-
-裁剪是指在渲染场景之前，将位于摄像机视野之外的物体或者被其他物体遮挡的部分移除的过程。这样可以提高渲染效率，因为不需要绘制最终不会出现在屏幕上的物体。
-
-裁剪需要满足以下条件
-
-
-确定场景：不会再发生顶点变换，否则可能会把场景内的点裁剪掉
-
-
-确定视域：引入相机参数后，在投影变换前，它是一个四棱台，之后是正方体（规范化）
-
-
-图像流水线
-按照场景对象表现形式的不同，图形流水线可以分为三个阶段：世界坐标系，相机坐标系，齐次空间，屏幕空间
-
-世界坐标系
-
-模型可以被添加到世界坐标系中，组成场景
-可能会有顶点变换
-
-
-tipstipstips 虽然只说明了顶点变换，如果模型顶点存在法线，需要做法线变换
-
-相机坐标系
-
-将场景的世界坐标转换为相机坐标系的表达
-可能存在顶点变换
-
-
-tipstipstips 尽管这里场景对象可能没有变换，不过这会是裁剪可能发生的位置
-
-齐次空间
-
-对相机坐标系的场景做投影变换
-规范化
-
-屏幕空间
-
-将规范视体投影到屏幕
-可见面判定算法剔除
-
-
-裁剪可能发生的位置
-
-tipstipstips 如果保证不在相机坐标系下做顶点变换，则可以在世界坐标系下...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/03/MxKdAIOfWlt37iw.png)" 
-      href="/2024/11/03/Homogeneous-Space-Clipping%5B1%5D/" 
     >
        
       <div class="overlay">
