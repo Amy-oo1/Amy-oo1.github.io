@@ -143,14 +143,14 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                数据结构
+                <div class="category-count">5</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
                 <div class="category-count">25</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                数据结构
-                <div class="category-count">4</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -187,7 +187,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
     </div>
   </div>
 
@@ -198,6 +198,100 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-DFT-Signal" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/13/DFT-Signal/">DFT与频域转换</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-12T17:22:21.000Z" itemprop="datePublished">2024-10-13</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">数字信号处理</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.5k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+信号离散化
+物理上，气压变化引起空气分子振动，产生声波, 因此用波形图($t-$振幅)图储存，这就是音频信号的时域表示
+理论上，图像可以无限分割到足够小，并用坐标表示位置，用颜色模型表示点信息，这就是图像信号的空域表示  
+
+然而，计算机只能处理有限的信息，因此需要将信号离散化
+
+采样:选择信号的有限个样点代表信号
+采样频率: 单位时间/空间内的样本数
+
+
+失真使用采用的方法会一定程度影响信号的准确性，如果一个信号偏差过大，就会发生失真，那奎斯特定理对这一现象给出定量分析
+
+使用的采样频率至少是被采样信息频率的两倍
+
+
+傅里叶级数通过傅里叶级数，可以将满足狄利克雷条件(连续，单调，有界)的周期函数，表示为不同频率的正弦和余弦函数
+f(t)=\sum_{-\infty}^{+\infty}\left[a_n\cos(nwt)+bn\sin(nwt)\right]其中
+w=\frac{2\pi}{T}a_n=1/T\int_{-2/T}^{2/T}f(t)\cos(nwt)dtb_n=1/T\int_{-2/T}^{2/T}f(t)\sin(nwt)dt
+傅里叶变换$CFT$是傅里...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/13/3MoufqlYLnRhx8w.jpg)" 
+      href="/2024/10/13/DFT-Signal/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -231,7 +325,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4k 词 
+            2.7k 词 
           </div>
         </div>
         
@@ -243,17 +337,17 @@
           <div class="truncate-text">
             
               
-朴素算法
-一个nnn次多项式的点值表达式变换需要的工作就是计算项集
-{(xi , yi)∣0≤i≤n−1 , yi=∑j=0n−1ajxij}\{(x_i\ ,\ y_i)\vert 0\le i\le n-1\ ,\ y_i=\sum_{j=0}^{n-1}a_jx_i^j\}{(xi​ , yi​)∣0≤i≤n−1 , yi​=j=0∑n−1​aj​xij​}使用朴素方法需要O(n2)O(n^2)O(n2)的时间，用矩阵的逆(UL分解)求解逆变换需要O(n3)O(n^3)O(n3)时间，即便使用拉格朗日公式也需要O(n2)O(n^2)O(n2)的时间，整体上多项式乘法乘法并没有得到改进
+朴素算法一个$n$次多项式的点值表达式变换需要的工作就是计算项集
+\{(x_i\ ,\ y_i)\vert 0\le i\le n-1\ ,\ y_i=\sum_{j=0}^{n-1}a_jx_i^j\}使用朴素方法需要$O(n^2)$的时间，用矩阵的逆(UL分解)求解逆变换需要$O(n^3)$时间，即便使用拉格朗日公式也需要$O(n^2)$的时间，整体上多项式乘法乘法并没有得到改进
 
-折半原理
-定义主单位复数根
-Wn=e2πin(1)W_n=e^{\frac{2\pi i}{n}} \tag{1}Wn​=en2πi​(1)使得
-(Wnk)n=1(W_n^k)^n=1(Wnk​)n=1而Wn(k)W_n^{(k)}Wn(k)​称为n次单位复数根
+折半原理定义主单位复数根
+W_n=e^{\frac{2\pi i}{n}} \tag{1}使得
+(W_n^k)^n=1而$W_n^{(k)}$称为n次单位复数根
 
-根据公式(1)(1)(1)可得消去原理
-W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
+根据公式$(1)$可得消去原理
+W_{2n}^{2k}=\left(e\frac{2\pi}{2n}\right)^{2k}=\left(e\frac{2\pi}{n}\right)^k=W_n^k\tag{2}使用公式$(2)$对于$n$为偶数的主单位复数根，有折半原理
+\left(W_n^k\right)^2=\left(W_n^{k+n/2}\right)^2=W_{n/2}^k\tag{3}
+这表明n次单位复数根的平方集合等价...
             
           </div>
         
@@ -317,7 +411,7 @@ W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.9k 词 
+            1.7k 词 
           </div>
         </div>
         
@@ -329,15 +423,16 @@ W2n2k=(e2π2n)2k=(e2πn)k=Wnk(2)W_{2n}^{2k}=\...
           <div class="truncate-text">
             
               
-多项式乘法
-次数界为nnn的多项式表示为
-A(x)=∑i=0n−1aiXiA(x)=\sum_{i=0}^{n-1}a_iX^iA(x)=i=0∑n−1​ai​Xi若
-B(x)=∑i=0n−1biXi , C(x)=∑i=02n−2ciXiB(x)=\sum_{i=0}^{n-1}b_iX^i\ ,\ C(x)=\sum_{i=0}^{2n-2}c_iX^iB(x)=i=0∑n−1​bi​Xi , C(x)=i=0∑2n−2​ci​Xi且C(x)C(x)C(x)为多项式A(x)A(x)A(x)和B(x)B(x)B(x)的乘积，则
-ci=∑j=0j=iaibi−jci=\sum_{j=0}^{j=i}a^ib^{i-j}ci=j=0∑j=i​aibi−j朴素多项式乘积算法时间复杂度为O(n2)O(n^2)O(n2)
+多项式乘法次数界为$n$的多项式表示为
+A(x)=\sum_{i=0}^{n-1}a_iX^i若
+B(x)=\sum_{i=0}^{n-1}b_iX^i\ ,\ C(x)=\sum_{i=0}^{2n-2}c_iX^i且$C(x)$为多项式$A(x)$和$B(x)$的乘积，则
+ci=\sum_{j=0}^{j=i}a^ib^{i-j}朴素多项式乘积算法时间复杂度为$O(n^2)$
 
-多项式加法
-使用霍纳规则，累乘xxx项，可以在O(n)O(n)O(n)时间完成多项式加法
-A(x)=ao+x(a1+x(a2⋯+xan⋯ ))A(x)=a_o+x(a_1+x(a_2\cdots+xa_n\cdots))A(x)=ao​+x(a1​+x(a2​⋯+x...
+多项式加法使用霍纳规则，累乘$x$项，可以在$O(n)$时间完成多项式加法
+A(x)=a_o+x(a_1+x(a_2\cdots+xa_n\cdots))123456auto Horner(int x, vector&lt;int&gt; nums)-&gt;int &#123;//nums正序	auto y = 0;	for (int i = nums.size() - 1; i &gt;= 0; --i)		y = nums[i] + x * y;	return y;&#125;
+
+点值表达式的转换一个多项式依靠各项的系数区分，一个$n$次多项式的系数表达式
+A=(a_0\ ,\ a_1\ ,\...
             
           </div>
         
