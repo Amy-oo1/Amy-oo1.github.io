@@ -143,24 +143,24 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
+            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                数据结构
+                <div class="category-count">6</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
                 计算机图形学
                 <div class="category-count">25</div>
             </a>
         
-            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                数据结构
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
+                算法
                 <div class="category-count">6</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
-            </a>
-        
-            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
-                算法
-                <div class="category-count">6</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">
@@ -175,6 +175,11 @@
         
             <a class="category-link" href="/categories/OpenGL/">
                 OpenGL
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/algorithm/">
+                algorithm
                 <div class="category-count">1</div>
             </a>
         </div>
@@ -245,9 +250,6 @@
               
 渲染度模型
 
-
-
-
             
           </div>
         
@@ -260,6 +262,100 @@
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/X7q1CdJnjOuVMak.png)" 
       href="/2025/10/01/Radiosity-modle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-algorithm-Spaly-tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/13/algorithm-Spaly-tree/">文艺平衡树</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-13T11:53:03.000Z" itemprop="datePublished">2024-11-13</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/algorithm/">algorithm</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.8k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+题目要求
+简单来讲，就是旋转长度为$N$序列的任意子序列
+
+序列数据可以用二叉搜索树维护，为每一个元素附上一个表示排位的权值即可
+
+想要逆转子序列，首先得弄清楚子序列元素的分布，将树上节点映射到数轴上，可以发现
+
+以子序列双端点的$LCA$的最近公共祖先为节点的子树$T$包含整个子序列(不是只包含)，所以只需要遍历重构这个树就能实现翻转
+
+如果使用查找操作$O(\log N)$平衡树，翻转子序列的复杂度为
+O(\log N+2^{\hat{H}(T)})\le O(\log N +N)=O(N)
+$Spaly$重构
+
+$Splay$树可以改进这个复杂度，它能构造只包含翻转子序列元素的树$T$
+具体的说，有翻转子序列$[L,R]$，其中$L,R$分别是序列端点的索引，将$Node_L$splay到根节点，将$Node_R$splay到根的右节点，此时$T(Node_R.left)+Node_L+Node_R$刚好就是翻转子序列元素，有
+O(\log N+R-L+1)具体证明可以把树上节点映射到数轴上
+
+算法实现
+$tips$ 因为两次旋转等价于没旋转，所以可使用懒惰修改，每次访问...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/12/hV1ywZxm6P7UqQl.jpg)" 
+      href="/2024/11/13/algorithm-Spaly-tree/" 
     >
        
       <div class="overlay">
@@ -311,7 +407,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5k 词 
+            5.5k 词 
           </div>
         </div>
         
@@ -323,17 +419,16 @@
           <div class="truncate-text">
             
               
-伸展树（Splay TreeSplay\ TreeSplay Tree）是一种自平衡二叉搜索树，它可以在对树进行一系列操作后，通过特定的展开操作将最近访问的节点移动到树的根部。这种数据结构的目的是通过局部性原理来优化搜索树的性能，即最近被访问的元素很可能在不久的将来再次被访问
+伸展树（$Splay\ Tree$）是一种自平衡二叉搜索树，它可以在对树进行一系列操作后，通过特定的展开操作将最近访问的节点移动到树的根部。这种数据结构的目的是通过局部性原理来优化搜索树的性能，即最近被访问的元素很可能在不久的将来再次被访问
 
 
-树节点
-定义并初始化维护伸展树根的指针
+树节点定义并初始化维护伸展树根的指针
 1Node* Root = nullptr;
-定义伸展操作splaysplaysplay，这个操作会保证splaysplaysplay树的均摊复杂度
+定义伸展操作$splay$，这个操作会保证$splay$树的均摊复杂度
 1auto s_splay_node_to_Son_of_Y(Node* X, Node* Y)-&gt;void
-这个操作使得树节点XXX成为YYY的儿子节点，定义伸展树根节点的parentparentparent为nullptrnullptrnullptr，也就是说，这个操作可以实现将最近访问的节点移动到树的根部
+这个操作使得树节点$X$成为$Y$的儿子节点，定义伸展树根节点的$parent$为$nullptr$，也就是说，这个操作可以实现将最近访问的节点移动到树的根部
 根据定义，在树节点不重复的限制下，一颗其节点可以表示为
-12345struct Node &#123;		Node(int val, Node* parent = nullptr) :val(val)...
+12345struct Node &#123;		Node(int val, Node* parent = nullptr) :val(val), parent(parent) &#123;&#125;		int val;		Node* left = nul...
             
           </div>
         
@@ -397,7 +492,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.9k 词 
+            4.5k 词 
           </div>
         </div>
         
@@ -409,30 +504,33 @@
           <div class="truncate-text">
             
               
-tipstipstips 前置知识：二叉搜索树BSTBSTBST
+$tips$ 前置知识：二叉搜索树$BST$
 二叉搜索树是一种二叉树的树形数据结构，其定义如下：
-
 
 空树是二叉搜索树。
 
-
 若二叉搜索树的左子树不为空，则其左子树上所有点的附加权值均小于其根节点的值。
 
-
 若二叉搜索树的右子树不为空，则其右子树上所有点的附加权值均大于其根节点的值。
-
 
 二叉搜索树的左右子树均为二叉搜索树。
 
 
 
-AVLAVLAVL的结构
+$AVL$的结构
+平衡因子：在$AVL$树中，任何节点的两个子树的高度最大差别为$0$，所以它也被称为高度平衡树
 
-平衡因子：在AVLAVLAVL树中，任何节点的两个子树的高度最大差别为000，所以它也被称为高度平衡树
+定义空树高为$-1$
+$AVL$通过旋转实现自平衡,对于不满足平衡因子的树$Y$高一定为2，这个是旋转和递归操作决定的，也就是只考虑$Y.height==1$
+$AVL$将其分为四类，其中两种关于$Y$的左右存在镜像关系，这里仅分析以下两种（$Y.left.height&gt;Y.right.height$）就能覆盖所有情况
 
-定义空树高为−1-1−1
-AVLAVLAVL通过旋转实现自平衡,对于不满足平衡因子的树YYY高一定为2，这个是旋转和递归操作决定的，也就是只考虑Y.height==1Y.height==1Y.height==1
-AVLAVLAVL将其分为四类，其中两种关于YYY的左右存在镜像关系，这里仅分析以下两种（Y.left.height&gt;Y.right.heightY.left.height&gt;Y.right.heightY.left.height&gt;Y.right.height）就能覆盖所有情...
+$X.left.height\ge X.right.height$ 右旋$Y$
+
+$X.left.height&lt; X.right.height$ 左旋$X$变换为上一种情况右旋$Y$
+
+
+
+虚线节点为可能存在的节点...
             
           </div>
         
@@ -496,7 +594,7 @@ AVLAVLAVL将其分为四类，其中两种关于YYY的左右存在镜像关系�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.7k 词 
+            2.3k 词 
           </div>
         </div>
         
@@ -508,20 +606,20 @@ AVLAVLAVL将其分为四类，其中两种关于YYY的左右存在镜像关系�
           <div class="truncate-text">
             
               
-OpenGLOpenGLOpenGL自身是一个巨大的状态机(State−MachineState-MachineState−Machine)：一系列的变量描述OpenGL此刻应当如何运行。OpenGL的状态通常被称为OpenGL上下文(Context)。我们通常使用如下途径去更改OpenGL状态：设置选项，操作缓冲。最后，我们使用当前OpenGL上下文来渲染。
+$OpenGL$自身是一个巨大的状态机($State-Machine$)：一系列的变量描述OpenGL此刻应当如何运行。OpenGL的状态通常被称为OpenGL上下文(Context)。我们通常使用如下途径去更改OpenGL状态：设置选项，操作缓冲。最后，我们使用当前OpenGL上下文来渲染。
 
 实践中不需要知道自动机是如何运行的，而编码可能会被某些上下文信息迷惑，尤其是在过程式编程中
 
-bufferbufferbuffer缓冲区
+$buffer$缓冲区
+在$OpenGL$中，缓冲区（$Buffer$）是用来存储数据的对象，它们位于显存中，可以存储顶点数据、索引数据、像素数据等
 
-在OpenGLOpenGLOpenGL中，缓冲区（BufferBufferBuffer）是用来存储数据的对象，它们位于显存中，可以存储顶点数据、索引数据、像素数据等
+接下来介绍$GPU$中的$buffer$如何与$CPU$中的$Cpp$程序交互，$OpenGL$使用自动机的上下文减少冗余
+$glGenBuffer$创建
+创建$n$个$buffer$对象
 
-接下来介绍GPUGPUGPU中的bufferbufferbuffer如何与CPUCPUCPU中的CppCppCpp程序交互，OpenGLOpenGLOpenGL使用自动机的上下文减少冗余
-glGenBufferglGenBufferglGenBuffer创建
-
-创建nnn个bufferbufferbuffer对象
-
-...
+1void glGenBuffers(GLsizei n, GLuint* buffers)
+简单来讲，创建的$VBO$对象就是不为$0$的$GLuint$类型索引，$0$映射到空对象，在$cpp$程序中使用索引访问不同的缓冲
+$glBindBuffer$...
             
           </div>
         
@@ -585,7 +683,7 @@ glGenBufferglGenBufferglGenBuffer创建
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.6k 词 
+            920 词 
           </div>
         </div>
         
@@ -597,12 +695,14 @@ glGenBufferglGenBufferglGenBuffer创建
           <div class="truncate-text">
             
               
-多重重要性采样MISMISMIS理论
-MISMISMIS提供了在在蒙特卡洛积分中将多种采样分布结合起来的无偏估计的方法
-具体的说，有MMM个采样策略，每种采样策略iii都在样本空间内采样，且对应的概率密度函数为pip_ipi​
-每种采样策略iii独立采样NiN_iNi​个样本，第iii种采样方法获得的第jjj样本为xijx_{ij}xij​，获得总共∑i=1MNi\sum_{i=1}^{M}N_i∑i=1M​Ni​个样本，然后使用以下式子进行积分估值：
-I=∫Ωf(x)dx≈∑i=1M1Ni∑j=1Niwi(xij)f(xij)pi(xij)I=\int_{\Omega}f(x)dx\approx\sum_{i=1}^M\frac{1}{N_i}\sum_{j=1}^{N_i}w_i(x_{ij})\frac{f(x_{ij})}{p_i(x_{ij})}I=∫Ω​f(x)dx≈i=1∑M​Ni​1​j=1∑Ni​​wi​(xij​)pi​(xij​)f(xij​)​其中wiw_iwi​为权重函数，接下来证明它需要满足的条件才能实现无偏估计
-E[I]=E[∑i=1M1Ni∑j=...
+多重重要性采样$MIS$理论$MIS$提供了在在蒙特卡洛积分中将多种采样分布结合起来的无偏估计的方法
+具体的说，有$M$个采样策略，每种采样策略$i$都在样本空间内采样，且对应的概率密度函数为$p_i$
+每种采样策略$i$独立采样$N_i$个样本，第$i$种采样方法获得的第$j$样本为$x_{ij}$，获得总共$\sum_{i=1}^{M}N_i$个样本，然后使用以下式子进行积分估值：
+I=\int_{\Omega}f(x)dx\approx\sum_{i=1}^M\frac{1}{N_i}\sum_{j=1}^{N_i}w_i(x_{ij})\frac{f(x_{ij})}{p_i(x_{ij})}其中$w_i$为权重函数，接下来证明它需要满足的条件才能实现无偏估计
+
+\begin{align}
+E[I] &= E\left[\sum_{i=1}^M\frac{1}{N_i}\sum_{j=1}^{N_i}w_i(x_{ij})\frac{f(x_{ij})}{p_i(x_{ij})}\right]\\\\
+&= \sum_{i=1}^ME\left[\frac{1}{N_i...
             
           </div>
         
@@ -666,7 +766,7 @@ E[I]=E[∑i=1M1Ni∑j=...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            7.9k 词 
+            4.6k 词 
           </div>
         </div>
         
@@ -678,10 +778,14 @@ E[I]=E[∑i=1M1Ni∑j=...
           <div class="truncate-text">
             
               
-蒙特卡洛积分
-设函数f:S→Rf:S\to Rf:S→R，随机变量x∼px\sim px∼p，根据大数定理lim⁡N→∞1N∑i=1Np(xi)=1\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^Np(x_i)=1limN→∞​N1​∑i=1N​p(xi​)=1可以估计函数f(x)f(x)f(x)的期望
-E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i=1}^Nf(x)E[f(x)]=∫x∈S​f(x)p(x)dμ≈N1​i=1∑N​f(x)令g=fpg=fpg=fp，可以得到用求和近似表示g(x)g(x)g(x)的积分
-∫x∈Sg(x)dμ≈1N∑i=1Ng(x)p(x)\int_{x\in S}g(x)d\mu\approx\frac{1}{N}\sum_{i=1}^N\frac{g(x)}{p(x)}∫x∈S​g(x)dμ≈N1​i=1∑N​p(x)g(x)​为了得到更好的估计（方差最小）需要ppp和fff形...
+蒙特卡洛积分设函数$f:S\to R$，随机变量$x\sim p$，根据大数定理$\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^Np(x_i)=1$可以估计函数$f(x)$的期望
+E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i=1}^Nf(x)令$g=fp$，可以得到用求和近似表示$g(x)$的积分
+\int_{x\in S}g(x)d\mu\approx\frac{1}{N}\sum_{i=1}^N\frac{g(x)}{p(x)}为了得到更好的估计（方差最小）需要$p$和$f$形状相似
+蒙特卡洛方法的渲染方程将蒙特卡洛方法用在渲染方程
+L_o(w_r)=\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)\cos\theta_idw_i得到带概率密度函数$p(x)$的蒙特卡洛近似：
+L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}
+重要性采样
+...
             
           </div>
         
@@ -745,7 +849,7 @@ E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\app
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3k 词 
+            1.8k 词 
           </div>
         </div>
         
@@ -758,35 +862,31 @@ E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\app
             
               
 采样方法
-
 采样方法是指从概率分布中生成随机样本的技术
 
-以下的采样方法只能在t[0,1]Rt[0,1]^Rt[0,1]R的空间中采样
-简单随机采样（Simple Random SamplingSimple\ Random\ SamplingSimple Random Sampling）
-
-
+以下的采样方法只能在$t[0,1]^R$的空间中采样
+简单随机采样（$Simple\ Random\ Sampling$）
 每个样本都有相同的被选中的概率
-
 
 可以通过伪随机数生成器来实现
 
 
-系统采样（SystematicSamplingSystematic SamplingSystematicSampling）
-
+系统采样（$Systematic Sampling$）
 从列表中随机选择一个起始点，然后按照固定的间隔选择样本
 
-分层采样（Stratified SamplingStratified\ SamplingStratified Sampling）
-
+分层采样（$Stratified\ Sampling$）
 将总体分成不同的层，然后从每一层中进行随机采样
 
 分层采样（Stratified Sampling）
-
 将总体分成不同的层，然后从每一层中进行随机采样。
 
 
-选择随机点
-采样方法需要处理非“矩形”空间的采样，它将等分布的点作为输入，输出预期采样空间的一个点集，这个变换满足
-在矩形空间的均匀分布变换为采样空间的均...
+选择随机点采样方法需要处理非“矩形”空间的采样，它将等分布的点作为输入，输出预期采样空间的一个点集，这个变换满足
+在矩形空间的均匀分布变换为采样空间的均匀分布
+逆$CDF$采样（$Inverse\ CDF\ Sampling$）
+使用概率分布的逆累积分布函数（$CDF$）来生成样本
+
+设概率密度函数$p(x),x_{min}\le x\le x_{max}$，逆$CDF$采样方法从一组随机数$\xi_i\in[0...
             
           </div>
         
@@ -850,7 +950,7 @@ E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\app
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            6.2k 词 
+            3.4k 词 
           </div>
         </div>
         
@@ -863,26 +963,25 @@ E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\app
             
               
 基本概念
-
 体渲染把气体等物质抽象成一团飘忽不定的粒子群。光线在穿过这类物体时，其实就是光子在跟粒子发生碰撞的过程
 
 考虑一段单位体积中，光子沿直线传播，则光子的运动可能会有如下情况
 
+吸收（$absorption$）：光子被粒子吸收
 
-吸收（absorptionabsorptionabsorption）：光子被粒子吸收
+放射（$emission$）：宏观表现为物体自发光
 
+外散射（$out-scattering$）：光子在撞击到粒子后，可能会发生弹射，导致方向发生偏移,脱离当前定义的光子群
 
-放射（emissionemissionemission）：宏观表现为物体自发光
-
-
-外散射（out−scatteringout-scatteringout−scattering）：光子在撞击到粒子后，可能会发生弹射，导致方向发生偏移,脱离当前定义的光子群
-
-
-内散射（in−scatteringin-scatteringin−scattering）：其他方向的光子在撞到粒子后，可能和当前方向上的光子重合
+内散射（$in-scattering$）：其他方向的光子在撞到粒子后，可能和当前方向上的光子重合
 
 
-若有点PPP在www方向的入射（辐射）强度IiI_iIi​和出射辐射强度IrI_rIr​，则有
-Io−Ii=emission−absorption−scatteringout+scatteringinI_o-I_i=emission-absorption-scattering_{out}+scatter...
+若有点$P$在$w$方向的入射（辐射）强度$I_i$和出射辐射强度$I_r$，则有
+$I_o-I_i=emission-absorption-scattering_{out}+scattering_{in}$
+
+吸收（$absorbing$）从$I_i$到$I_o$的光路截取一段到点$P$的距离为$s$微元区域，其垂直于光线的底面积为$E$，高为$ds$，单位体积包含的粒子数$\rho(s)$
+则有光子吸收比例等价于：粒子横截面积比例
+\frac{\rho(s)\ Eds\...
             
           </div>
         
@@ -946,7 +1045,7 @@ Io−Ii=emission−absorption−scatteringout+scatteringinI_o-I_i=emission-absor
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            14k 词 
+            7.4k 词 
           </div>
         </div>
         
@@ -958,15 +1057,18 @@ Io−Ii=emission−absorption−scatteringout+scatteringinI_o-I_i=emission-absor
           <div class="truncate-text">
             
               
-绕坐标轴旋转
-考虑在XOYXOYXOY平面上的二维旋转：PPP沿逆时针旋转θ\thetaθ角度得P′P^\primeP′
+绕坐标轴旋转考虑在$XOY$平面上的二维旋转：$P$沿逆时针旋转$\theta$角度得$P^\prime$
 根据旋转定义
-∥P∥=∥P′∥(I)\lVert P\rVert=\lVert P^\prime\rVert\tag{I}∥P∥=∥P′∥(I)其中向量Q(−yP,xP)Q(-y_P,x_P)Q(−yP​,xP​)为PPP逆时针旋转90∘90^\circ90∘得到，PPP和QQQ正交
-则有P′=projP+projQP^\prime=proj_P+proj_QP′=projP​+projQ​，简单来说，P′P^\primeP′在两个正交基方向上的投影
-projP=(P′⋅P∥P∥)P∥P∥=Pcos⁡θprojQ=(P′⋅Q∥Q∥)Q∥Q∥=Qsin⁡θ
+\lVert P\rVert=\lVert P^\prime\rVert\tag{I}其中向量$Q(-y_P,x_P)$为$P$逆时针旋转$90^\circ$得到，$P$和$Q$正交
+则有$P^\prime=proj_P+proj_Q$，简单来说，$P^\prime$在两个正交基方向上的投影
+
 \begin{align}
-proj_P &amp;= (\frac{P^\prime\cdot P}{\lVert P\rVert})\frac{P}{\lVert P\rVert}=P\cos\theta\tag{reference I}\\
-proj_Q &amp;= (\frac{P^\prime\...
+proj_P &= (\frac{P^\prime\cdot P}{\lVert P\rVert})\frac{P}{\lVert P\rVert}=P\cos\theta\tag{reference I}\\
+proj_Q &= (\frac{P^\prime\cdot Q}{\lVert Q\rVert})\frac{Q}{\lVert Q\rVert}=Q\sin\theta\tag{reference I}
+\end{align}
+
+\begin{align}
+P^\prime &= P\cos\theta+Q\sin\theta\...
             
           </div>
         
@@ -979,120 +1081,6 @@ proj_Q &amp;= (\frac{P^\prime\...
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/05/3HlqrfMOcovksXC.jpg)" 
       href="/2024/11/05/Quaternion-rotation/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-environment-Mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/04/environment-Mapping/">环境贴图</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-04T09:17:55.000Z" itemprop="datePublished">2024-11-04</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            438 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。
-
-天空盒
-天空盒是实现环境贴图的一种技术，它是
-
-
-在场景中一个立方体对象，每个面内侧都贴有纹理贴图
-
-
-天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远
-
-
-在光栅成像中实现
-实现无限远只需要在可见性判定上处理
-
-保证天空盒对象包围住相机
-禁用深度测试并渲染天空盒
-开启深度测试渲染其他对象
-
-因为深度测试中的初始值为无线深，先渲染的天空盒对于其他物体都是无穷远的
-在光线追踪中实现
-不需要建立对象，使用背景函数，它接受光线的方向向量
-若一个对象从视体边界射出，从背景函数中查找对象的RGBARGBARGBA
-
-光泽效果
-
-
-在光线追踪程序中，增加环境项即可
-
-
-在光栅成像程序中，利用观察方向相对于法线的反射方向去查询环境映射的颜色值，简单来讲，反射光线求交
-
-
-
-穹顶
-相比天空盒，穹顶不会存在边界缝隙，但是可能存在图像扭曲
-
-
-
-
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/04/Is2WtnC1pJ5egxb.png)" 
-      href="/2024/11/04/environment-Mapping/" 
     >
        
       <div class="overlay">
