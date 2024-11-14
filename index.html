@@ -175,7 +175,7 @@
         
             <a class="category-link" href="/categories/OpenGL/">
                 OpenGL
-                <div class="category-count">1</div>
+                <div class="category-count">2</div>
             </a>
         
             <a class="category-link" href="/categories/algorithm/">
@@ -265,6 +265,84 @@
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/X7q1CdJnjOuVMak.png)" 
       href="/2025/10/01/Radiosity-modle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-install-OBJ" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/15/install-OBJ/">模型导入</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-14T16:18:33.000Z" itemprop="datePublished">2024-11-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/OpenGL/">OpenGL</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            54 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              使用AssimpAssimpAssimp工具导入模型并转换为MeshesMeshesMeshes，代码见仓库
+
+
+
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/15/LKdaBOiJGkoCTYe.jpg)" 
+      href="/2024/11/15/install-OBJ/" 
     >
        
       <div class="overlay">
@@ -990,90 +1068,6 @@ Io−Ii=emission−absorption−scatteringout+scatteringinI_o-I_i=emission-absor
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/06/ZvBXk4sDlUYtAH8.jpg)" 
       href="/2024/11/06/Volume-Rendering/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Quaternion-rotation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/05/Quaternion-rotation/">四元数与旋转</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-05T01:52:18.000Z" itemprop="datePublished">2024-11-05</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            14k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-绕坐标轴旋转
-考虑在XOYXOYXOY平面上的二维旋转：PPP沿逆时针旋转θ\thetaθ角度得P′P^\primeP′
-根据旋转定义
-∥P∥=∥P′∥(I)\lVert P\rVert=\lVert P^\prime\rVert\tag{I}∥P∥=∥P′∥(I)其中向量Q(−yP,xP)Q(-y_P,x_P)Q(−yP​,xP​)为PPP逆时针旋转90∘90^\circ90∘得到，PPP和QQQ正交
-则有P′=projP+projQP^\prime=proj_P+proj_QP′=projP​+projQ​，简单来说，P′P^\primeP′在两个正交基方向上的投影
-projP=(P′⋅P∥P∥)P∥P∥=Pcos⁡θprojQ=(P′⋅Q∥Q∥)Q∥Q∥=Qsin⁡θ
-\begin{align}
-proj_P &amp;= (\frac{P^\prime\cdot P}{\lVert P\rVert})\frac{P}{\lVert P\rVert}=P\cos\theta\tag{reference I}\\
-proj_Q &amp;= (\frac{P^\prime\...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/05/3HlqrfMOcovksXC.jpg)" 
-      href="/2024/11/05/Quaternion-rotation/" 
     >
        
       <div class="overlay">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-<html theme="dark" showBanner="true" hasBanner="true" > 
+<html theme="dark" showBanner="true" hasBanner="desktop" > 
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
@@ -14,19 +14,26 @@
   
 
   
-  <title>目录: 数据结构 | Amy_blog</title>
+  <title>模型导入 | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Amy_blog">
-<meta property="og:url" content="http://example.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+  <meta name="description" content="使用AssimpAssimpAssimp工具导入模型并转换为MeshesMeshesMeshes，代码见仓库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模型导入">
+<meta property="og:url" content="http://example.com/2024/11/15/install-OBJ/index.html">
 <meta property="og:site_name" content="Amy_blog">
+<meta property="og:description" content="使用AssimpAssimpAssimp工具导入模型并转换为MeshesMeshesMeshes，代码见仓库">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/11/15/LKdaBOiJGkoCTYe.jpg">
+<meta property="article:published_time" content="2024-11-14T16:18:33.000Z">
+<meta property="article:modified_time" content="2024-11-14T16:23:50.718Z">
 <meta property="article:author" content="Amy">
+<meta property="article:tag" content="cg-api">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/11/15/LKdaBOiJGkoCTYe.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
   
@@ -204,139 +211,131 @@
     <div id="content-body">
        
 
-<div class="archive-main-card">
-    <div class="archive-top">
-      <div class="main-title-bar">
-        <div class="main-title-dot"></div>
-        <h1 class="article-title">归档</h1>
-      </div>    
-    </div>
+
+<article id="post-install-OBJ" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
     
-      
-      
-        
-        <div class="year-line">
-            <div class="year-num">2024</div>
-            <div class="dot-wrapper">
-                <div class="dot"></div>
-            </div>
-            <div class="article-count">6 篇文章</div>
-        </div>
-      
-      <a class="archive-article-link" href="/2024/11/12/Splayiing-tree/" title="Splay树">
-        <div class="date">11-12</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    Splay树
-                
-            </div>
-        </div>
-        <div class="tags">
-            #Balanced-Tree
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/11/11/AVL-tree/" title="AVL树复杂度分析">
-        <div class="date">11-11</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    AVL树复杂度分析
-                
-            </div>
-        </div>
-        <div class="tags">
-            #Balanced-Tree
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/11/02/Fibonacci-Heap/" title="斐波那契堆">
-        <div class="date">11-02</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    斐波那契堆
-                
-            </div>
-        </div>
-        <div class="tags">
-            #heap
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/11/01/Leftist-Heap/" title="左式堆">
-        <div class="date">11-01</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    左式堆
-                
-            </div>
-        </div>
-        <div class="tags">
-            #heap
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/10/30/2d-heap/" title="二叉堆">
-        <div class="date">10-30</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    二叉堆
-                
-            </div>
-        </div>
-        <div class="tags">
-            #heap
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/10/26/ST-table/" title="ST表">
-        <div class="date">10-26</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    ST表
-                
-            </div>
-        </div>
-        <div class="tags">
-            #杂项
-        </div>
+      <a class="article-gallery-img" rel="gallery_cm3hisl4m0049lk6z689s49ld">
+        <img src="https://s2.loli.net/2024/11/15/LKdaBOiJGkoCTYe.jpg" itemprop="image">
       </a>
     
   </div>
+</div>
+
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        模型导入
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-14T16:18:33.000Z" itemprop="datePublished">2024-11-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/OpenGL/">OpenGL</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            54 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>使用<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>s</mi><mi>s</mi><mi>i</mi><mi>m</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Assimp</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">ss</span><span class="mord mathnormal">im</span><span class="mord mathnormal">p</span></span></span></span></eq>工具导入模型并转换为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>e</mi><mi>s</mi><mi>h</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Meshes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">es</span><span class="mord mathnormal">h</span><span class="mord mathnormal">es</span></span></span></span></eq>，代码见仓库</p>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/10/01/Radiosity-modle/"
+      title="辐射度模型"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        辐射度模型
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2024/11/13/algorithm-Spaly-tree/"
+      title="文艺平衡树"
+     >
+
+    <p class="title-text">
+      
+        文艺平衡树
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
     </div>
     <div id="footer-wrapper">
       <!--<footer id="footer">
