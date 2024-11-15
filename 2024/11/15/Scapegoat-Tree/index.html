@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="desktop" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>替罪羊树 | Amy_blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="核心思想  替罪羊树（Scapegoat Tree）是一种自平衡二叉搜索树，它通过懒惰平衡的方式来维持树的平衡。在替罪羊树中，不会在每次插入或删除操作后立即进行平衡，而是当树变得“过于不平衡”时，才进行一次全局的重构。  替罪羊树通过定义平衡因子α≥0.5\alpha\ge0.5α≥0.5来保持树高稳定在O(log⁡N)O(\log N)O(logN) 平衡因子要求每个节点NodeNodeNod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="替罪羊树">
+<meta property="og:url" content="http://example.com/2024/11/15/Scapegoat-Tree/index.html">
+<meta property="og:site_name" content="Amy_blog">
+<meta property="og:description" content="核心思想  替罪羊树（Scapegoat Tree）是一种自平衡二叉搜索树，它通过懒惰平衡的方式来维持树的平衡。在替罪羊树中，不会在每次插入或删除操作后立即进行平衡，而是当树变得“过于不平衡”时，才进行一次全局的重构。  替罪羊树通过定义平衡因子α≥0.5\alpha\ge0.5α≥0.5来保持树高稳定在O(log⁡N)O(\log N)O(logN) 平衡因子要求每个节点NodeNodeNod">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/11/15/XA5OVi9Zygr2Bvq.png">
+<meta property="article:published_time" content="2024-11-15T14:25:52.000Z">
+<meta property="article:modified_time" content="2024-11-15T15:41:51.266Z">
+<meta property="article:author" content="Amy">
+<meta property="article:tag" content="Balanced-Tree">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/11/15/XA5OVi9Zygr2Bvq.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="https://s2.loli.net/2024/10/10/2oxlOyLIDmZPARF.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="https://s2.loli.net/2024/10/10/eAtoNJZinjY19us.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Amy_blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">主页</a>
+    
+      <a class="main-nav-link" href="/archives">档案</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">档案</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=https://s2.loli.net/2024/10/10/PluxWMJ94EeChoR.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Amy </div>
+      <div class="dot"></div>
+      <div class="subtitle">火大无烟，水顺无声... </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Amy-oo1" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                数据结构
+                <div class="category-count">6</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
+                计算机图形学
+                <div class="category-count">25</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
+                算法
+                <div class="category-count">6</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
+                数字信号处理
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                概率论
+                <div class="category-count">3</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                编译原理
+                <div class="category-count">2</div>
+            </a>
+        
+            <a class="category-link" href="/categories/algorithm/">
+                algorithm
+                <div class="category-count">2</div>
+            </a>
+        
+            <a class="category-link" href="/categories/OpenGL/">
+                OpenGL
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-Scapegoat-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img" rel="gallery_cm3iwrku2002smo6zgd31b8m6">
+        <img src="https://s2.loli.net/2024/11/15/XA5OVi9Zygr2Bvq.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        替罪羊树
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-15T14:25:52.000Z" itemprop="datePublished">2024-11-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/algorithm/">algorithm</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.9k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <hr>
+<h3 id="%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3" tabindex="-1">核心思想</h3>
+<blockquote>
+<p>替罪羊树（Scapegoat Tree）是一种自平衡二叉搜索树，它通过懒惰平衡的方式来维持树的平衡。在替罪羊树中，不会在每次插入或删除操作后立即进行平衡，而是当树变得“过于不平衡”时，才进行一次全局的重构。</p>
+</blockquote>
+<p>替罪羊树通过定义<strong>平衡因子</strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≥</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\alpha\ge0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span></eq>来保持树高稳定在<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq></p>
+<p><strong>平衡因子</strong>要求每个节点<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi><mi>d</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Node</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span></span></span></span></eq>属性保持</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy="false">(</mo><mi>N</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi><mi mathvariant="normal">.</mi><mi>l</mi><mi>e</mi><mi>f</mi><mi>t</mi><mo stretchy="false">)</mo><mo>≤</mo><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy="false">(</mo><mi>N</mi><mi>o</mi><mi>d</mi><mi>e</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Size(Nodel.left)\le Size(Node)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ze</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ze</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mclose">)</span></span></span></span></span></eqn></section><section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy="false">(</mo><mi>N</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi><mi mathvariant="normal">.</mi><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mo stretchy="false">)</mo><mo>≤</mo><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo stretchy="false">(</mo><mi>N</mi><mi>o</mi><mi>d</mi><mi>e</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Size(Nodel.right)\le Size(Node)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ze</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ze</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mclose">)</span></span></span></span></span></eqn></section><p>如果<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\alpha=0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span></eq>那么这棵树是高度平衡的，实践中采用大多<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.7</mn></mrow><annotation encoding="application/x-tex">\alpha=0.7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.7</span></span></span></span></eq></p>
+<h4 id="%E9%87%8D%E6%9E%84" tabindex="-1">重构</h4>
+<p>对于不满足<strong>平衡条件</strong>的（子）树<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span></eq>，对其进行平衡操作，具体的讲将平衡树<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span></eq>中数据遍历取出，然后使用这些数据建立一颗新树替换原本的树</p>
+<p>具体操作代码如下，不过切记不要在递归上升的路径上进行重构，这样会对一个节点多次搬移，应该重新遍历下降路径进行测试</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">s_blance_size</span><span class="params">(Node*&amp; X)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a * <span class="built_in">s_get_size</span>(X) &lt;= <span class="built_in">max</span>(<span class="built_in">s_get_size</span>(X-&gt;left), <span class="built_in">s_get_size</span>(X-&gt;right))) &#123;</span><br><span class="line">			<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">nums</span><span class="params">(X-&gt;size)</span></span>;</span><br><span class="line">			<span class="type">int</span> cur = <span class="number">0</span>;</span><br><span class="line">			<span class="built_in">s_trav_middle</span>(X, cur, nums);</span><br><span class="line">			<span class="built_in">s_clear_X</span>(X);</span><br><span class="line">			<span class="built_in">s_build</span>(X, nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90" tabindex="-1">复杂度分析</h3>
+<ol>
+<li>
+<p>对于有<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>个节点，高度为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>替罪羊树进行插入/删除，并且这棵树上一次重构后没有进行过任何、插入/删除操作</p>
+</li>
+<li>
+<p>对这棵树<strong>单侧</strong>进行连续的删除或者连续的删除操作</p>
+</li>
+</ol>
+<p>在这个环境下，可以得到一次<strong>重构</strong>的<strong>最差</strong>均摊复杂度</p>
+<p>现在，考虑具体的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></eq>次操作使得树不平衡：</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">⌊</mo><mfrac><mi>N</mi><mn>2</mn></mfrac><mo stretchy="false">⌋</mo><mo>+</mo><mi>k</mi><mo>&gt;</mo><mi>α</mi><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lfloor\frac{N}{2}\rfloor+k&gt; \alpha(N+k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mopen">⌊</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">⌋</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></span></eqn></section><p>因此一次重构最少会包含<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>α</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mrow><mn>1</mn><mo>−</mo><mi>α</mi></mrow></mfrac><mi>N</mi></mrow><annotation encoding="application/x-tex">\frac{\alpha-\frac{1}{2}}{1-\alpha}N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.5452em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1418em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></eq>次操作，把一次重构的时间<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>均摊到这些操作上：</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><mrow><mfrac><mrow><mi>α</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mrow><mn>1</mn><mo>−</mo><mi>α</mi></mrow></mfrac><mi>N</mi></mrow></mfrac><mo>=</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{\Theta(N)}{\frac{\alpha-\frac{1}{2}}{1-\alpha}N}=\Omega(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.8622em;vertical-align:-1.4352em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.1418em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1418em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.3718em;"><span class="pstrut" style="height:3.1418em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.8188em;"><span class="pstrut" style="height:3.1418em;"></span><span class="mord"><span class="mord">Θ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4352em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Ω</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></eqn></section><p>因为假设树是平衡的，即树高为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq>，并且一次操作最多一颗 树被重构，因此插入/删除的复杂度为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></eq></p>
+<h3 id="%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0" tabindex="-1">代码实现</h3>
+<p>和最基础的平衡树相比，只需要新增</p>
+<ul>
+<li>
+<p>维护高度</p>
+</li>
+<li>
+<p>延迟删除，因为需要被删除节点的路径信息</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替罪羊树</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">S_Cap_Tree</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">		<span class="built_in">Node</span>(<span class="type">int</span> val) :<span class="built_in">val</span>(val) &#123;&#125;</span><br><span class="line">		<span class="type">int</span> val, size = <span class="number">1</span>;</span><br><span class="line">		Node* left = <span class="literal">nullptr</span>, * right = <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="type">double</span> a = <span class="number">0.7</span>;</span><br><span class="line">	Node* root = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_clear_X</span><span class="params">(Node*&amp; X)</span> -&gt; <span class="type">void</span> </span>&#123;</span><br><span class="line">		<span class="keyword">auto</span> dfs = [&amp;](<span class="keyword">auto</span>&amp; self, Node* node)-&gt;<span class="type">void</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (node) &#123;</span><br><span class="line">				<span class="built_in">self</span>(self, node-&gt;left);</span><br><span class="line">				<span class="built_in">self</span>(self, node-&gt;right);</span><br><span class="line">				<span class="keyword">delete</span> node;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="built_in">dfs</span>(dfs, X);</span><br><span class="line">		X = <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_get_size</span><span class="params">(Node* node)</span> </span>&#123; <span class="keyword">return</span> node ? node-&gt;size : <span class="number">0</span>; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_up_size</span><span class="params">(Node* node)</span> </span>&#123; node-&gt;size = <span class="built_in">s_get_size</span>(node-&gt;left) + <span class="built_in">s_get_size</span>(node-&gt;right) + <span class="number">1</span>; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_max_in_X</span><span class="params">(Node*&amp; X)</span> -&gt; Node*&amp; </span>&#123; <span class="keyword">return</span> X-&gt;right ? <span class="built_in">s_max_in_X</span>(X-&gt;right) : X; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_trav_middle</span><span class="params">(Node* node, <span class="type">int</span>&amp; cur, vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> -&gt; <span class="type">void</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (node) &#123;</span><br><span class="line">			<span class="built_in">s_trav_middle</span>(node-&gt;left, cur, nums);</span><br><span class="line">			nums[cur++] = node-&gt;val;</span><br><span class="line">			<span class="built_in">s_trav_middle</span>(node-&gt;right, cur, nums);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_build</span><span class="params">(Node*&amp; X, vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> s, <span class="type">int</span> t)</span> -&gt; <span class="type">void</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (s &gt; t)</span><br><span class="line">			X = <span class="literal">nullptr</span>;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="type">int</span> m = s + ((t - s) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">			X = <span class="keyword">new</span> <span class="built_in">Node</span>(nums[m]);</span><br><span class="line">			<span class="built_in">s_build</span>(X-&gt;left, nums, s, m - <span class="number">1</span>);</span><br><span class="line">			<span class="built_in">s_build</span>(X-&gt;right, nums, m + <span class="number">1</span>, t);</span><br><span class="line">			<span class="built_in">s_up_size</span>(X);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_blance_size</span><span class="params">(Node*&amp; X)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a * <span class="built_in">s_get_size</span>(X) &lt;= <span class="built_in">max</span>(<span class="built_in">s_get_size</span>(X-&gt;left), <span class="built_in">s_get_size</span>(X-&gt;right))) &#123;</span><br><span class="line">			<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">nums</span><span class="params">(X-&gt;size)</span></span>;</span><br><span class="line">			<span class="type">int</span> cur = <span class="number">0</span>;</span><br><span class="line">			<span class="built_in">s_trav_middle</span>(X, cur, nums);</span><br><span class="line">			<span class="built_in">s_clear_X</span>(X);</span><br><span class="line">			<span class="built_in">s_build</span>(X, nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">opat</span><span class="params">(<span class="type">int</span> Tar_val, Node*&amp; X, <span class="type">int</span> op)</span> -&gt; <span class="type">void</span> </span>&#123;</span><br><span class="line">		<span class="built_in">s_blance_size</span>(X);</span><br><span class="line">		<span class="keyword">if</span> (Tar_val != X-&gt;val)</span><br><span class="line">			<span class="built_in">opat</span>(Tar_val, (Tar_val &lt; X-&gt;val ? X-&gt;left : X-&gt;right), op);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">auto</span> die = X;</span><br><span class="line">			X = X-&gt;left ? X-&gt;left : X-&gt;right;</span><br><span class="line">			<span class="keyword">delete</span> die;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (X)</span><br><span class="line">			<span class="built_in">s_up_size</span>(X);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_insert_v_to_X</span><span class="params">(Node*&amp; X, <span class="type">int</span> val)</span> -&gt;Node *&amp;</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!X)</span><br><span class="line">			<span class="keyword">return</span> X = <span class="keyword">new</span> <span class="built_in">Node</span>(val);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">s_insert_v_to_X</span>(val &lt; X-&gt;val ? X-&gt;left : X-&gt;right, val);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">s_erase_v_from_X</span><span class="params">(Node*&amp; X, <span class="type">int</span> val)</span> -&gt; Node*&amp; </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (X-&gt;val != val)</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">s_erase_v_from_X</span>(val &lt; X-&gt;val ? X-&gt;left : X-&gt;right, val);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (X-&gt;left &amp;&amp; X-&gt;right) &#123;</span><br><span class="line">			Node*&amp; pre = <span class="built_in">s_max_in_X</span>(X-&gt;left);</span><br><span class="line">			X-&gt;val = pre-&gt;val;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">s_erase_v_from_X</span>(X-&gt;left, val);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> X;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	~<span class="built_in">S_Cap_Tree</span>() &#123; <span class="built_in">s_clear_X</span>(root); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123; </span><br><span class="line">		Node*&amp; tar = <span class="built_in">s_insert_v_to_X</span>(root, val);</span><br><span class="line">		<span class="built_in">opat</span>(tar-&gt;val, root, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">auto</span> <span class="title">erase</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">		Node*&amp; tar = <span class="built_in">s_erase_v_from_X</span>(root, val);</span><br><span class="line">		<span class="built_in">opat</span>(tar-&gt;val, root, <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/10/01/Radiosity-modle/"
+      title="辐射度模型"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        辐射度模型
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2024/11/15/install-OBJ/"
+      title="模型导入"
+     >
+
+    <p class="title-text">
+      
+        模型导入
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <!--<footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 Amy<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+-->
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

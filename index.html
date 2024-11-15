@@ -173,14 +173,14 @@
                 <div class="category-count">2</div>
             </a>
         
-            <a class="category-link" href="/categories/OpenGL/">
-                OpenGL
+            <a class="category-link" href="/categories/algorithm/">
+                algorithm
                 <div class="category-count">2</div>
             </a>
         
-            <a class="category-link" href="/categories/algorithm/">
-                algorithm
-                <div class="category-count">1</div>
+            <a class="category-link" href="/categories/OpenGL/">
+                OpenGL
+                <div class="category-count">2</div>
             </a>
         </div>
     </div>
@@ -265,6 +265,90 @@
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/X7q1CdJnjOuVMak.png)" 
       href="/2025/10/01/Radiosity-modle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Scapegoat-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/15/Scapegoat-Tree/">替罪羊树</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-15T14:25:52.000Z" itemprop="datePublished">2024-11-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/algorithm/">algorithm</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.9k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+核心思想
+
+替罪羊树（Scapegoat Tree）是一种自平衡二叉搜索树，它通过懒惰平衡的方式来维持树的平衡。在替罪羊树中，不会在每次插入或删除操作后立即进行平衡，而是当树变得“过于不平衡”时，才进行一次全局的重构。
+
+替罪羊树通过定义平衡因子α≥0.5\alpha\ge0.5α≥0.5来保持树高稳定在O(log⁡N)O(\log N)O(logN)
+平衡因子要求每个节点NodeNodeNode属性保持
+Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Size(Node)Size(Nodel.right)≤Size(Node)Size(Nodel.right)\le Size(Node)Size(Nodel.right)≤Size(Node)如果α=0.5\alpha=0.5α=0.5那么这棵树是高度平衡的，实践中采用大多α=0.7\alpha=0.7α=0.7
+重构
+对于不满足平衡条件的（子）树TTT，对其进行平衡操作，具体的讲将平衡树TTT中数据遍历取出，然后使用这些数据建...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/15/XA5OVi9Zygr2Bvq.png)" 
+      href="/2024/11/15/Scapegoat-Tree/" 
     >
        
       <div class="overlay">
@@ -972,102 +1056,6 @@ E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\app
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/07/c2GXok1pMtxya5W.jpg)" 
       href="/2024/11/07/Sampling/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Volume-Rendering" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/06/Volume-Rendering/">体渲染模型</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-06T14:58:04.000Z" itemprop="datePublished">2024-11-06</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            6.2k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-基本概念
-
-体渲染把气体等物质抽象成一团飘忽不定的粒子群。光线在穿过这类物体时，其实就是光子在跟粒子发生碰撞的过程
-
-考虑一段单位体积中，光子沿直线传播，则光子的运动可能会有如下情况
-
-
-吸收（absorptionabsorptionabsorption）：光子被粒子吸收
-
-
-放射（emissionemissionemission）：宏观表现为物体自发光
-
-
-外散射（out−scatteringout-scatteringout−scattering）：光子在撞击到粒子后，可能会发生弹射，导致方向发生偏移,脱离当前定义的光子群
-
-
-内散射（in−scatteringin-scatteringin−scattering）：其他方向的光子在撞到粒子后，可能和当前方向上的光子重合
-
-
-若有点PPP在www方向的入射（辐射）强度IiI_iIi​和出射辐射强度IrI_rIr​，则有
-Io−Ii=emission−absorption−scatteringout+scatteringinI_o-I_i=emission-absorption-scattering_{out}+scatter...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/06/ZvBXk4sDlUYtAH8.jpg)" 
-      href="/2024/11/06/Volume-Rendering/" 
     >
        
       <div class="overlay">
