@@ -145,7 +145,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
-                <div class="category-count">6</div>
+                <div class="category-count">8</div>
             </a>
         
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
@@ -173,14 +173,14 @@
                 <div class="category-count">2</div>
             </a>
         
-            <a class="category-link" href="/categories/algorithm/">
-                algorithm
-                <div class="category-count">2</div>
-            </a>
-        
             <a class="category-link" href="/categories/OpenGL/">
                 OpenGL
                 <div class="category-count">2</div>
+            </a>
+        
+            <a class="category-link" href="/categories/DirectX12/">
+                DirectX12
+                <div class="category-count">1</div>
             </a>
         </div>
     </div>
@@ -192,7 +192,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/xg-api/" rel="tag">xg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
     </div>
   </div>
 
@@ -203,6 +203,98 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Linear-Interpolation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/10/25/Linear-Interpolation/">线性插值</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-10-25T04:35:35.000Z" itemprop="datePublished">2024-10-25</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            7.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+插值方法
+
+插值方法是一类数学工具，用于估计函数在未知点上的值，基于该函数在已知点上的值。简单来说，插值就是在一系列离散的数据点之间找到一条连续的曲线或函数，使得这条曲线或函数能够尽可能地反映数据的特征
+
+简单来说，插值操作就是利用函数和已知点算出未知点，在计算机图形学中，常常会出现采样数据不够的情况，通过插值预估出样点，达到反走样的效果
+线性插值
+
+线性插值假设在两个已知点之间，变量的变化率是恒定的，因此可以用一条直线来近似这两个点之间的值
+
+在计算机图形学中，有些变化率即使不是恒定的，通常是复杂的，也会在使用线性插值，比如插值法线，颜色值
+多项式（样条）插值主要用来生成曲线
+
+线性插值算法
+使用方向
+定义线段上两个端点A , BA\ ,\ BA , B，线段上点可以表示为
+P(s)=A+s(B−A)P(s)=A+s(B-A)P(s)=A+s(B−A)其中0≤s≤1 , s=∣P(s)A∣∣AB∣0\le s\le 1\ ,\ s=\frac{\vert P(s)A\vert}{\vert AB\vert}0≤s≤1 , s=∣AB∣∣P(s)A∣​
+假设现在要插值点PPP的...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/10/25/Tp1oGbN5uCmviMf.jpg)" 
+      href="/2024/10/25/Linear-Interpolation/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -1065,107 +1157,6 @@ V(t)=V0+t(V1−V0)V(t)=V_0+t(V_1-V_...
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/10/19/u4bhM69qGRx2NYF.jpg)" 
       href="/2024/10/19/Z-buffer/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-DFA-Minimize" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/18/DFA-Minimize/">标准DFA状态数量最小化</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-18T15:22:18.000Z" itemprop="datePublished">2024-10-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.2k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-同构自动机
-实践表明，用子集构造法生成的DFA可能存在同构，即一个自动机至少存在这样的两个状态
-
-都不是接受状态
-对于任意相同的输入，转移到同一个状态
-
-存在同构的的自动机可以合并这样的节点，减少节点数量
-
-为了定量描述算法，这里给出符号定义
-
-DFADFADFA的状态数量为NNN
-小写字母aaa表示DFA状态,带角标的小写字母a1a_1a1​表示终结状态
-大写字母AAA表式任意DFADFADFA状态非空子集组
-DFADFADFA的输入符号集为∑\sum∑,希腊字母表示α\alphaα表示特定的转换条件
-若无其他说明，表示不加区分，比如非法转换状态ϵ\epsilonϵ
-
-
-朴素模拟
-基于同构的定义，可以
-
-暴力枚举任意两个非终结状态
-用∥∑∥\Vert\sum\Vert∥∑∥个输入符号做同构测试
-对状态集中的所有出边重定向
-
-时间复杂度为
-Max O(N∗(N2∗∥∑∥)+N∗∥∑∥)=O(N3∗∥∑∥)Max\ O(N*(N^2*\Vert\sum\Vert)+N*\Vert\sum\Vert)=O(N^3*\Vert\sum\Vert)Max O(N∗(N2∗∥∑∥)+N∗...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/17/sOwk3GDF4iZCa9W.jpg)" 
-      href="/2024/10/18/DFA-Minimize/" 
     >
        
       <div class="overlay">

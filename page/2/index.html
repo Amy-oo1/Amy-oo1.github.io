@@ -145,7 +145,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
-                <div class="category-count">6</div>
+                <div class="category-count">8</div>
             </a>
         
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
@@ -173,14 +173,14 @@
                 <div class="category-count">2</div>
             </a>
         
-            <a class="category-link" href="/categories/algorithm/">
-                algorithm
-                <div class="category-count">2</div>
-            </a>
-        
             <a class="category-link" href="/categories/OpenGL/">
                 OpenGL
                 <div class="category-count">2</div>
+            </a>
+        
+            <a class="category-link" href="/categories/DirectX12/">
+                DirectX12
+                <div class="category-count">1</div>
             </a>
         </div>
     </div>
@@ -192,7 +192,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/xg-api/" rel="tag">xg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
     </div>
   </div>
 
@@ -203,6 +203,111 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Sampling" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/07/Sampling/">简单采样方法</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-07T12:20:18.000Z" itemprop="datePublished">2024-11-07</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+采样方法
+
+采样方法是指从概率分布中生成随机样本的技术
+
+以下的采样方法只能在t[0,1]Rt[0,1]^Rt[0,1]R的空间中采样
+简单随机采样（Simple Random SamplingSimple\ Random\ SamplingSimple Random Sampling）
+
+
+每个样本都有相同的被选中的概率
+
+
+可以通过伪随机数生成器来实现
+
+
+系统采样（SystematicSamplingSystematic SamplingSystematicSampling）
+
+从列表中随机选择一个起始点，然后按照固定的间隔选择样本
+
+分层采样（Stratified SamplingStratified\ SamplingStratified Sampling）
+
+将总体分成不同的层，然后从每一层中进行随机采样
+
+分层采样（Stratified Sampling）
+
+将总体分成不同的层，然后从每一层中进行随机采样。
+
+
+选择随机点
+采样方法需要处理非“矩形”空间的采样，它将等分布的点作为输入，输出预期采样空间的一个点集，这个变换满足
+在矩形空间的均匀分布变换为采样空间的均...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/07/c2GXok1pMtxya5W.jpg)" 
+      href="/2024/11/07/Sampling/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -1075,115 +1180,6 @@ Cook−TorranceCook-Torra...
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/rMhzjmgItJoHT7X.png)" 
       href="/2024/11/01/Cook-Torrance/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-2d-heap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/30/2d-heap/">二叉堆</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-30T14:59:23.000Z" itemprop="datePublished">2024-10-30</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.6k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-性质
-
-堆是一种树形数据结构，它不按照严格的排序规则维护数据，它只维护规则下的首序元素
-
-
-支持动态增删改节点（元素）
-
-tipstipstips 改操作建立在增删操作，只需要堆内指针和外部元素相互存引用
-
-获取首序节点
-
-
-堆操作
-排序规则∘\circ∘的限制
-
-
-满足传递性：若有key:A,B,Ckey:A,B,Ckey:A,B,C且A∘B=true,B∘C=trueA\circ B=true,B\circ C=trueA∘B=true,B∘C=true，则A∘C=trueA\circ C=trueA∘C=true
-
-
-排序规则对key没有影响，这个更多是在程序上的限制
-
-
-
-为了便于分析，只考虑二叉堆，实践中可能会使用更多幂次分叉利用缓存
-
-堆的结构
-
-树节点存储元素：键值对(key,val)(key,val)(key,val)。所以对元素排序，隐含的意思是在keykeykey之间使用排序规则
-
-
-tipstipstips 在树的语境下使用节点nodenodenode，在排序的语境下使用元素keykeykey，两者都是键值对
-
-
-子父节点关系：parentkey∘each...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/30/2tylvJ31W6EzFVh.png)" 
-      href="/2024/10/30/2d-heap/" 
     >
        
       <div class="overlay">
