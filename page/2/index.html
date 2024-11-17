@@ -153,14 +153,19 @@
                 <div class="category-count">25</div>
             </a>
         
-            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
-                算法
-                <div class="category-count">6</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/DirectX12/">
+                DirectX12
+                <div class="category-count">3</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
+                算法
+                <div class="category-count">6</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">
@@ -175,11 +180,6 @@
         
             <a class="category-link" href="/categories/OpenGL/">
                 OpenGL
-                <div class="category-count">2</div>
-            </a>
-        
-            <a class="category-link" href="/categories/DirectX12/">
-                DirectX12
                 <div class="category-count">2</div>
             </a>
         </div>
@@ -203,6 +203,87 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Multiple-Importance-Sampling" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/09/Multiple-Importance-Sampling/">多重重要性采样</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-09T04:41:59.000Z" itemprop="datePublished">2024-11-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.6k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+多重重要性采样MISMISMIS理论
+MISMISMIS提供了在在蒙特卡洛积分中将多种采样分布结合起来的无偏估计的方法
+具体的说，有MMM个采样策略，每种采样策略iii都在样本空间内采样，且对应的概率密度函数为pip_ipi​
+每种采样策略iii独立采样NiN_iNi​个样本，第iii种采样方法获得的第jjj样本为xijx_{ij}xij​，获得总共∑i=1MNi\sum_{i=1}^{M}N_i∑i=1M​Ni​个样本，然后使用以下式子进行积分估值：
+I=∫Ωf(x)dx≈∑i=1M1Ni∑j=1Niwi(xij)f(xij)pi(xij)I=\int_{\Omega}f(x)dx\approx\sum_{i=1}^M\frac{1}{N_i}\sum_{j=1}^{N_i}w_i(x_{ij})\frac{f(x_{ij})}{p_i(x_{ij})}I=∫Ω​f(x)dx≈i=1∑M​Ni​1​j=1∑Ni​​wi​(xij​)pi​(xij​)f(xij​)​其中wiw_iwi​为权重函数，接下来证明它需要满足的条件才能实现无偏估计
+E[I]=E[∑i=1M1Ni∑j=...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/09/s3XWLpazqNbTFy9.jpg)" 
+      href="/2024/11/09/Multiple-Importance-Sampling/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -236,7 +317,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.6k 词 
+            7.9k 词 
           </div>
         </div>
         
@@ -248,14 +329,10 @@
           <div class="truncate-text">
             
               
-蒙特卡洛积分设函数$f:S\to R$，随机变量$x\sim p$，根据大数定理$\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^Np(x_i)=1$可以估计函数$f(x)$的期望
-E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i=1}^Nf(x)令$g=fp$，可以得到用求和近似表示$g(x)$的积分
-\int_{x\in S}g(x)d\mu\approx\frac{1}{N}\sum_{i=1}^N\frac{g(x)}{p(x)}为了得到更好的估计（方差最小）需要$p$和$f$形状相似
-蒙特卡洛方法的渲染方程将蒙特卡洛方法用在渲染方程
-L_o(w_r)=\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)\cos\theta_idw_i得到带概率密度函数$p(x)$的蒙特卡洛近似：
-L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}
-重要性采样
-...
+蒙特卡洛积分
+设函数f:S→Rf:S\to Rf:S→R，随机变量x∼px\sim px∼p，根据大数定理lim⁡N→∞1N∑i=1Np(xi)=1\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^Np(x_i)=1limN→∞​N1​∑i=1N​p(xi​)=1可以估计函数f(x)f(x)f(x)的期望
+E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i=1}^Nf(x)E[f(x)]=∫x∈S​f(x)p(x)dμ≈N1​i=1∑N​f(x)令g=fpg=fpg=fp，可以得到用求和近似表示g(x)g(x)g(x)的积分
+∫x∈Sg(x)dμ≈1N∑i=1Ng(x)p(x)\int_{x\in S}g(x)d\mu\approx\frac{1}{N}\sum_{i=1}^N\frac{g(x)}{p(x)}∫x∈S​g(x)dμ≈N1​i=1∑N​p(x)g(x)​为了得到更好的估计（方差最小）需要ppp和fff形...
             
           </div>
         
@@ -319,7 +396,7 @@ L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.8k 词 
+            3k 词 
           </div>
         </div>
         
@@ -332,31 +409,35 @@ L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}
             
               
 采样方法
+
 采样方法是指从概率分布中生成随机样本的技术
 
-以下的采样方法只能在$t[0,1]^R$的空间中采样
-简单随机采样（$Simple\ Random\ Sampling$）
+以下的采样方法只能在t[0,1]Rt[0,1]^Rt[0,1]R的空间中采样
+简单随机采样（Simple Random SamplingSimple\ Random\ SamplingSimple Random Sampling）
+
+
 每个样本都有相同的被选中的概率
+
 
 可以通过伪随机数生成器来实现
 
 
-系统采样（$Systematic Sampling$）
+系统采样（SystematicSamplingSystematic SamplingSystematicSampling）
+
 从列表中随机选择一个起始点，然后按照固定的间隔选择样本
 
-分层采样（$Stratified\ Sampling$）
+分层采样（Stratified SamplingStratified\ SamplingStratified Sampling）
+
 将总体分成不同的层，然后从每一层中进行随机采样
 
 分层采样（Stratified Sampling）
+
 将总体分成不同的层，然后从每一层中进行随机采样。
 
 
-选择随机点采样方法需要处理非“矩形”空间的采样，它将等分布的点作为输入，输出预期采样空间的一个点集，这个变换满足
-在矩形空间的均匀分布变换为采样空间的均匀分布
-逆$CDF$采样（$Inverse\ CDF\ Sampling$）
-使用概率分布的逆累积分布函数（$CDF$）来生成样本
-
-设概率密度函数$p(x),x_{min}\le x\le x_{max}$，逆$CDF$采样方法从一组随机数$\xi_i\in[0...
+选择随机点
+采样方法需要处理非“矩形”空间的采样，它将等分布的点作为输入，输出预期采样空间的一个点集，这个变换满足
+在矩形空间的均匀分布变换为采样空间的均...
             
           </div>
         
@@ -420,7 +501,7 @@ L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.4k 词 
+            6.2k 词 
           </div>
         </div>
         
@@ -433,25 +514,26 @@ L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}
             
               
 基本概念
+
 体渲染把气体等物质抽象成一团飘忽不定的粒子群。光线在穿过这类物体时，其实就是光子在跟粒子发生碰撞的过程
 
 考虑一段单位体积中，光子沿直线传播，则光子的运动可能会有如下情况
 
-吸收（$absorption$）：光子被粒子吸收
 
-放射（$emission$）：宏观表现为物体自发光
-
-外散射（$out-scattering$）：光子在撞击到粒子后，可能会发生弹射，导致方向发生偏移,脱离当前定义的光子群
-
-内散射（$in-scattering$）：其他方向的光子在撞到粒子后，可能和当前方向上的光子重合
+吸收（absorptionabsorptionabsorption）：光子被粒子吸收
 
 
-若有点$P$在$w$方向的入射（辐射）强度$I_i$和出射辐射强度$I_r$，则有
-$I_o-I_i=emission-absorption-scattering_{out}+scattering_{in}$
+放射（emissionemissionemission）：宏观表现为物体自发光
 
-吸收（$absorbing$）从$I_i$到$I_o$的光路截取一段到点$P$的距离为$s$微元区域，其垂直于光线的底面积为$E$，高为$ds$，单位体积包含的粒子数$\rho(s)$
-则有光子吸收比例等价于：粒子横截面积比例
-\frac{\rho(s)\ Eds\...
+
+外散射（out−scatteringout-scatteringout−scattering）：光子在撞击到粒子后，可能会发生弹射，导致方向发生偏移,脱离当前定义的光子群
+
+
+内散射（in−scatteringin-scatteringin−scattering）：其他方向的光子在撞到粒子后，可能和当前方向上的光子重合
+
+
+若有点PPP在www方向的入射（辐射）强度IiI_iIi​和出射辐射强度IrI_rIr​，则有
+Io−Ii=emission−absorption−scatteringout+scatteringinI_o-I_i=emission-absorption-scattering_{out}+scatter...
             
           </div>
         
@@ -515,7 +597,7 @@ $I_o-I_i=emission-absorption-scattering_{out}+scattering_{in}$
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            7.4k 词 
+            14k 词 
           </div>
         </div>
         
@@ -527,18 +609,15 @@ $I_o-I_i=emission-absorption-scattering_{out}+scattering_{in}$
           <div class="truncate-text">
             
               
-绕坐标轴旋转考虑在$XOY$平面上的二维旋转：$P$沿逆时针旋转$\theta$角度得$P^\prime$
+绕坐标轴旋转
+考虑在XOYXOYXOY平面上的二维旋转：PPP沿逆时针旋转θ\thetaθ角度得P′P^\primeP′
 根据旋转定义
-\lVert P\rVert=\lVert P^\prime\rVert\tag{I}其中向量$Q(-y_P,x_P)$为$P$逆时针旋转$90^\circ$得到，$P$和$Q$正交
-则有$P^\prime=proj_P+proj_Q$，简单来说，$P^\prime$在两个正交基方向上的投影
-
+∥P∥=∥P′∥(I)\lVert P\rVert=\lVert P^\prime\rVert\tag{I}∥P∥=∥P′∥(I)其中向量Q(−yP,xP)Q(-y_P,x_P)Q(−yP​,xP​)为PPP逆时针旋转90∘90^\circ90∘得到，PPP和QQQ正交
+则有P′=projP+projQP^\prime=proj_P+proj_QP′=projP​+projQ​，简单来说，P′P^\primeP′在两个正交基方向上的投影
+projP=(P′⋅P∥P∥)P∥P∥=Pcos⁡θprojQ=(P′⋅Q∥Q∥)Q∥Q∥=Qsin⁡θ
 \begin{align}
-proj_P &= (\frac{P^\prime\cdot P}{\lVert P\rVert})\frac{P}{\lVert P\rVert}=P\cos\theta\tag{reference I}\\
-proj_Q &= (\frac{P^\prime\cdot Q}{\lVert Q\rVert})\frac{Q}{\lVert Q\rVert}=Q\sin\theta\tag{reference I}
-\end{align}
-
-\begin{align}
-P^\prime &= P\cos\theta+Q\sin\theta\...
+proj_P &amp;= (\frac{P^\prime\cdot P}{\lVert P\rVert})\frac{P}{\lVert P\rVert}=P\cos\theta\tag{reference I}\\
+proj_Q &amp;= (\frac{P^\prime\...
             
           </div>
         
@@ -602,7 +681,7 @@ P^\prime &= P\cos\theta+Q\sin\theta\...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            432 词 
+            438 词 
           </div>
         </div>
         
@@ -615,31 +694,42 @@ P^\prime &= P\cos\theta+Q\sin\theta\...
             
               环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。
 
-天空盒天空盒是实现环境贴图的一种技术，它是
+天空盒
+天空盒是实现环境贴图的一种技术，它是
+
 
 在场景中一个立方体对象，每个面内侧都贴有纹理贴图
+
 
 天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远
 
 
-在光栅成像中实现实现无限远只需要在可见性判定上处理
+在光栅成像中实现
+实现无限远只需要在可见性判定上处理
 
 保证天空盒对象包围住相机
 禁用深度测试并渲染天空盒
 开启深度测试渲染其他对象
 
 因为深度测试中的初始值为无线深，先渲染的天空盒对于其他物体都是无穷远的
-在光线追踪中实现不需要建立对象，使用背景函数，它接受光线的方向向量
-若一个对象从视体边界射出，从背景函数中查找对象的$RGBA$
+在光线追踪中实现
+不需要建立对象，使用背景函数，它接受光线的方向向量
+若一个对象从视体边界射出，从背景函数中查找对象的RGBARGBARGBA
 
 光泽效果
+
+
 在光线追踪程序中，增加环境项即可
+
 
 在光栅成像程序中，利用观察方向相对于法线的反射方向去查询环境映射的颜色值，简单来讲，反射光线求交
 
 
 
-穹顶相比天空盒，穹顶不会存在边界缝隙，但是可能存在图像扭曲
+穹顶
+相比天空盒，穹顶不会存在边界缝隙，但是可能存在图像扭曲
+
+
 
 
             
@@ -705,7 +795,7 @@ P^\prime &= P\cos\theta+Q\sin\theta\...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            877 词 
+            1.3k 词 
           </div>
         </div>
         
@@ -721,22 +811,29 @@ P^\prime &= P\cos\theta+Q\sin\theta\...
 
 
 工作原理
+
 阴影贴图技术是基于这样的认知：直接光照不能覆盖到的区域都在阴影中。这个判定只能产生硬阴影
 
-光源空间的转换从光源主视角来观察场景。场景中的所有物体都需要根据光源的位置和方向进行转换，以确定它们在光源视角下的位置。
-也就是说，需要光源的视图变换矩阵$V_{Light}$，其中观察方向$G-E$等价于主视角
-深度图的生成在光源视角下，渲染器会渲染场景的深度信息， 深度贴图的每个像素代表了从光源到场景中最近表面的距离。这个过程和使用相机渲染唯一的不同
+光源空间的转换
+从光源主视角来观察场景。场景中的所有物体都需要根据光源的位置和方向进行转换，以确定它们在光源视角下的位置。
+也就是说，需要光源的视图变换矩阵VLightV_{Light}VLight​，其中观察方向G−EG-EG−E等价于主视角
+深度图的生成
+在光源视角下，渲染器会渲染场景的深度信息， 深度贴图的每个像素代表了从光源到场景中最近表面的距离。
+这个过程和使用相机渲染唯一的不同
 
-使用$V_{Light}$而非$V_{cerama}$
+
+使用VLightV_{Light}VLight​而非VceramaV_{cerama}Vcerama​
+
 
 只需要完成可见面判定
 
 
 
-$tips$ 可见面判定和着色通常一起进行，不过从光源处渲染不需要着色
+tipstipstips 可见面判定和着色通常一起进行，不过从光源处渲染不需要着色
 
-场景的正常渲染渲染器从摄像机视角渲染场景，并在渲染每个像素时执行一个额外的步骤：确定这个像素在光源视角下的深度。
-具体的说，如果一个点$(x^\prime,y^\prime,z^\prime,w)$可见，但是还不能直接着色，需要判定光...
+场景的正常渲染
+渲染器从摄像机视角渲染场景，并在渲染每个像素时执行一个额外的步骤：确定这个像素在光源视角下的深度。
+具体的说，如果一...
             
           </div>
         
@@ -800,7 +897,7 @@ $tips$ 可见面判定和着色通常一起进行，不过从光源处渲染不�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.7k 词 
+            2.7k 词 
           </div>
         </div>
         
@@ -812,9 +909,12 @@ $tips$ 可见面判定和着色通常一起进行，不过从光源处渲染不�
           <div class="truncate-text">
             
               
-引言在上半篇中，得出了以下结果：
+引言
+在上半篇中，得出了以下结果：
+
 
 在齐次空间的标准视体下的流水选位置裁剪
+
 
 快速获取顶点关于六个视体表面的相对位置
 
@@ -822,21 +922,17 @@ $tips$ 可见面判定和着色通常一起进行，不过从光源处渲染不�
 如果简单的把不在视体内的顶点去掉，或者由此引发的，把相关图元去掉，会生成明显的不连续边缘
 这里的统一做法为使用各种插值方法生成边缘顶点
 
-裁剪线段线段$AB$和标准视体的位置关系可以划分为
+裁剪线段
+线段ABABAB和标准视体的位置关系可以划分为
 
-线段完全在视体内部：端点$A,B$的都在视体内
-线段完全在实体外部：端点$A,B$在视体外且区域码相同
+线段完全在视体内部：端点A,BA,BA,B的都在视体内
+线段完全在实体外部：端点A,BA,BA,B在视体外且区域码相同
 线段部分和视体表面相交
 
-如果线段$AB$不满足情况$1,2$，则只需要端点$A,B$的特定区域码位不同，就可以断言：线段穿过该区域码对应的视体表面所在的平面
-$Cyus-Beck$裁剪算法对端点$A(x_A,y_A,z_A,w_A)$和$B(x_B,y_B,z_B,w_B)$组队的线段$AB$有参数线段方程
-P(u)=uB+(1-u)A,0\le u\le 1展开为
-
-\begin{align}
-P(u)_x &= ux_B+(1-u)x_A\\
-P(u)_y &= uy_B+(1-u)y_A\\
-P(u)_z &= uz_B+(1-u)z_A\\
-P(u)_w &...
+如果线段ABABAB不满足情况1,21,21,2，则只需要端点A,BA,BA,B的特定区域码位不同，就可以断言：线段穿过该区域码对应的视体表面所在的平面
+Cyus−BeckCyus-BeckCyus−Beck裁剪算法
+对端点A(xA,yA,zA,wA)A(x_A,y_A,z_A,w_A)A(xA​,yA​,zA​,wA​)和B(xB,yB,zB,wB)B(x_B,y_B,z_B,w_B)B(xB​,yB​,zB​,wB​)组队的线段ABABAB有参数线段方程
+P(u)=uB+(1−u)A,0≤u≤1P(u)=uB+...
             
           </div>
         
@@ -900,7 +996,7 @@ P(u)_w &...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.1k 词 
+            3k 词 
           </div>
         </div>
         
@@ -913,42 +1009,51 @@ P(u)_w &...
             
               
 裁剪
+
 裁剪是指在渲染场景之前，将位于摄像机视野之外的物体或者被其他物体遮挡的部分移除的过程。这样可以提高渲染效率，因为不需要绘制最终不会出现在屏幕上的物体。
 
 裁剪需要满足以下条件
 
+
 确定场景：不会再发生顶点变换，否则可能会把场景内的点裁剪掉
+
 
 确定视域：引入相机参数后，在投影变换前，它是一个四棱台，之后是正方体（规范化）
 
 
-图像流水线按照场景对象表现形式的不同，图形流水线可以分为三个阶段：世界坐标系，相机坐标系，齐次空间，屏幕空间
+图像流水线
+按照场景对象表现形式的不同，图形流水线可以分为三个阶段：世界坐标系，相机坐标系，齐次空间，屏幕空间
 
 世界坐标系
+
 模型可以被添加到世界坐标系中，组成场景
 可能会有顶点变换
 
 
-$tips$ 虽然只说明了顶点变换，如果模型顶点存在法线，需要做法线变换
+tipstipstips 虽然只说明了顶点变换，如果模型顶点存在法线，需要做法线变换
 
 相机坐标系
+
 将场景的世界坐标转换为相机坐标系的表达
 可能存在顶点变换
 
 
-$tips$ 尽管这里场景对象可能没有变换，不过这会是裁剪可能发生的位置
+tipstipstips 尽管这里场景对象可能没有变换，不过这会是裁剪可能发生的位置
 
 齐次空间
+
 对相机坐标系的场景做投影变换
 规范化
 
 屏幕空间
+
 将规范视体投影到屏幕
 可见面判定算法剔除
 
 
 裁剪可能发生的位置
-$tips$ 如果保证不在相机坐标系下做顶点变换，则可以在世界坐标系下做变换，不过视域需要相机对象，在这个阶段只会有更多限制...
+
+tipstipstips 如果保证不在相机坐标系下做顶点变换，则可以在世界坐标系下...
             
           </div>
         
@@ -1012,7 +1117,7 @@ $tips$ 如果保证不在相机坐标系下做顶点变换，则可以在世界�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            9k 词 
+            12k 词 
           </div>
         </div>
         
@@ -1025,25 +1130,26 @@ $tips$ 如果保证不在相机坐标系下做顶点变换，则可以在世界�
             
               
 势能分析
+
 势能分析是用于分析数据结构操作摊销成本的一种技术。它是一种建立在势能函数基础上的分析方法，通过引入势能函数来跟踪操作的累积成本，并将这个累积成本分摊到每个操作上，从而得到每个操作的摊销成本
 
-势能是和整个数据结构关联而非特定操作，对数据结构$D$的操作引起势能的变换
+势能是和整个数据结构关联而非特定操作，对数据结构DDD的操作引起势能的变换
 
-势能函数$\Phi(D)$：势能函数是一种用来衡量数据结构当前状态的函数。通常，这个函数会根据数据结构中的一些特定属性（如节点的数量、树的深度等）来定义。
+势能函数Φ(D)\Phi(D)Φ(D)：势能函数是一种用来衡量数据结构当前状态的函数。通常，这个函数会根据数据结构中的一些特定属性（如节点的数量、树的深度等）来定义。
 
-定义对数据结构的每一次操作$i$有：
-
-势能成本$\Phi(D_i)-\Phi(D_{i-1})$：数据结构在进行操作时的潜在成本，它通常与数据结构的当前状态有关。
-
-实际成本$c_i$：执行一个操作时的即时成本。
-
-摊还成本$\hat{c_i}=c_i+\Phi(D_i)-\Phi(D_{i-1})$：将实际成本和势能变化结合起来
+定义对数据结构的每一次操作iii有：
 
 
-定义初始数据结构$D_0$的势能$\Phi(D_0)=0$，则进行$N$次操作后的总摊还成本
+势能成本Φ(Di)−Φ(Di−1)\Phi(D_i)-\Phi(D_{i-1})Φ(Di​)−Φ(Di−1​)：数据结构在进行操作时的潜在成本，它通常与数据结构的当前状态有关。
 
-\begin{align}
-\sum_{i=0}^N\hat{c_i} &= \sum_{i=0}^N(c_i+\Ph...
+
+实际成本cic_ici​：执行一个操作时的即时成本。
+
+
+摊还成本ci^=ci+Φ(Di)−Φ(Di−1)\hat{c_i}=c_i+\Phi(D_i)-\Phi(D_{i-1})ci​^​=ci​+Φ(Di​)−Φ(Di−1​)：将实际成本和势能变化结合起来
+
+
+定义初始数据结构D0D_0D0​的势能Φ(D0)=...
             
           </div>
         
@@ -1056,103 +1162,6 @@ $tips$ 如果保证不在相机坐标系下做顶点变换，则可以在世界�
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/02/f8IC9ugeMOSEklz.jpg)" 
       href="/2024/11/02/Fibonacci-Heap/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Leftist-Heap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/01/Leftist-Heap/">左式堆</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-01T13:53:42.000Z" itemprop="datePublished">2024-11-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.1k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-$root$： 树根节点
-
-$left,right$左右子节点，树 
-
-
-
-左式堆是一种可并堆，在基础的二叉堆操作上，支持快速合并
-
-在左式堆树形节点中，除了二叉堆中基础的左右子节点，父节点，和键值对，还需要维护零路径长$\alpha$
-
-\begin{align}
-\alpha(x) &=-1\tag{x is nullptr node}\\\\
-&= min(\alpha(x.left),\alpha(x.right))+1\tag{others}
-\end{align}即节点的零路径长是从它到到不具有两个子节点的最短下降路径
-左式堆需要维护其每一个非空节点$x$的$\alpha$满足
-\alpha(x.left)\ge\alpha(x.right)则有
-\alpha(x)=\alpha(x.right)+1\tag{x not is nullptr node}递归使用这个式子，$\alpha(T.root)$就是左式堆$T$的最右下降路径长度（每次下降都选择右子节点）
-
-核心定理
-非空左式堆$T$至少有$2^{\alpha(root)+1}-1$个节点
-
-使用数学归纳法证...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/01/duzQTs7kYlfJrhv.jpg)" 
-      href="/2024/11/01/Leftist-Heap/" 
     >
        
       <div class="overlay">

@@ -14,26 +14,26 @@
   
 
   
-  <title>环境贴图 | Amy_blog</title>
+  <title>D3D12图形管线-创建设备 | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。  天空盒 天空盒是实现环境贴图的一种技术，它是   在场景中一个立方体对象，每个面内侧都贴有纹理贴图   天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远   在光栅成像中实现 实现无">
+  <meta name="description" content="D3D12图形管线 D3D 12 程序的最外层循环遵循一个极其标准的图形过程:  初始化 渲染循环  更新 渲染   销毁  初始化 初始化涉及到首次设置全局变量和类，initialize函数必须准备管道和资产 [0]启用调试层 12345678#ifdef _DEBUG		ComPtr&lt;ID3D12Debug&gt; debugcontroller;		if (SUCCEEDED(D3D1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="环境贴图">
-<meta property="og:url" content="http://example.com/2024/11/04/environment-Mapping/index.html">
+<meta property="og:title" content="D3D12图形管线-创建设备">
+<meta property="og:url" content="http://example.com/2024/11/17/Creat-D3D12-pipeline-Device/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。  天空盒 天空盒是实现环境贴图的一种技术，它是   在场景中一个立方体对象，每个面内侧都贴有纹理贴图   天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远   在光栅成像中实现 实现无">
+<meta property="og:description" content="D3D12图形管线 D3D 12 程序的最外层循环遵循一个极其标准的图形过程:  初始化 渲染循环  更新 渲染   销毁  初始化 初始化涉及到首次设置全局变量和类，initialize函数必须准备管道和资产 [0]启用调试层 12345678#ifdef _DEBUG		ComPtr&lt;ID3D12Debug&gt; debugcontroller;		if (SUCCEEDED(D3D1">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/11/04/Is2WtnC1pJ5egxb.png">
-<meta property="article:published_time" content="2024-11-04T09:17:55.000Z">
-<meta property="article:modified_time" content="2024-11-04T10:04:05.652Z">
+<meta property="og:image" content="https://s2.loli.net/2024/11/17/OPnNSifzm8oFKkI.jpg">
+<meta property="article:published_time" content="2024-11-17T11:31:58.000Z">
+<meta property="article:modified_time" content="2024-11-17T14:50:55.553Z">
 <meta property="article:author" content="Amy">
-<meta property="article:tag" content="Shading">
+<meta property="article:tag" content="cg-api">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/11/04/Is2WtnC1pJ5egxb.png">
+<meta name="twitter:image" content="https://s2.loli.net/2024/11/17/OPnNSifzm8oFKkI.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
   
@@ -212,14 +212,14 @@
        
 
 
-<article id="post-environment-Mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Creat-D3D12-pipeline-Device" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm3lpt66s004foc6zcujydn39">
-        <img src="https://s2.loli.net/2024/11/04/Is2WtnC1pJ5egxb.png" itemprop="image">
+      <a class="article-gallery-img" rel="gallery_cm3lpt65w000coc6za9jng7xo">
+        <img src="https://s2.loli.net/2024/11/17/OPnNSifzm8oFKkI.jpg" itemprop="image">
       </a>
     
   </div>
@@ -235,7 +235,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        环境贴图
+        D3D12图形管线-创建设备
       </h1>
     
   
@@ -243,63 +243,45 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-04T09:17:55.000Z" itemprop="datePublished">2024-11-04</time>
+  <time class="dt-published" datetime="2024-11-17T11:31:58.000Z" itemprop="datePublished">2024-11-17</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+  <a class="meta-cate-link" href="/categories/DirectX12/">DirectX12</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            438 词 
+            1.4k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <p>环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。</p>
-<hr>
-<h3 id="%E5%A4%A9%E7%A9%BA%E7%9B%92" tabindex="-1">天空盒</h3>
-<p>天空盒是实现环境贴图的一种技术，它是</p>
+          <h3 id="d3d12%E5%9B%BE%E5%BD%A2%E7%AE%A1%E7%BA%BF" tabindex="-1">D3D12图形管线</h3>
+<p>D3D 12 程序的最外层循环遵循一个极其标准的图形过程:</p>
 <ul>
-<li>
-<p>在场景中一个立方体对象，每个面内侧都贴有纹理贴图</p>
-</li>
-<li>
-<p>天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远</p>
-</li>
-</ul>
-<h3 id="%E5%9C%A8%E5%85%89%E6%A0%85%E6%88%90%E5%83%8F%E4%B8%AD%E5%AE%9E%E7%8E%B0" tabindex="-1">在光栅成像中实现</h3>
-<p>实现<strong>无限远</strong>只需要在可见性判定上处理</p>
-<ol>
-<li>保证天空盒对象包围住相机</li>
-<li>禁用深度测试并渲染天空盒</li>
-<li>开启深度测试渲染其他对象</li>
-</ol>
-<p>因为深度测试中的初始值为无线深，先渲染的天空盒对于其他物体都是无穷远的</p>
-<h3 id="%E5%9C%A8%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E4%B8%AD%E5%AE%9E%E7%8E%B0" tabindex="-1">在光线追踪中实现</h3>
-<p>不需要建立对象，使用<strong>背景函数</strong>，它接受光线的方向向量</p>
-<p>若一个对象从视体边界射出，从背景函数中查找对象的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>G</mi><mi>B</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">RGBA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">RGB</span><span class="mord mathnormal">A</span></span></span></span></eq></p>
-<hr>
-<h3 id="%E5%85%89%E6%B3%BD%E6%95%88%E6%9E%9C" tabindex="-1">光泽效果</h3>
+<li>初始化</li>
+<li>渲染循环
 <ul>
-<li>
-<p>在光线追踪程序中，增加环境项即可</p>
-</li>
-<li>
-<p>在光栅成像程序中，利用观察方向相对于法线的反射方向去查询环境映射的颜色值，简单来讲，<strong>反射光线求交</strong></p>
-</li>
+<li>更新</li>
+<li>渲染</li>
 </ul>
-<hr>
-<h3 id="%E7%A9%B9%E9%A1%B6" tabindex="-1">穹顶</h3>
-<p>相比天空盒，穹顶不会存在边界缝隙，但是可能存在图像扭曲</p>
-<hr>
+</li>
+<li>销毁</li>
+</ul>
+<h3 id="%E5%88%9D%E5%A7%8B%E5%8C%96" tabindex="-1">初始化</h3>
+<p>初始化涉及到首次设置全局变量和类，initialize函数必须准备管道和资产</p>
+<h3 id="%5B0%5D%E5%90%AF%E7%94%A8%E8%B0%83%E8%AF%95%E5%B1%82" tabindex="-1">[0]启用调试层</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _DEBUG</span></span><br><span class="line">		ComPtr&lt;ID3D12Debug&gt; debugcontroller;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">SUCCEEDED</span>(<span class="built_in">D3D12GetDebugInterface</span>(<span class="built_in">IID_PPV_ARGS</span>(&amp;debugcontroller)))) &#123;</span><br><span class="line">			debugcontroller-&gt;<span class="built_in">EnableDebugLayer</span>();</span><br><span class="line">			<span class="comment">// 打开附加的调试支持</span></span><br><span class="line">			nDXGIFactoryFlags |= DXGI_CREATE_FACTORY_DEBUG;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// _DEBUG</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="%5B1%5D%E5%88%9B%E5%BB%BAdxgifactory%E5%AF%B9%E8%B1%A1" tabindex="-1">[1]创建DXGIFactory对象</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">THROW_IF_FAILED</span>(<span class="built_in">CreateDXGIFactory2</span>(nDXGIFactoryFlags, <span class="built_in">IID_PPV_ARGS</span>(&amp;pIDXGIFactory2)));</span><br><span class="line"><span class="comment">//关闭响应alt-enter键(目前不需要)</span></span><br><span class="line"><span class="built_in">THROW_IF_FAILED</span>(pIDXGIFactory2-&gt;<span class="built_in">MakeWindowAssociation</span>(hWnd, DXGI_MWA_NO_ALT_ENTER));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### [2]枚举并创建3D设备</span><br><span class="line"></span><br><span class="line">ppdevice被设置为nullptr可以测试是否能创建</span><br><span class="line"></span><br><span class="line">&gt; A pointer to a memory block that receives a pointer to the device. Pass NULL to test if device creation would succeed, but to not actually create the device. If NULL is passed and device creation would succeed, S_FALSE is returned</span><br><span class="line"></span><br><span class="line">SUCCEEDED会让S_FALSE通过测试</span><br><span class="line"></span><br><span class="line">```C++</span><br><span class="line">//枚举并选择合适的3D设备</span><br><span class="line">	&#123;</span><br><span class="line">		DXGI_ADAPTER_DESC1 stAdapterdesc1;</span><br><span class="line">		for (UINT AdapterIndex = 0; DXGI_ERROR_NOT_FOUND != pIDXGIFactory2-&gt;EnumAdapters1(AdapterIndex, &amp;pAdapter1);++AdapterIndex) &#123;</span><br><span class="line">			pAdapter1-&gt;GetDesc1(&amp;stAdapterdesc1);</span><br><span class="line">			//跳过软件虚拟适配器设备</span><br><span class="line">			if (stAdapterdesc1.Flags &amp; DXGI_ADAPTER_FLAG_SOFTWARE)</span><br><span class="line">				continue;</span><br><span class="line">			//检查适配器对D3D支持的兼容级别</span><br><span class="line">			if (SUCCEEDED(D3D12CreateDevice(pAdapter1.Get(), emFeatureLevel, __uuidof(ID3D12Device), nullptr)))</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		//创建D3D12设备</span><br><span class="line">		THROW_IF_FAILED(D3D12CreateDevice(pAdapter1.Get(), emFeatureLevel, IID_PPV_ARGS(&amp;pID3D12Device4)));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -316,25 +298,25 @@
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/2024/11/05/Quaternion-rotation/"
-      title="四元数与旋转"
+      href="/2025/10/01/Radiosity-modle/"
+      title="辐射度模型"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
       
-        四元数与旋转
+        辐射度模型
         
     </p>
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/11/04/Shadow-Mapping/"
-      title="阴影贴图"
+      href="/2024/11/17/Window-Messages/"
+      title="处理窗口消息"
      >
 
     <p class="title-text">
       
-        阴影贴图
+        处理窗口消息
         
     </p>
     <i class="fa-solid fa-angle-right"></i>

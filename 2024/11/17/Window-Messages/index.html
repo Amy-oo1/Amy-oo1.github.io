@@ -20,12 +20,12 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="窗口消息定义Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过窗口消息和系统通信：  The system passes all input for an application to the various windows in the application. Each window has a function, calle">
+  <meta name="description" content="窗口消息定义 Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过窗口消息和系统通信：  The system passes all input for an application to the various windows in the application. Each window has a function, call">
 <meta property="og:type" content="article">
 <meta property="og:title" content="处理窗口消息">
 <meta property="og:url" content="http://example.com/2024/11/17/Window-Messages/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="窗口消息定义Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过窗口消息和系统通信：  The system passes all input for an application to the various windows in the application. Each window has a function, calle">
+<meta property="og:description" content="窗口消息定义 Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过窗口消息和系统通信：  The system passes all input for an application to the various windows in the application. Each window has a function, call">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2024/11/17/uTpF4UsQrK1CDev.jpg">
 <meta property="article:published_time" content="2024-11-17T05:56:30.000Z">
@@ -160,14 +160,19 @@
                 <div class="category-count">25</div>
             </a>
         
-            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
-                算法
-                <div class="category-count">6</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/DirectX12/">
+                DirectX12
+                <div class="category-count">3</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
+                算法
+                <div class="category-count">6</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">
@@ -182,11 +187,6 @@
         
             <a class="category-link" href="/categories/OpenGL/">
                 OpenGL
-                <div class="category-count">2</div>
-            </a>
-        
-            <a class="category-link" href="/categories/DirectX12/">
-                DirectX12
                 <div class="category-count">2</div>
             </a>
         </div>
@@ -218,7 +218,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm3laf0k8003y186zaz9o49pq">
+      <a class="article-gallery-img" rel="gallery_cm3lpt66r0047oc6z0e9vcyq0">
         <img src="https://s2.loli.net/2024/11/17/uTpF4UsQrK1CDev.jpg" itemprop="image">
       </a>
     
@@ -263,7 +263,8 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="窗口消息定义"><a href="#窗口消息定义" class="headerlink" title="窗口消息定义"></a>窗口消息定义</h3><p>Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过<strong>窗口消息</strong>和系统通信：</p>
+          <h3 id="%E7%AA%97%E5%8F%A3%E6%B6%88%E6%81%AF%E5%AE%9A%E4%B9%89" tabindex="-1">窗口消息定义</h3>
+<p>Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过<strong>窗口消息</strong>和系统通信：</p>
 <blockquote>
 <p>The system passes all input for an application to the various windows in the application. Each window has a function, called a window procedure, that the system calls whenever it has input for the window. The window procedure processes the input and returns control to the system. For more information about window procedures,</p>
 </blockquote>
@@ -275,36 +276,48 @@
 <ul>
 <li><strong>窗口句柄</strong>将消息和窗口关系，系统正确的分发窗口消息，窗口发布的消息也能得到正确处理</li>
 <li><strong>消息标识符</strong>常量标识了消息的类别，它和消息参数组合起来就能表示特定的<strong>窗口消息</strong></li>
-<li>消息参数不需要使用时为$nullptr$，比如销毁窗口的消息标识<code>WM_DESTORY</code></li>
+<li>消息参数不需要使用时为<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>u</mi><mi>l</mi><mi>l</mi><mi>p</mi><mi>t</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">nullptr</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">llpt</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span></eq>，比如销毁窗口的消息标识<code>WM_DESTORY</code></li>
 </ul>
-<h3 id="窗口消息类别"><a href="#窗口消息类别" class="headerlink" title="窗口消息类别"></a>窗口消息类别</h3><ul>
+<h3 id="%E7%AA%97%E5%8F%A3%E6%B6%88%E6%81%AF%E7%B1%BB%E5%88%AB" tabindex="-1">窗口消息类别</h3>
+<ul>
 <li>System-Defined Messages：系统自定义，具体来说，符号唯一，消息参数固定，系统定义解释</li>
 <li>Application-Defined Messages：程序可以定义消息，需要程序解释</li>
 </ul>
 <p>比如WM_DESTORY消息，窗口收到后就应该执行销毁窗口的操作</p>
-<h3 id="消息路由"><a href="#消息路由" class="headerlink" title="消息路由"></a>消息路由</h3><p>根据路径不同，消息有可分为</p>
+<h3 id="%E6%B6%88%E6%81%AF%E8%B7%AF%E7%94%B1" tabindex="-1">消息路由</h3>
+<p>根据路径不同，消息有可分为</p>
 <ul>
-<li>排队消息： 系统消息队列$\to$线程消息队列$\to$目标窗口过程（如果是单线程）</li>
+<li>排队消息： 系统消息队列<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span></eq>线程消息队列<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span></eq>目标窗口过程（如果是单线程）</li>
 <li>非排队消息：从系统直接到到目标窗口过程</li>
 </ul>
-<h3 id="消息处理"><a href="#消息处理" class="headerlink" title="消息处理"></a>消息处理</h3><p>应用程序必须删除并处理发布到其线程的消息队列的消息，在单线程程序中，一般使用这样的循环结构</p>
+<h3 id="%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86" tabindex="-1">消息处理</h3>
+<p>应用程序必须删除并处理发布到其线程的消息队列的消息，在单线程程序中，一般使用这样的循环结构</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">BOOL bRet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>( (bRet = <span class="built_in">GetMessage</span>( &amp;msg, hWnd, <span class="number">0</span>, <span class="number">0</span> )) != <span class="number">0</span>)</span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">if</span> (bRet == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// handle the error and possibly exit</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">TranslateMessage</span>(&amp;msg); </span><br><span class="line">        <span class="built_in">DispatchMessage</span>(&amp;msg); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL</span></span><br><span class="line"><span class="function">WINAPI</span></span><br><span class="line"><span class="function"><span class="title">GetMessageW</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    _Out_ LPMSG lpMsg,</span></span></span><br><span class="line"><span class="params"><span class="function">    _In_opt_ HWND hWnd,</span></span></span><br><span class="line"><span class="params"><span class="function">    _In_ UINT wMsgFilterMin,</span></span></span><br><span class="line"><span class="params"><span class="function">    _In_ UINT wMsgFilterMax)</span></span>;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><code>lpMsg</code>为获取到的消息结构指针</p>
+<li>
+<p><code>lpMsg</code>为获取到的消息结构指针</p>
 </li>
-<li><p><code>hWnd==NULL</code>时会检索当前线程的所有所有消息，<code>hWnd==-1</code>时只会处理消息队列中<code>hWnd==-1</code>的消息</p>
+<li>
+<p><code>hWnd==NULL</code>时会检索当前线程的所有所有消息，<code>hWnd==-1</code>时只会处理消息队列中<code>hWnd==-1</code>的消息</p>
 </li>
-<li><p>后面两个参数指定了消息检索范围，置为<code>NULL</code>会检索所有消息</p>
+<li>
+<p>后面两个参数指定了消息检索范围，置为<code>NULL</code>会检索所有消息</p>
 </li>
-<li><p><code>lpMeg-&gt;uMsg==WM_QUIT</code>时会返回0</p>
+<li>
+<p><code>lpMeg-&gt;uMsg==WM_QUIT</code>时会返回0</p>
 </li>
-<li><p>函数调用出错时返回-1</p>
+<li>
+<p>函数调用出错时返回-1</p>
 </li>
-<li><p>其他时候返回非0值</p>
+<li>
+<p>其他时候返回非0值</p>
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 窗口过程</span><br><span class="line"></span><br><span class="line">针对不同的消息设置$case$块，对应复杂的过程可能要单开 一个线程处理</span><br><span class="line"></span><br><span class="line">```C++</span><br><span class="line">LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</span><br><span class="line">&#123;</span><br><span class="line">	switch (uMsg)&#123;</span><br><span class="line">	case WM_CLOSE:</span><br><span class="line">		if (MessageBox(hWnd, _T(&quot;Realy Quit?&quot;), _T(&quot;my application&quot;), MB_OKCANCEL) == IDOK)</span><br><span class="line">			DestroyWindow(hWnd);</span><br><span class="line">		break;</span><br><span class="line">	case WM_DESTROY:</span><br><span class="line">		PostQuitMessage(0);</span><br><span class="line">		return 0;</span><br><span class="line">	case WM_PAINT:</span><br><span class="line">	&#123;</span><br><span class="line">		PAINTSTRUCT ps;</span><br><span class="line">		HDC hdc = BeginPaint(hwnd, &amp;ps);</span><br><span class="line"></span><br><span class="line">		// All painting occurs here, between BeginPaint and EndPaint.</span><br><span class="line"></span><br><span class="line">		FillRect(hdc, &amp;ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));</span><br><span class="line"></span><br><span class="line">		EndPaint(hwnd, &amp;ps);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	return DefWindowProc(hwnd, uMsg, wParam, lParam);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
         
       </div>
 
@@ -318,13 +331,13 @@
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/2025/10/01/Radiosity-modle/"
-      title="辐射度模型"
+      href="/2024/11/17/Creat-D3D12-pipeline-Device/"
+      title="D3D12图形管线-创建设备"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
       
-        辐射度模型
+        D3D12图形管线-创建设备
         
     </p>
   </a>
