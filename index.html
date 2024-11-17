@@ -180,7 +180,7 @@
         
             <a class="category-link" href="/categories/DirectX12/">
                 DirectX12
-                <div class="category-count">1</div>
+                <div class="category-count">2</div>
             </a>
         </div>
     </div>
@@ -192,7 +192,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/xg-api/" rel="tag">xg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
     </div>
   </div>
 
@@ -250,9 +250,6 @@
               
 渲染度模型
 
-
-
-
             
           </div>
         
@@ -286,7 +283,7 @@
    
 
 
-<article id="post-windows-app" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Window-Messages" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -297,7 +294,88 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/16/windows-app/">win32-program入门[0]</a>
+        <a class="p-name article-title" href="/2024/11/17/Window-Messages/">处理窗口消息</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-17T05:56:30.000Z" itemprop="datePublished">2024-11-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/DirectX12/">DirectX12</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              窗口消息定义Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过窗口消息和系统通信：
+
+The system passes all input for an application to the various windows in the application. Each window has a function, called a window procedure, that the system calls whenever it has input for the window. The window procedure processes the input and returns control to the system. For more information about window procedures,
+
+一个窗口消息由四个分量组成，它和过程函数参数一致
+
+The system sends a message to a window procedure with a set of fou...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/17/uTpF4UsQrK1CDev.jpg)" 
+      href="/2024/11/17/Window-Messages/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-windows-creat" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/16/windows-creat/">创建窗口</a>
       </h1>
     
   
@@ -316,11 +394,11 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.7k 词 
+            4.6k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xg-api/" rel="tag">xg-api</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -328,26 +406,25 @@
           <div class="truncate-text">
             
               标头windows.h
-
 The header files for the Windows API enable you to create 32- and 64-bit applications.
 
-这个标头会根据平台搭建窗口的大多数functionfunctionfunction和预定义typetypetype，如果直接包含这个头文件会过于臃肿
+这个标头会根据平台搭建窗口的大多数$function$和预定义$type$，如果直接包含这个头文件会过于臃肿
 
-定义WIN32_LEAN_AND_MEAN可以使预处理器排除不常用apiapiapi
+定义WIN32_LEAN_AND_MEAN可以使预处理器排除不常用$api$
 
 
 Define WIN32_LEAN_AND_MEAN to exclude APIs such as Cryptography, DDE, RPC, Shell, and Windows Sockets.
 
 
-定向排除apiapiapi
+定向排除$api$
 
 
 Define one or more of the NOapi symbols to exclude the API
 
-数据类型
-winddows−apiwinddows-apiwinddows−api大量使用匈牙利命名规则来预定义一套数据类型，具体参阅文档
-程序入口
-不使用mainmainmain函数作为...
+数据类型$winddows-api$大量使用匈牙利命名规则来预定义一套数据类型，具体参阅文档
+程序入口不使用$main$函数作为入口，系统动态运行库$DRC$会帮助调用程序入口
+$win32$程序的入口函数签名为：
+123456int WINAP...
             
           </div>
         
@@ -359,7 +436,7 @@ winddows−apiwinddows-apiwinddows−api大量使用匈牙利命名规则来预�
      
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/16/ErWLg8oQ9JVkvlu.jpg)" 
-      href="/2024/11/16/windows-app/" 
+      href="/2024/11/16/windows-creat/" 
     >
        
       <div class="overlay">
@@ -411,7 +488,7 @@ winddows−apiwinddows-apiwinddows−api大量使用匈牙利命名规则来预�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.9k 词 
+            3.6k 词 
           </div>
         </div>
         
@@ -424,14 +501,14 @@ winddows−apiwinddows-apiwinddows−api大量使用匈牙利命名规则来预�
             
               
 核心思想
-
 替罪羊树（Scapegoat Tree）是一种自平衡二叉搜索树，它通过懒惰平衡的方式来维持树的平衡。在替罪羊树中，不会在每次插入或删除操作后立即进行平衡，而是当树变得“过于不平衡”时，才进行一次全局的重构。
 
-替罪羊树通过定义平衡因子α≥0.5\alpha\ge0.5α≥0.5来保持树高稳定在O(log⁡N)O(\log N)O(logN)
-平衡因子要求每个节点NodeNodeNode属性保持
-Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Size(Node)Size(Nodel.right)≤Size(Node)Size(Nodel.right)\le Size(Node)Size(Nodel.right)≤Size(Node)如果α=0.5\alpha=0.5α=0.5那么这棵树是高度平衡的，实践中采用大多α=0.7\alpha=0.7α=0.7
-重构
-对于不满足平衡条件的（子）树TTT，对其进行平衡操作，具体的讲将平衡树TTT中数据遍历取出，然后使用这些数据建...
+替罪羊树通过定义平衡因子$\alpha\ge0.5$来保持树高稳定在$O(\log N)$
+平衡因子要求每个节点$Node$属性保持
+Size(Nodel.left)\le Size(Node)Size(Nodel.right)\le Size(Node)如果$\alpha=0.5$那么这棵树是高度平衡的，实践中采用大多$\alpha=0.7$
+重构对于不满足平衡条件的（子）树$T$，对其进行平衡操作，具体的讲将平衡树$T$中数据遍历取出，然后使用这些数据建立一颗新树替换原本的树
+具体操作代码如下，不过切记不要在递归上升的路径上进行重构，这样会对一个节点多次搬移，应该重新遍历下降路径进行测试
+123456789auto s_blance_size(Node*&amp; X) &#123;		if (a * s_get_size(X) &lt;= max(s_ge...
             
           </div>
         
@@ -495,7 +572,7 @@ Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Si
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            54 词 
+            34 词 
           </div>
         </div>
         
@@ -506,9 +583,7 @@ Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Si
         
           <div class="truncate-text">
             
-              使用AssimpAssimpAssimp工具导入模型并转换为MeshesMeshesMeshes，代码见仓库
-
-
+              使用$Assimp$工具导入模型并转换为$Meshes$，代码见仓库
 
             
           </div>
@@ -573,7 +648,7 @@ Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Si
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4k 词 
+            3.8k 词 
           </div>
         </div>
         
@@ -586,20 +661,24 @@ Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Si
             
               
 题目要求
-简单来讲，就是旋转长度为NNN序列的任意子序列
+简单来讲，就是旋转长度为$N$序列的任意子序列
 
 序列数据可以用二叉搜索树维护，为每一个元素附上一个表示排位的权值即可
 
 想要逆转子序列，首先得弄清楚子序列元素的分布，将树上节点映射到数轴上，可以发现
 
-以子序列双端点的LCALCALCA的最近公共祖先为节点的子树TTT包含整个子序列(不是只包含)，所以只需要遍历重构这个树就能实现翻转
+以子序列双端点的$LCA$的最近公共祖先为节点的子树$T$包含整个子序列(不是只包含)，所以只需要遍历重构这个树就能实现翻转
 
-如果使用查找操作O(log⁡N)O(\log N)O(logN)平衡树，翻转子序列的复杂度为
-O(log⁡N+2H^(T))≤O(log⁡N+N)=O(N)O(\log N+2^{\hat{H}(T)})\le O(\log N +N)=O(N)O(logN+2H^(T))≤O(logN+N)=O(N)
-SpalySpalySpaly重构
+如果使用查找操作$O(\log N)$平衡树，翻转子序列的复杂度为
+O(\log N+2^{\hat{H}(T)})\le O(\log N +N)=O(N)
+$Spaly$重构
 
-SplaySplaySplay树可以改进这个复杂度，它能构造只包含翻转子序列元素的树TTT
-具体的说，有翻转子序列[L,R][L,R][L,R]，其中L,RL,RL,R分别是序列端点的索引，将NodeLNode_LNodeL​splay到根节点，将NodeRNode_RNodeR​splay到根的...
+$Splay$树可以改进这个复杂度，它能构造只包含翻转子序列元素的树$T$
+具体的说，有翻转子序列$[L,R]$，其中$L,R$分别是序列端点的索引，将$Node_L$splay到根节点，将$Node_R$splay到根的右节点，此时$T(Node_R.left)+Node_L+Node_R$刚好就是翻转子序列元素，有
+O(\log N+R-L+1)具体证明可以把树上节点映射到数轴上
+
+算法实现
+$tips$ 因为两次旋转等价于没旋转，所以可使用懒惰修改，每次访问...
             
           </div>
         
@@ -663,7 +742,7 @@ SplaySplaySplay树可以改进这个复杂度，它能构造只包含翻转子�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.6k 词 
+            5.5k 词 
           </div>
         </div>
         
@@ -675,17 +754,16 @@ SplaySplaySplay树可以改进这个复杂度，它能构造只包含翻转子�
           <div class="truncate-text">
             
               
-伸展树（Splay TreeSplay\ TreeSplay Tree）是一种自平衡二叉搜索树，它可以在对树进行一系列操作后，通过特定的展开操作将最近访问的节点移动到树的根部。这种数据结构的目的是通过局部性原理来优化搜索树的性能，即最近被访问的元素很可能在不久的将来再次被访问
+伸展树（$Splay\ Tree$）是一种自平衡二叉搜索树，它可以在对树进行一系列操作后，通过特定的展开操作将最近访问的节点移动到树的根部。这种数据结构的目的是通过局部性原理来优化搜索树的性能，即最近被访问的元素很可能在不久的将来再次被访问
 
 
-树节点
-定义并初始化维护伸展树根的指针
+树节点定义并初始化维护伸展树根的指针
 1Node* Root = nullptr;
-定义伸展操作splaysplaysplay，这个操作会保证splaysplaysplay树的均摊复杂度
+定义伸展操作$splay$，这个操作会保证$splay$树的均摊复杂度
 1auto s_splay_node_to_Son_of_Y(Node* X, Node* Y)-&gt;void
-这个操作使得树节点XXX成为YYY的儿子节点，定义伸展树根节点的parentparentparent为nullptrnullptrnullptr，也就是说，这个操作可以实现将最近访问的节点移动到树的根部
+这个操作使得树节点$X$成为$Y$的儿子节点，定义伸展树根节点的$parent$为$nullptr$，也就是说，这个操作可以实现将最近访问的节点移动到树的根部
 根据定义，在树节点不重复的限制下，一颗其节点可以表示为
-12345struct Node &#123;		Node(int val, Node* parent = nullptr) :val(val)...
+12345struct Node &#123;		Node(int val, Node* parent = nullptr) :val(val), parent(parent) &#123;&#125;		int val;		Node* left = nul...
             
           </div>
         
@@ -749,7 +827,7 @@ SplaySplaySplay树可以改进这个复杂度，它能构造只包含翻转子�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.9k 词 
+            4.5k 词 
           </div>
         </div>
         
@@ -761,30 +839,33 @@ SplaySplaySplay树可以改进这个复杂度，它能构造只包含翻转子�
           <div class="truncate-text">
             
               
-tipstipstips 前置知识：二叉搜索树BSTBSTBST
+$tips$ 前置知识：二叉搜索树$BST$
 二叉搜索树是一种二叉树的树形数据结构，其定义如下：
-
 
 空树是二叉搜索树。
 
-
 若二叉搜索树的左子树不为空，则其左子树上所有点的附加权值均小于其根节点的值。
 
-
 若二叉搜索树的右子树不为空，则其右子树上所有点的附加权值均大于其根节点的值。
-
 
 二叉搜索树的左右子树均为二叉搜索树。
 
 
 
-AVLAVLAVL的结构
+$AVL$的结构
+平衡因子：在$AVL$树中，任何节点的两个子树的高度最大差别为$0$，所以它也被称为高度平衡树
 
-平衡因子：在AVLAVLAVL树中，任何节点的两个子树的高度最大差别为000，所以它也被称为高度平衡树
+定义空树高为$-1$
+$AVL$通过旋转实现自平衡,对于不满足平衡因子的树$Y$高一定为2，这个是旋转和递归操作决定的，也就是只考虑$Y.height==1$
+$AVL$将其分为四类，其中两种关于$Y$的左右存在镜像关系，这里仅分析以下两种（$Y.left.height&gt;Y.right.height$）就能覆盖所有情况
 
-定义空树高为−1-1−1
-AVLAVLAVL通过旋转实现自平衡,对于不满足平衡因子的树YYY高一定为2，这个是旋转和递归操作决定的，也就是只考虑Y.height==1Y.height==1Y.height==1
-AVLAVLAVL将其分为四类，其中两种关于YYY的左右存在镜像关系，这里仅分析以下两种（Y.left.height&gt;Y.right.heightY.left.height&gt;Y.right.heightY.left.height&gt;Y.right.height）就能覆盖所有情...
+$X.left.height\ge X.right.height$ 右旋$Y$
+
+$X.left.height&lt; X.right.height$ 左旋$X$变换为上一种情况右旋$Y$
+
+
+
+虚线节点为可能存在的节点...
             
           </div>
         
@@ -848,7 +929,7 @@ AVLAVLAVL将其分为四类，其中两种关于YYY的左右存在镜像关系�
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.7k 词 
+            2.3k 词 
           </div>
         </div>
         
@@ -860,20 +941,20 @@ AVLAVLAVL将其分为四类，其中两种关于YYY的左右存在镜像关系�
           <div class="truncate-text">
             
               
-OpenGLOpenGLOpenGL自身是一个巨大的状态机(State−MachineState-MachineState−Machine)：一系列的变量描述OpenGL此刻应当如何运行。OpenGL的状态通常被称为OpenGL上下文(Context)。我们通常使用如下途径去更改OpenGL状态：设置选项，操作缓冲。最后，我们使用当前OpenGL上下文来渲染。
+$OpenGL$自身是一个巨大的状态机($State-Machine$)：一系列的变量描述OpenGL此刻应当如何运行。OpenGL的状态通常被称为OpenGL上下文(Context)。我们通常使用如下途径去更改OpenGL状态：设置选项，操作缓冲。最后，我们使用当前OpenGL上下文来渲染。
 
 实践中不需要知道自动机是如何运行的，而编码可能会被某些上下文信息迷惑，尤其是在过程式编程中
 
-bufferbufferbuffer缓冲区
+$buffer$缓冲区
+在$OpenGL$中，缓冲区（$Buffer$）是用来存储数据的对象，它们位于显存中，可以存储顶点数据、索引数据、像素数据等
 
-在OpenGLOpenGLOpenGL中，缓冲区（BufferBufferBuffer）是用来存储数据的对象，它们位于显存中，可以存储顶点数据、索引数据、像素数据等
+接下来介绍$GPU$中的$buffer$如何与$CPU$中的$Cpp$程序交互，$OpenGL$使用自动机的上下文减少冗余
+$glGenBuffer$创建
+创建$n$个$buffer$对象
 
-接下来介绍GPUGPUGPU中的bufferbufferbuffer如何与CPUCPUCPU中的CppCppCpp程序交互，OpenGLOpenGLOpenGL使用自动机的上下文减少冗余
-glGenBufferglGenBufferglGenBuffer创建
-
-创建nnn个bufferbufferbuffer对象
-
-...
+1void glGenBuffers(GLsizei n, GLuint* buffers)
+简单来讲，创建的$VBO$对象就是不为$0$的$GLuint$类型索引，$0$映射到空对象，在$cpp$程序中使用索引访问不同的缓冲
+$glBindBuffer$...
             
           </div>
         
@@ -937,7 +1018,7 @@ glGenBufferglGenBufferglGenBuffer创建
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.6k 词 
+            920 词 
           </div>
         </div>
         
@@ -949,12 +1030,14 @@ glGenBufferglGenBufferglGenBuffer创建
           <div class="truncate-text">
             
               
-多重重要性采样MISMISMIS理论
-MISMISMIS提供了在在蒙特卡洛积分中将多种采样分布结合起来的无偏估计的方法
-具体的说，有MMM个采样策略，每种采样策略iii都在样本空间内采样，且对应的概率密度函数为pip_ipi​
-每种采样策略iii独立采样NiN_iNi​个样本，第iii种采样方法获得的第jjj样本为xijx_{ij}xij​，获得总共∑i=1MNi\sum_{i=1}^{M}N_i∑i=1M​Ni​个样本，然后使用以下式子进行积分估值：
-I=∫Ωf(x)dx≈∑i=1M1Ni∑j=1Niwi(xij)f(xij)pi(xij)I=\int_{\Omega}f(x)dx\approx\sum_{i=1}^M\frac{1}{N_i}\sum_{j=1}^{N_i}w_i(x_{ij})\frac{f(x_{ij})}{p_i(x_{ij})}I=∫Ω​f(x)dx≈i=1∑M​Ni​1​j=1∑Ni​​wi​(xij​)pi​(xij​)f(xij​)​其中wiw_iwi​为权重函数，接下来证明它需要满足的条件才能实现无偏估计
-E[I]=E[∑i=1M1Ni∑j=...
+多重重要性采样$MIS$理论$MIS$提供了在在蒙特卡洛积分中将多种采样分布结合起来的无偏估计的方法
+具体的说，有$M$个采样策略，每种采样策略$i$都在样本空间内采样，且对应的概率密度函数为$p_i$
+每种采样策略$i$独立采样$N_i$个样本，第$i$种采样方法获得的第$j$样本为$x_{ij}$，获得总共$\sum_{i=1}^{M}N_i$个样本，然后使用以下式子进行积分估值：
+I=\int_{\Omega}f(x)dx\approx\sum_{i=1}^M\frac{1}{N_i}\sum_{j=1}^{N_i}w_i(x_{ij})\frac{f(x_{ij})}{p_i(x_{ij})}其中$w_i$为权重函数，接下来证明它需要满足的条件才能实现无偏估计
+
+\begin{align}
+E[I] &= E\left[\sum_{i=1}^M\frac{1}{N_i}\sum_{j=1}^{N_i}w_i(x_{ij})\frac{f(x_{ij})}{p_i(x_{ij})}\right]\\\\
+&= \sum_{i=1}^ME\left[\frac{1}{N_i...
             
           </div>
         
@@ -967,85 +1050,6 @@ E[I]=E[∑i=1M1Ni∑j=...
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/09/s3XWLpazqNbTFy9.jpg)" 
       href="/2024/11/09/Multiple-Importance-Sampling/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Importance-Sampling" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/08/Importance-Sampling/">重要性采样</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-07T23:49:23.000Z" itemprop="datePublished">2024-11-08</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            7.9k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-蒙特卡洛积分
-设函数f:S→Rf:S\to Rf:S→R，随机变量x∼px\sim px∼p，根据大数定理lim⁡N→∞1N∑i=1Np(xi)=1\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^Np(x_i)=1limN→∞​N1​∑i=1N​p(xi​)=1可以估计函数f(x)f(x)f(x)的期望
-E[f(x)]=∫x∈Sf(x)p(x)dμ≈1N∑i=1Nf(x)E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i=1}^Nf(x)E[f(x)]=∫x∈S​f(x)p(x)dμ≈N1​i=1∑N​f(x)令g=fpg=fpg=fp，可以得到用求和近似表示g(x)g(x)g(x)的积分
-∫x∈Sg(x)dμ≈1N∑i=1Ng(x)p(x)\int_{x\in S}g(x)d\mu\approx\frac{1}{N}\sum_{i=1}^N\frac{g(x)}{p(x)}∫x∈S​g(x)dμ≈N1​i=1∑N​p(x)g(x)​为了得到更好的估计（方差最小）需要ppp和fff形...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/08/CNhRLq6ZXAYI3Ug.png)" 
-      href="/2024/11/08/Importance-Sampling/" 
     >
        
       <div class="overlay">

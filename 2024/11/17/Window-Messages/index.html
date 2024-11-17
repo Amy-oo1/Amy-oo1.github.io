@@ -14,26 +14,26 @@
   
 
   
-  <title>重要性采样 | Amy_blog</title>
+  <title>处理窗口消息 | Amy_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="蒙特卡洛积分设函数$f:S\to R$，随机变量$x\sim p$，根据大数定理$\lim_{N\to\infty}\frac{1}{N}\sum_{i&#x3D;1}^Np(x_i)&#x3D;1$可以估计函数$f(x)$的期望 E[f(x)]&#x3D;\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i&#x3D;1}^Nf(x)令$g&#x3D;fp$，可以得到用求和近似表示$g(x)$的">
+  <meta name="description" content="窗口消息定义Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过窗口消息和系统通信：  The system passes all input for an application to the various windows in the application. Each window has a function, calle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重要性采样">
-<meta property="og:url" content="http://example.com/2024/11/08/Importance-Sampling/index.html">
+<meta property="og:title" content="处理窗口消息">
+<meta property="og:url" content="http://example.com/2024/11/17/Window-Messages/index.html">
 <meta property="og:site_name" content="Amy_blog">
-<meta property="og:description" content="蒙特卡洛积分设函数$f:S\to R$，随机变量$x\sim p$，根据大数定理$\lim_{N\to\infty}\frac{1}{N}\sum_{i&#x3D;1}^Np(x_i)&#x3D;1$可以估计函数$f(x)$的期望 E[f(x)]&#x3D;\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i&#x3D;1}^Nf(x)令$g&#x3D;fp$，可以得到用求和近似表示$g(x)$的">
+<meta property="og:description" content="窗口消息定义Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过窗口消息和系统通信：  The system passes all input for an application to the various windows in the application. Each window has a function, calle">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/11/08/CNhRLq6ZXAYI3Ug.png">
-<meta property="article:published_time" content="2024-11-07T23:49:23.000Z">
-<meta property="article:modified_time" content="2024-11-10T10:27:18.741Z">
+<meta property="og:image" content="https://s2.loli.net/2024/11/17/uTpF4UsQrK1CDev.jpg">
+<meta property="article:published_time" content="2024-11-17T05:56:30.000Z">
+<meta property="article:modified_time" content="2024-11-17T07:38:56.572Z">
 <meta property="article:author" content="Amy">
-<meta property="article:tag" content="math">
+<meta property="article:tag" content="cg-api">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/11/08/CNhRLq6ZXAYI3Ug.png">
+<meta name="twitter:image" content="https://s2.loli.net/2024/11/17/uTpF4UsQrK1CDev.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Amy_blog" type="application/atom+xml">
   
@@ -212,14 +212,14 @@
        
 
 
-<article id="post-Importance-Sampling" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Window-Messages" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm3laf0jj0014186z2ukp7yii">
-        <img src="https://s2.loli.net/2024/11/08/CNhRLq6ZXAYI3Ug.png" itemprop="image">
+      <a class="article-gallery-img" rel="gallery_cm3laf0k8003y186zaz9o49pq">
+        <img src="https://s2.loli.net/2024/11/17/uTpF4UsQrK1CDev.jpg" itemprop="image">
       </a>
     
   </div>
@@ -235,7 +235,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        重要性采样
+        处理窗口消息
       </h1>
     
   
@@ -243,137 +243,68 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-07T23:49:23.000Z" itemprop="datePublished">2024-11-08</time>
+  <time class="dt-published" datetime="2024-11-17T05:56:30.000Z" itemprop="datePublished">2024-11-17</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
+  <a class="meta-cate-link" href="/categories/DirectX12/">DirectX12</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.6k 词 
+            2k 词 
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/" rel="tag">math</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <hr>
-<h3 id="蒙特卡洛积分"><a href="#蒙特卡洛积分" class="headerlink" title="蒙特卡洛积分"></a>蒙特卡洛积分</h3><p>设函数$f:S\to R$，随机变量$x\sim p$，根据<strong>大数定理</strong>$\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^Np(x_i)=1$可以估计函数$f(x)$的期望</p>
-<script type="math/tex; mode=display">E[f(x)]=\int_{x\in S}f(x)p(x)d\mu\approx\frac{1}{N}\sum_{i=1}^Nf(x)</script><p>令$g=fp$，可以得到用求和近似表示$g(x)$的积分</p>
-<script type="math/tex; mode=display">\int_{x\in S}g(x)d\mu\approx\frac{1}{N}\sum_{i=1}^N\frac{g(x)}{p(x)}</script><p>为了得到更好的估计（方差最小）需要$p$和$f$<strong>形状相似</strong></p>
-<h4 id="蒙特卡洛方法的渲染方程"><a href="#蒙特卡洛方法的渲染方程" class="headerlink" title="蒙特卡洛方法的渲染方程"></a>蒙特卡洛方法的渲染方程</h4><p>将蒙特卡洛方法用在渲染方程</p>
-<script type="math/tex; mode=display">L_o(w_r)=\int_{\Omega^+}\rho(w_i,w_r)L_i(w_i)\cos\theta_idw_i</script><p>得到带概率密度函数$p(x)$的蒙特卡洛近似：</p>
-<script type="math/tex; mode=display">L_o(w_r)=\frac{1}{N}\sum_{i=1}^N\frac{\rho(w_i,w_r)L_i(w_i)\cos\theta_i}{p(w_i)}</script><hr>
-<h3 id="重要性采样"><a href="#重要性采样" class="headerlink" title="重要性采样"></a>重要性采样</h3><blockquote>
-<p>重要性采样（$Importance\ Sampling$）是一种用于估计统计量（如期望值）的蒙特卡洛方法</p>
+          <h3 id="窗口消息定义"><a href="#窗口消息定义" class="headerlink" title="窗口消息定义"></a>窗口消息定义</h3><p>Window窗口应用程序是事件驱动的，在程序中不会显式函数调用，而是等待系统消息，具体的来说，window应用程序通过<strong>窗口消息</strong>和系统通信：</p>
+<blockquote>
+<p>The system passes all input for an application to the various windows in the application. Each window has a function, called a window procedure, that the system calls whenever it has input for the window. The window procedure processes the input and returns control to the system. For more information about window procedures,</p>
 </blockquote>
-<p>在光线追踪的蒙特卡洛方法中，为了更小的方程，需要$\rho(w,w_r)L_i(w)\cos\theta_i$正比于$p(w)$</p>
-<hr>
-<h3 id="Cosine-weighted-半球采样"><a href="#Cosine-weighted-半球采样" class="headerlink" title="$Cosine-weighted$半球采样"></a>$Cosine-weighted$半球采样</h3><blockquote>
-<p>这种采样技术用于模拟光线从一个表面向半球方向散射的情况，通常用于计算漫反射（diffuse）或高光（specular）光照的贡献。</p>
+<p>一个窗口消息由四个分量组成，它和过程函数参数一致</p>
+<blockquote>
+<p>The system sends a message to a window procedure with a set of four parameters: a window handle, a message identifier, and two values called message parameters.</p>
 </blockquote>
-<p>$Cosine-weighted$半球采样用于蒙特卡洛方法的渲染方程中，假定$p(w)$正比于$\cos\theta$</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int_{\Omega^+}p(w)dw &= \int_{\theta=0}^\frac{\pi}{2}\int_{\phi=0}^{2\pi}c\cos\theta \sin\theta d\theta\phi\\\\
-&= \pi c
-\end{align}</script><p>所以联合概率密度函数$p(w)=\frac{\cos\theta}{\pi},p(\theta,\phi)=\frac{\cos\theta\sin\theta}{\pi}$</p>
-<p>边缘概率密度函数</p>
-<script type="math/tex; mode=display">
-\begin{align}
-p(\theta) &= \int_0^{2\pi}p(\theta,\phi)d\phi=\sin 2\theta\\\\
-p(\phi\vert\theta) &= \frac{p(\theta,\phi)}{p(\theta)}=\frac{1}{2\pi}
-\end{align}</script><p>边缘累计密度函数</p>
-<script type="math/tex; mode=display">
-\begin{align}
-C_\theta(\theta_0) &= \int_0^{\theta_0}p(\theta)d\theta=\sin^2\theta\\\\
-C_\phi(\phi_0\vert\theta) &= \int_0^{\phi_0}p(\phi\vert\theta)d\theta=\frac{\phi}{2\pi}
-\end{align}</script><p>求反函数得到随机变量$\delta\in [0,1]$的表达式</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\theta=C_\theta^{-1}(\xi_1) &= \sin^{-1}\sqrt{\xi_1}\\
-\phi=C_\phi^{-1}(\xi_2) &= 2\pi\xi_2
-\end{align}</script><p>转化为三维空间上单位半球面坐标</p>
-<script type="math/tex; mode=display">
-\begin{align}
-x &= \sin\theta\cos\phi=\cos(2\pi\xi_2)\sqrt{\xi_1}\\
-y &= \sin\theta\sin\phi=\sin(2\pi\xi_2)\sqrt{\xi_1}\\
-z &= \cos\theta=\sqrt{1-\xi_1}
-\end{align}</script><hr>
-<h3 id="BRDF-重要性采样"><a href="#BRDF-重要性采样" class="headerlink" title="$BRDF$重要性采样"></a>$BRDF$重要性采样</h3><p>对$BRDF$项采样需要特定的模型，这里考虑$Cook-Torrance$微表面模型</p>
-<script type="math/tex; mode=display">\rho(w_i,w_r)=\frac{k_d}{\pi}+\frac{F(w_i,h)G(w_i,w_r,h)D(h)}{4(w_i\cdot n)(w_r\cdot n)}</script><p>其中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSG = (HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>$\frac{k_d}{\pi}$是漫反射项，$k_s\in [0,1]$为半球面方向反射系数$HDFR$</p>
+<li><strong>窗口句柄</strong>将消息和窗口关系，系统正确的分发窗口消息，窗口发布的消息也能得到正确处理</li>
+<li><strong>消息标识符</strong>常量标识了消息的类别，它和消息参数组合起来就能表示特定的<strong>窗口消息</strong></li>
+<li>消息参数不需要使用时为$nullptr$，比如销毁窗口的消息标识<code>WM_DESTORY</code></li>
+</ul>
+<h3 id="窗口消息类别"><a href="#窗口消息类别" class="headerlink" title="窗口消息类别"></a>窗口消息类别</h3><ul>
+<li>System-Defined Messages：系统自定义，具体来说，符号唯一，消息参数固定，系统定义解释</li>
+<li>Application-Defined Messages：程序可以定义消息，需要程序解释</li>
+</ul>
+<p>比如WM_DESTORY消息，窗口收到后就应该执行销毁窗口的操作</p>
+<h3 id="消息路由"><a href="#消息路由" class="headerlink" title="消息路由"></a>消息路由</h3><p>根据路径不同，消息有可分为</p>
+<ul>
+<li>排队消息： 系统消息队列$\to$线程消息队列$\to$目标窗口过程（如果是单线程）</li>
+<li>非排队消息：从系统直接到到目标窗口过程</li>
+</ul>
+<h3 id="消息处理"><a href="#消息处理" class="headerlink" title="消息处理"></a>消息处理</h3><p>应用程序必须删除并处理发布到其线程的消息队列的消息，在单线程程序中，一般使用这样的循环结构</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">BOOL bRet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>( (bRet = <span class="built_in">GetMessage</span>( &amp;msg, hWnd, <span class="number">0</span>, <span class="number">0</span> )) != <span class="number">0</span>)</span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">if</span> (bRet == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// handle the error and possibly exit</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">TranslateMessage</span>(&amp;msg); </span><br><span class="line">        <span class="built_in">DispatchMessage</span>(&amp;msg); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL</span></span><br><span class="line"><span class="function">WINAPI</span></span><br><span class="line"><span class="function"><span class="title">GetMessageW</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    _Out_ LPMSG lpMsg,</span></span></span><br><span class="line"><span class="params"><span class="function">    _In_opt_ HWND hWnd,</span></span></span><br><span class="line"><span class="params"><span class="function">    _In_ UINT wMsgFilterMin,</span></span></span><br><span class="line"><span class="params"><span class="function">    _In_ UINT wMsgFilterMax)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>lpMsg</code>为获取到的消息结构指针</p>
 </li>
-<li><p>$h=\frac{w_r-w_i}{\lVert w_r-w_i\rVert}$为单位半程向量</p>
+<li><p><code>hWnd==NULL</code>时会检索当前线程的所有所有消息，<code>hWnd==-1</code>时只会处理消息队列中<code>hWnd==-1</code>的消息</p>
 </li>
-<li><p>$n$为表面法向量</p>
+<li><p>后面两个参数指定了消息检索范围，置为<code>NULL</code>会检索所有消息</p>
 </li>
-<li><p>$F(w_i,h)$为菲涅尔项，$G(w_i,w_r,h)$为几何遮蔽项，$G(h)$为法线分布函数</p>
+<li><p><code>lpMeg-&gt;uMsg==WM_QUIT</code>时会返回0</p>
+</li>
+<li><p>函数调用出错时返回-1</p>
+</li>
+<li><p>其他时候返回非0值</p>
 </li>
 </ul>
-<p>几何遮蔽函数$G$只只返回$0,1$表示是否可见，是不连续的，不对它考虑；为了简化计算也忽略菲涅尔项$F$，这里选用$GGX$法线分布函数</p>
-<script type="math/tex; mode=display">D(h)=\frac{\alpha^2}{\pi((n\cdot h)^2(\alpha^2-1)+1)^2}</script><p>其中$\alpha$是表面的不透明度</p>
-<h4 id="D-h-的采样"><a href="#D-h-的采样" class="headerlink" title="$D(h)$的采样"></a>$D(h)$的采样</h4><p>根据$D(h)$的定义式$D(h)=\frac{dA_h}{dAdh}$可得</p>
-<script type="math/tex; mode=display">\int_{\Omega^+}D(h)dAdh(n\cdot h)=dA</script><p>化简可以得方程</p>
-<script type="math/tex; mode=display">\int_{\Omega^+}(n\cdot h)D(h)dh=1</script><p>可以看出，被积函数正好是概率密度函数，这里还需要把积分项$dh$变换为$dw_i$，一入射角方向为$z$轴根据几何关系得</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\frac{dh}{dw_i} &= \frac{\sin\theta_hd\theta_h\ d\phi}{\sin 2\theta_hd2\theta_hd\phi}\\\\
-&= \frac{\sin\theta_hd\theta_h\ d\phi}{4\sin\theta_{w_h}\cos\theta_hd\theta_hd\phi}\\\\
-&= \frac{1}{4\cos\theta_h}\\
-&= \frac{1}{4(w_i\cdot h)}
-\end{align}</script><p><em>不过由于计算的原因，在最后在做这个变换</em></p>
-<p>代入$GGX$法线分布函数</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int_{\Omega^+}(n\cdot h)GXX(h)dh &= \int_{\Omega^+}\frac{(n\cdot h)\alpha^2}{\pi((n\cdot h)^2(\alpha^2-1)+1)^2}dh\\\\
-&= \int_{\theta=0}^{\frac{\pi}{2}}\int_{\phi=0}^{2\pi}\frac{\sin\theta\cos\theta\alpha^2}{\pi(\cos^2\theta(\alpha^2-1)+1)^2}d\theta d\phi\\\\
-\end{align}</script><p>所以对$h$采样的概率密度函数为</p>
-<script type="math/tex; mode=display">p_h(\theta,\phi)=\frac{\sin\theta\cos\theta\alpha^2}{\pi(\cos^2\theta(\alpha^2-1)+1)^2}</script><p>边缘概率密度</p>
-<script type="math/tex; mode=display">
-\begin{align}
-p_h(\theta) &= \int_{\phi=0}^{2\pi}p_h(\theta,\phi)=\frac{2\sin\theta\cos\theta\alpha^2}{(\cos^2\theta(\alpha^2-1)+1)^2}\\\\
-p_h(\phi) &=\frac{p_h(\theta,\phi)}{p_h(\theta)}=\frac{1}{2\pi}
-\end{align}</script><p>累积密度函数</p>
-<script type="math/tex; mode=display">
-\begin{align}
-c_h(\theta_0) &= \int_0^{\theta_0}p_h(\theta)d\theta\\\\
-&= \int_0^{\theta_0}\frac{2\sin\theta\cos\theta\alpha^2}{(\cos^2\theta(\alpha^2-1)+1)^2}d\theta\\\\
-&= \alpha^2\int_{\theta_0}^0\frac{d\cos^2\theta}{(\cos^2\theta(\alpha^2-1)+1)^2}\\\\
-&= \frac{\alpha^2}{\alpha^2-1}\int_{\cos^2\theta_0(\alpha^2-1)+1}^{\alpha^2}\frac{dx}{x^2}\\\\
-&= \frac{\alpha^2}{\alpha^2-1}(-\frac{1}{x})\vert_{\cos^2\theta_0(\alpha^2-1)+1}^{\alpha^2}\\\\
-&= \frac{\alpha^2}{\cos^2\theta_0(\alpha^2-1)^2+(\alpha^2-1)}-\frac{1}{\alpha^2-1}
-\end{align}</script><p>其中，$x=\cos^2\theta(\alpha^2-1)+1$</p>
-<script type="math/tex; mode=display">c_h(\phi_0)=\int_0^{\phi_0}p_h(\phi)d\phi=\frac{\phi_0}{2\pi}</script><p>最后求逆</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\theta &= c_h^{-1}(\xi_1)=\cos^{-1}\sqrt{\frac{1-\xi_1}{1+\xi_1(\alpha^2-1)}}\\\\
-\phi &= c_h^{-1}(\xi_2)=2\pi\xi_2
-\end{align}</script><p>$c_h(\theta_0)$<em>表达式式很复杂，但是求反只需要简单的变换</em>，令$\cos^2\theta_0=x$</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\xi &= \frac{\alpha^2}{x(\alpha^2-1)^2+(\alpha^2-1)}-\frac{1}{\alpha^2-1}\\\\
-&= \frac{\alpha^2-\left[(\alpha^2-1)x+1\right]}{(\alpha^2-1)\left[(\alpha^2-1)x+1\right]}\\\\
-&= \frac{(1-\alpha^2)x+(\alpha^2-1)}{(\alpha^2-1)^2x+(\alpha^2-1)}\\\\
-(\alpha^2-1)x\xi+\xi &= 1-x\\\\
-\left[(\alpha^2-1)\xi+1\right]x &= 1-\xi\\\\
-x &= \frac{1-\xi}{(\alpha^2-1)\xi+1}
-\end{align}</script><p>转换为笛卡尔坐标系</p>
-<script type="math/tex; mode=display">
-\begin{align}
-X_h &= \sin\theta\cos\phi=\sqrt{\frac{\xi_1\alpha^2}{1+\xi_1(\alpha^2-1)}}\cos(2\pi\xi_2)\\\\
-Y_h &= \sin\theta\sin\phi=\sqrt{\frac{\xi_1\alpha^2}{1+\xi_1(\alpha^2-1)}}\sin(2\pi\xi_2)\\\\
-Z_h &= \cos\theta=\sqrt{\frac{1-\xi_1}{1+\xi_1(\alpha^2-1)}}
-\end{align}</script><p>最后，这里只是对法线采样，需要转换到入射光线$w_r-w_i=w_h$</p>
-<hr>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 窗口过程</span><br><span class="line"></span><br><span class="line">针对不同的消息设置$case$块，对应复杂的过程可能要单开 一个线程处理</span><br><span class="line"></span><br><span class="line">```C++</span><br><span class="line">LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</span><br><span class="line">&#123;</span><br><span class="line">	switch (uMsg)&#123;</span><br><span class="line">	case WM_CLOSE:</span><br><span class="line">		if (MessageBox(hWnd, _T(&quot;Realy Quit?&quot;), _T(&quot;my application&quot;), MB_OKCANCEL) == IDOK)</span><br><span class="line">			DestroyWindow(hWnd);</span><br><span class="line">		break;</span><br><span class="line">	case WM_DESTROY:</span><br><span class="line">		PostQuitMessage(0);</span><br><span class="line">		return 0;</span><br><span class="line">	case WM_PAINT:</span><br><span class="line">	&#123;</span><br><span class="line">		PAINTSTRUCT ps;</span><br><span class="line">		HDC hdc = BeginPaint(hwnd, &amp;ps);</span><br><span class="line"></span><br><span class="line">		// All painting occurs here, between BeginPaint and EndPaint.</span><br><span class="line"></span><br><span class="line">		FillRect(hdc, &amp;ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));</span><br><span class="line"></span><br><span class="line">		EndPaint(hwnd, &amp;ps);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	return DefWindowProc(hwnd, uMsg, wParam, lParam);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
       </div>
 
@@ -387,25 +318,25 @@ Z_h &= \cos\theta=\sqrt{\frac{1-\xi_1}{1+\xi_1(\alpha^2-1)}}
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/2024/11/09/Multiple-Importance-Sampling/"
-      title="多重重要性采样"
+      href="/2025/10/01/Radiosity-modle/"
+      title="辐射度模型"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
       
-        多重重要性采样
+        辐射度模型
         
     </p>
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/11/07/Sampling/"
-      title="简单采样方法"
+      href="/2024/11/16/windows-creat/"
+      title="创建窗口"
      >
 
     <p class="title-text">
       
-        简单采样方法
+        创建窗口
         
     </p>
     <i class="fa-solid fa-angle-right"></i>
