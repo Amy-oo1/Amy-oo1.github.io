@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2024/11/17/OPnNSifzm8oFKkI.jpg">
 <meta property="article:published_time" content="2024-11-17T11:31:58.000Z">
-<meta property="article:modified_time" content="2024-11-17T14:50:55.553Z">
+<meta property="article:modified_time" content="2024-11-24T08:04:51.662Z">
 <meta property="article:author" content="Amy">
 <meta property="article:tag" content="cg-api">
 <meta name="twitter:card" content="summary">
@@ -152,7 +152,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
-                <div class="category-count">8</div>
+                <div class="category-count">9</div>
             </a>
         
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
@@ -160,14 +160,14 @@
                 <div class="category-count">25</div>
             </a>
         
+            <a class="category-link" href="/categories/DirectX12/">
+                DirectX12
+                <div class="category-count">6</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
-            </a>
-        
-            <a class="category-link" href="/categories/DirectX12/">
-                DirectX12
-                <div class="category-count">3</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -218,7 +218,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img" rel="gallery_cm3lpt65w000coc6za9jng7xo">
+      <a class="article-gallery-img" rel="gallery_cm3x5wblb000chs6zfls128ko">
         <img src="https://s2.loli.net/2024/11/17/OPnNSifzm8oFKkI.jpg" itemprop="image">
       </a>
     
@@ -281,7 +281,16 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _DEBUG</span></span><br><span class="line">		ComPtr&lt;ID3D12Debug&gt; debugcontroller;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">SUCCEEDED</span>(<span class="built_in">D3D12GetDebugInterface</span>(<span class="built_in">IID_PPV_ARGS</span>(&amp;debugcontroller)))) &#123;</span><br><span class="line">			debugcontroller-&gt;<span class="built_in">EnableDebugLayer</span>();</span><br><span class="line">			<span class="comment">// 打开附加的调试支持</span></span><br><span class="line">			nDXGIFactoryFlags |= DXGI_CREATE_FACTORY_DEBUG;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// _DEBUG</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="%5B1%5D%E5%88%9B%E5%BB%BAdxgifactory%E5%AF%B9%E8%B1%A1" tabindex="-1">[1]创建DXGIFactory对象</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">THROW_IF_FAILED</span>(<span class="built_in">CreateDXGIFactory2</span>(nDXGIFactoryFlags, <span class="built_in">IID_PPV_ARGS</span>(&amp;pIDXGIFactory2)));</span><br><span class="line"><span class="comment">//关闭响应alt-enter键(目前不需要)</span></span><br><span class="line"><span class="built_in">THROW_IF_FAILED</span>(pIDXGIFactory2-&gt;<span class="built_in">MakeWindowAssociation</span>(hWnd, DXGI_MWA_NO_ALT_ENTER));</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### [2]枚举并创建3D设备</span><br><span class="line"></span><br><span class="line">ppdevice被设置为nullptr可以测试是否能创建</span><br><span class="line"></span><br><span class="line">&gt; A pointer to a memory block that receives a pointer to the device. Pass NULL to test if device creation would succeed, but to not actually create the device. If NULL is passed and device creation would succeed, S_FALSE is returned</span><br><span class="line"></span><br><span class="line">SUCCEEDED会让S_FALSE通过测试</span><br><span class="line"></span><br><span class="line">```C++</span><br><span class="line">//枚举并选择合适的3D设备</span><br><span class="line">	&#123;</span><br><span class="line">		DXGI_ADAPTER_DESC1 stAdapterdesc1;</span><br><span class="line">		for (UINT AdapterIndex = 0; DXGI_ERROR_NOT_FOUND != pIDXGIFactory2-&gt;EnumAdapters1(AdapterIndex, &amp;pAdapter1);++AdapterIndex) &#123;</span><br><span class="line">			pAdapter1-&gt;GetDesc1(&amp;stAdapterdesc1);</span><br><span class="line">			//跳过软件虚拟适配器设备</span><br><span class="line">			if (stAdapterdesc1.Flags &amp; DXGI_ADAPTER_FLAG_SOFTWARE)</span><br><span class="line">				continue;</span><br><span class="line">			//检查适配器对D3D支持的兼容级别</span><br><span class="line">			if (SUCCEEDED(D3D12CreateDevice(pAdapter1.Get(), emFeatureLevel, __uuidof(ID3D12Device), nullptr)))</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		//创建D3D12设备</span><br><span class="line">		THROW_IF_FAILED(D3D12CreateDevice(pAdapter1.Get(), emFeatureLevel, IID_PPV_ARGS(&amp;pID3D12Device4)));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>p</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">tips</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span></span></span></eq>：<code>IID_PPV_ARGS</code>这个宏会返回两个参数</p>
+</blockquote>
+<h3 id="%5B2%5D%E6%9E%9A%E4%B8%BE%E5%B9%B6%E5%88%9B%E5%BB%BA3d%E8%AE%BE%E5%A4%87" tabindex="-1">[2]枚举并创建3D设备</h3>
+<p>ppdevice被设置为nullptr可以测试是否能创建</p>
+<blockquote>
+<p>A pointer to a memory block that receives a pointer to the device. Pass NULL to test if device creation would succeed, but to not actually create the device. If NULL is passed and device creation would succeed, S_FALSE is returned</p>
+</blockquote>
+<p>SUCCEEDED会让S_FALSE通过测试</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//枚举并选择合适的3D设备</span></span><br><span class="line">	&#123;</span><br><span class="line">		DXGI_ADAPTER_DESC1 stAdapterdesc1;</span><br><span class="line">		<span class="keyword">for</span> (UINT AdapterIndex = <span class="number">0</span>; DXGI_ERROR_NOT_FOUND != pIDXGIFactory2-&gt;<span class="built_in">EnumAdapters1</span>(AdapterIndex, &amp;pAdapter1);++AdapterIndex) &#123;</span><br><span class="line">			pAdapter1-&gt;<span class="built_in">GetDesc1</span>(&amp;stAdapterdesc1);</span><br><span class="line">			<span class="comment">//跳过软件虚拟适配器设备</span></span><br><span class="line">			<span class="keyword">if</span> (stAdapterdesc<span class="number">1.F</span>lags &amp; DXGI_ADAPTER_FLAG_SOFTWARE)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			<span class="comment">//检查适配器对D3D支持的兼容级别</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">SUCCEEDED</span>(<span class="built_in">D3D12CreateDevice</span>(pAdapter<span class="number">1.</span><span class="built_in">Get</span>(), emFeatureLevel, __uuidof(ID3D12Device), <span class="literal">nullptr</span>)))</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//创建D3D12设备</span></span><br><span class="line">		<span class="built_in">THROW_IF_FAILED</span>(<span class="built_in">D3D12CreateDevice</span>(pAdapter<span class="number">1.</span><span class="built_in">Get</span>(), emFeatureLevel, <span class="built_in">IID_PPV_ARGS</span>(&amp;pID3D12Device4)));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
@@ -298,13 +307,13 @@
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/2025/10/01/Radiosity-modle/"
-      title="辐射度模型"
+      href="/2024/11/19/Creat-D3D12-pipeline-swapchain/"
+      title="创建交换链"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
       
-        辐射度模型
+        创建交换链
         
     </p>
   </a>

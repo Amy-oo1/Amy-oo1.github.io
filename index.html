@@ -145,7 +145,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
-                <div class="category-count">8</div>
+                <div class="category-count">9</div>
             </a>
         
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
@@ -153,14 +153,14 @@
                 <div class="category-count">25</div>
             </a>
         
+            <a class="category-link" href="/categories/DirectX12/">
+                DirectX12
+                <div class="category-count">6</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
-            </a>
-        
-            <a class="category-link" href="/categories/DirectX12/">
-                DirectX12
-                <div class="category-count">3</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -265,6 +265,321 @@
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/X7q1CdJnjOuVMak.png)" 
       href="/2025/10/01/Radiosity-modle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-3D12D-CInitialize" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/25/3D12D-CInitialize/">初始化3D12D</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-25T14:59:55.000Z" itemprop="datePublished">2024-11-25</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/DirectX12/">DirectX12</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            19k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              初始化D3D12，DirectX12在渲染中加入了太多概念，即便是绘制一个三角形，都需要500行代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210310410510610710810911011111211311411511611711811912012112212312412512612712812913013113213313413513613713813914014114214314414514614714814915015115215315415515615715815916016116216316416516616716816917017117217317417517617717817918018118218318418...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/25/12r6s57qotFVWNf.jpg)" 
+      href="/2024/11/25/3D12D-CInitialize/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Creat-D3D12-pipeline-PSO" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/20/Creat-D3D12-pipeline-PSO/">创建渲染管线状态对象</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-19T16:28:12.000Z" itemprop="datePublished">2024-11-20</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/DirectX12/">DirectX12</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.5k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              [4]创建渲染管线状态对象
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293//compile and create pipeline state state	&#123;		//open compile Debug Flag#ifdef _DEBUG		ComPtr&lt;ID3DBlob&gt; pIBlobVertexShader;		ComPtr&lt;ID3DBlob&gt; pIBlobPixelShader;		UINT nCompileFlag = D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;#else		UINT nCompileFlag = 0;#endif		TCHAR pszShaderFileName[...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/24/2RDdpeZC4OGnuEQ.jpg)" 
+      href="/2024/11/20/Creat-D3D12-pipeline-PSO/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Treap-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/19/Treap-Tree/">Treap树</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-19T14:38:32.000Z" itemprop="datePublished">2024-11-19</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+Treap（树堆）是一种数据结构，它是树（Tree）和堆（Heap）的结合体。在Treap中，每个节点包含两个值：一个是键值（key），用于维持二叉搜索树的性质；另一个是优先级（priority），用于维持堆的性质。Treap支持快速的插入、删除和查找操作，时间复杂度通常为O(log n)。
+
+
+无旋Treaps树可以实现可持久化结构
+
+Treap树性质
+Treap（树堆）是一种弱平衡的二叉搜索树。它的节点额外拥有一个UINT属性，创建时随机生成值，Treaps树需要额外维护这个属性保持堆序
+123456struct Node &#123;		Node(int val) :val(val) &#123;&#125;		Node* left = nullptr, * right = nullptr;		int val;		int prio = rand();	&#125;;
+无旋Treap操作
+无旋版本通过分裂和合并操作为二叉搜索树基础操作提供支持
+分裂
+分裂操作按照给定的键值将Treap树分为两颗有序的树：左分裂树和右分裂树，根据二叉搜索树的性质，只需要递归判定子节点在哪一边，...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/19/JLewpTC6VHrn5IR.jpg)" 
+      href="/2024/11/19/Treap-Tree/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Creat-D3D12-pipeline-swapchain" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/19/Creat-D3D12-pipeline-swapchain/">创建交换链</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-18T17:10:55.000Z" itemprop="datePublished">2024-11-19</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/DirectX12/">DirectX12</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            661 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              [3]创建交换链
+12345678910111213141516171819DXGI_SWAP_CHAIN_DESC1 stSwapChainDesc1 = &#123;&#125;;		stSwapChainDesc1.BufferCount = nFrameBackBufferCount;		stSwapChainDesc1.Width = iWidth;		stSwapChainDesc1.Height = iHeight;		stSwapChainDesc1.Format = emRenderTargetFormat;		stSwapChainDesc1.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;		stSwapChainDesc1.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;		stSwapChainDesc1.SampleDesc.Count = 1;		THROW_IF_FAILED(pIFactory2-&gt;CreateSwapChainForHwnd(pIComman...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/19/PAz9jV3WX8vQOf2.jpg)" 
+      href="/2024/11/19/Creat-D3D12-pipeline-swapchain/" 
     >
        
       <div class="overlay">
@@ -714,370 +1029,6 @@ Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Si
 
 
 
-   
-
-
-<article id="post-algorithm-Spaly-tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/13/algorithm-Spaly-tree/">文艺平衡树</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-13T11:53:03.000Z" itemprop="datePublished">2024-11-13</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-题目要求
-简单来讲，就是旋转长度为NNN序列的任意子序列
-
-序列数据可以用二叉搜索树维护，为每一个元素附上一个表示排位的权值即可
-
-想要逆转子序列，首先得弄清楚子序列元素的分布，将树上节点映射到数轴上，可以发现
-
-以子序列双端点的LCALCALCA的最近公共祖先为节点的子树TTT包含整个子序列(不是只包含)，所以只需要遍历重构这个树就能实现翻转
-
-如果使用查找操作O(log⁡N)O(\log N)O(logN)平衡树，翻转子序列的复杂度为
-O(log⁡N+2H^(T))≤O(log⁡N+N)=O(N)O(\log N+2^{\hat{H}(T)})\le O(\log N +N)=O(N)O(logN+2H^(T))≤O(logN+N)=O(N)
-SpalySpalySpaly重构
-
-SplaySplaySplay树可以改进这个复杂度，它能构造只包含翻转子序列元素的树TTT
-具体的说，有翻转子序列[L,R][L,R][L,R]，其中L,RL,RL,R分别是序列端点的索引，将NodeLNode_LNodeL​splay到根节点，将NodeRNode_RNodeR​splay到根的...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/14/kVCAXnRWTePFabp.png)" 
-      href="/2024/11/13/algorithm-Spaly-tree/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Splayiing-tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/12/Splayiing-tree/">Splay树</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-12T11:28:47.000Z" itemprop="datePublished">2024-11-12</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            5.6k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-伸展树（Splay TreeSplay\ TreeSplay Tree）是一种自平衡二叉搜索树，它可以在对树进行一系列操作后，通过特定的展开操作将最近访问的节点移动到树的根部。这种数据结构的目的是通过局部性原理来优化搜索树的性能，即最近被访问的元素很可能在不久的将来再次被访问
-
-
-树节点
-定义并初始化维护伸展树根的指针
-1Node* Root = nullptr;
-定义伸展操作splaysplaysplay，这个操作会保证splaysplaysplay树的均摊复杂度
-1auto s_splay_node_to_Son_of_Y(Node* X, Node* Y)-&gt;void
-这个操作使得树节点XXX成为YYY的儿子节点，定义伸展树根节点的parentparentparent为nullptrnullptrnullptr，也就是说，这个操作可以实现将最近访问的节点移动到树的根部
-根据定义，在树节点不重复的限制下，一颗其节点可以表示为
-12345struct Node &#123;		Node(int val, Node* parent = nullptr) :val(val)...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/12/hV1ywZxm6P7UqQl.jpg)" 
-      href="/2024/11/12/Splayiing-tree/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-AVL-tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/11/AVL-tree/">AVL树复杂度分析</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-11T12:07:42.000Z" itemprop="datePublished">2024-11-11</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.9k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-tipstipstips 前置知识：二叉搜索树BSTBSTBST
-二叉搜索树是一种二叉树的树形数据结构，其定义如下：
-
-
-空树是二叉搜索树。
-
-
-若二叉搜索树的左子树不为空，则其左子树上所有点的附加权值均小于其根节点的值。
-
-
-若二叉搜索树的右子树不为空，则其右子树上所有点的附加权值均大于其根节点的值。
-
-
-二叉搜索树的左右子树均为二叉搜索树。
-
-
-
-AVLAVLAVL的结构
-
-平衡因子：在AVLAVLAVL树中，任何节点的两个子树的高度最大差别为000，所以它也被称为高度平衡树
-
-定义空树高为−1-1−1
-AVLAVLAVL通过旋转实现自平衡,对于不满足平衡因子的树YYY高一定为2，这个是旋转和递归操作决定的，也就是只考虑Y.height==1Y.height==1Y.height==1
-AVLAVLAVL将其分为四类，其中两种关于YYY的左右存在镜像关系，这里仅分析以下两种（Y.left.height&gt;Y.right.heightY.left.height&gt;Y.right.heightY.left.height&gt;Y.right.height）就能覆盖所有情...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/30/2tylvJ31W6EzFVh.png)" 
-      href="/2024/11/11/AVL-tree/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-VAO-State-Machine" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/10/VAO-State-Machine/">自动机上下文与VAO</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-10T15:05:18.000Z" itemprop="datePublished">2024-11-10</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/OpenGL/">OpenGL</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.7k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-OpenGLOpenGLOpenGL自身是一个巨大的状态机(State−MachineState-MachineState−Machine)：一系列的变量描述OpenGL此刻应当如何运行。OpenGL的状态通常被称为OpenGL上下文(Context)。我们通常使用如下途径去更改OpenGL状态：设置选项，操作缓冲。最后，我们使用当前OpenGL上下文来渲染。
-
-实践中不需要知道自动机是如何运行的，而编码可能会被某些上下文信息迷惑，尤其是在过程式编程中
-
-bufferbufferbuffer缓冲区
-
-在OpenGLOpenGLOpenGL中，缓冲区（BufferBufferBuffer）是用来存储数据的对象，它们位于显存中，可以存储顶点数据、索引数据、像素数据等
-
-接下来介绍GPUGPUGPU中的bufferbufferbuffer如何与CPUCPUCPU中的CppCppCpp程序交互，OpenGLOpenGLOpenGL使用自动机的上下文减少冗余
-glGenBufferglGenBufferglGenBuffer创建
-
-创建nnn个bufferbufferbuffer对象
-
-...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/10/yiqWExDBRVO5Mvs.jpg)" 
-      href="/2024/11/10/VAO-State-Machine/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -1085,7 +1036,7 @@ glGenBufferglGenBufferglGenBuffer创建
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a>  
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/2/">
       <i class="fa-solid fa-angle-right"></i>

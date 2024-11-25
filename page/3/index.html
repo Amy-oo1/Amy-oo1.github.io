@@ -145,7 +145,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                 数据结构
-                <div class="category-count">8</div>
+                <div class="category-count">9</div>
             </a>
         
             <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
@@ -153,14 +153,14 @@
                 <div class="category-count">25</div>
             </a>
         
+            <a class="category-link" href="/categories/DirectX12/">
+                DirectX12
+                <div class="category-count">6</div>
+            </a>
+        
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
                 数字信号处理
                 <div class="category-count">1</div>
-            </a>
-        
-            <a class="category-link" href="/categories/DirectX12/">
-                DirectX12
-                <div class="category-count">3</div>
             </a>
         
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
@@ -203,6 +203,424 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-Shadow-Mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/04/Shadow-Mapping/">阴影贴图</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-04T06:55:03.000Z" itemprop="datePublished">2024-11-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+阴影贴图是一种用于在三维场景中渲染动态阴影的技术。它基于光线的视角来生成深度信息，这些信息随后用于确定场景中的哪些部分处于阴影中。
+
+
+工作原理
+
+阴影贴图技术是基于这样的认知：直接光照不能覆盖到的区域都在阴影中。这个判定只能产生硬阴影
+
+光源空间的转换
+从光源主视角来观察场景。场景中的所有物体都需要根据光源的位置和方向进行转换，以确定它们在光源视角下的位置。
+也就是说，需要光源的视图变换矩阵VLightV_{Light}VLight​，其中观察方向G−EG-EG−E等价于主视角
+深度图的生成
+在光源视角下，渲染器会渲染场景的深度信息， 深度贴图的每个像素代表了从光源到场景中最近表面的距离。
+这个过程和使用相机渲染唯一的不同
+
+
+使用VLightV_{Light}VLight​而非VceramaV_{cerama}Vcerama​
+
+
+只需要完成可见面判定
+
+
+
+tipstipstips 可见面判定和着色通常一起进行，不过从光源处渲染不需要着色
+
+场景的正常渲染
+渲染器从摄像机视角渲染场景，并在渲染每个像素时执行一个额外的步骤：确定这个像素在光源视角下的深度。
+具体的说，如果一...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/04/E3TcZeXmglstRGK.jpg)" 
+      href="/2024/11/04/Shadow-Mapping/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Homogeneous-Space-Clipping-[2]" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/04/Homogeneous-Space-Clipping-%5B2%5D/">齐次空间裁剪[2]</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-03T16:46:11.000Z" itemprop="datePublished">2024-11-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+引言
+在上半篇中，得出了以下结果：
+
+
+在齐次空间的标准视体下的流水选位置裁剪
+
+
+快速获取顶点关于六个视体表面的相对位置
+
+
+如果简单的把不在视体内的顶点去掉，或者由此引发的，把相关图元去掉，会生成明显的不连续边缘
+这里的统一做法为使用各种插值方法生成边缘顶点
+
+裁剪线段
+线段ABABAB和标准视体的位置关系可以划分为
+
+线段完全在视体内部：端点A,BA,BA,B的都在视体内
+线段完全在实体外部：端点A,BA,BA,B在视体外且区域码相同
+线段部分和视体表面相交
+
+如果线段ABABAB不满足情况1,21,21,2，则只需要端点A,BA,BA,B的特定区域码位不同，就可以断言：线段穿过该区域码对应的视体表面所在的平面
+Cyus−BeckCyus-BeckCyus−Beck裁剪算法
+对端点A(xA,yA,zA,wA)A(x_A,y_A,z_A,w_A)A(xA​,yA​,zA​,wA​)和B(xB,yB,zB,wB)B(x_B,y_B,z_B,w_B)B(xB​,yB​,zB​,wB​)组队的线段ABABAB有参数线段方程
+P(u)=uB+(1−u)A,0≤u≤1P(u)=uB+...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/04/Ezi49Z8jDYokrIu.jpg)" 
+      href="/2024/11/04/Homogeneous-Space-Clipping-%5B2%5D/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Homogeneous-Space-Clipping[1]" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/03/Homogeneous-Space-Clipping%5B1%5D/">齐次空间裁剪[1]</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-03T11:05:31.000Z" itemprop="datePublished">2024-11-03</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+裁剪
+
+裁剪是指在渲染场景之前，将位于摄像机视野之外的物体或者被其他物体遮挡的部分移除的过程。这样可以提高渲染效率，因为不需要绘制最终不会出现在屏幕上的物体。
+
+裁剪需要满足以下条件
+
+
+确定场景：不会再发生顶点变换，否则可能会把场景内的点裁剪掉
+
+
+确定视域：引入相机参数后，在投影变换前，它是一个四棱台，之后是正方体（规范化）
+
+
+图像流水线
+按照场景对象表现形式的不同，图形流水线可以分为三个阶段：世界坐标系，相机坐标系，齐次空间，屏幕空间
+
+世界坐标系
+
+模型可以被添加到世界坐标系中，组成场景
+可能会有顶点变换
+
+
+tipstipstips 虽然只说明了顶点变换，如果模型顶点存在法线，需要做法线变换
+
+相机坐标系
+
+将场景的世界坐标转换为相机坐标系的表达
+可能存在顶点变换
+
+
+tipstipstips 尽管这里场景对象可能没有变换，不过这会是裁剪可能发生的位置
+
+齐次空间
+
+对相机坐标系的场景做投影变换
+规范化
+
+屏幕空间
+
+将规范视体投影到屏幕
+可见面判定算法剔除
+
+
+裁剪可能发生的位置
+
+tipstipstips 如果保证不在相机坐标系下做顶点变换，则可以在世界坐标系下...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/03/MxKdAIOfWlt37iw.png)" 
+      href="/2024/11/03/Homogeneous-Space-Clipping%5B1%5D/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-Fibonacci-Heap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/02/Fibonacci-Heap/">斐波那契堆</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-02T02:35:34.000Z" itemprop="datePublished">2024-11-02</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+势能分析
+
+势能分析是用于分析数据结构操作摊销成本的一种技术。它是一种建立在势能函数基础上的分析方法，通过引入势能函数来跟踪操作的累积成本，并将这个累积成本分摊到每个操作上，从而得到每个操作的摊销成本
+
+势能是和整个数据结构关联而非特定操作，对数据结构DDD的操作引起势能的变换
+
+势能函数Φ(D)\Phi(D)Φ(D)：势能函数是一种用来衡量数据结构当前状态的函数。通常，这个函数会根据数据结构中的一些特定属性（如节点的数量、树的深度等）来定义。
+
+定义对数据结构的每一次操作iii有：
+
+
+势能成本Φ(Di)−Φ(Di−1)\Phi(D_i)-\Phi(D_{i-1})Φ(Di​)−Φ(Di−1​)：数据结构在进行操作时的潜在成本，它通常与数据结构的当前状态有关。
+
+
+实际成本cic_ici​：执行一个操作时的即时成本。
+
+
+摊还成本ci^=ci+Φ(Di)−Φ(Di−1)\hat{c_i}=c_i+\Phi(D_i)-\Phi(D_{i-1})ci​^​=ci​+Φ(Di​)−Φ(Di−1​)：将实际成本和势能变化结合起来
+
+
+定义初始数据结构D0D_0D0​的势能Φ(D0)=...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/02/f8IC9ugeMOSEklz.jpg)" 
+      href="/2024/11/02/Fibonacci-Heap/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -778,414 +1196,6 @@ P1​−P0​P2​−P0​​=(u1​−u0​)T+(v1​−v0​)B=(u2​−u0​)T
 
 
 
-   
-
-
-<article id="post-normal-transformation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/29/normal-transformation/">法线变换推导</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-29T11:56:26.000Z" itemprop="datePublished">2024-10-29</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            575 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-法线变换
-
-在对模型顶点做仿射变换时，对应法线不能做同样的变换
-
-
-以下的分析都是基于线性代数，向量按列排列，仿射变换都是可逆过程
-
-设平面切线向量为RRR，法线向量为NNN，仿射变换矩阵MMM，则有
-RTN=0MR=R′
-\begin{align}
-R^TN &amp;= 0\tag{I}\\\\
-MR &amp;= R^\prime
-\end{align}
-RTNMR​=0=R′​(I)​若变换后的表面法线为N′N^\primeN′，且假设N′=GNN^\prime=GNN′=GN，则有
-(R′)TN′=0(MR)T(GN)=0RTMTGN=0RT(MTG)N=0
-\begin{align}
-(R^{\prime})^TN^\prime &amp;= 0\\\\
-(MR)^T(GN) &amp;= 0\\\\
-R^TM^TGN &amp;= 0\\\\
-R^T(M^TG)N &amp;= 0
-\end{align}
-(R′)TN′(MR)T(GN)RTMTGNRT(MTG)N​=0=0=0=0​​
-若假设成立，则可以有MTG=IM^TG=IMTG=I，此时尾式代入(I)(I...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/29/1EHbK7F2uhMx3ti.jpg)" 
-      href="/2024/10/29/normal-transformation/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Surface-Subdivision-Smplication" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/29/Surface-Subdivision-Smplication/">曲面细分和曲面简化</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-29T01:21:43.000Z" itemprop="datePublished">2024-10-29</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.7k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-曲面细分
-
-曲面细分（Surface Subdivision）通过在网格模型上递归运用细分规则使多边形网格变得更加平滑和精细
-
-
-tipstipstips 这里隐含地说明了是对采样后的曲面操作，对象是一群顶点，而不是多项式函数
-
-细分规则主要有LoopLoopLoop细分，Catmull−ClarkCatmull-ClarkCatmull−Clark细分
-因为生成的过程需要对不同类型的曲面顶点操作，所有定义
-
-
-点规则：原始（递归每一步开始）网格顶VVV的操作
-
-
-边规则：原始边生成新点EEE的操作
-
-
-面规则：在网格中多边形面中生成点FFF如何操作
-
-
-
-tips1tips_1tips1​ 这里不使用顶点，而用点，表述曲线上的采样点，因为退化也是评判曲面细分技术的度量规则
-
-
-tips2tips_2tips2​ 虽然算法是递归进行的，但这里描述的算法不需要隔代递归层数据，用角标′\prime′表示新的网格点
-
-
-LoopLoopLoop细分
-LoopLoopLoop细分运用的场景是三角形网格，在边上增加顶点，并且调整原始点位置
-过顶点的重新定位，LoopLoopLoop细分能...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/29/QepJnZY2X5fwd3v.jpg)" 
-      href="/2024/10/29/Surface-Subdivision-Smplication/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-B-spline" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/28/B-spline/">B样条</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-28T04:27:49.000Z" itemprop="datePublished">2024-10-28</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.4k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-
-诸如贝塞尔曲线等，使用控制点来建立边界条件的样条，当其任意控制点更改，会触发连锁反应，需要重新生成新的曲线才能保持连续性，而B样条允许局部控制曲线/面
-
-BBB样条定义
-
-基函数
-BBB样条的基函数是递归得到的，有n+1n+1n+1个控制点，0≤i≤n0\le i\le n0≤i≤n的基函数定义为
-Bi0(u)=1 ,if ti≤u≤ti+1Bi0(u)=0 , othersBip(u)=u−titi+p−tiBip−1+ti+p+1−uti+p+1−ti+1Bi+1p−1
-\begin{align}
-B_i^0(u) &amp;=1\ ,if\ t_i\le u\le t_{i+1}\\\\
-B_i^0(u) &amp;=0\ ,\ others\\\\
-B_i^p(u) &amp;=\frac{u-t_i}{t_{i+p}-t_i}B_i^{p-1}+\frac{t_{i+p+1}-u}{t_{i+p+1}-t_{i+1}}B_{i+1}^{p-1}
-\end{align}
-Bi0​(u)Bi0​(u)Bip​(u)​=1 ,if ti​≤u≤ti+1​=0 , othe...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/28/93dkPOEQcZBbMmC.png)" 
-      href="/2024/10/28/B-spline/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Spline" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/10/28/Spline/">样条曲线</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-27T23:49:30.000Z" itemprop="datePublished">2024-10-28</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.5k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-定义
-
-样条（SplineSplineSpline）在数学和图形学中指的是一种通过一系列控制点来生成平滑曲线或曲面的方法
-
-
-特征
-
-
-分段定义：样条曲线通常由多个数学上多项式函数的曲线段组成，每一段曲线在其定义的区间内都是光滑的，且在控制点处与相邻的曲线段相接
-
-
-平滑性：样条曲线在控制点处具有连续的一阶甚至高阶导数，满足特定的连续性条件
-
-
-范围：大多数样条曲线在控制点形成的凸壳内
-
-
-
-连续性
-连续性可以定量分析曲线的平滑程度，简单来说，满足高阶的连续性条件的曲线更加平滑
-
-tipstipstips：高阶连续性建立在底阶连续性之上，满足高阶连续性的曲线一定也满足低阶连续性
-
-参数连续性
-
-参数连续性条件涉及到曲线或曲面在参数空间中的连续性，通常用CnC^nCn来表示，其中nnn是连续性的阶数
-
-
-
-C0C^0C0连续性：相邻分段曲线/面段在它们的公共边界上具有相同的函数值。这个是最基本的，分段连接条件
-
-
-C1C^1C1连续性：切向量的连续性，端点处的函数一阶导数值相同
-
-
-C2C^2C2连续性：曲率的连续性，端点处的的函数二阶导数相同
-
-
-几何连续性
-
-几何连续性条件涉...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/10/28/sbpP8TVehJi3fzH.jpg)" 
-      href="/2024/10/28/Spline/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -1193,7 +1203,7 @@ C2C^2C2连续性：曲率的连续性，端点处的的函数二阶导数相同
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a>  
+      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/4/">
       <i class="fa-solid fa-angle-right"></i>
