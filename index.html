@@ -155,7 +155,7 @@
         
             <a class="category-link" href="/categories/DirectX12/">
                 DirectX12
-                <div class="category-count">6</div>
+                <div class="category-count">7</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
@@ -265,6 +265,89 @@
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/01/X7q1CdJnjOuVMak.png)" 
       href="/2025/10/01/Radiosity-modle/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
+<article id="post-DirectX12-api-Descriptor-heap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/12/04/DirectX12-api-Descriptor-heap/">排错：同类描述符堆唯一</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-12-04T09:23:37.000Z" itemprop="datePublished">2024-12-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/DirectX12/">DirectX12</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            466 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              DirectX12官方文档对此的描述为:
+
+At most one CBV/SRV/UAV combined heap and one Sampler heap can be bound at any one time. These heaps are shared between both the graphics and compute pipelines (described in their PSOs).
+
+非形式化的讲，绘制命令列表中的具有如下签名的函数：
+123virtual void STDMETHODCALLTYPE SetGraphicsRootDescriptorTable(            _In_  UINT RootParameterIndex,           _In_  D3D12_GPU_DESCRIPTOR_HANDLE BaseDescriptor) = 0;
+具有限制：
+各个调用的参数D3D12_GPU_DESCRIPTOR_HANDLE BaseDescriptor对应的D3D12_DESCRIPTOR_TYPE互不相同
+如果设置...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/12/04/oEyOTHqaG8kL45c.jpg)" 
+      href="/2024/12/04/DirectX12-api-Descriptor-heap/" 
     >
        
       <div class="overlay">
@@ -933,84 +1016,6 @@ Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Si
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/15/XA5OVi9Zygr2Bvq.png)" 
       href="/2024/11/15/Scapegoat-Tree/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-install-OBJ" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/15/install-OBJ/">模型导入</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-14T16:18:33.000Z" itemprop="datePublished">2024-11-15</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/OpenGL/">OpenGL</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            54 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              使用AssimpAssimpAssimp工具导入模型并转换为MeshesMeshesMeshes，代码见仓库
-
-
-
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/15/LKdaBOiJGkoCTYe.jpg)" 
-      href="/2024/11/15/install-OBJ/" 
     >
        
       <div class="overlay">

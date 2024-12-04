@@ -44,6 +44,32 @@
   </entry>
   
   <entry>
+    <title>排错：同类描述符堆唯一</title>
+    <link href="http://example.com/2024/12/04/DirectX12-api-Descriptor-heap/"/>
+    <id>http://example.com/2024/12/04/DirectX12-api-Descriptor-heap/</id>
+    <published>2024-12-04T09:23:37.000Z</published>
+    <updated>2024-12-04T09:46:25.012Z</updated>
+    
+    <content type="html"><![CDATA[<p>DirectX12<a href="https://learn.microsoft.com/en-us/windows/win32/direct3d12/descriptor-heaps-overview">官方文档</a>对此的描述为:</p><blockquote><p>At most one CBV/SRV/UAV combined heap and one Sampler heap can be bound at any one time. These heaps are shared between both the graphics and compute pipelines (described in their PSOs).</p></blockquote><p>非形式化的讲，绘制命令列表中的具有如下签名的函数：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">void</span> STDMETHODCALLTYPE <span class="title">SetGraphicsRootDescriptorTable</span><span class="params">( </span></span></span><br><span class="line"><span class="params"><span class="function">           _In_  UINT RootParameterIndex,</span></span></span><br><span class="line"><span class="params"><span class="function">           _In_  D3D12_GPU_DESCRIPTOR_HANDLE BaseDescriptor)</span> </span>= <span class="number">0</span>;</span><br></pre></td></tr></table></figure><p>具有限制：<br>各个调用的参数<code>D3D12_GPU_DESCRIPTOR_HANDLE BaseDescriptor</code>对应的<code>D3D12_DESCRIPTOR_TYPE</code>互不相同</p><p>如果设置了<strong>多个同类堆</strong>，绘制命令会报错，信息大概为描述符句柄改变，虽然我的程序运行结果没有异常（</p><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;DirectX12&lt;a href=&quot;https://learn.microsoft.com/en-us/windows/win32/direct3d12/descriptor-heaps-overview&quot;&gt;官方文档&lt;/a&gt;对此的描述为:&lt;/p&gt;
+&lt;blockquote&gt;
+</summary>
+      
+    
+    
+    
+    <category term="DirectX12" scheme="http://example.com/categories/DirectX12/"/>
+    
+    
+    <category term="cg-api" scheme="http://example.com/tags/cg-api/"/>
+    
+  </entry>
+  
+  <entry>
     <title>初始化3D12D</title>
     <link href="http://example.com/2024/11/25/3D12D-CInitialize/"/>
     <id>http://example.com/2024/11/25/3D12D-CInitialize/</id>
@@ -503,32 +529,6 @@
     
     
     <category term="math" scheme="http://example.com/tags/math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>环境贴图</title>
-    <link href="http://example.com/2024/11/04/environment-Mapping/"/>
-    <id>http://example.com/2024/11/04/environment-Mapping/</id>
-    <published>2024-11-04T09:17:55.000Z</published>
-    <updated>2024-11-04T10:04:05.652Z</updated>
-    
-    <content type="html"><![CDATA[<p>环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。</p><hr><h3 id="%E5%A4%A9%E7%A9%BA%E7%9B%92" tabindex="-1">天空盒</h3><p>天空盒是实现环境贴图的一种技术，它是</p><ul><li><p>在场景中一个立方体对象，每个面内侧都贴有纹理贴图</p></li><li><p>天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远</p></li></ul><h3 id="%E5%9C%A8%E5%85%89%E6%A0%85%E6%88%90%E5%83%8F%E4%B8%AD%E5%AE%9E%E7%8E%B0" tabindex="-1">在光栅成像中实现</h3><p>实现<strong>无限远</strong>只需要在可见性判定上处理</p><ol><li>保证天空盒对象包围住相机</li><li>禁用深度测试并渲染天空盒</li><li>开启深度测试渲染其他对象</li></ol><p>因为深度测试中的初始值为无线深，先渲染的天空盒对于其他物体都是无穷远的</p><h3 id="%E5%9C%A8%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E4%B8%AD%E5%AE%9E%E7%8E%B0" tabindex="-1">在光线追踪中实现</h3><p>不需要建立对象，使用<strong>背景函数</strong>，它接受光线的方向向量</p><p>若一个对象从视体边界射出，从背景函数中查找对象的<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>G</mi><mi>B</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">RGBA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">RGB</span><span class="mord mathnormal">A</span></span></span></span></eq></p><hr><h3 id="%E5%85%89%E6%B3%BD%E6%95%88%E6%9E%9C" tabindex="-1">光泽效果</h3><ul><li><p>在光线追踪程序中，增加环境项即可</p></li><li><p>在光栅成像程序中，利用观察方向相对于法线的反射方向去查询环境映射的颜色值，简单来讲，<strong>反射光线求交</strong></p></li></ul><hr><h3 id="%E7%A9%B9%E9%A1%B6" tabindex="-1">穹顶</h3><p>相比天空盒，穹顶不会存在边界缝隙，但是可能存在图像扭曲</p><hr><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;%E5%A4%A9%E7%A9%B</summary>
-      
-    
-    
-    
-    <category term="计算机图形学" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
-    
-    
-    <category term="Shading" scheme="http://example.com/tags/Shading/"/>
     
   </entry>
   

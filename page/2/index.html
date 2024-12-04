@@ -155,7 +155,7 @@
         
             <a class="category-link" href="/categories/DirectX12/">
                 DirectX12
-                <div class="category-count">6</div>
+                <div class="category-count">7</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
@@ -203,6 +203,84 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-install-OBJ" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/11/15/install-OBJ/">模型导入</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-11-14T16:18:33.000Z" itemprop="datePublished">2024-11-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/OpenGL/">OpenGL</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            54 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              使用AssimpAssimpAssimp工具导入模型并转换为MeshesMeshesMeshes，代码见仓库
+
+
+
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/11/15/LKdaBOiJGkoCTYe.jpg)" 
+      href="/2024/11/15/install-OBJ/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
    
 
 
@@ -994,120 +1072,6 @@ proj_Q &amp;= (\frac{P^\prime\...
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/05/3HlqrfMOcovksXC.jpg)" 
       href="/2024/11/05/Quaternion-rotation/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-environment-Mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/04/environment-Mapping/">环境贴图</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-04T09:17:55.000Z" itemprop="datePublished">2024-11-04</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            438 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              环境贴图是一种用于模拟光滑表面反射周围环境的技术。它通常用于创建金属、水面、玻璃等材质的反射效果。环境贴图通过将环境映射到一个球体、立方体或其他几何形状上，然后将这些环境信息赋予物体表面，来实现反射效果。
-
-天空盒
-天空盒是实现环境贴图的一种技术，它是
-
-
-在场景中一个立方体对象，每个面内侧都贴有纹理贴图
-
-
-天空盒对象围住场景所有对象，理论上，其顶点离所有对象无限远
-
-
-在光栅成像中实现
-实现无限远只需要在可见性判定上处理
-
-保证天空盒对象包围住相机
-禁用深度测试并渲染天空盒
-开启深度测试渲染其他对象
-
-因为深度测试中的初始值为无线深，先渲染的天空盒对于其他物体都是无穷远的
-在光线追踪中实现
-不需要建立对象，使用背景函数，它接受光线的方向向量
-若一个对象从视体边界射出，从背景函数中查找对象的RGBARGBARGBA
-
-光泽效果
-
-
-在光线追踪程序中，增加环境项即可
-
-
-在光栅成像程序中，利用观察方向相对于法线的反射方向去查询环境映射的颜色值，简单来讲，反射光线求交
-
-
-
-穹顶
-相比天空盒，穹顶不会存在边界缝隙，但是可能存在图像扭曲
-
-
-
-
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/04/Is2WtnC1pJ5egxb.png)" 
-      href="/2024/11/04/environment-Mapping/" 
     >
        
       <div class="overlay">
