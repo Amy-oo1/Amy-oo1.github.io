@@ -158,14 +158,14 @@
                 <div class="category-count">7</div>
             </a>
         
-            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
-                数字信号处理
-                <div class="category-count">1</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">
                 算法
                 <div class="category-count">6</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">
+                数字信号处理
+                <div class="category-count">1</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/">
@@ -182,6 +182,11 @@
                 OpenGL
                 <div class="category-count">2</div>
             </a>
+        
+            <a class="category-link" href="/categories/Cpp/">
+                Cpp
+                <div class="category-count">1</div>
+            </a>
         </div>
     </div>
   </div>
@@ -192,7 +197,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Language/" rel="tag">Language</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rasterization/" rel="tag">Rasterization</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Rendering/" rel="tag">Rendering</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Shading/" rel="tag">Shading</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Signal/" rel="tag">Signal</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/String/" rel="tag">String</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/cg-api/" rel="tag">cg-api</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/heap/" rel="tag">heap</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/math/" rel="tag">math</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
     </div>
   </div>
 
@@ -286,6 +291,97 @@
    
 
 
+<article id="post-cpp-11-vaiiadic-template" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/12/28/cpp-11-vaiiadic-template/">可变参数模版</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-12-28T12:24:56.000Z" itemprop="datePublished">2024-12-28</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Cpp/">Cpp</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language/" rel="tag">Language</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+Def And Eg
+一个可变参数模版（variadic template）是一个接收可变数目参数的模版函数或者模版类
+可变数目的参数集合被称为参数包，因为是模版，自然有两种
+
+
+模版参数包，比如typename... Args或者class... Args
+
+
+函数参数，如果定义了如上的模版参数包，则可以定义const Args&amp;... args
+
+
+参数包支持两种操作，获取包参数数量，包扩展
+运算符sizeof...（Parm）返回包参数数量
+以上参数都特指形参，不再赘述
+先在这里贴一个例子
+1234567891011121314151617#include&lt;iostream&gt;#include&lt;utility&gt;template&lt;typename T&gt;auto AddSum(T&amp; Sum, const T&amp; Num) &#123; Sum += Num; &#125;template&lt;typename T, typename... Args&gt;auto AddSum(T&amp; Sum, const T&...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  with-pic  "
+       style="background-image: url(https://s2.loli.net/2024/12/04/oEyOTHqaG8kL45c.jpg)" 
+      href="/2024/12/28/cpp-11-vaiiadic-template/" 
+    >
+       
+      <div class="overlay">
+        <i class="fa-solid fa-angle-right with-pic"></i>
+      </div>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+   
+
+
 <article id="post-DirectX12-api-Descriptor-heap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -316,7 +412,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            466 词 
+            888 词 
           </div>
         </div>
         
@@ -332,10 +428,10 @@
 At most one CBV/SRV/UAV combined heap and one Sampler heap can be bound at any one time. These heaps are shared between both the graphics and compute pipelines (described in their PSOs).
 
 非形式化的讲，绘制命令列表中的具有如下签名的函数：
-123virtual void STDMETHODCALLTYPE SetGraphicsRootDescriptorTable(            _In_  UINT RootParameterIndex,           _In_  D3D12_GPU_DESCRIPTOR_HANDLE BaseDescriptor) = 0;
+123virtual void STDMETHODCALLTYPE SetDescriptorHeaps(           _In_  UINT NumDescriptorHeaps,          _In_reads_(NumDescriptorHeaps)  ID3D12DescriptorHeap *const *ppDescriptorHeaps) = 0;
 具有限制：
-各个调用的参数D3D12_GPU_DESCRIPTOR_HANDLE BaseDescriptor对应的D3D12_DESCRIPTOR_TYPE互不相同
-如果设置...
+参数ppDescriptorHeaps数组中的描述符D3D12_DESCRIPTOR_TYPE互不相同
+datedatedate: ...
             
           </div>
         
@@ -932,90 +1028,6 @@ winddows−apiwinddows-apiwinddows−api大量使用匈牙利命名规则来预�
     <a class="right-panel  with-pic  "
        style="background-image: url(https://s2.loli.net/2024/11/16/ErWLg8oQ9JVkvlu.jpg)" 
       href="/2024/11/16/windows-creat/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-Scapegoat-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/15/Scapegoat-Tree/">替罪羊树</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-15T14:25:52.000Z" itemprop="datePublished">2024-11-15</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.9k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Balanced-Tree/" rel="tag">Balanced-Tree</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              
-核心思想
-
-替罪羊树（Scapegoat Tree）是一种自平衡二叉搜索树，它通过懒惰平衡的方式来维持树的平衡。在替罪羊树中，不会在每次插入或删除操作后立即进行平衡，而是当树变得“过于不平衡”时，才进行一次全局的重构。
-
-替罪羊树通过定义平衡因子α≥0.5\alpha\ge0.5α≥0.5来保持树高稳定在O(log⁡N)O(\log N)O(logN)
-平衡因子要求每个节点NodeNodeNode属性保持
-Size(Nodel.left)≤Size(Node)Size(Nodel.left)\le Size(Node)Size(Nodel.left)≤Size(Node)Size(Nodel.right)≤Size(Node)Size(Nodel.right)\le Size(Node)Size(Nodel.right)≤Size(Node)如果α=0.5\alpha=0.5α=0.5那么这棵树是高度平衡的，实践中采用大多α=0.7\alpha=0.7α=0.7
-重构
-对于不满足平衡条件的（子）树TTT，对其进行平衡操作，具体的讲将平衡树TTT中数据遍历取出，然后使用这些数据建...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(https://s2.loli.net/2024/11/15/XA5OVi9Zygr2Bvq.png)" 
-      href="/2024/11/15/Scapegoat-Tree/" 
     >
        
       <div class="overlay">
